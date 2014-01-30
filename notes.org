@@ -1,3 +1,6 @@
+#+TITLE: cs61b Lecture Notes
+#+STARTUP: overview
+
 * Lecture 2
 Friday, January 24, 2014
 
