@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-01-29T18:33-0800"/>
+<meta name="generated" content="2014-01-30T00:46-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -138,6 +138,27 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2-3">2.3 The "this" Keyword</a></li>
 <li><a href="#sec-2-4">2.4 The "static" Keyword</a></li>
 <li><a href="#sec-2-5">2.5 Lifetimes of Variables</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Lecture 4</a>
+<ul>
+<li><a href="#sec-3-1">3.1 PRIMITIVE TYPES</a></li>
+<li><a href="#sec-3-2">3.2 Boolean Values</a></li>
+<li><a href="#sec-3-3">3.3 CONDITIONALS</a></li>
+<li><a href="#sec-3-4">3.4 THE "return" KEYWORD</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 Lecture 5</a>
+<ul>
+<li><a href="#sec-4-1">4.1 LOOPS</a>
+<ul>
+<li><a href="#sec-4-1-1">4.1.1 "while" Loops</a></li>
+<li><a href="#sec-4-1-2">4.1.2 "for" Loops</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-2">4.2 ARRAYS</a></li>
+<li><a href="#sec-4-3">4.3 Primes Revisited</a></li>
+<li><a href="#sec-4-4">4.4 Multi-Dimensional Arrays</a></li>
 </ul>
 </li>
 </ul>
@@ -532,12 +553,12 @@ amanda.age is a field.  Let's write a <span style="text-decoration:underline;">c
 
 
 <pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">age</span>;                <span style="color: #99968b;">// </span><span style="color: #99968b;">The Human's age (an integer).</span>
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">name</span>;            <span style="color: #99968b;">// </span><span style="color: #99968b;">The Human's name.</span>
+    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">age</span>;                <span style="color: #99968b;">// </span><span style="color: #99968b;">The Human's age (an integer).</span>
+    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">name</span>;            <span style="color: #99968b;">// </span><span style="color: #99968b;">The Human's name.</span>
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">introduce</span>() {      <span style="color: #99968b;">// </span><span style="color: #99968b;">This is a _method definition_.</span>
-    System.out.println(<span style="color: #95e454;">"I'm "</span> + name + <span style="color: #95e454;">" and I'm "</span> + age + <span style="color: #95e454;">" years old."</span>);
-  }
+    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">introduce</span>() {      <span style="color: #99968b;">// </span><span style="color: #99968b;">This is a _method definition_.</span>
+        System.out.println(<span style="color: #95e454;">"I'm "</span> + name + <span style="color: #95e454;">" and I'm "</span> + age + <span style="color: #95e454;">" years old."</span>);
+    }
 }
 </pre>
 
@@ -579,12 +600,12 @@ two or more objects, we can.
 
 
 <pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">Include all the stuff from the previous definition of Human here.</span>
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">Include all the stuff from the previous definition of Human here.</span>
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">copy</span>(<span style="color: #92a65e; font-weight: bold;">Human</span> <span style="color: #cae682;">original</span>) {
-    age = original.age;
-    name = original.name;
-  }
+    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">copy</span>(<span style="color: #92a65e; font-weight: bold;">Human</span> <span style="color: #cae682;">original</span>) {
+        age = original.age;
+        name = original.name;
+    }
 }
 </pre>
 
@@ -610,12 +631,12 @@ object.
 
 
 <pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">Include all the stuff from the previous definitions here.</span>
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">Include all the stuff from the previous definitions here.</span>
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>(<span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">givenName</span>) {
-    age = <span style="color: #ffa07a;">6</span>;
-    name = givenName;
-  }
+    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>(<span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">givenName</span>) {
+        age = <span style="color: #ffa07a;">6</span>;
+        name = givenName;
+    }
 }
 </pre>
 
@@ -674,12 +695,12 @@ constructor with no parameters.
 
 
 <pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">Include all the stuff from the previous definitions here.</span>
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">Include all the stuff from the previous definitions here.</span>
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>() {
-    age = <span style="color: #ffa07a;">0</span>;
-    name = <span style="color: #95e454;">"Untitled"</span>;
-  }
+    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>() {
+        age = <span style="color: #ffa07a;">0</span>;
+        name = <span style="color: #95e454;">"Untitled"</span>;
+    }
 }
 </pre>
 
@@ -700,8 +721,8 @@ last constructor as follows without changing its meaning.
 
 
 <pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>() {
-  <span style="color: #8ac6f2; font-weight: bold;">this</span>.age = <span style="color: #ffa07a;">0</span>;
-  <span style="color: #8ac6f2; font-weight: bold;">this</span>.name = <span style="color: #95e454;">"Untitled"</span>;
+    <span style="color: #8ac6f2; font-weight: bold;">this</span>.age = <span style="color: #ffa07a;">0</span>;
+    <span style="color: #8ac6f2; font-weight: bold;">this</span>.name = <span style="color: #95e454;">"Untitled"</span>;
 }
 </pre>
 
@@ -716,10 +737,10 @@ fields.
 
 
 <pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">change</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">age</span>) {
-  <span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">name</span> = <span style="color: #95e454;">"Tom"</span>;
+    <span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">name</span> = <span style="color: #95e454;">"Tom"</span>;
 
-  <span style="color: #8ac6f2; font-weight: bold;">this</span>.age = age;
-  <span style="color: #8ac6f2; font-weight: bold;">this</span>.name = name;
+    <span style="color: #8ac6f2; font-weight: bold;">this</span>.age = age;
+    <span style="color: #8ac6f2; font-weight: bold;">this</span>.name = name;
 }
 </pre>
 
@@ -767,14 +788,14 @@ Static fields are also called <span style="text-decoration:underline;">class var
 
 
 <pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">numberOfHumans</span>;
+    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">numberOfHumans</span>;
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">age</span>;
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">name</span>;
+    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">age</span>;
+    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">name</span>;
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>() {
-    numberOfHumans++;    <span style="color: #99968b;">// </span><span style="color: #99968b;">The constructor increments the number by one.</span>
-  }
+    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>() {
+        numberOfHumans++;    <span style="color: #99968b;">// </span><span style="color: #99968b;">The constructor increments the number by one.</span>
+    }
 }
 </pre>
 
@@ -805,10 +826,10 @@ as a parameter.
 
 
 <pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-  ...
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> printHumans() {
-    System.out.println(numberOfHumans);
-  }
+    ...
+    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> printHumans() {
+        System.out.println(numberOfHumans);
+    }
 }
 </pre>
 
@@ -853,11 +874,731 @@ Any attempt to reference "this" will cause a compile-time error.
 
 </div>
 </div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Lecture 4</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>Wednesday, January 29, 2014
+</p>
+<p>
+Today's reading:  S&amp;B pp. 10-14, 49-53, 75, 78-79, 86, 117, 286-287, 292, 660.
+</p>
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> PRIMITIVE TYPES</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<p>Not all variables are references to objects.  Some variables are primitive
+types, which store values like "3", "7.2", "h", and "false".  They are:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">byte:</td><td class="left">A 8-bit integer in the range -128&hellip;127.  (One bit is the sign.)</td></tr>
+<tr><td class="left">short:</td><td class="left">A 16-bit integer in the range -32768&hellip;32767.</td></tr>
+<tr><td class="left">int:</td><td class="left">A 32-bit integer in the range -2147483648&hellip;2147483647.</td></tr>
+<tr><td class="left">long:</td><td class="left">A 64-bit integer, range -9223372036854775808&hellip;9223372036854775807.</td></tr>
+<tr><td class="left">double:</td><td class="left">A 64-bit floating-point number like 18.355625430920409.</td></tr>
+<tr><td class="left">float:</td><td class="left">A 32-bit floating-point number; has fewer digits of precision.</td></tr>
+<tr><td class="left">boolean:</td><td class="left">"true" or "false".</td></tr>
+<tr><td class="left">char:</td><td class="left">A single character.</td></tr>
+</tbody>
+</table>
+
+
+<p>
+long values are written with an L on the end:  long x = 43L;
+This tells the compiler to internally write out "43" in a 64-bit format.
+double and float values must have a decimal point:  double y = 18.0;
+float values are written with an f at the end:  float f = 43.9f;
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Object types</th><th scope="col" class="left">Primitive types</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">Variable contains a</td><td class="left">reference</td><td class="left">value</td></tr>
+<tr><td class="left">How defined?</td><td class="left">class definition</td><td class="left">built into Java</td></tr>
+<tr><td class="left">How created?</td><td class="left">"new"</td><td class="left">"6", "3.4", "true"</td></tr>
+<tr><td class="left">How initialized?</td><td class="left">constructor</td><td class="left">default (usually zero)</td></tr>
+<tr><td class="left">How used?</td><td class="left">methods</td><td class="left">operators ("+", "*", etc.)</td></tr>
+</tbody>
+</table>
+
+
+<p>
+Operations on int, long, short, and byte types.
+</p>
+
+
+<pre class="src src-text">-x               x * y 
+x + y            x / y    &lt;-- rounds toward zero (drops the remainder).
+x - y            x % y    &lt;-- calculates the remainder of x / y.
+</pre>
+
+<p>
+Except for "%", these operations are also available for doubles and floats.
+Floating-point division ("/") doesn't round to an integer, but it does
+round off after a certain number of bits determined by the storage space.
+</p>
+<p>
+The java.lang library has more operations in&hellip;
+</p><ul>
+<li>the Math class.
+</li>
+</ul>
+
+
+
+
+<pre class="src src-java">x = Math.abs(y);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Absolute value.  Also see Math.sqrt, Math.sin, etc.</span>
+</pre>
+
+<ul>
+<li>the Integer class.
+</li>
+</ul>
+
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span> = Integer.parseInt(<span style="color: #95e454;">"1984"</span>);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Convert a string to a number.</span>
+</pre>
+
+<ul>
+<li>the Double class.
+</li>
+</ul>
+
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">double</span> <span style="color: #cae682;">d</span> = Double.parseDouble(<span style="color: #95e454;">"3.14"</span>);
+</pre>
+
+
+<p>
+Converting types:  integers can be assigned to variables of longer types.
+</p>
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">43</span>; 
+<span style="color: #92a65e; font-weight: bold;">long</span> <span style="color: #cae682;">l</span> = <span style="color: #ffa07a;">43</span>;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Okay, because longs are a superset of ints.</span>
+l = i;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Okay, because longs are a superset of ints.</span>
+i = l;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Compiler ERROR.</span>
+i = (<span style="color: #92a65e; font-weight: bold;">int</span>) l;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Okay.</span>
+</pre>
+
+<p>
+The string "(int)" is called a cast, and it casts the long into an int.  In the
+process, high bits will be lost if l does not fit in the range -2147483648&hellip;
+2147483647 Java won't let you compile "i = l" because it's trying to protect you 
+from accidentally creating a nonsense value and a hard-to-find bug. Java
+requires you to explicitly cast longs to ints to show your acknowledgment that
+you may be destroying information.
+</p>
+<p>
+Similarly, "float f = 5.5f; double d = f;" is fine, but you need an explicit
+cast for "double d = 5.5; float f = (float) d;".  Integers (even longs) can be
+directly assigned to floating-point variables (even floats) without a cast, but
+the reverse requires a cast because the number is truncated to an integer.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Boolean Values</h3>
+<div class="outline-text-3" id="text-3-2">
+
+
+<p>
+A boolean value is either "true" or "false".  Booleans have operations of their
+own, signified "&amp;&amp;" (and), "||" (or), and "!" (not).
+</p>
+
+
+
+<pre class="src src-text">   a    |    b    ||  a &amp;&amp; b  |  a || b  |    !a
+==================||==============================
+ false  |  false  ||  false   |  false   |   true
+ false  |   true  ||  false   |   true   |
+  true  |  false  ||  false   |   true   |  false
+  true  |   true  ||   true   |   true   |
+</pre>
+
+
+<p>
+Boolean values can be specified directly ("true", "false") or be created by
+the comparison operators "==", "&lt;", "&gt;", "&lt;=", "&gt;=", "!=" (not equal to).
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">x</span> = <span style="color: #ffa07a;">3</span> == <span style="color: #ffa07a;">5</span>;       <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now false.</span>
+x = <span style="color: #ffa07a;">4.5</span> &gt;= <span style="color: #ffa07a;">4.5</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now true.</span>
+x = <span style="color: #ffa07a;">4</span> != <span style="color: #ffa07a;">5</span> - <span style="color: #ffa07a;">1</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now false.</span>
+x = <span style="color: #7fffd4;">false</span> == (<span style="color: #ffa07a;">3</span> == <span style="color: #ffa07a;">0</span>);    <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now true.</span>
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> CONDITIONALS</h3>
+<div class="outline-text-3" id="text-3-3">
+
+<p>An "if" statement uses a boolean expression to decide whether to execute a set
+of statements.  The form is
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">if</span> (boolValue) {
+    statements;
+}
+</pre>
+
+
+<p>
+The statements are executed if and only if "boolValue" is "true".  The
+parentheses around the boolean expression are required (for no good reason).
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">pass</span> = score &gt;= <span style="color: #ffa07a;">75</span>;
+<span style="color: #8ac6f2; font-weight: bold;">if</span> (pass) {
+    output(<span style="color: #95e454;">"You pass CS 61B"</span>);
+} <span style="color: #8ac6f2; font-weight: bold;">else</span> {
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">The following line executes if and only if score &lt; 75.</span>
+    output(<span style="color: #95e454;">"You are such an unbelievable loser"</span>);
+}
+</pre>
+
+
+<p>
+if-then-else clauses can be (1) nested and (2) daisy-chained.  Nesting allows
+you to build decision trees.  Daisy-chaining allows you to present more than
+two alternatives.  For instance, suppose you want to find the maximum of three
+numbers.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">if</span> (x &gt; y) {
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (x &gt; z) {
+        maximum = x;
+    } <span style="color: #8ac6f2; font-weight: bold;">else</span> {
+        maximum = z;
+    }
+} <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> (y &gt; z) {
+    maximum = y;
+} <span style="color: #8ac6f2; font-weight: bold;">else</span> {
+    maximum = z;
+}
+</pre>
+
+
+<p>
+Some long chains of if-then-else clauses can be simplified by using a "switch"
+statement.  "switch" is appropriate only if every condition tests whether a
+variable x is equal to some constant.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">switch</span> (month) {        |      <span style="color: #8ac6f2; font-weight: bold;">if</span> (month == <span style="color: #ffa07a;">2</span>) {                         
+<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">2</span>:                 |        days = <span style="color: #ffa07a;">28</span>;                              
+  days = <span style="color: #ffa07a;">28</span>;            |      } <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> ((month == <span style="color: #ffa07a;">4</span>) || (month == <span style="color: #ffa07a;">6</span>) ||
+  <span style="color: #8ac6f2; font-weight: bold;">break</span>;                |                 (month == <span style="color: #ffa07a;">9</span>) || (month == <span style="color: #ffa07a;">11</span>)) {
+<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">4</span>:                 |        days = <span style="color: #ffa07a;">30</span>;                              
+<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">6</span>:                 |      } <span style="color: #8ac6f2; font-weight: bold;">else</span> {                                  
+<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">9</span>:                 |        days = <span style="color: #ffa07a;">31</span>;                              
+<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">11</span>:                |      }                                         
+  days = <span style="color: #ffa07a;">30</span>;            |
+  <span style="color: #8ac6f2; font-weight: bold;">break</span>;
+<span style="color: #8ac6f2; font-weight: bold;">default</span>:
+  days = <span style="color: #ffa07a;">31</span>;
+  <span style="color: #8ac6f2; font-weight: bold;">break</span>;
+}                   <span style="color: #99968b;">//  </span><span style="color: #99968b;">These two code fragments do exactly the same thing.</span>
+</pre>
+
+
+<p>
+IMPORTANT:  "break" jumps to the end of the "switch" statement.  If you forget
+a break statement, the flow of execution will continue right through past the
+next "case" clause, which is why cases 4, 6, and 9 work right.  If month == 12
+in the following example, both Strings are printed.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">switch</span> (month) {
+<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">12</span>:
+    output(<span style="color: #95e454;">"It's December."</span>);
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">Just keep moving right on through.</span>
+<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">1</span>:
+<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">2</span>:
+<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">11</span>:
+    output(<span style="color: #95e454;">"It's cold."</span>);
+}
+</pre>
+
+
+<p>
+However, this is considered bad style, because it's hard to read and
+understand.  If there's any chance that other people will need to read or
+modify your code (which is the norm when you program for a business), don't
+code it like this.  Use break statements in the switch, and use subroutines to
+reuse code and clarify the control flow.
+</p>
+<p>
+Observe that the last example doesn't have a "default:" case.  If "month" is
+not 1 nor 2 nor 11 nor 12, Java jumps right to the end of the "switch"
+statement (just past the closing brace) and continues execution from there.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> THE "return" KEYWORD</h3>
+<div class="outline-text-3" id="text-3-4">
+
+<p>Like conditionals, "return" affects the flow of control of a program.  It
+causes a method to end immediately, so that control returns to the calling
+method.
+</p>
+<p>
+Here's a recursive method that prints the numbers from 1 to x.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">oneToX</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span>) {
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (x &lt; <span style="color: #ffa07a;">1</span>) {
+        <span style="color: #8ac6f2; font-weight: bold;">return</span>;
+    }
+    oneToX(x - <span style="color: #ffa07a;">1</span>);
+    System.out.println(x);
+}
+</pre>
+
+
+<p>
+The return keyword serves a dual purpose:  it is also the means by which a
+function returns a value.  A <span style="text-decoration:underline;">function</span> is a method that is declared to return
+a non-void type.  For instance, here's a function that returns an int.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">daysInMonth</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">month</span>) {
+    <span style="color: #8ac6f2; font-weight: bold;">switch</span> (month) {
+    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">2</span>:
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #ffa07a;">28</span>;
+    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">4</span>:
+    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">6</span>:
+    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">9</span>:
+    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">11</span>:
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #ffa07a;">30</span>;
+    <span style="color: #8ac6f2; font-weight: bold;">default</span>:
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #ffa07a;">31</span>;
+    }
+}
+</pre>
+
+
+<p>
+The "return" value can be an expression.  Some examples:
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">return</span> x + y - z;
+
+<span style="color: #8ac6f2; font-weight: bold;">return</span> car.velocity(time);
+</pre>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Lecture 5</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>Wednesday, January 29, 2014
+</p>
+<p>
+Today's reading:  Sierra &amp; Bates pp. 59-62, 83, 114-116, 293-300, 670.
+</p>
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> LOOPS</h3>
+<div class="outline-text-3" id="text-4-1">
+
+
+</div>
+
+<div id="outline-container-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> "while" Loops</h4>
+<div class="outline-text-4" id="text-4-1-1">
+
+<p>A "while" statement is like an "if" statement, but the body of the statement is
+executed repeatedly, as long as the condition remains true.  The following
+example tests whether n is a prime number by attempting to divide it by every
+integer in the range 2&hellip;n - 1.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">isPrime</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
+  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">divisor</span> = <span style="color: #ffa07a;">2</span>;
+  <span style="color: #8ac6f2; font-weight: bold;">while</span> (divisor &lt; n) {         <span style="color: #7fffd4;">_</span> &lt;- <span style="color: #95e454;">"divisor &lt; n"</span> is the _loop_condition_.
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (n % divisor == <span style="color: #ffa07a;">0</span>) {      |
+      <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;              | These lines inside the braces
+    }                            | are called the _loop_body_.  
+    divisor++;                  <span style="color: #7fffd4;">_</span>|
+  }
+  <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">true</span>;
+}
+</pre>
+
+
+<p>
+Here's how the loop executes.
+</p><ul>
+<li>When Java reaches this "while" loop, it tests whether the loop condition
+  "divisor &lt; n" is true.
+</li>
+<li>If divisor &lt; n, Java executes the loop body {in braces}.
+</li>
+<li>When Java finishes the loop body (i.e. after executing "divisor++"), it
+  tests <span style="text-decoration:underline;">again</span> whether "divisor &lt; n" is true.
+</li>
+<li>If it's still true, Java jumps back up to the beginning of the loop body and
+  executes it again.
+</li>
+<li>If Java tests the loop condition and finds that "divisor &lt; n" is false, Java
+  continues execution from the next line of code <span style="text-decoration:underline;">after</span> the loop body.
+</li>
+</ul>
+
+
+<p>
+An <span style="text-decoration:underline;">iteration</span> is a pass through the loop body.  In this example, if n is 2 or
+less, the loop body won't iterate even once.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> "for" Loops</h4>
+<div class="outline-text-4" id="text-4-1-2">
+
+<p>"for" loops are a convenient shorthand that can be used to write some "while"
+loops in a more compact way.  The following "for" loop is equivalent to the
+following "while" loop.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (initialize; condition; next) {      |    initialize;   
+  statements;                            |    <span style="color: #8ac6f2; font-weight: bold;">while</span> (condition) {
+}                                        |      statements;
+                                         |      next;
+                                         |    }
+</pre>
+
+
+<p>
+By convention, the "initialize" and "next" are both expressions that affect a
+variable that changes every loop iteration and is central to the test.  Most
+commonly, "for" statements are used to iterate while advancing an index
+variable over a fixed range of values.  isPrime can be rewritten thus:
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">isPrime</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
+  <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">divisor</span> = <span style="color: #ffa07a;">2</span>; divisor &lt; n; divisor++) {    <span style="color: #7fffd4;">_</span>
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (n % divisor == <span style="color: #ffa07a;">0</span>) {                           |
+      <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;                                   | Loop body.
+    }                                                <span style="color: #7fffd4;">_</span>|
+  }
+  <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">true</span>;
+}
+</pre>
+
+
+<p>
+A common mistake among beginning Java and C programmers is to get the condition
+wrong and do one loop iteration too few.  For example, suppose you want to
+print all the prime numbers in the range 2&hellip;n.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">printPrimes</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
+  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
+  <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span>; i &lt; n; i++) {        <span style="color: #99968b;">// </span><span style="color: #99968b;">ERROR!!!  Condition should be i &lt;= n.</span>
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (isPrime(i)) {
+      System.out.print(<span style="color: #95e454;">" "</span> + i);
+    }
+  }
+}
+</pre>
+
+
+<p>
+Suppose we correct this method so the loop condition is "i &lt;= n".  Think
+carefully:  what is the value of i when the printPrimes method ends?
+</p>
+<p>
+We'll come back to iteration, but first let's investigate something more
+interesting to iterate on.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> ARRAYS</h3>
+<div class="outline-text-3" id="text-4-2">
+
+<p>An array is an object consisting of a numbered list of variables, each of which
+is a primitive type or a reference to another object.  The variables in an
+array are always indexed from zero in increments of one.  For example, here is
+an array of characters.
+</p>
+<p>
+<img src="ditaa-images/img20_f18bbd524ca86827357f5a81eda9dc5b05d7e38e.png"  alt="ditaa-images/img20_f18bbd524ca86827357f5a81eda9dc5b05d7e38e.png" />
+</p>
+
+<p>
+Like any object, an array is only useful if we can reference it, usually
+through some reference variable like "c" above.  We declare c thusly:
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">char</span>[] <span style="color: #cae682;">c</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">Reference to an array (of any length) of characters.</span>
+</pre>
+
+
+<p>
+We can construct an array of four characters as follows.
+</p>
+
+
+
+<pre class="src src-java">c = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">char</span>[<span style="color: #ffa07a;">4</span>];
+</pre>
+
+
+<p>
+Now that we have an array object, we may fill in its values by indexing c.
+</p>
+
+
+
+<pre class="src src-java">c[<span style="color: #ffa07a;">0</span>] = <span style="color: #95e454;">'b'</span>;         <span style="color: #99968b;">// </span><span style="color: #99968b;">Store the character 'b' at index 0.</span>
+c[<span style="color: #ffa07a;">1</span>] = <span style="color: #95e454;">'l'</span>;
+c[<span style="color: #ffa07a;">2</span>] = <span style="color: #95e454;">'u'</span>;
+c[<span style="color: #ffa07a;">3</span>] = <span style="color: #95e454;">'e'</span>;
+</pre>
+
+
+<p>
+The characters in a four-element array are indexed from 0 to 3.  If we try to
+address any index outside this range, we will trigger a run-time error.
+</p>
+
+
+
+<pre class="src src-java">c[<span style="color: #ffa07a;">4</span>] = <span style="color: #95e454;">'s'</span>;         <span style="color: #99968b;">// </span><span style="color: #99968b;">Program stops with ArrayIndexOutOfBoundsException</span>
+</pre>
+
+
+<p>
+A <span style="text-decoration:underline;">run-time error</span> is an error that doesn't show up when you compile the code,
+but does show up later when you run the program and the Java Virtual Machine
+tries to access the out-of-range index.
+</p>
+<p>
+When c references an array, you can find out its length by looking at the field
+"c.length".  You can never assign a value to the "length" field, though.  Java
+will give you a compile-time error if you try.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Primes Revisited</h3>
+<div class="outline-text-3" id="text-4-3">
+
+
+<p>
+The printPrimes method is embarrassingly slow when n is large.  Arrays can help
+us write a faster method to identify the primes from 2 to n.
+</p>
+<p>
+The method uses an ancient algorithm called the Sieve of Eratosthenes.  All
+integers are assumed prime until proven composite.  The algorithm iterates
+through all possible divisors, and marks as non-prime every integer divisible
+by a given divisor.  Here's the beginning of the method.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">printPrimes</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
+    <span style="color: #92a65e; font-weight: bold;">boolean</span>[] <span style="color: #cae682;">prime</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">boolean</span>[n + <span style="color: #ffa07a;">1</span>];                  <span style="color: #99968b;">// </span><span style="color: #99968b;">Numbered 0...n.</span>
+    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
+    <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span>; i &lt;= n; i++) {
+        prime[i] = <span style="color: #7fffd4;">true</span>;                       <span style="color: #99968b;">// </span><span style="color: #99968b;">Prime until proven composite.</span>
+    }
+</pre>
+
+
+<p>
+Why did we construct an array of length n + 1?  Because if we'd constructed an
+array of length n, its elements would be numbered from 0 to n - 1.  But we'd
+like to have an element numbered n.
+</p>
+<p>
+To continue the method, we iterate over all possible divisors from 2 to the
+square root of n.  For each prime value of divisor, we mark as non-prime all
+integers divisible by divisor, except divisor itself.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">divisor</span> = <span style="color: #ffa07a;">2</span>; divisor * divisor &lt;= n; divisor++) {
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (prime[divisor]) {
+        <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span> * divisor; i &lt;= n; i = i + divisor) {
+            prime[i] = <span style="color: #7fffd4;">false</span>;                     <span style="color: #99968b;">// </span><span style="color: #99968b;">i is divisible by divisor.</span>
+        }
+    }
+}
+</pre>
+
+
+<p>
+Math question:  why do we only need to consider divisors up to the square root
+of n?
+</p>
+<p>
+Finally, we print every integer from 2 to n that hasn't been marked non-prime.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span>; i &lt;= n; i++) {
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (prime[i]) {
+        System.out.print(<span style="color: #95e454;">" "</span> + i);
+    }
+}
+</pre>
+
+
+<p>
+Observe that elements 0 and 1 of the array are never used.  A tiny bit of
+memory is wasted, but the readability of the code is better for it.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Multi-Dimensional Arrays</h3>
+<div class="outline-text-3" id="text-4-4">
+
+<p>A <span style="text-decoration:underline;">two-dimensional array</span> is an array of references to arrays.  A three-
+dimensional array is an array of arrays of arrays.  As an example, consider
+Pascal's Triangle.
+</p>
+
+
+
+<pre class="src src-texta">               1                  &lt;-- row 0
+            1     1
+         1     2     1
+      1     3     3     1
+   1     4     6     4     1
+1     5    10     10    5     1   &lt;-- row 5
+</pre>
+
+
+<p>
+Each entry is the sum of the two nearest entries in the row immediately above.
+If the rows are numbered from zero, row i represents the coefficients of the
+polynomial (x + 1)<sup>i</sup>.  For example, (x + 1)<sup>4</sup> = x<sup>4</sup> + 4x<sup>3</sup> + 6x<sup>2</sup> + 4x + 1.
+</p>
+<p>
+The following method returns an array of arrays of ints that stores the first n
+rows of Pascal's Triangle.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">pascalTriangle</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
+    <span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">pt</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[n][];
+</pre>
+
+
+<p>
+Here, we've just declared pt to reference an array of arrays, and constructed
+an array for it to reference.  However, the arrays that this array will
+reference do not yet exist.  They are constructed and filled in by the
+following loop.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>; i &lt; n; i++) {
+    pt[i] = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[i + <span style="color: #ffa07a;">1</span>];                            <span style="color: #99968b;">// </span><span style="color: #99968b;">Construct row i.</span>
+    pt[i][<span style="color: #ffa07a;">0</span>] = <span style="color: #ffa07a;">1</span>;                              <span style="color: #99968b;">// </span><span style="color: #99968b;">Leftmost value of row i.</span>
+    <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">j</span> = <span style="color: #ffa07a;">1</span>; j &lt; i; j++) {
+        pt[i][j] = pt[i - <span style="color: #ffa07a;">1</span>][j - <span style="color: #ffa07a;">1</span>] + pt[i - <span style="color: #ffa07a;">1</span>][j];  <span style="color: #99968b;">// </span><span style="color: #99968b;">Sum 2 entries above.</span>
+    }
+    pt[i][i] = <span style="color: #ffa07a;">1</span>;                             <span style="color: #99968b;">// </span><span style="color: #99968b;">Rightmost value of row i.</span>
+}
+<span style="color: #8ac6f2; font-weight: bold;">return</span> pt;
+</pre>
+
+
+<p>
+Our array objects look like this:
+</p>
+
+<p>
+<img src="ditaa-images/img22_77ee4301ef3d088ece397ab3d2b180bb334333a1.png"  alt="ditaa-images/img22_77ee4301ef3d088ece397ab3d2b180bb334333a1.png" />
+</p>
+</div>
+</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-01-29T18:33-0800</p>
+<p class="date">Date: 2014-01-30T00:46-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
