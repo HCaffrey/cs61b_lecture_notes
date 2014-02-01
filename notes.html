@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-01-30T00:46-0800"/>
+<meta name="generated" content="2014-02-01T15:02-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -468,7 +468,7 @@ How to create an InputStream?  With a URL.
 
 <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">WHWWW</span> {
     <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">arg</span>) <span style="color: #8ac6f2; font-weight: bold;">throws</span> <span style="color: #92a65e; font-weight: bold;">Exception</span> {
-        <span style="color: #92a65e; font-weight: bold;">URL</span> <span style="color: #cae682;">u</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">URL</span>(<span style="color: #95e454;">"<a href="http://www.whitehouse.gov/">http://www.whitehouse.gov</a></span><span style="color: #92a65e; font-weight: bold;"><a href="http://www.whitehouse.gov/">/</a>");</span>
+        <span style="color: #92a65e; font-weight: bold;">URL</span> <span style="color: #cae682;">u</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">URL</span>(<span style="color: #95e454;">"http://www.whitehouse.gov</span><span style="color: #92a65e; font-weight: bold;">/");</span>
 <span style="color: #92a65e; font-weight: bold;">        InputStream</span> <span style="color: #cae682;">ins</span> = u.openStream();
         <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span> <span style="color: #cae682;">isr</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span>(ins);
         <span style="color: #92a65e; font-weight: bold;">BufferedReader</span> <span style="color: #cae682;">whiteHouse</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">BufferedReader</span>(isr);
@@ -1024,16 +1024,20 @@ the reverse requires a cast because the number is truncated to an integer.
 A boolean value is either "true" or "false".  Booleans have operations of their
 own, signified "&amp;&amp;" (and), "||" (or), and "!" (not).
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">a</th><th scope="col" class="left">b</th><th scope="col" class="left">a &amp;&amp; b</th><th scope="col" class="left">a &#124; &#124; b</th><th scope="col" class="left">!a</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">false</td><td class="left">false</td><td class="left">false</td><td class="left">false</td><td class="left">true</td></tr>
+<tr><td class="left">false</td><td class="left">true</td><td class="left">false</td><td class="left">true</td><td class="left"></td></tr>
+<tr><td class="left">true</td><td class="left">false</td><td class="left">false</td><td class="left">true</td><td class="left">false</td></tr>
+<tr><td class="left">true</td><td class="left">true</td><td class="left">true</td><td class="left">true</td><td class="left"></td></tr>
+</tbody>
+</table>
 
-
-
-<pre class="src src-text">   a    |    b    ||  a &amp;&amp; b  |  a || b  |    !a
-==================||==============================
- false  |  false  ||  false   |  false   |   true
- false  |   true  ||  false   |   true   |
-  true  |  false  ||  false   |   true   |  false
-  true  |   true  ||   true   |   true   |
-</pre>
 
 
 <p>
@@ -1598,7 +1602,7 @@ Our array objects look like this:
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-01-30T00:46-0800</p>
+<p class="date">Date: 2014-02-01T15:02-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

@@ -587,14 +587,13 @@ the reverse requires a cast because the number is truncated to an integer.
 A boolean value is either "true" or "false".  Booleans have operations of their
 own, signified "&&" (and), "||" (or), and "!" (not).
 
-#+Begin_SRC text
-                  a    |    b    ||  a && b  |  a || b  |    !a
-               ==================||==============================
-                false  |  false  ||  false   |  false   |   true
-                false  |   true  ||  false   |   true   |
-                 true  |  false  ||  false   |   true   |  false
-                 true  |   true  ||   true   |   true   |
-#+END_SRC
+| a     | b     | a && b | a \vert \vert b | !a    |
+|-------+-------+--------+-----------------+-------|
+| false | false | false  | false           | true  |
+| false | true  | false  | true            |       |
+| true  | false | false  | true            | false |
+| true  | true  | true   | true            |       |
+
 
 Boolean values can be specified directly ("true", "false") or be created by
 the comparison operators "==", "<", ">", "<=", ">=", "!=" (not equal to).
