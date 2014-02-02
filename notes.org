@@ -594,7 +594,6 @@ own, signified "&&" (and), "||" (or), and "!" (not).
 | true  | false | false  | true            | false |
 | true  | true  | true   | true            |       |
 
-
 Boolean values can be specified directly ("true", "false") or be created by
 the comparison operators "==", "<", ">", "<=", ">=", "!=" (not equal to).
 
