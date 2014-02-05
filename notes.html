@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-04T20:38-0800"/>
+<meta name="generated" content="2014-02-04T21:06-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -1809,25 +1809,24 @@ right thing.  They behave identically.  Each has a different disadvantage.
 
 
 
-<pre class="src src-java">s = keybd.readLine();                |  <span style="color: #8ac6f2; font-weight: bold;">while</span> (<span style="color: #7fffd4;">true</span>) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Loop forever.</span>
-<span style="color: #8ac6f2; font-weight: bold;">while</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>) {             |    s = keybd.readLine();
-  process(s);                        |    <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() == <span style="color: #ffa07a;">0</span>) {      
-  s = keybd.readLine();              |      <span style="color: #8ac6f2; font-weight: bold;">break</span>;
-}                                    |    }                           
-                                     |    process(s);
-                                     |}
+<pre class="src src-java">  s = keybd.readLine();                  |  <span style="color: #8ac6f2; font-weight: bold;">while</span> (<span style="color: #7fffd4;">true</span>) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Loop forever.</span>
+  <span style="color: #8ac6f2; font-weight: bold;">while</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>) {              |    s = keybd.readLine();
+    process(s);                          |    <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() == <span style="color: #ffa07a;">0</span>) {      
+    s = keybd.readLine();                |      <span style="color: #8ac6f2; font-weight: bold;">break</span>;
+  }                                      |    }                           
+                                         |    process(s);
+                                         |}
+<span style="color: #99968b;">/*</span><span style="color: #99968b;">Disadvantage:  The line "s = keybd..." |</span>
+<span style="color: #99968b;">is repeated twice.  It's not really      |</span>
+<span style="color: #99968b;">a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for </span>
+<span style="color: #99968b;">took 100 lines of code, the              | the reader, because the loop isn't </span>
+<span style="color: #99968b;">duplication would make the code harder   | aligned with its natural endpoint. </span>
+<span style="color: #99968b;">to maintain.  Why?  Because a </span>
+<span style="color: #99968b;">programmer improving the code might change one copy of the duplicated code </span>
+<span style="color: #99968b;">without noticing the need to change the other to match.*/</span>
 </pre>
 
-<p>
-Disadvantage:  The line "s = keybd&hellip;" |                                     
-is repeated twice.  It's not really    |                                       
-a disadvantage here, but if input      | Disadvantage:  Somewhat obfuscated for
-took 100 lines of code, the            | the reader, because the loop isn't    
-duplication would make the code harder | aligned with its natural endpoint.    
-to maintain.  Why?  Because a
-programmer improving the code might change one copy of the duplicated code
-without noticing the need to change the other to match.
-</p>
+
 <p>
 Some loops have more than one natural endpoint.  Suppose we want to iterate the
 read-process loop at most ten times.  In the example at left below, the "break"
@@ -2021,7 +2020,7 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-04T20:38-0800</p>
+<p class="date">Date: 2014-02-04T21:06-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

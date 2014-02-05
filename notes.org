@@ -1118,22 +1118,22 @@ than we want to exit the loop at.  Here are two alternative loops that do the
 right thing.  They behave identically.  Each has a different disadvantage.
 
 #+Begin_SRC java
-  s = keybd.readLine();                |  while (true) {       // Loop forever.
-  while (s.length() > 0) {             |    s = keybd.readLine();
-    process(s);                        |    if (s.length() == 0) {      
-    s = keybd.readLine();              |      break;
-  }                                    |    }                           
-                                       |    process(s);
-				       |}
+  s = keybd.readLine();                  |  while (true) {       // Loop forever.
+  while (s.length() > 0) {               |    s = keybd.readLine();
+    process(s);                          |    if (s.length() == 0) {      
+    s = keybd.readLine();                |      break;
+  }                                      |    }                           
+                                         |    process(s);
+				         |}
+/*Disadvantage:  The line "s = keybd..." |
+is repeated twice.  It's not really      |
+a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for 
+took 100 lines of code, the              | the reader, because the loop isn't 
+duplication would make the code harder   | aligned with its natural endpoint. 
+to maintain.  Why?  Because a 
+programmer improving the code might change one copy of the duplicated code 
+without noticing the need to change the other to match.*/
 #+END_SRC
-Disadvantage:  The line "s = keybd..." |                                     
-is repeated twice.  It's not really    |                                       
-a disadvantage here, but if input      | Disadvantage:  Somewhat obfuscated for
-took 100 lines of code, the            | the reader, because the loop isn't    
-duplication would make the code harder | aligned with its natural endpoint.    
-to maintain.  Why?  Because a
-programmer improving the code might change one copy of the duplicated code
-without noticing the need to change the other to match.
 
 Some loops have more than one natural endpoint.  Suppose we want to iterate the
 read-process loop at most ten times.  In the example at left below, the "break"
