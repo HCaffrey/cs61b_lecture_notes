@@ -1289,32 +1289,32 @@ items to the list, but the array is full, we have to allocate a whole new array
 and move all the ints from the old array to the new one.
 
 #+Begin_SRC java
-public class AList {
-  int a[];
-  int lastItem;
-
-  public AList() {
-    a = new int[10];                           // The number "10" is arbitrary.
-    lastItem = -1;
-  }
-
-  public void insertItem(int newItem, int location) {
-    int i;
-
-    if (lastItem + 1 == a.length) {               // No room left in the array?
-      int b[] = new int[2 * a.length];  // Allocate a new array, twice as long.
-      for (i = 0; i <= lastItem; i++) {      // Copy items to the bigger array.
-        b[i] = a[i];
+  public class AList {
+    int a[];
+    int lastItem;
+  
+    public AList() {
+      a = new int[10];                           // The number "10" is arbitrary.
+      lastItem = -1;
+    }
+  
+    public void insertItem(int newItem, int location) {
+      int i;
+  
+      if (lastItem + 1 == a.length) {               // No room left in the array?
+        int b[] = new int[2 * a.length];  // Allocate a new array, twice as long.
+        for (i = 0; i <= lastItem; i++) {      // Copy items to the bigger array.
+          b[i] = a[i];
+        }
+        a = b;                   // Replace the too-small array with the new one.
       }
-      a = b;                   // Replace the too-small array with the new one.
+      for (i = lastItem; i >= location; i--) {       // Shift items to the right.
+        a[i + 1] = a[i];
+      }
+      a[location] = newItem;
+      lastItem++;
     }
-    for (i = lastItem; i >= location; i--) {       // Shift items to the right.
-      a[i + 1] = a[i];
-    }
-    a[location] = newItem;
-    lastItem++;
   }
-}
 #+END_SRC
 
 ** LINKED LISTS (a recursive data type)
@@ -1371,7 +1371,7 @@ In Java, this is called "null".
   l1-->|     +---+ |    l2-->|     +---+ |    l3-->|     +---+ |
        |           |         |           |         |           | 
        |     +---+ |         |     +---+ |         |     +---+ |
-       | next| . | +-------->| next| . + +-------->| next| X | |
+       | next| . +-|-------->| next| . +-|-------->| next| X | |
        |     +---+ |         |     +---+ |         |     +---+ |
        +-----------+         +-----------+         +-----------+
 #+end_ditaa
@@ -1412,15 +1412,15 @@ The following method inserts a new item into the list immediately after "this".
 #+END_SRC
 
 #+begin_ditaa ditaa-images/img3
-         +-----------+       +-----------+   +-----------+       +-----------+
-         |     +---+ |       |     +---+ |   |     +---+ |       |     +---+ |
-         | item| 7 | |       | item| 0 | |   | item| 3 | |       | item| 6 | |
-    l1-->|     +---+ |  l2-->|     +---+ |   |     +---+ |  l3-->|     +---+ |
-         |           |       |           |   |           |       |           | 
-         |     +---+ |       |     +---+ |   |     +---+ |       |     +---+ |
-         | next| . | +------>| next| . | +-->| next| . | +------>| next| X | |
-         |     +---+ |       |     +---+ |   |     +---+ |       |     +---+ |
-         +-----------+       +-----------+   +-----------+       +-----------+
+         +-----------+       +-----------+    +-----------+       +-----------+
+         |     +---+ |       |     +---+ |    |     +---+ |       |     +---+ |
+         | item| 7 | |       | item| 0 | |    | item| 3 | |       | item| 6 | |
+    l1-->|     +---+ |  l2-->|     +---+ |    |     +---+ |  l3-->|     +---+ |
+         |           |       |           |    |           |       |           | 
+         |     +---+ |       |     +---+ |    |     +---+ |       |     +---+ |
+         | next| . +-|------>| next| . +-|--->| next| . +-|------>| next| X | |
+         |     +---+ |       |     +---+ |    |     +---+ |       |     +---+ |
+         +-----------+       +-----------+    +-----------+       +-----------+
 #+end_ditaa
 
 However, linked lists have a big disadvantage compared to arrays.  Finding the
@@ -1492,11 +1492,11 @@ public class SList {
                  SList object                    SListNode object
                  +-----------+                     +-----------+  String object
       +---+      |     +---+ |                     |     +---+ |     +--------+
-    x | . +----->| size| 1 | |                     | item| . | +---->|  milk  |
+    x | . +----->| size| 1 | |                     | item| . +-|---->|  milk  |
       +---+      |     +---+ |                     |     +---+ |     +--------+
                  |           |                     |           |
       +---+      |     +---+ |                     |     +---+ |
-    y | . +----->| head| . | +-------------------->| next| X | |
+    y | . +----->| head| . +-|-------------------->| next| X | |
       +---+      |     +---+ |                     |     +---+ |
                  +-----------+                     +-----------+
 #+end_ditaa
@@ -1508,11 +1508,11 @@ the change.
               SList            SListNode                SListNode
               +-----------+    +-----------+            +-----------+
       +---+   |     +---+ |    |     +---+ |  +------+  |     +---+ |  +------+
-    x | . +-->| size| 2 | |    | item| . | +->| fish |  | item| . | +->| milk |
+    x | . +-->| size| 2 | |    | item| . +-|->| fish |  | item| . +-|->| milk |
       +---+   |     +---+ |    |     +---+ |  +------+  |     +---+ |  +------+
               |           |    |           |            |           |
       +---+   |     +---+ |    |     +---+ |            |     +---+ |
-    y | . +-->| head| . + +--->| next| . | +----------->| next| X | |
+    y | . +-->| head| . +-|--->| next| . +-|----------->| next| X | |
       +---+   |     +---+ |    |     +---+ |            |     +---+ |
               +-----------+    +-----------+            +-----------+
 #+end_ditaa
@@ -1520,4 +1520,3 @@ the change.
 Another advantage of the SList class is that it can keep a record of the
 SList's size (number of SListNodes).  Hence, the size can be determined more
 quickly than if the SListNodes had to be counted.
-
