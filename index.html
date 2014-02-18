@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-04T20:40-0800"/>
+<meta name="generated" content="2014-02-17T18:28-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -161,7 +161,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-4-4">4.4 Multi-Dimensional Arrays</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5 lecture 6</a>
+<li><a href="#sec-5">5 Lecture 6</a>
 <ul>
 <li><a href="#sec-5-1">5.1 MORE ARRAYS</a></li>
 <li><a href="#sec-5-2">5.2 Automatic Array Construction</a></li>
@@ -173,6 +173,41 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#sec-5-4">5.4 CONSTANTS</a></li>
 <li><a href="#sec-5-5">5.5 SCOPE</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6 Lecture 7</a>
+<ul>
+<li><a href="#sec-6-1">6.1 LISTS</a></li>
+<li><a href="#sec-6-2">6.2 LINKED LISTS (a recursive data type)</a></li>
+<li><a href="#sec-6-3">6.3 Linked lists vs. array lists</a></li>
+<li><a href="#sec-6-4">6.4 Lists of Objects</a></li>
+<li><a href="#sec-6-5">6.5 A List Class</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7 Lecture 8</a>
+<ul>
+<li><a href="#sec-7-1">7.1 THE "public" AND "private" KEYWORDS</a></li>
+<li><a href="#sec-7-2">7.2 The SList ADT</a></li>
+<li><a href="#sec-7-3">7.3 DOUBLY-LINKED LISTS</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8 Lecture 9</a>
+<ul>
+<li><a href="#sec-8-1">8.1 THE STACK AND THE HEAP</a></li>
+<li><a href="#sec-8-2">8.2 Parameter Passing</a></li>
+<li><a href="#sec-8-3">8.3 Binary search</a></li>
+<li><a href="#sec-8-4">8.4 Scope and Recursion</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9 Lecture 10</a>
+<ul>
+<li><a href="#sec-9-1">9.1 INHERITANCE</a></li>
+<li><a href="#sec-9-2">9.2 Inheritance and Constructors</a></li>
+<li><a href="#sec-9-3">9.3 Invoking Overridden Methods</a></li>
+<li><a href="#sec-9-4">9.4 The "protected" Keyword</a></li>
+<li><a href="#sec-9-5">9.5 Class Hierarchies</a></li>
+<li><a href="#sec-9-6">9.6 Dynamic Method Lookup</a></li>
+<li><a href="#sec-9-7">9.7 Subtleties of Inheritance</a></li>
 </ul>
 </li>
 </ul>
@@ -1615,7 +1650,7 @@ Our array objects look like this:
 </div>
 
 <div id="outline-container-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> lecture 6</h2>
+<h2 id="sec-5"><span class="section-number-2">5</span> Lecture 6</h2>
 <div class="outline-text-2" id="text-5">
 
 <p>Today's reading:  Sierra &amp; Bates pp. 282-285.
@@ -1809,25 +1844,24 @@ right thing.  They behave identically.  Each has a different disadvantage.
 
 
 
-<pre class="src src-java">s = keybd.readLine();                |  <span style="color: #8ac6f2; font-weight: bold;">while</span> (<span style="color: #7fffd4;">true</span>) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Loop forever.</span>
-<span style="color: #8ac6f2; font-weight: bold;">while</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>) {             |    s = keybd.readLine();
-  process(s);                        |    <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() == <span style="color: #ffa07a;">0</span>) {      
-  s = keybd.readLine();              |      <span style="color: #8ac6f2; font-weight: bold;">break</span>;
-}                                    |    }                           
-                                     |    process(s);
-                                     |}
+<pre class="src src-java">  s = keybd.readLine();                  |  <span style="color: #8ac6f2; font-weight: bold;">while</span> (<span style="color: #7fffd4;">true</span>) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Loop forever.</span>
+  <span style="color: #8ac6f2; font-weight: bold;">while</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>) {               |    s = keybd.readLine();
+    process(s);                          |    <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() == <span style="color: #ffa07a;">0</span>) {      
+    s = keybd.readLine();                |      <span style="color: #8ac6f2; font-weight: bold;">break</span>;
+  }                                      |    }                           
+                                         |    process(s);
+                                         |}
+<span style="color: #99968b;">/*</span><span style="color: #99968b;">Disadvantage:  The line "s = keybd..." |</span>
+<span style="color: #99968b;">is repeated twice.  It's not really      |</span>
+<span style="color: #99968b;">a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for </span>
+<span style="color: #99968b;">took 100 lines of code, the              | the reader, because the loop isn't </span>
+<span style="color: #99968b;">duplication would make the code harder   | aligned with its natural endpoint. </span>
+<span style="color: #99968b;">to maintain.  Why?  Because a </span>
+<span style="color: #99968b;">programmer improving the code might change one copy of the duplicated code </span>
+<span style="color: #99968b;">without noticing the need to change the other to match.*/</span>
 </pre>
 
-<p>
-Disadvantage:  The line "s = keybd&hellip;" |                                     
-is repeated twice.  It's not really    |                                       
-a disadvantage here, but if input      | Disadvantage:  Somewhat obfuscated for
-took 100 lines of code, the            | the reader, because the loop isn't    
-duplication would make the code harder | aligned with its natural endpoint.    
-to maintain.  Why?  Because a
-programmer improving the code might change one copy of the duplicated code
-without noticing the need to change the other to match.
-</p>
+
 <p>
 Some loops have more than one natural endpoint.  Suppose we want to iterate the
 read-process loop at most ten times.  In the example at left below, the "break"
@@ -2017,11 +2051,1270 @@ variable.  Here are some of Java's scoping rules.
 
 </div>
 </div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Lecture 7</h2>
+<div class="outline-text-2" id="text-6">
+
+
+<p>
+Today's reading:  Goodrich &amp; Tamassia, Section 3.2.
+</p>
+
+</div>
+
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> LISTS</h3>
+<div class="outline-text-3" id="text-6-1">
+
+<p>Let's consider two different data structures for storing a list of things:
+an array and a linked list.
+</p>
+<p>
+An array is a pretty obvious way to store a list, with a big advantage:  it
+enables very fast access of each item.  However, it has two disadvantages.
+</p>
+<p>
+First, if we want to insert an item at the beginning or middle of an array, we
+have to slide a lot of items over one place to make room.  This takes time
+proportional to the length of the array.
+</p>
+<p>
+Second, an array has a fixed length that can't be changed.  If we want to add
+items to the list, but the array is full, we have to allocate a whole new array
+and move all the ints from the old array to the new one.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">AList</span> {
+  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">a</span>[];
+  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">lastItem</span>;
+
+  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">AList</span>() {
+    a = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[<span style="color: #ffa07a;">10</span>];                           <span style="color: #99968b;">// </span><span style="color: #99968b;">The number "10" is arbitrary.</span>
+    lastItem = -<span style="color: #ffa07a;">1</span>;
+  }
+
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertItem</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">newItem</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">location</span>) {
+    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
+
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (lastItem + <span style="color: #ffa07a;">1</span> == a.length) {               <span style="color: #99968b;">// </span><span style="color: #99968b;">No room left in the array?</span>
+      <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">b</span>[] = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[<span style="color: #ffa07a;">2</span> * a.length];  <span style="color: #99968b;">// </span><span style="color: #99968b;">Allocate a new array, twice as long.</span>
+      <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">0</span>; i &lt;= lastItem; i++) {      <span style="color: #99968b;">// </span><span style="color: #99968b;">Copy items to the bigger array.</span>
+        b[i] = a[i];
+      }
+      a = b;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Replace the too-small array with the new one.</span>
+    }
+    <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = lastItem; i &gt;= location; i--) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Shift items to the right.</span>
+      a[i + <span style="color: #ffa07a;">1</span>] = a[i];
+    }
+    a[location] = newItem;
+    lastItem++;
+  }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> LINKED LISTS (a recursive data type)</h3>
+<div class="outline-text-3" id="text-6-2">
+
+<p>We can avoid these problems by choosing a Scheme-like representation of lists.
+A linked list is made up of <span style="text-decoration:underline;">nodes</span>.  Each node has two components:  an item,
+and a reference to the next node in the list.  These components are analogous
+to "car" and "cdr".  However, our node is an explicitly defined object.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span> {          <span style="color: #99968b;">// </span><span style="color: #99968b;">ListNode is a recursive type</span>
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">item</span>;
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">next</span>;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Here we're using ListNode before</span>
+}                                <span style="color: #99968b;">//   </span><span style="color: #99968b;">we've finished declaring it.</span>
+</pre>
+
+
+<p>
+Let's make some ListNodes.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">l1</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(), <span style="color: #cae682;">l2</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(), <span style="color: #cae682;">l3</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>();
+l1.item = <span style="color: #ffa07a;">7</span>;
+l2.item = <span style="color: #ffa07a;">0</span>;
+l3.item = <span style="color: #ffa07a;">6</span>;
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img1_37c2298e59fd3fe495e84ff51de8be20f174e97e.png"  alt="ditaa-images/img1_37c2298e59fd3fe495e84ff51de8be20f174e97e.png" />
+</p>
+<p>
+Now let's link them together.
+</p>
+
+
+
+<pre class="src src-java">l1.next = l2;
+l2.next = l3;
+</pre>
+
+
+<p>
+What about the last node?  We need a reference that doesn't reference anything.
+In Java, this is called "null".
+</p>
+
+
+
+<pre class="src src-java">l3.next = <span style="color: #7fffd4;">null</span>;
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img2_43021c3bd54ee1e1e24162b47c8feaaa105fe7e7.png"  alt="ditaa-images/img2_43021c3bd54ee1e1e24162b47c8feaaa105fe7e7.png" />
+</p>
+
+<p>
+To simplify programming, let's add some constructors to the ListNode class.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">ListNode</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">n</span>) {
+  item = i;
+  next = n;
+}
+
+<span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">ListNode</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>) {
+  <span style="color: #8ac6f2; font-weight: bold;">this</span>(i, <span style="color: #7fffd4;">null</span>);
+}
+</pre>
+
+
+<p>
+These constructors allow us to emulate Scheme's "cons" operation.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">l1</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">7</span>, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">0</span>, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">6</span>)));
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> Linked lists vs. array lists</h3>
+<div class="outline-text-3" id="text-6-3">
+
+<p>Linked lists have several advantages over array-based lists.  Inserting an item
+into the middle of a linked list takes just a small constant amount of time, if
+you already have a reference to the previous node (and don't have to walk
+through the whole list searching for it).  The list can keep growing until
+memory runs out.
+</p>
+<p>
+The following method inserts a new item into the list immediately after "this".
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertAfter</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">item</span>) {
+  next = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(item, next);
+}
+
+l2.insertAfter(<span style="color: #ffa07a;">3</span>);
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img3_8e829be91e6e4c2a240073601aab1ee004ff6d58.png"  alt="ditaa-images/img3_8e829be91e6e4c2a240073601aab1ee004ff6d58.png" />
+</p>
+
+<p>
+However, linked lists have a big disadvantage compared to arrays.  Finding the
+nth item of an array takes a tiny, constant amount of time.  Finding the nth
+item of a linked list takes time proportional to n.  You have to start at the
+head of the list and walk forward n - 1 nodes, one "next" at a time.
+</p>
+<p>
+Many of the data structures we will study in this class will be attempts to
+find a compromise between arrays and linked lists.  We'll learn data structures
+that are fast for both arbitrary lookups (like arrays) <span style="text-decoration:underline;">and</span> arbitrary
+insertions (like linked lists).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> Lists of Objects</h3>
+<div class="outline-text-3" id="text-6-4">
+
+
+<p>
+For greater generality, let's change ListNodes so that each node contains not
+an int, but a reference to any Java object.  In Java, we can accomplish this by
+declaring a reference of type Object.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> {
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>;
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">next</span>;
+}
+</pre>
+
+
+<p>
+The "S" in "SListNode" stands for singly-linked.  This will make sense when we
+contrast these lists with doubly-linked lists later.  You'll see the SListNode
+class in next week's lab and homework.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-6-5" class="outline-3">
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> A List Class</h3>
+<div class="outline-text-3" id="text-6-5">
+
+
+<p>
+There are two problems with SListNodes.
+</p>
+<p>
+(1)  Suppose x and y are pointers to the same shopping list.  Suppose we insert
+     a new item at the beginning of the list thusly:
+</p>
+
+
+<pre class="src src-java">x = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(<span style="color: #95e454;">"soap"</span>, x);
+</pre>
+
+<p>
+     y doesn't point to the new item; y still points to the second item in x's
+     list.  If y goes shopping for x, he'll forget to buy soap.
+</p>
+<p>
+(2)  How do you represent an empty list?  The obvious way is "x = null".
+     However, Java won't let you call a SListNode method&ndash;or any method&ndash;on
+     a null object.  If you write "x.insertAfter(item)" when x is null, you'll
+     get a run-time error, even though x is declared to be a SListNode.
+     (There are good reasons for this, which you'll learn later in the course.)
+</p>
+<p>
+The solution is a separate SList class, whose job is to maintain the head
+(first node) of the list.  We will put many of the methods that operate on
+lists in the SList class, rather than the SListNode class.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;             <span style="color: #99968b;">// </span><span style="color: #99968b;">First node in list.</span>
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Number of items in list.</span>
+
+  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">SList</span>() {                    <span style="color: #99968b;">// </span><span style="color: #99968b;">Here's how to represent an empty list.</span>
+    head = <span style="color: #7fffd4;">null</span>;
+    size = <span style="color: #ffa07a;">0</span>;
+  }
+
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>) {
+    head = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(item, head);
+    size++;
+  }
+}
+</pre>
+
+
+<p>
+<img src="ditaa-images/img4_db2f79dece321b6baa1e71ba2ecf93ea49dcbc0d.png"  alt="ditaa-images/img4_db2f79dece321b6baa1e71ba2ecf93ea49dcbc0d.png" />
+</p>
+
+<p>
+Now, when you call x.insertFront("fish"), every reference to that SList can see
+the change.
+</p>
+
+<p>
+<img src="ditaa-images/img5_2073f5ca5ef1a31708f16ea8f036cc5fcb911471.png"  alt="ditaa-images/img5_2073f5ca5ef1a31708f16ea8f036cc5fcb911471.png" />
+</p>
+
+<p>
+Another advantage of the SList class is that it can keep a record of the
+SList's size (number of SListNodes).  Hence, the size can be determined more
+quickly than if the SListNodes had to be counted.
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Lecture 8</h2>
+<div class="outline-text-2" id="text-7">
+
+<p>Wednesday, February 5, 2014
+</p>
+<p>
+Today's reading:  Goodrich &amp; Tamassia, Section 3.3.
+</p>
+
+</div>
+
+<div id="outline-container-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> THE "public" AND "private" KEYWORDS</h3>
+<div class="outline-text-3" id="text-7-1">
+
+
+<p>
+Thus far, we've usually declared fields and methods using the "public" keyword.
+However, we can also declare a field or method "private".  A private method
+or field is invisible and inaccessible to other classes, and can be used only
+within the class in which the field or method is declared.
+</p>
+<p>
+Why would we want to make a field or method private?
+</p><ol>
+<li>To prevent data within an object from being corrupted by other classes.
+</li>
+<li>To ensure that you can improve the implementation of a class without
+      causing other classes that depend on it to fail.
+</li>
+</ol>
+
+
+<p>
+In the following example, EvilTamperer tries to get around the error checking
+code of the Date class by fiddling with the internals of a Date object.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Date</span> {                  |  <span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> EvilTamperer {
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">day</span>;                   |    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> tamper() {
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">month</span>;                 |      Date d = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">Date</span>(<span style="color: #ffa07a;">1</span>, <span style="color: #ffa07a;">1</span>, <span style="color: #ffa07a;">2006</span>);
+                                     |
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">void</span> setMonth(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">m</span>) {     |      d.day = <span style="color: #ffa07a;">100</span>;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Foiled!!</span>
+    month = m;                       |      d.setMonth(<span style="color: #ffa07a;">0</span>);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Foiled again!!</span>
+  }                                  |    }
+                                     |  }
+  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Date</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">month</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">day</span>) {  |
+    [Implementation with             |
+     error-checking code here.]      |
+  }
+}
+</pre>
+
+
+<p>
+However, javac won't compile EvilTamperer, because the Date class has declared
+its vulnerable parts "private".  setMonth is an internal helper method used
+within the Date class, whereas the Date constructor is a public part of the
+interface of the Date class.  Error-checking code in the constructor ensures
+that invalid Dates are not constructed.
+</p>
+<p>
+Here are some important definitions.
+</p>
+<p>
+The <span style="text-decoration:underline;">interface</span> of a class is a set of prototypes for public methods (and
+sometimes public fields), plus descriptions of the methods' behaviors.
+</p>
+<p>
+An <span style="text-decoration:underline;">Abstract<sub>Data</sub><sub>Type</sub></span> (ADT) is a class that has a well-defined interface, but
+its implementation details are firmly hidden from other classes.  That way, you
+can change the implementation of a class without jeopardizing the programs that
+depend on it.  The Date class is an ADT.  We'll implement lots of ADTs this
+semester.
+</p>
+<p>
+An <span style="text-decoration:underline;">invariant</span> is a fact about a data structure that is always true (assuming
+the code is bug-free), no matter what methods are called by external classes.
+For example, the Date ADT enforces the invariant that a Date object always
+represents a valid date.  An invariant is enforced by allowing access to
+certain fields only through method calls.
+</p>
+<p>
+An ADT is often a good thing to aspire to.  In most of your classes, you should
+declare all fields private, as well as helper functions meant only for internal
+use, so that you can maintain sensible invariants on your data structures.
+</p>
+<p>
+However, not all classes are ADTs!  Some classes are nothing more than data
+storage units, and do not need to enforce any invariants.  In such classes, all
+fields may be declared public.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> The SList ADT</h3>
+<div class="outline-text-3" id="text-7-2">
+
+<p>Last lecture, I created an SList class to solve the problems of representing
+empty lists and inserting items at the beginning of a list.  Today, I want to
+introduce another advantage of the SList class.
+</p>
+<p>
+We want the SList ADT to enforce two invariants:
+</p><ol>
+<li>An SList's "size" variable is always correct.
+</li>
+<li>A list is never circularly linked; there is always a tail node whose
+     "next" reference is null.
+</li>
+</ol>
+
+
+<p>
+Both these goals are accomplished by making sure that <span style="text-decoration:underline;">only</span> the methods of the
+SList class can change the lists' internal data structures.  SList ensures this
+by two means:
+</p><ol>
+<li>The fields of the SList class (head and size) are declared "private".
+</li>
+<li>No method of SList returns an SListNode.
+</li>
+</ol>
+
+
+<p>
+The first rule is necessary so that the evil tamperer can't change the fields
+and corrupt the SList or violate invariant (1).  The second rule prevents the
+evil tamperer from changing list items, truncating a list, or creating a cycle
+in a list, thereby violating invariant (2).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> DOUBLY-LINKED LISTS</h3>
+<div class="outline-text-3" id="text-7-3">
+
+
+<p>
+As we saw last class, inserting an item at the front of a linked list is easy.
+Deleting from the front of a list is also easy.  However, inserting or deleting
+an item at the end of a list entails a search through the entire list, which
+might take a long time.  (Inserting at the end is easy if you have a `tail'
+pointer, as you will learn in Lab 3, but deleting is still hard.)
+</p>
+<p>
+A doubly-linked list is a list in which each node has a reference to the
+previous node, as well as the next node.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">DListNode</span> {                    |  <span style="color: #8ac6f2; font-weight: bold;">class</span> DList {
+  <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>;                       |    <span style="color: #b0c4de;">private</span> DListNode head;
+  <span style="color: #92a65e; font-weight: bold;">DListNode</span> <span style="color: #cae682;">next</span>;                    |    <span style="color: #b0c4de;">private</span> DListNode tail;
+  <span style="color: #92a65e; font-weight: bold;">DListNode</span> <span style="color: #cae682;">prev</span>;                    |  }
+}                                    |
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img6_8b0ec3e0473777caf48e2485ac0407f888d21ea4.png"  alt="ditaa-images/img6_8b0ec3e0473777caf48e2485ac0407f888d21ea4.png" />
+</p>
+
+<p>
+DLists make it possible to insert and delete items at both ends of the list,
+taking constant running time per insertion and deletion.  The following code
+removes the tail node (in constant time) if there are at least two items in the
+DList.
+</p>
+
+
+
+<pre class="src src-java">tail.prev.next = <span style="color: #7fffd4;">null</span>;
+tail = tail.prev;
+</pre>
+
+
+<p>
+You'll need a special case for a DList with no items.  You'll also need a
+special case for a DList with one item, because tail.prev.next does not exist.
+(Instead, head needs to be changed.)
+</p>
+<p>
+Let's look at a clever trick for reducing the number of special cases, thereby
+simplifying our DList code.  We designate one DListNode as a <span style="text-decoration:underline;">sentinel</span>, a
+special node that does not represent an item.  Our list representation will be
+circularly linked, and the sentinel will represent both the head and the tail
+of the list.  Our DList class no longer needs a tail pointer, and the head
+pointer points to the sentinel.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">DList</span> {
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">DListNode</span> <span style="color: #cae682;">head</span>;
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+}
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img7_2ce68bfa44c1fba8a7ab8b03bbd0dd70c6a8eedf.png"  alt="ditaa-images/img7_2ce68bfa44c1fba8a7ab8b03bbd0dd70c6a8eedf.png" />
+</p>
+
+<p>
+The invariants of the DList ADT are more complicated than the SList invariants.
+The following invariants apply to the DList with a sentinel.
+</p><ol>
+<li>For any DList d, d.head != null.  (There's always a sentinel.)
+</li>
+<li>For any DListNode x, x.next != null.
+</li>
+<li>For any DListNode x, x.prev != null.
+</li>
+<li>For any DListNode x, if x.next == y, then y.prev == x.
+</li>
+<li>For any DListNode x, if x.prev == y, then y.next == x.
+</li>
+<li>A DList's "size" variable is the number of DListNodes, NOT COUNTING the
+     sentinel (denoted by "head"), that can be accessed from the sentinel by
+     a sequence of "next" references.
+</li>
+</ol>
+
+
+<p>
+An empty DList is represented by having the sentinel's prev and next fields
+point to itself.
+</p>
+<p>
+Here's an example of a method that removes the last item from a DList.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">removeBack</span>() {
+  <span style="color: #8ac6f2; font-weight: bold;">if</span> (head.prev != head) {        <span style="color: #99968b;">// </span><span style="color: #99968b;">Do nothing if the DList is empty.</span>
+    head.prev = head.prev.prev;   <span style="color: #99968b;">// </span><span style="color: #99968b;">Sentinel now points to second-last item.</span>
+    head.prev.next = head;        <span style="color: #99968b;">// </span><span style="color: #99968b;">Second-last item now points to sentinel.</span>
+    size--;
+  }
+}
+</pre>
+
+
+<p>
+In Lab 4 and Homework 4, you'll implement more methods for this DList class.
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Lecture 9</h2>
+<div class="outline-text-2" id="text-8">
+
+
+<p>
+Today's reading:  Sierra &amp; Bates pp. 77, 235-239, 258-265, 663.
+</p>
+
+</div>
+
+<div id="outline-container-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> THE STACK AND THE HEAP</h3>
+<div class="outline-text-3" id="text-8-1">
+
+<p>Java stores stuff in two separate pools of memory:  the stack and the heap.
+</p>
+<p>
+The <span style="text-decoration:underline;">heap</span> stores all objects, including all arrays, and all class variables
+(i.e. those declared "static").
+</p>
+<p>
+The <span style="text-decoration:underline;">stack</span> stores all local variables, including all parameters.
+</p>
+<p>
+When a method is called, the Java Virtual Machine creates a <span style="text-decoration:underline;">stack frame</span> (also
+known as an <span style="text-decoration:underline;">activation record</span>) that stores the parameters and local variables
+for that method.  One method can call another, which can call another, and so
+on, so the JVM maintains an internal <span style="text-decoration:underline;">stack</span> of stack frames, with "main" at
+the bottom, and the most recent method call on top.
+</p>
+<p>
+Here's a snapshot of the stack while Java is executing the SList.insertEnd
+method.  The stack frames are on the left.  Everything on the right half of the
+page is in the heap.  Read the stack from bottom to top, because that's the
+order in which the stack frames were created.
+</p>
+
+<p>
+<img src="ditaa-images/TEMP_1_4d2e9e6844a732ce344a48c208e9dc040208f1be.png"  alt="ditaa-images/TEMP_1_4d2e9e6844a732ce344a48c208e9dc040208f1be.png" />
+</p>
+
+<p>
+The method that is currently executing (at any point in time) is the one whose
+stack frame is on top.  All the other stack frames represent methods waiting
+for the methods above them to return before they can continue executing.
+</p>
+<p>
+When a method finishes executing, its stack frame is erased from the top of the
+stack, and its local variables are erased forever.
+</p>
+<p>
+The java.lang library has a method "Thread.dumpStack" that prints a list of the
+methods on the stack (but it doesn't print their local variables).  This method
+can be convenient for debugging&ndash;for instance, when you're trying to figure out
+which method called another method with illegal parameters.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Parameter Passing</h3>
+<div class="outline-text-3" id="text-8-2">
+
+<p>As in Scheme, Java passes all parameters <span style="text-decoration:underline;">by<sub>value</sub></span>.  This means that the
+method has <span style="text-decoration:underline;">copies</span> of the actual parameters, and cannot change the originals.
+The copies reside in the method's stack frame for the method.  The method can
+change these copies, but the original values that were copied are not changed.
+</p>
+<p>
+In this example, the method doNothing sets its parameter to 2, but it has no
+effect on the value of the calling method's variable a:
+</p>
+
+
+
+<pre class="src src-text">method:                            | STACK (just before the method returns)
+                                   |
+  static void doNothing(int x) {   |      -----
+    x = 2;                         |    x | 2 |
+  }                                |      -----     stack frame for doNothing
+                                   |-----------------------------------------
+method call:                       |
+                                   |      -----
+  int a = 1;                       |    a | 1 |
+  doNothing(a);                    |      -----     stack frame for main
+</pre>
+
+
+<p>
+When the method call returns, a is still 1.  The doNothing method, as its name
+suggests, failed to change the value of a or do anything relevant at all.
+</p>
+<p>
+However, when a parameter is a reference to an object, the reference is copied,
+but the object is not; the original object is shared.  A method can modify an
+object that one of its parameters points to, and the change will be visible
+everywhere.  Here's an example that shows how a method can make a change to an
+object that is visible to the calling method:
+</p>
+
+
+
+<pre class="src src-text">method:                            | STACK              | HEAP
+                                   |                set3|
+class IntBox {                     |      -----         |
+  public int i;                    |   ib | .-+----------------\
+  static void set3(IntBox ib) {    |      -----         |      |
+    ib.i = 3;                      |                    |      |
+  }                                |--------------------|      v
+                                   |      -----         |    ------
+method call:                       |    b | .-+-------------&gt;|i |3|
+                                   |      -----     main|    ------
+  IntBox b = new IntBox();
+  set3(b);
+</pre>
+
+
+<p>
+For those of you who are familiar with programming languages that have "pass
+by reference," the example above is as close as you can get in Java.  But it's
+not "pass by reference."  Rather, it's passing a reference by value.
+</p>
+
+
+<p>
+Here's an example of a common programming error, where a method tries and fails
+to make a change that is visible to the calling method.  (Assume we've just
+executed the example above, so b is set up.)
+</p>
+
+
+<pre class="src src-text">method:                            | STACK              | HEAP
+                                   |             badSet4|
+class IntBox {                     |      -----         |    ------
+  static void badSet4(IntBox ib) { |   ib | .-+-------------&gt;|i |4|
+    ib = new IntBox();             |      -----         |    ------
+    ib.i = 4;                      |                    |
+  }                                |--------------------|
+                                   |      -----         |    ------
+method call:                       |    b | .-+-------------&gt;|i |3|
+                                   |      -----     main|    ------
+  badSet4(b);
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> Binary search</h3>
+<div class="outline-text-3" id="text-8-3">
+
+<p>When a method calls itself recursively, the JVM's internal stack holds two or
+more stack frames connected with that method.  Only the top one can be
+accessed.
+</p>
+<p>
+Here's a recursive method that searches a sorted array of ints for a particular
+int.  Let i be an array of ints sorted from least to greatest&ndash;for instance,
+{-3, -2, 0, 0, 1, 5, 5}.  We want to search the array for the value "findMe".
+If we find "findMe", we return its array index; otherwise, we return FAILURE.
+</p>
+<p>
+We could simply check every element of the array, but that would be slow.
+A better strategy is to check the middle array element first.  If findMe is
+lesser, we know it can only be in the left half of the array; if findMe is
+greater, we know it can only be in the right half.  Hence, we've eliminated
+half the possibilities with one comparison.  We still have half the array to
+check, so we recursively check the middle element of that half, and so on,
+cutting the possibilites in half each time.  Suppose we search for 1.
+</p>
+
+<p>
+<img src="ditaa-images/TEMP_2_f03b371782eb33d7ed01575bcb731316bd4cc08d.png"  alt="ditaa-images/TEMP_2_f03b371782eb33d7ed01575bcb731316bd4cc08d.png" />
+</p>
+
+<p>
+The recursion has two base cases.
+</p><ol>
+<li>If findMe equals the middle element, return its index; in the example
+     above, we return index 4.
+</li>
+<li>If we try to search a subarray of length zero, the array does not contain
+     "findMe", and we return FAILURE.
+</li>
+</ol>
+
+
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #b0c4de;">final</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">FAILURE</span> = -<span style="color: #ffa07a;">1</span>;
+
+<span style="color: #b0c4de;">private</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">bsearch</span>(<span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">left</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">right</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">findMe</span>) {
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (left &gt; right) {
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">FAILURE</span>;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Base case 2:  subarray of size zero.</span>
+    }
+    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">mid</span> = (left + right) / <span style="color: #ffa07a;">2</span>;            <span style="color: #99968b;">// </span><span style="color: #99968b;">Halfway between left and right.</span>
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (findMe == i[mid]) {
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> mid;                                     <span style="color: #99968b;">// </span><span style="color: #99968b;">Base case 1:  success!</span>
+    } <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> (findMe &lt; i[mid]) {
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> bsearch(i, left, mid - <span style="color: #ffa07a;">1</span>, findMe);            <span style="color: #99968b;">// </span><span style="color: #99968b;">Search left half.</span>
+    } <span style="color: #8ac6f2; font-weight: bold;">else</span> {
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> bsearch(i, mid + <span style="color: #ffa07a;">1</span>, right, findMe);          <span style="color: #99968b;">// </span><span style="color: #99968b;">Search right half.</span>
+    }
+}
+
+<span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">bsearch</span>(<span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">findMe</span>) {
+    <span style="color: #8ac6f2; font-weight: bold;">return</span> bsearch(i, <span style="color: #ffa07a;">0</span>, i.length - <span style="color: #ffa07a;">1</span>, findMe);
+}
+</pre>
+
+
+<p>
+How long does binary search take?  Suppose the array has n elements.  In one
+call to bsearch, we eliminate at least half the elements from consideration.
+Hence, it takes log<sub>2</sub> n (the base 2 logarithm of n) bsearch calls to pare down
+the possibilities to one.  Binary search takes time proportional to log<sub>2</sub> n.
+If you're not comfortable with logarithms, please review Goodrich &amp; Tamassia
+Sections 4.1.2 &amp; 4.1.7.
+</p>
+
+<p>
+<img src="ditaa-images/TEMP_3_54cd7a5465e09030ebebe8516c5cad6ad2a98e0d.png"  alt="ditaa-images/TEMP_3_54cd7a5465e09030ebebe8516c5cad6ad2a98e0d.png" />
+</p>
+
+<p>
+The stack frames appear at right in the figure above.  There are three
+different local variables named "left" on the stack, three named "right", three
+named "mid", four named "i", and four named "findMe".  While the current
+invocation of bsearch() is executing, only the topmost copy of "left" is in
+scope, and likewise for "right" and "mid".  The other copies are hidden and
+cannot be accessed or changed until the current invocation of bsearch()
+terminates.
+</p>
+<p>
+Most operating systems give a program enough stack space for a few thousand
+stack frames.  If you use a recursive procedure to walk through a million-node
+list, Java will try to create a million stack frames, and the stack will
+run out of space.  The result is a run-time error.  You should use iteration
+instead of recursion when the recursion will be very deep.
+</p>
+<p>
+However, our recursive binary search method does not have this problem.  Most
+modern microprocessors cannot address more than 2<sup>64</sup> bytes of memory.  Even if
+an array of bytes takes this much space, we will only have to cut the array in
+half 64 times to run a binary search.  There's room on the stack for 64 stack
+frames, with plenty to spare.  In general, recursion to a depth of roughly
+log n (where n is the number of items in a data structure) is safe, whereas
+recursion to a depth of roughly n is not.
+</p>
+<p>
+Unfortunately, binary search can't be used on linked lists.  Think about why.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-8-4" class="outline-3">
+<h3 id="sec-8-4"><span class="section-number-3">8.4</span> Scope and Recursion</h3>
+<div class="outline-text-3" id="text-8-4">
+
+<p>The <span style="text-decoration:underline;">scope</span> of a variable is the portion of the program that can access the
+variable.  Here are some of Java's scoping rules.
+</p>
+<ul>
+<li>Local variables and parameters are in scope only inside the method that
+  declares them, and only for the topmost stack frame.  Furthermore, a local
+  variable is in scope only from the variable declaration down to the innermost
+  closing brace that encloses it.  A local variable declared in the
+  initialization part of a "for" loop is in scope only in the loop body.
+</li>
+<li>Class variables (static fields) are in scope everywhere in the class, except
+  when shadowed by a local variable or parameter of the same name.
+</li>
+<li>Fully qualified class variables ("System.out", rather than "out") are in
+  scope everywhere in the class, and cannot be shadowed.  If they're public,
+  they're in scope in <span style="text-decoration:underline;">all</span> classes.
+</li>
+<li>Instance variables (non-static fields) are in scope in non-static methods of
+  the class, except when shadowed.
+</li>
+<li>Fully qualified instance variables ("amanda.name", "this.i") are in scope
+  everywhere in the class, and cannot be shadowed.  If they're public, they're
+  in scope in all classes.
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Lecture 10</h2>
+<div class="outline-text-2" id="text-9">
+
+
+<p>
+Today's reading:  All of Chapter 7, plus pp. 28-33, 250-257.
+</p>
+
+</div>
+
+<div id="outline-container-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> INHERITANCE</h3>
+<div class="outline-text-3" id="text-9-1">
+
+<p>In Lab 3, you modified several methods in the SList class so that a "tail"
+reference could keep track of the end of the list, thereby speeding up the
+insertEnd() method.
+</p>
+<p>
+We could have accomplished the same result without modifying SList&ndash;by creating
+a new class that inherits all the properties of SList, and then changing only
+the methods that need to change.  Let's create a new class called TailList that
+inherits the fields and methods of the original SList class.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #8ac6f2; font-weight: bold;">extends</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">The "head" and "size" fields are inherited from SList.</span>
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">tail</span>;
+</pre>
+
+
+<p>
+This code declares a TailList class that behaves just like the SList class, but
+has an additional field "tail" not present in the SList class.  TailList is
+said to be a <span style="text-decoration:underline;">subclass</span> of SList, and SList is the <span style="text-decoration:underline;">superclass</span> of TailList.
+A TailList has three fields:  head, size, and tail.
+</p>
+<p>
+A subclass can modify or augment a superclass in at least three ways:
+</p><ol>
+<li>It can declare new fields.
+</li>
+<li>It can declare new methods.
+</li>
+<li>It can override old methods with new implementations.
+</li>
+</ol>
+
+
+<p>
+We've already seen an example of the first.  Let's try out the third.  The
+advantage of TailList is that it can perform the insertEnd() method much more
+quickly than a tail-less SList can.  So, let's write a new insertEnd() for
+TailList, which will <span style="text-decoration:underline;">override</span> SList's old, slow insertEnd() method.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertEnd</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">obj</span>) {
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">Your solution to Lab 3 goes here.</span>
+}
+</pre>
+
+
+<p>
+The isEmpty(), length(), nth(), and toString() methods of SList do not need any
+changes on account of the tail reference.  These methods are inherited from
+SList, and there's no need to rewrite them.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Inheritance and Constructors</h3>
+<div class="outline-text-3" id="text-9-2">
+
+<p>What happens when we construct a TailList?  Java executes a TailList
+constructor, as you would expect, but <span style="text-decoration:underline;">first</span> it executes the code in the
+SList() constructor.  The TailList constructor should initialize fields unique
+to TailList.  It can also modify the work done by SList() if appropriate.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">TailList</span>() {
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">SList() constructor called automatically; sets size = 0, head = null</span>
+  tail = <span style="color: #7fffd4;">null</span>;
+}
+</pre>
+
+
+<p>
+The zero-parameter SList() constructor is always called by default, regardless
+of the parameters passed to the TailList constructor.  To change this default
+behavior, the TailList constructor can explicitly call any constructor for its
+superclass by using the "super" keyword.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">TailList</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span>) {
+    <span style="color: #8ac6f2; font-weight: bold;">super</span>(x);
+    tail = <span style="color: #7fffd4;">null</span>;
+}
+</pre>
+
+
+<p>
+The call to "super()" must be the first statement in the constructor.  If a
+constructor has no explicit call to "super", and its (nearest) superclass has
+no zero-parameter constructor, a compile-time error occurs.  There is no way to
+tell Java not to call a superclass constructor.  You have only the power to
+choose which of the superclass constructors is called.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-9-3" class="outline-3">
+<h3 id="sec-9-3"><span class="section-number-3">9.3</span> Invoking Overridden Methods</h3>
+<div class="outline-text-3" id="text-9-3">
+
+<p>Sometimes you want to override a method, yet still be able to call the method
+implemented in the superclass.  The following example shows how to do this.
+Below, we want to reuse the code in SList.insertFront, but we also need to
+adjust the tail reference.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">obj</span>) {
+    <span style="color: #8ac6f2; font-weight: bold;">super</span>.insertFront(obj);             <span style="color: #99968b;">// </span><span style="color: #99968b;">Insert at the front of the list.</span>
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (size == <span style="color: #ffa07a;">1</span>) {                    <span style="color: #99968b;">// </span><span style="color: #99968b;">If necessary,</span>
+        tail = head;                    <span style="color: #99968b;">//   </span><span style="color: #99968b;">adjust the tail reference.</span>
+    }
+}
+}
+</pre>
+
+
+<p>
+Unlike superclass constructor invocations, ordinary superclass method
+invocations need not be the first statement in a method.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-9-4" class="outline-3">
+<h3 id="sec-9-4"><span class="section-number-3">9.4</span> The "protected" Keyword</h3>
+<div class="outline-text-3" id="text-9-4">
+
+<p>I lied when I said that we don't need to modify SList.  One change is
+necessary.  The "head" and "size" fields in SList must be declared "protected",
+not "private".
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
+  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;
+  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+
+  [Method definitions.]
+}
+</pre>
+
+
+<p>
+"protected" is a level of protection somewhere between "public" and "private".
+A "protected" field is visible to the declaring class and all its subclasses,
+but not to other classes.  "private" fields aren't even visible to the
+subclasses.
+</p>
+<p>
+If "head" and "size" are declared private, the method TailList.insertFront
+can't access them and won't compile.  If they're declared protected,
+insertFront can access them because TailList is a subclass of SList.
+</p>
+<p>
+When you write an ADT, if you think somebody might someday want to write a
+subclass of it, declare its vulnerable fields "protected", unless you have a
+reason for not wanting subclasses to see them.  Helper methods often should be
+declared "protected" as well.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-9-5" class="outline-3">
+<h3 id="sec-9-5"><span class="section-number-3">9.5</span> Class Hierarchies</h3>
+<div class="outline-text-3" id="text-9-5">
+
+<p>Subclasses can have subclasses.  Subclassing is transitive:  if Proletariat is
+a subclass of Worker, and Student is a subclass of Proletariat, then Student is
+a subclass of Worker.  Furthermore, <span style="text-decoration:underline;">every</span> class is a subclass of the Object
+class (including Java's built-in classes like String and BufferedReader.)
+Object is at the top of every class hierarchy.
+</p>
+
+<p>
+<img src="ditaa-images/img1_49e01f5a87853670b8a5a9dedec256441e611d22.png"  alt="ditaa-images/img1_49e01f5a87853670b8a5a9dedec256441e611d22.png" />
+</p>
+
+<p>
+That's why the "item" field in each listnode is of type Object:  it can
+reference any object of any class.  (It can't reference a primitive type,
+though.)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-9-6" class="outline-3">
+<h3 id="sec-9-6"><span class="section-number-3">9.6</span> Dynamic Method Lookup</h3>
+<div class="outline-text-3" id="text-9-6">
+
+<p>Here's where inheritance gets interesting.  Any TailList can masquerade as an
+SList.  An object of class TailList can be assigned to a variable of type
+SList&ndash;but the reverse is not true.  Every TailList is an SList, but not every
+SList is a TailList.  It merits repeating:
+</p>
+<p>
+ !!!  <span style="text-decoration:underline;">Every TailList *IS* an SList</span>. !!!   For example:
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+<span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #cae682;">t</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+</pre>
+
+
+<p>
+Memorize the following two definitions.
+</p><ul>
+<li><span style="text-decoration:underline;">Static type</span>:  The type of a variable.
+</li>
+<li><span style="text-decoration:underline;">Dynamic type</span>:  The class of the object the variable references.
+</li>
+</ul>
+
+
+<p>
+In the code above, the static type of s is SList, and the dynamic type of s is
+TailList.  Henceforth, I will often just say "type" for static type and "class"
+for dynamic type.
+</p>
+<p>
+When we invoke an overridden method, Java calls the method for the object's
+<span style="text-decoration:underline;">dynamic</span> type, regardless of the variable's static type.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();
+s.insertEnd(obj);                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Calls TailList.insertEnd()</span>
+s = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
+s.insertEnd(obj);                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Calls SList.insertEnd()</span>
+</pre>
+
+
+<p>
+This is called <span style="text-decoration:underline;">dynamic method lookup</span>, because Java automatically looks up the
+right method for a given object at run-time.  Why is it interesting?
+</p>
+<p>
+<span style="text-decoration:underline;">WHY DYNAMIC METHOD LOOKUP MATTERS</span>    (Worth reading and rereading)
+</p>
+<p>                                                                           
+Suppose you have a method (in any class) that sorts an SList using only    
+SList method calls (but doesn't construct any SLists).  Your method now    
+sorts TailLists too, with no changes.                                      
+</p>
+<p>                                                                           
+Suppose you've written a class&ndash;let's call it RunLengthEncoding&ndash;that uses 
+SLists extensively.  By changing the constructors so that they create      
+TailLists instead of SLists, your class immediately realizes the           
+performance improvement that TailLists provide&ndash;without changing anything  
+else in the RunLengthEncoding class.                                       
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-9-7" class="outline-3">
+<h3 id="sec-9-7"><span class="section-number-3">9.7</span> Subtleties of Inheritance</h3>
+<div class="outline-text-3" id="text-9-7">
+
+<p>(1)  Suppose we write a new method in the TailList class called eatTail().  We
+can't call eatTail on an SList.  We can't even call eatTail on a variable of
+type SList that references a TailList.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #cae682;">t</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();
+t.eatTail();                      <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+<span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy--every TailList is an SList.</span>
+s.eatTail();                      <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+</pre>
+
+
+<p>
+Why?  Because not every object of class SList has an "eatTail()" method, so
+Java can't use dynamic method lookup on the variable s.
+</p>
+<p>
+But if we define eatTail() in SList instead, the statements above compile and
+run without errors, even if no eatTail() method is defined in class TailList.
+(TailList inherits eatTail() from SList.)
+</p>
+<p>
+(2)  I pointed out earlier that you can't assign an SList object to a TailList
+variable.  The rules are more complicated when you assign one variable to
+another.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span>;
+<span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #cae682;">t</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();
+s = t;                            <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+t = s;                            <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+t = (<span style="color: #92a65e; font-weight: bold;">TailList</span>) s;                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+s = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
+t = (<span style="color: #92a65e; font-weight: bold;">TailList</span>) s;                 <span style="color: #99968b;">// </span><span style="color: #99968b;">RUN-TIME ERROR:  ClassCastException.</span>
+</pre>
+
+
+<p>
+Why does the compiler reject "t = s", but accept "t = (TailList) s"?  It
+refuses "t = s" because not every SList is a TailList, and it wants you to
+confirm that you're not making a thoughtless mistake.  The cast in the latter
+statement is your way of reassuring the compiler that you've designed the
+program to make sure that the SList s will always be a TailList.
+</p>
+<p>
+If you're wrong, Java will find out when you run the program, and will crash
+with a "ClassCastException" error message.  The error occurs only at run-time
+because Java cannot tell in advance what class of object s will reference.
+</p>
+<p>
+Recall that SLists store items of type Object.  When they're recovered, they
+usually have to be cast back to a more specific type before they can be used.
+Suppose we have a list of Integers.  Recall that nth() returns type Object.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span> = t.nth(<span style="color: #ffa07a;">1</span>).intValue();                <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">y</span> = ( (<span style="color: #92a65e; font-weight: bold;">Integer</span>) t.nth(<span style="color: #ffa07a;">1</span>) ).intValue();  <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+</pre>
+
+
+<p>
+Some methods are defined on every Object, though.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">z</span> = t.nth(<span style="color: #ffa07a;">1</span>).toString();             <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+</pre>
+
+
+<p>
+(3)  Java has an "instanceof" operator that tells you whether an object is of
+a specific class.  WARNING:  The "o" in "instanceof" is not capitalized.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">if</span> (s <span style="color: #8ac6f2; font-weight: bold;">instanceof</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>) {
+  t = (<span style="color: #92a65e; font-weight: bold;">TailList</span>) s;
+}
+</pre>
+
+
+<p>
+This instanceof operation will return false if s is null or doesn't reference
+a TailList.  It returns true if s references a TailList object&ndash;even if it's
+a subclass of TailList.
+</p></div>
+</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-04T20:40-0800</p>
+<p class="date">Date: 2014-02-17T18:28-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
