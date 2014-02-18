@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-17T17:07-0800"/>
+<meta name="generated" content="2014-02-17T17:59-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -189,6 +189,14 @@ for the JavaScript code in this tag.
 <li><a href="#sec-7-1">7.1 THE "public" AND "private" KEYWORDS</a></li>
 <li><a href="#sec-7-2">7.2 The SList ADT</a></li>
 <li><a href="#sec-7-3">7.3 DOUBLY-LINKED LISTS</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8 Lecture 9</a>
+<ul>
+<li><a href="#sec-8-1">8.1 THE STACK AND THE HEAP</a></li>
+<li><a href="#sec-8-2">8.2 Parameter Passing</a></li>
+<li><a href="#sec-8-3">8.3 Binary search</a></li>
+<li><a href="#sec-8-4">8.4 Scope and Recursion</a></li>
 </ul>
 </li>
 </ul>
@@ -2604,11 +2612,307 @@ Here's an example of a method that removes the last item from a DList.
 In Lab 4 and Homework 4, you'll implement more methods for this DList class.
 </p></div>
 </div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Lecture 9</h2>
+<div class="outline-text-2" id="text-8">
+
+
+<p>
+Today's reading:  Sierra &amp; Bates pp. 77, 235-239, 258-265, 663.
+</p>
+
+</div>
+
+<div id="outline-container-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> THE STACK AND THE HEAP</h3>
+<div class="outline-text-3" id="text-8-1">
+
+<p>Java stores stuff in two separate pools of memory:  the stack and the heap.
+</p>
+<p>
+The <span style="text-decoration:underline;">heap</span> stores all objects, including all arrays, and all class variables
+(i.e. those declared "static").
+</p>
+<p>
+The <span style="text-decoration:underline;">stack</span> stores all local variables, including all parameters.
+</p>
+<p>
+When a method is called, the Java Virtual Machine creates a <span style="text-decoration:underline;">stack frame</span> (also
+known as an <span style="text-decoration:underline;">activation record</span>) that stores the parameters and local variables
+for that method.  One method can call another, which can call another, and so
+on, so the JVM maintains an internal <span style="text-decoration:underline;">stack</span> of stack frames, with "main" at
+the bottom, and the most recent method call on top.
+</p>
+<p>
+Here's a snapshot of the stack while Java is executing the SList.insertEnd
+method.  The stack frames are on the left.  Everything on the right half of the
+page is in the heap.  Read the stack from bottom to top, because that's the
+order in which the stack frames were created.
+</p>
+
+<p>
+<img src="ditaa-images/TEMP_1_5a48d1871dffe6bb4e9bbec13aeca223b91ce6aa.png"  alt="ditaa-images/TEMP_1_5a48d1871dffe6bb4e9bbec13aeca223b91ce6aa.png" />
+</p>
+
+<p>
+The method that is currently executing (at any point in time) is the one whose
+stack frame is on top.  All the other stack frames represent methods waiting
+for the methods above them to return before they can continue executing.
+</p>
+<p>
+When a method finishes executing, its stack frame is erased from the top of the
+stack, and its local variables are erased forever.
+</p>
+<p>
+The java.lang library has a method "Thread.dumpStack" that prints a list of the
+methods on the stack (but it doesn't print their local variables).  This method
+can be convenient for debugging&ndash;for instance, when you're trying to figure out
+which method called another method with illegal parameters.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Parameter Passing</h3>
+<div class="outline-text-3" id="text-8-2">
+
+<p>As in Scheme, Java passes all parameters <span style="text-decoration:underline;">by<sub>value</sub></span>.  This means that the
+method has <span style="text-decoration:underline;">copies</span> of the actual parameters, and cannot change the originals.
+The copies reside in the method's stack frame for the method.  The method can
+change these copies, but the original values that were copied are not changed.
+</p>
+<p>
+In this example, the method doNothing sets its parameter to 2, but it has no
+effect on the value of the calling method's variable a:
+</p>
+
+
+
+<pre class="src src-text">method:                            | STACK (just before the method returns)
+                                   |
+  static void doNothing(int x) {   |      -----
+    x = 2;                         |    x | 2 |
+  }                                |      -----     stack frame for doNothing
+                                   |-----------------------------------------
+method call:                       |
+                                   |      -----
+  int a = 1;                       |    a | 1 |
+  doNothing(a);                    |      -----     stack frame for main
+</pre>
+
+
+<p>
+When the method call returns, a is still 1.  The doNothing method, as its name
+suggests, failed to change the value of a or do anything relevant at all.
+</p>
+<p>
+However, when a parameter is a reference to an object, the reference is copied,
+but the object is not; the original object is shared.  A method can modify an
+object that one of its parameters points to, and the change will be visible
+everywhere.  Here's an example that shows how a method can make a change to an
+object that is visible to the calling method:
+</p>
+
+
+
+<pre class="src src-text">method:                            | STACK              | HEAP
+                                   |                set3|
+class IntBox {                     |      -----         |
+  public int i;                    |   ib | .-+----------------\
+  static void set3(IntBox ib) {    |      -----         |      |
+    ib.i = 3;                      |                    |      |
+  }                                |--------------------|      v
+                                   |      -----         |    ------
+method call:                       |    b | .-+-------------&gt;|i |3|
+                                   |      -----     main|    ------
+  IntBox b = new IntBox();
+  set3(b);
+</pre>
+
+
+<p>
+For those of you who are familiar with programming languages that have "pass
+by reference," the example above is as close as you can get in Java.  But it's
+not "pass by reference."  Rather, it's passing a reference by value.
+</p>
+
+
+<p>
+Here's an example of a common programming error, where a method tries and fails
+to make a change that is visible to the calling method.  (Assume we've just
+executed the example above, so b is set up.)
+</p>
+
+
+<pre class="src src-text">method:                            | STACK              | HEAP
+                                   |             badSet4|
+class IntBox {                     |      -----         |    ------
+  static void badSet4(IntBox ib) { |   ib | .-+-------------&gt;|i |4|
+    ib = new IntBox();             |      -----         |    ------
+    ib.i = 4;                      |                    |
+  }                                |--------------------|
+                                   |      -----         |    ------
+method call:                       |    b | .-+-------------&gt;|i |3|
+                                   |      -----     main|    ------
+  badSet4(b);
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> Binary search</h3>
+<div class="outline-text-3" id="text-8-3">
+
+<p>When a method calls itself recursively, the JVM's internal stack holds two or
+more stack frames connected with that method.  Only the top one can be
+accessed.
+</p>
+<p>
+Here's a recursive method that searches a sorted array of ints for a particular
+int.  Let i be an array of ints sorted from least to greatest&ndash;for instance,
+{-3, -2, 0, 0, 1, 5, 5}.  We want to search the array for the value "findMe".
+If we find "findMe", we return its array index; otherwise, we return FAILURE.
+</p>
+<p>
+We could simply check every element of the array, but that would be slow.
+A better strategy is to check the middle array element first.  If findMe is
+lesser, we know it can only be in the left half of the array; if findMe is
+greater, we know it can only be in the right half.  Hence, we've eliminated
+half the possibilities with one comparison.  We still have half the array to
+check, so we recursively check the middle element of that half, and so on,
+cutting the possibilites in half each time.  Suppose we search for 1.
+</p>
+
+<p>
+<img src="ditaa-images/TEMP_2_f03b371782eb33d7ed01575bcb731316bd4cc08d.png"  alt="ditaa-images/TEMP_2_f03b371782eb33d7ed01575bcb731316bd4cc08d.png" />
+</p>
+
+<p>
+The recursion has two base cases.
+</p><ol>
+<li>If findMe equals the middle element, return its index; in the example
+     above, we return index 4.
+</li>
+<li>If we try to search a subarray of length zero, the array does not contain
+     "findMe", and we return FAILURE.
+</li>
+</ol>
+
+
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #b0c4de;">final</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">FAILURE</span> = -<span style="color: #ffa07a;">1</span>;
+
+<span style="color: #b0c4de;">private</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">bsearch</span>(<span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">left</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">right</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">findMe</span>) {
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (left &gt; right) {
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">FAILURE</span>;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Base case 2:  subarray of size zero.</span>
+    }
+    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">mid</span> = (left + right) / <span style="color: #ffa07a;">2</span>;            <span style="color: #99968b;">// </span><span style="color: #99968b;">Halfway between left and right.</span>
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (findMe == i[mid]) {
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> mid;                                     <span style="color: #99968b;">// </span><span style="color: #99968b;">Base case 1:  success!</span>
+    } <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> (findMe &lt; i[mid]) {
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> bsearch(i, left, mid - <span style="color: #ffa07a;">1</span>, findMe);            <span style="color: #99968b;">// </span><span style="color: #99968b;">Search left half.</span>
+    } <span style="color: #8ac6f2; font-weight: bold;">else</span> {
+        <span style="color: #8ac6f2; font-weight: bold;">return</span> bsearch(i, mid + <span style="color: #ffa07a;">1</span>, right, findMe);          <span style="color: #99968b;">// </span><span style="color: #99968b;">Search right half.</span>
+    }
+}
+
+<span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">bsearch</span>(<span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">findMe</span>) {
+    <span style="color: #8ac6f2; font-weight: bold;">return</span> bsearch(i, <span style="color: #ffa07a;">0</span>, i.length - <span style="color: #ffa07a;">1</span>, findMe);
+}
+</pre>
+
+
+<p>
+How long does binary search take?  Suppose the array has n elements.  In one
+call to bsearch, we eliminate at least half the elements from consideration.
+Hence, it takes log<sub>2</sub> n (the base 2 logarithm of n) bsearch calls to pare down
+the possibilities to one.  Binary search takes time proportional to log<sub>2</sub> n.
+If you're not comfortable with logarithms, please review Goodrich &amp; Tamassia
+Sections 4.1.2 &amp; 4.1.7.
+</p>
+
+<p>
+<img src="ditaa-images/TEMP_3_e9bbde33ee44bb8de5ac60734ee3a9f39fe1faac.png"  alt="ditaa-images/TEMP_3_e9bbde33ee44bb8de5ac60734ee3a9f39fe1faac.png" />
+</p>
+
+<p>
+The stack frames appear at right in the figure above.  There are three
+different local variables named "left" on the stack, three named "right", three
+named "mid", four named "i", and four named "findMe".  While the current
+invocation of bsearch() is executing, only the topmost copy of "left" is in
+scope, and likewise for "right" and "mid".  The other copies are hidden and
+cannot be accessed or changed until the current invocation of bsearch()
+terminates.
+</p>
+<p>
+Most operating systems give a program enough stack space for a few thousand
+stack frames.  If you use a recursive procedure to walk through a million-node
+list, Java will try to create a million stack frames, and the stack will
+run out of space.  The result is a run-time error.  You should use iteration
+instead of recursion when the recursion will be very deep.
+</p>
+<p>
+However, our recursive binary search method does not have this problem.  Most
+modern microprocessors cannot address more than 2<sup>64</sup> bytes of memory.  Even if
+an array of bytes takes this much space, we will only have to cut the array in
+half 64 times to run a binary search.  There's room on the stack for 64 stack
+frames, with plenty to spare.  In general, recursion to a depth of roughly
+log n (where n is the number of items in a data structure) is safe, whereas
+recursion to a depth of roughly n is not.
+</p>
+<p>
+Unfortunately, binary search can't be used on linked lists.  Think about why.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-8-4" class="outline-3">
+<h3 id="sec-8-4"><span class="section-number-3">8.4</span> Scope and Recursion</h3>
+<div class="outline-text-3" id="text-8-4">
+
+<p>The <span style="text-decoration:underline;">scope</span> of a variable is the portion of the program that can access the
+variable.  Here are some of Java's scoping rules.
+</p>
+<ul>
+<li>Local variables and parameters are in scope only inside the method that
+  declares them, and only for the topmost stack frame.  Furthermore, a local
+  variable is in scope only from the variable declaration down to the innermost
+  closing brace that encloses it.  A local variable declared in the
+  initialization part of a "for" loop is in scope only in the loop body.
+</li>
+<li>Class variables (static fields) are in scope everywhere in the class, except
+  when shadowed by a local variable or parameter of the same name.
+</li>
+<li>Fully qualified class variables ("System.out", rather than "out") are in
+  scope everywhere in the class, and cannot be shadowed.  If they're public,
+  they're in scope in <span style="text-decoration:underline;">all</span> classes.
+</li>
+<li>Instance variables (non-static fields) are in scope in non-static methods of
+  the class, except when shadowed.
+</li>
+<li>Fully qualified instance variables ("amanda.name", "this.i") are in scope
+  everywhere in the class, and cannot be shadowed.  If they're public, they're
+  in scope in all classes.
+</li>
+</ul>
+
+</div>
+</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-17T17:07-0800</p>
+<p class="date">Date: 2014-02-17T17:59-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
