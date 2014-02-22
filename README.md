@@ -4,8 +4,9 @@ http://mschuldt.github.io/cs61b_lecture_notes/
 
 
 About:
+* Spring 2014 CS61b lecture notes with syntax highlighting and other niceties.
 
-* Created from the plain text notes from http://www.cs.berkeley.edu/~jrs/61b/
+* Created from plain text notes at http://www.cs.berkeley.edu/~jrs/61b/
 
 * Minor processing to convert to ditaa and org-mode formats
 
