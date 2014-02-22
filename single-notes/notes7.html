@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>notes7</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="notes7"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-02-22T14:01-0800"/>
+<meta name="author" content="michael"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">notes7</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Lecture 7</a>
+<ul>
+<li><a href="#sec-1-1">1.1 LISTS</a></li>
+<li><a href="#sec-1-2">1.2 LINKED LISTS (a recursive data type)</a></li>
+<li><a href="#sec-1-3">1.3 Linked lists vs. array lists</a></li>
+<li><a href="#sec-1-4">1.4 Lists of Objects</a></li>
+<li><a href="#sec-1-5">1.5 A List Class</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Lecture 7</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Today's reading:  Goodrich &amp; Tamassia, Section 3.2.
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> LISTS</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>Let's consider two different data structures for storing a list of things:
+an array and a linked list.
+</p>
+<p>
+An array is a pretty obvious way to store a list, with a big advantage:  it
+enables very fast access of each item.  However, it has two disadvantages.
+</p>
+<p>
+First, if we want to insert an item at the beginning or middle of an array, we
+have to slide a lot of items over one place to make room.  This takes time
+proportional to the length of the array.
+</p>
+<p>
+Second, an array has a fixed length that can't be changed.  If we want to add
+items to the list, but the array is full, we have to allocate a whole new array
+and move all the ints from the old array to the new one.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">AList</span> {
+  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">a</span>[];
+  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">lastItem</span>;
+
+  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">AList</span>() {
+    a = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[<span style="color: #ffa07a;">10</span>];                           <span style="color: #99968b;">// </span><span style="color: #99968b;">The number "10" is arbitrary.</span>
+    lastItem = -<span style="color: #ffa07a;">1</span>;
+  }
+
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertItem</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">newItem</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">location</span>) {
+    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
+
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> (lastItem + <span style="color: #ffa07a;">1</span> == a.length) {               <span style="color: #99968b;">// </span><span style="color: #99968b;">No room left in the array?</span>
+      <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">b</span>[] = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[<span style="color: #ffa07a;">2</span> * a.length];  <span style="color: #99968b;">// </span><span style="color: #99968b;">Allocate a new array, twice as long.</span>
+      <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">0</span>; i &lt;= lastItem; i++) {      <span style="color: #99968b;">// </span><span style="color: #99968b;">Copy items to the bigger array.</span>
+        b[i] = a[i];
+      }
+      a = b;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Replace the too-small array with the new one.</span>
+    }
+    <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = lastItem; i &gt;= location; i--) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Shift items to the right.</span>
+      a[i + <span style="color: #ffa07a;">1</span>] = a[i];
+    }
+    a[location] = newItem;
+    lastItem++;
+  }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> LINKED LISTS (a recursive data type)</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>We can avoid these problems by choosing a Scheme-like representation of lists.
+A linked list is made up of <span style="text-decoration:underline;">nodes</span>.  Each node has two components:  an item,
+and a reference to the next node in the list.  These components are analogous
+to "car" and "cdr".  However, our node is an explicitly defined object.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span> {          <span style="color: #99968b;">// </span><span style="color: #99968b;">ListNode is a recursive type</span>
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">item</span>;
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">next</span>;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Here we're using ListNode before</span>
+}                                <span style="color: #99968b;">//   </span><span style="color: #99968b;">we've finished declaring it.</span>
+</pre>
+
+
+<p>
+Let's make some ListNodes.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">l1</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(), <span style="color: #cae682;">l2</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(), <span style="color: #cae682;">l3</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>();
+l1.item = <span style="color: #ffa07a;">7</span>;
+l2.item = <span style="color: #ffa07a;">0</span>;
+l3.item = <span style="color: #ffa07a;">6</span>;
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img1_37c2298e59fd3fe495e84ff51de8be20f174e97e.png"  alt="ditaa-images/img1_37c2298e59fd3fe495e84ff51de8be20f174e97e.png" />
+</p>
+<p>
+Now let's link them together.
+</p>
+
+
+
+<pre class="src src-java">l1.next = l2;
+l2.next = l3;
+</pre>
+
+
+<p>
+What about the last node?  We need a reference that doesn't reference anything.
+In Java, this is called "null".
+</p>
+
+
+
+<pre class="src src-java">l3.next = <span style="color: #7fffd4;">null</span>;
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img2_43021c3bd54ee1e1e24162b47c8feaaa105fe7e7.png"  alt="ditaa-images/img2_43021c3bd54ee1e1e24162b47c8feaaa105fe7e7.png" />
+</p>
+
+<p>
+To simplify programming, let's add some constructors to the ListNode class.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">ListNode</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">n</span>) {
+  item = i;
+  next = n;
+}
+
+<span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">ListNode</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>) {
+  <span style="color: #8ac6f2; font-weight: bold;">this</span>(i, <span style="color: #7fffd4;">null</span>);
+}
+</pre>
+
+
+<p>
+These constructors allow us to emulate Scheme's "cons" operation.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">l1</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">7</span>, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">0</span>, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">6</span>)));
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Linked lists vs. array lists</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>Linked lists have several advantages over array-based lists.  Inserting an item
+into the middle of a linked list takes just a small constant amount of time, if
+you already have a reference to the previous node (and don't have to walk
+through the whole list searching for it).  The list can keep growing until
+memory runs out.
+</p>
+<p>
+The following method inserts a new item into the list immediately after "this".
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertAfter</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">item</span>) {
+  next = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(item, next);
+}
+
+l2.insertAfter(<span style="color: #ffa07a;">3</span>);
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img3_8e829be91e6e4c2a240073601aab1ee004ff6d58.png"  alt="ditaa-images/img3_8e829be91e6e4c2a240073601aab1ee004ff6d58.png" />
+</p>
+
+<p>
+However, linked lists have a big disadvantage compared to arrays.  Finding the
+nth item of an array takes a tiny, constant amount of time.  Finding the nth
+item of a linked list takes time proportional to n.  You have to start at the
+head of the list and walk forward n - 1 nodes, one "next" at a time.
+</p>
+<p>
+Many of the data structures we will study in this class will be attempts to
+find a compromise between arrays and linked lists.  We'll learn data structures
+that are fast for both arbitrary lookups (like arrays) <span style="text-decoration:underline;">and</span> arbitrary
+insertions (like linked lists).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Lists of Objects</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+<p>
+For greater generality, let's change ListNodes so that each node contains not
+an int, but a reference to any Java object.  In Java, we can accomplish this by
+declaring a reference of type Object.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> {
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>;
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">next</span>;
+}
+</pre>
+
+
+<p>
+The "S" in "SListNode" stands for singly-linked.  This will make sense when we
+contrast these lists with doubly-linked lists later.  You'll see the SListNode
+class in next week's lab and homework.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> A List Class</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+<p>
+There are two problems with SListNodes.
+</p>
+<p>
+(1)  Suppose x and y are pointers to the same shopping list.  Suppose we insert
+     a new item at the beginning of the list thusly:
+</p>
+
+
+<pre class="src src-java">x = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(<span style="color: #95e454;">"soap"</span>, x);
+</pre>
+
+<p>
+     y doesn't point to the new item; y still points to the second item in x's
+     list.  If y goes shopping for x, he'll forget to buy soap.
+</p>
+<p>
+(2)  How do you represent an empty list?  The obvious way is "x = null".
+     However, Java won't let you call a SListNode method&ndash;or any method&ndash;on
+     a null object.  If you write "x.insertAfter(item)" when x is null, you'll
+     get a run-time error, even though x is declared to be a SListNode.
+     (There are good reasons for this, which you'll learn later in the course.)
+</p>
+<p>
+The solution is a separate SList class, whose job is to maintain the head
+(first node) of the list.  We will put many of the methods that operate on
+lists in the SList class, rather than the SListNode class.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;             <span style="color: #99968b;">// </span><span style="color: #99968b;">First node in list.</span>
+  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Number of items in list.</span>
+
+  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">SList</span>() {                    <span style="color: #99968b;">// </span><span style="color: #99968b;">Here's how to represent an empty list.</span>
+    head = <span style="color: #7fffd4;">null</span>;
+    size = <span style="color: #ffa07a;">0</span>;
+  }
+
+  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>) {
+    head = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(item, head);
+    size++;
+  }
+}
+</pre>
+
+
+<p>
+<img src="ditaa-images/img4_db2f79dece321b6baa1e71ba2ecf93ea49dcbc0d.png"  alt="ditaa-images/img4_db2f79dece321b6baa1e71ba2ecf93ea49dcbc0d.png" />
+</p>
+
+<p>
+Now, when you call x.insertFront("fish"), every reference to that SList can see
+the change.
+</p>
+
+<p>
+<img src="ditaa-images/img5_2073f5ca5ef1a31708f16ea8f036cc5fcb911471.png"  alt="ditaa-images/img5_2073f5ca5ef1a31708f16ea8f036cc5fcb911471.png" />
+</p>
+
+<p>
+Another advantage of the SList class is that it can keep a record of the
+SList's size (number of SListNodes).  Hence, the size can be determined more
+quickly than if the SListNodes had to be counted.
+</p></div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-02-22T14:01-0800</p>
+<p class="author">Author: michael</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
