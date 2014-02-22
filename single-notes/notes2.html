@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>notes2</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="notes2"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-02-22T15:23-0800"/>
+<meta name="author" content="michael"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">notes2</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Lecture 2</a>
+<ul>
+<li><a href="#sec-1-1">1.1 OBJECTS AND CONSTRUCTORS</a></li>
+<li><a href="#sec-1-2">1.2 METHODS</a></li>
+<li><a href="#sec-1-3">1.3 I/O Classes and Objects in Java</a></li>
+<li><a href="#sec-1-4">1.4 Classes for Web Access</a></li>
+<li><a href="#sec-1-5">1.5 Postscript:  Object-Oriented Terminology (not examinable)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Lecture 2</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>Today's reading:  Sierra &amp; Bates, Chapter 2; pp. 54-58, 154-160, 661, 669.
+</p>
+<p>
+<a href="original-notes/02">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> OBJECTS AND CONSTRUCTORS</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">Step 1:      declare a String variable.</span>
+s = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>();   <span style="color: #99968b;">// </span><span style="color: #99968b;">Steps 2, 3:  construct new empty String; assign it to s.</span>
+</pre>
+
+
+<p>
+At this point, s is a variable that 
+references an "empty" String, i.e.  
+a String containing zero characters. 
+</p>
+<p>
+<img src="ditaa-images/img10_bb39b419e4e832fac0134d053d5b2dd655a0add9.png"  alt="ditaa-images/img10_bb39b419e4e832fac0134d053d5b2dd655a0add9.png" />
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>();  <span style="color: #99968b;">// </span><span style="color: #99968b;">Steps 1, 2, 3 combined.</span>
+s = <span style="color: #95e454;">"Yow!"</span>;               <span style="color: #99968b;">// </span><span style="color: #99968b;">Construct a new String; make s a reference to it.</span>
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img3_ef6ead9258097e8b7b5ea46500bfe235f0f9febe.png"  alt="ditaa-images/img3_ef6ead9258097e8b7b5ea46500bfe235f0f9febe.png" />
+</p>
+
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s2</span> = s;            <span style="color: #99968b;">// </span><span style="color: #99968b;">Copy the reference stored in s into s2.</span>
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img4_d4659e74db1a984d47f8a308d8d5de7abc4dd129.png"  alt="ditaa-images/img4_d4659e74db1a984d47f8a308d8d5de7abc4dd129.png" />
+</p>
+
+<p>
+Now s and s2 reference the same object.
+</p>
+
+
+
+<pre class="src src-java">s2 = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>(s);       <span style="color: #99968b;">// </span><span style="color: #99968b;">Construct a copy of object; store reference in s2.</span>
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img5_d22e4d66d1296af933b900d0ede3f222a2c87b6f.png"  alt="ditaa-images/img5_d22e4d66d1296af933b900d0ede3f222a2c87b6f.png" />
+</p>
+
+<p>
+Now they refer to two different, but identical, objects.
+</p>
+<p>
+Think about that.  When Java executes that line, it does the following things,
+in the following order.
+</p><ul>
+<li>Java looks inside the variables to see where it's pointing.
+</li>
+<li>Java follows the pointer to the String object.
+</li>
+<li>Java reads the characters stored in that String object.
+</li>
+<li>Java creates a new String object that stores a copy of those characters.
+</li>
+<li>Java stores a reference to the new String object in s2.
+</li>
+</ul>
+
+
+<p>
+We've seen three String constructors:
+</p><ol>
+<li>new String() constructs an <span style="text-decoration:underline;">empty string</span>&ndash;it's a string, but it
+       contains zero characters.
+</li>
+<li>"Yow!" constructs a string containing the characters Yow!.
+</li>
+<li>new String(s) takes a <span style="text-decoration:underline;">parameter</span> s.  Then it makes a copy of the object
+       that s references.
+</li>
+</ol>
+
+
+<p>
+Constructors <span style="text-decoration:underline;">always</span> have the same name as their class, except the special
+constructor "stuffinquotes".  That's the only exception.
+</p>
+<p>
+Observe that "new String()" can take no parameters, or one parameter.  These
+are two different constructors&ndash;one that is called by "new String()", and one
+that is called by "new String(s)".  (Actually, there are many more than
+two&ndash;check out the online Java API to see all the possibilities.)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> METHODS</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>Let's look at some methods that aren't constructors.
+</p>
+
+
+
+<pre class="src src-java">s2 = s.toUppercase();       <span style="color: #99968b;">// </span><span style="color: #99968b;">Create a string like s, but in all upper case.</span>
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img6_663c7234bd18e2eb059e19f965c46b52a754a4ad.png"  alt="ditaa-images/img6_663c7234bd18e2eb059e19f965c46b52a754a4ad.png" />
+</p>
+
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s3</span> = s2.concat(<span style="color: #95e454;">"!!"</span>);             <span style="color: #99968b;">// </span><span style="color: #99968b;">Also written:  s3 = s2 + "!!";</span>
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img7_4923512868bfa9d7f3863f1388e52de55418c3d5.png"  alt="ditaa-images/img7_4923512868bfa9d7f3863f1388e52de55418c3d5.png" />
+</p>
+
+
+
+
+<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s4</span> = <span style="color: #95e454;">"*"</span>.concat(s2).concat(<span style="color: #95e454;">"*"</span>);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Also written:  s4 = "*" + s + "*";</span>
+</pre>
+
+
+
+<p>
+<img src="ditaa-images/img8_099c9bb6c3af0de1ca50ecce4bbe3e9a22ff4d57.png"  alt="ditaa-images/img8_099c9bb6c3af0de1ca50ecce4bbe3e9a22ff4d57.png" />
+</p>
+
+<p>
+Now, here's an important fact:  when Java executed the line
+</p>
+
+
+
+<pre class="src src-java">s2 = s.toUppercase();
+</pre>
+
+
+<p>
+the String object "Yow!" did <span style="text-decoration:underline;">not</span> change.  Instead, s2 itself changed to
+reference a new object.  Java wrote a new "pointer" into the variable s2, so
+now s2 points to a different object than it did before.
+</p>
+<p>
+Unlike in C, in Java Strings are <span style="text-decoration:underline;">immutable</span>&ndash;once they've been constructed,
+their contents never change.  If you want to change a String object, you've got
+to create a brand new String object that reflects the changes you want.  This
+is not true of all objects; most Java objects let you change their contents.
+</p>
+<p>
+You might find it confusing that methods like "toUppercase" and "concat" return
+newly created String objects, though they are not constructors.  The trick is
+that those methods calls constructors internally, and return the newly
+constructed Strings.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> I/O Classes and Objects in Java</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+<p>
+Here are some objects in the System class for interacting with a user:
+</p>
+<p>
+  System.out is a PrintStream object that outputs to the screen.
+  System.in is an InputStream object that reads from the keyboard.
+    [Reminder:  this is shorthand for "System.in is a variable that references
+                an InputStream object."]
+</p>
+<p>
+But System.in doesn't have methods to read a line directly.  There is a method
+called readLine that does, but it is defined on BufferedReader objects.
+</p>
+<ul>
+<li>How do we construct a BufferedReader?  One way is with an InputStreamReader.
+</li>
+<li>How do we construct an InputStreamReader?  We need an InputStream.
+</li>
+<li>How do we construct an InputStream?  System.in is one.
+</li>
+</ul>
+
+<p>(You can figure all of this out by looking at the constructors in the online
+Java libraries API&ndash;specifically, in the java.io library.)
+</p>
+<p>
+Why all this fuss?
+</p>
+<p>
+InputStream objects (like System.in) read raw data from some source (like the
+keyboard), but don't format the data.
+</p>
+<p>
+InputStreamReader objects compose the raw data into characters (which are
+typically two bytes long in Java).
+</p>
+<p>
+BufferedReader objects compose the characters into entire lines of text.
+</p>
+<p>
+Why are these tasks divided among three different classes?  So that any one
+task can be reimplemented (say, for improved speed) without changing the other
+two.
+</p>
+<p>
+Here's a complete Java program that reads a line from the keyboard and prints
+it on the screen.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.io.*</span>;
+
+<span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SimpleIO</span> {
+    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">arg</span>) <span style="color: #8ac6f2; font-weight: bold;">throws</span> <span style="color: #92a65e; font-weight: bold;">Exception</span> {
+        <span style="color: #92a65e; font-weight: bold;">BufferedReader</span> <span style="color: #cae682;">keybd</span> =
+            <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">BufferedReader</span>(<span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span>(System.in));
+        System.out.println(keybd.<span style="color: #92a65e; font-weight: bold;">readLine</span>());
+    }
+}
+</pre>
+
+
+<p>
+Don't worry if you don't understand the first three lines; we'll learn the
+underlying ideas eventually.  The first line is present because to use the Java
+libraries, other than java.lang, you need to "import" them.  java.io includes
+the InputStreamReader and BufferedReader classes.
+</p>
+<p>
+The second line just gives the program a name, "SimpleIO".
+</p>
+<p>
+The third line is present because any Java program always begins execution at a
+method named "main", which is usually defined more or less as above.  When you
+write a Java program, just copy the line of code, and plan to understand it a
+few weeks from now.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Classes for Web Access</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+<p>
+Let's say we want to read a line of text from the White House Web page.  (The
+line will be HTML, which looks ugly.  You don't need to understand HTML.)
+</p>
+<p>
+How to read a line of text?  With readLine on BufferedReader.
+How to create a BufferedReader?  With an InputStreamReader.
+How to create a InputStreamReader?  With an InputStream.
+How to create an InputStream?  With a URL.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.net.*</span>;
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.io.*</span>;
+
+<span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">WHWWW</span> {
+    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">arg</span>) <span style="color: #8ac6f2; font-weight: bold;">throws</span> <span style="color: #92a65e; font-weight: bold;">Exception</span> {
+        <span style="color: #92a65e; font-weight: bold;">URL</span> <span style="color: #cae682;">u</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">URL</span>(<span style="color: #95e454;">"http://www.whitehouse.gov</span><span style="color: #92a65e; font-weight: bold;">/");</span>
+<span style="color: #92a65e; font-weight: bold;">        InputStream</span> <span style="color: #cae682;">ins</span> = u.openStream();
+        <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span> <span style="color: #cae682;">isr</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span>(ins);
+        <span style="color: #92a65e; font-weight: bold;">BufferedReader</span> <span style="color: #cae682;">whiteHouse</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">BufferedReader</span>(isr);
+        System.out.println(whiteHouse.<span style="color: #92a65e; font-weight: bold;">readLine</span>());
+    }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Postscript:  Object-Oriented Terminology (not examinable)</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+<p>
+In the words of Turing Award winner Nicklaus Wirth, "Object-oriented
+programming (OOP) solidly rests on the principles and concepts of traditional
+procedural programming.  OOP has not added a single novel concept &hellip; along
+with the OOP paradigm came an entirely new terminology with the purpose of
+mystifying the roots of OOP."  Here's a translation guide.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Procedural Programming</th><th scope="col" class="left">Object-Oriented Programming</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">record / structure</td><td class="left">object</td></tr>
+<tr><td class="left">record type</td><td class="left">class</td></tr>
+<tr><td class="left">extending a type</td><td class="left">declaring a subclass</td></tr>
+<tr><td class="left">procedure</td><td class="left">method</td></tr>
+<tr><td class="left">procedure call</td><td class="left">sending a message to the method [ack!  phthhht!]</td></tr>
+</tbody>
+</table>
+
+
+<p>
+I won't ever talk about "sending a message" in this class.  I think it's a
+completely misleading metaphor.  In computer science, message-passing normally
+implies asynchrony: that is, the process that sends a message can continue
+executing while the receiving process receives the message and acts on it.
+But that's NOT what it means in object-oriented programming:  when a Java
+method "sends a message" to another method, the former method is frozen until
+the latter methods completes execution, just like with procedure calls in most
+languages.  But you should probably know that this termology exists, much as it
+sucks, because you'll probably run into it sooner or later.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-02-22T15:23-0800</p>
+<p class="author">Author: michael</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
