@@ -1,7 +1,253 @@
 #+TITLE: cs61b Lecture Notes
 #+STARTUP: overview
+* Lecture 1
+[[file:original-notes/01][original notes]]
+
+Prof. Jonathan Shewchuk, jrs@cory.eecs
+Email to prof & all TAs at once (preferred): cs61b@cory.eecs
+
+Today's reading:  Sierra & Bates, pp. 1-9, 18-19, 84.
+Handout:  Course Overview (also available from CS 61B Web page)
+
+Also, read the CS 61B Web page as soon as possible!
+>>>  http://www.cs.berkeley.edu/~jrs/61b  <<<
+YOU are responsible for keeping up with readings & assignments.  Few reminders.
+The Piazza board is required reading:  https://piazza.com/berkeley/spring2014/cs61b
+
+** Labs
+Labs (in 271, 273, 275, 330 Soda) start Thursday.  Discussion sections start
+Monday.  You must attend your scheduled lab (as assigned by Telebears) to
+  1.  get an account (needed for Lab 1 and Homework 1), and
+  2.  login to turn on your ability to turn in homework (takes up to 24 hours).
+You may only attend the lab in which you are officially enrolled.  If you are
+not enrolled in a lab (on the waiting list or in concurrent enrollment), you
+must attend a lab that has space.  (Show up and ask the TA if there's room for
+you.)
+
+You will not be enrolled in the course until you are enrolled in a lab.  If
+you're on the waiting list and the lab you want is full, you can change to one
+that isn't, or you can stay on the waitlist and hope somebody drops.
+
+If you're not yet enrolled in a lab, just keep going to them until you find one
+that has room for you (that week).  Once you get enrolled in a lab, though,
+please always attend the one you're enrolled in.
+
+** Prerequisites
+Ideally, you have taken CS 61A or E 7, or at least you're taking one of them
+this semester.  If not, you might get away with it, but if you have not
+mastered recursion, expect to have a very hard time in this class.  If you've
+taken a data structures course before, you might be able to skip CS 61B.  See
+the Course Overview and Brian Harvey (781 Soda) for details.
+
+** Textbooks
+Kathy Sierra and Bert Bates, Head First Java, Second Edition, O'Reilly, 2005.
+  ISBN # 0-596-00920-8.  (The first edition is just as good.)
+
+Michael T. Goodrich and Roberto Tamassia, Data Structures and Algorithms in
+  Java, Fifth Edition, John Wiley & Sons, 2010. ISBN # 0-470-38326-7.
+  (The first/third/fourth/sixth edition is just as good, but not the second.)
+
+We will use Sierra/Bates for the first month.  Lay your hands on a copy as soon
+as possible.
+
+Buy the CS 61B class reader at Vick Copy, 1879 Euclid.  The bulk of the reader
+is old CS 61B exams, which will not be provided online.  The front of the
+reader is stuff you'll want to have handy when you're in lab, hacking.
+
+** Grading
+  | 10 pts  | Labs       | There are 200 points total you can earn in this course, |
+  | 20 pts  | Homeworks  | broken down at left.  185+ points is an A+, 175-184 is  |
+  | 70 pts  | Projects   | an A, and so on down to D- (85-94).  There is NO CURVE. |
+  | 25 pts  | Midterm I  | Late homeworks and labs will NOT be accepted, period.   |
+  | 25 pts  | Midterm II | Late projects are penalized 1% of your score for every  |
+  | 50 pts  | Final Exam | two hours by which you miss the deadline.               |
+  | 200 pts |            |                                                         |
+ 
+There will be three projects, worth 20, 30, and 20 points respectively.  You
+will do the first project individually, and the last two as part of a group of
+two or three students.  You may not work alone on the last two projects.
+All homeworks and projects will be turned in electronically.
+
+** Cheating
+...will be reported to the Office of Student Conduct.
+ 1.  "No Code Rule":  Never have a copy of someone else's program in your
+     possession and never give your program to someone else.
+ 2.  Discussing an assignment without sharing any code is generally okay.
+     Helping someone to interpret a compiler error message is an example of
+     permissible collaboration.  However, if you get a significant idea from
+     someone, acknowledge them in your assignment.
+ 3.  These rules apply to homeworks and projects.  No discussion whatsoever in
+     exams, of course.
+ 4.  In group projects, you share code freely within your team, but not between
+     teams.
+
+** Goals of CS 61B
+ 1.  Learning efficient data structures and algorithms that use them.
+ 2.  Designing and writing large programs.
+ 3.  Understanding and designing data abstraction and interfaces.
+ 4.  Learning Java.
+
+** THE LANGUAGE OF OBJECT-ORIENTED PROGRAMMING
+_Object_:  An object is a repository of data.  For example, if MyList is a
+  ShoppingList object, MyList might record your shopping list.
+
+_Class_:  A class is a type of object.  Many objects of the same class might
+  exist; for instance, MyList and YourList may both be ShoppingList objects.
+
+_Method_:  A procedure or function that operates on an object or a class.
+  A method is associated with a particular class.  For instance, addItem might
+  be a method that adds an item to any ShoppingList object.  Sometimes a method
+  is associated with a family of classes.  For instance, addItem might operate
+  on any List, of which a ShoppingList is just one type.
+
+_Inheritance_:  A class may inherit properties from a more general class.  For
+  example, the ShoppingList class inherits from the List class the property of
+  storing a sequence of items.
+
+_Polymorphism_:  The ability to have one method call work on several different
+  classes of objects, even if those classes need different implementations of
+  the method call.  For example, one line of code might be able to call the
+  "addItem" method on _every_ kind of List, even though adding an item to a
+  ShoppingList is completely different from adding an item to a ShoppingCart.
+
+_Object-Oriented_:  Each object knows its own class and which methods manipulate
+  objects in that class.  Each ShoppingList and each ShoppingCart knows which
+  implementation of addItem applies to it.
+
+In this list, the one thing that truly distinguishes object-oriented languages
+from procedural languages (C, Fortran, Basic, Pascal) is polymorphism.
+
+** Java
+Java allows you to store data in variables, but first you must _declare_ them
+and specify their _type_.
+
+#+Begin_SRC java
+    Python:  x = 1       Scheme:  (let ((x 1)) )       Java:  int x;
+                                                              x = 1;
+#+END_SRC
+This Java declaration does two things.
+   1.  It allocates a chunk of memory big enough to store an integer, which
+       Java calls type "int".                                            
+   2.  It names the variable (chunk of memory) "x".                      
+#+begin_ditaa ditaa-images/img2
+                  +-+
+                x |1|
+                  +-+
+#+end_ditaa
+Variables are used not just to store numbers, but also to _reference_ objects.
+There are two ways to get classes of objects to play with:
+ 1.  Use one defined by somebody else.  Java has tons of pre-defined classes
+     you can use.  Many come in the "Java standard library" provided with every
+     Java compiler.
+ 2.  Define your own.
+
+For example, Java has a built-in class called String.
+#+Begin_SRC java
+  String myString;
+#+END_SRC
+This does _not_ create a String object.  Instead, it declares a variable (chunk
+of memory) that can store a _reference_ to a String object.  I draw it as a
+box.
+
+#+begin_ditaa ditaa-images/img1
+           +-+
+  myString | |                   <-- This box is a variable (not an object).
+           +-+
+#+end_ditaa
+
+Initially, myString doesn't reference anything.  You can make it reference a
+String object by writing an assignment statement.  But how do we get ahold of
+an actual String object?  You can create one.
+
+  myString = new String();
+
+This line performs two distinct steps.  First, the phrase "new String()" is
+called a _constructor_.  It constructs a brand new String object.  Second, the
+assignment "=" causes myString to _reference_ the object.  You can think of
+this as myString pointing to the object.
+
+#+begin_ditaa ditaa-images/img3
+           +-+     +----+
+  myString |.+---->|    | a String object
+           +-+     +----+
+#+end_ditaa
+
+Unlike Scheme and Python, Java programs must be compiled before you can run
+them.  _Compilation_ converts your written code to a machine-readable bytecode.
+The advantage is a faster program than one written in Scheme.  The disadvantage
+is that you have to wait for it to compile.
+
+#+begin_ditaa ditaa-images/img5
+             Python                      Java
+             ------                      ----
+       Python program (.py)         Java program (.java)
+               |                           |
+               | python                    | javac
+               v                           v
+             Answer                  .class files
+                                           |
+                                           | java
+                                           v
+                                         Answer
+#+end_ditaa
+
+** Postscript:  Anatomy of a Small Java Program (for discussion section)
+Assume the following code is in a file called HelloWorld.java:
+
+#+Begin_SRC java
+class HelloWorld {
+  public static void main (String[] args) {
+    System.out.println("Hello, world");
+  }
+}
+#+END_SRC
+
+The classes are "HelloWorld", "String", and "System".
+The objects are "args", "System.out", and the string "Hello, world".
+  (Actually, the first two of these are _references_ to objects.)
+The methods are "main" and "println".  The println method prints its parameter,
+and the main method prints the string "Hello, world".
+
+You don't have the knowledge to completely understand this code yet, but don't
+worry about it.  We'll take the first two lines on faith as the standard way to
+start a Java program.  They'll become clear in the coming weeks.
+
+Let's look at the innermost line first; it does all the action.  "out"
+references an object whose class is PrintStream.  A PrintStream is a path by
+which characters can be output by a program.  The characters that are sent
+through "out" find their way to your computer screen.
+
+System is a class which happens to contain the variable out (among many other
+variables).  We have to write "System.out" to address the output stream,
+because other classes might have variables called "out" too, with their own
+meanings.
+
+"println" is a method (procedure) of the class PrintStream.  Hence, we can
+invoke "println" from any PrintStream object, including System.out.  "println"
+takes one parameter, which can be a string.
+
+"main" is a method in the "HelloWorld" class.  The HelloWorld class knows how
+to do the "main" operation, just like the PrintStream class knows how to do the
+"println" operation.
+#+begin_ditaa ditaa-images/img4
+                                                  +----------------------+
+    +----------------+   +--------------------+   |                      |
+    |                |   |                    |   |                      |
+    |        +-+     |   |  println (method)  |   |                      |
+    |    out |.+-----+-->|                    |   |                      |
+    |        +-+     |   |                    |   |    main (method)     |
+    +-System (class)-+   +-An object of class-+   |                      |
+                              PrintStream         |                      |
+                                                  +--HelloWorld (class)--+
+#+end_ditaa
+
+The classes System and PrintStream are all automatically provided for you by
+any Java compiler.  Somebody has programmed them for you, so that you don't
+have to figure out for yourself how to send characters to the terminal.
 * Lecture 2
 Today's reading:  Sierra & Bates, Chapter 2; pp. 54-58, 154-160, 661, 669.
+
+[[file:original-notes/02][original notes]]
 ** OBJECTS AND CONSTRUCTORS
 
 #+Begin_SRC java
@@ -240,6 +486,8 @@ sucks, because you'll probably run into it sooner or later.
 
 * Lecture 3
 Today's reading:  Sierra & Bates, pp. 71-74, 76, 85, 240-249, 273-281, 308-309.
+
+[[file:original-notes/03][original notes]]
 ** DEFINING CLASSES
 An object is a repository of data.  _Fields_ are variables that hold the data
 stored in objects.  Fields in objects are also known as _instance variables_.
@@ -503,6 +751,8 @@ Any attempt to reference "this" will cause a compile-time error.
 - A class variable (static field) lasts as long as the program runs.
 * Lecture 4
 Today's reading:  S&B pp. 10-14, 49-53, 75, 78-79, 86, 117, 286-287, 292, 660.
+
+[[file:original-notes/04][original notes]]
 ** PRIMITIVE TYPES
 Not all variables are references to objects.  Some variables are primitive
 types, which store values like "3", "7.2", "h", and "false".  They are:
@@ -731,6 +981,8 @@ The "return" value can be an expression.  Some examples:
 #+END_SRC
 * Lecture 5
 Today's reading:  Sierra & Bates pp. 59-62, 83, 114-116, 293-300, 670.
+
+[[file:original-notes/05][original notes]]
 ** LOOPS
 *** "while" Loops
 A "while" statement is like an "if" statement, but the body of the statement is
@@ -978,6 +1230,8 @@ Our array objects look like this:
 #+end_ditaa
 * Lecture 6
 Today's reading:  Sierra & Bates pp. 282-285.
+
+[[file:original-notes/06][original notes]]
 ** MORE ARRAYS
 ** Automatic Array Construction
 Last lecture, we used a loop to construct all the arrays that the top-level
@@ -1258,6 +1512,8 @@ variable.  Here are some of Java's scoping rules.
   of the class, except when shadowed.
 * Lecture 7
 Today's reading:  Goodrich & Tamassia, Section 3.2.
+
+[[file:original-notes/07][original notes]]
 ** LISTS
 Let's consider two different data structures for storing a list of things:
 an array and a linked list.
@@ -1507,6 +1763,8 @@ SList's size (number of SListNodes).  Hence, the size can be determined more
 quickly than if the SListNodes had to be counted.
 * Lecture 8
 Today's reading:  Goodrich & Tamassia, Section 3.3.
+
+[[file:original-notes/08][original notes]]
 ** THE "public" AND "private" KEYWORDS
 
 Thus far, we've usually declared fields and methods using the "public" keyword.
@@ -1709,6 +1967,8 @@ Here's an example of a method that removes the last item from a DList.
 In Lab 4 and Homework 4, you'll implement more methods for this DList class.
 * Lecture 9
 Today's reading:  Sierra & Bates pp. 77, 235-239, 258-265, 663.
+
+[[file:original-notes/09][original notes]]
 ** THE STACK AND THE HEAP
 Java stores stuff in two separate pools of memory:  the stack and the heap.
 
@@ -1991,6 +2251,8 @@ variable.  Here are some of Java's scoping rules.
   in scope in all classes.
 * Lecture 10
 Today's reading:  All of Chapter 7, plus pp. 28-33, 250-257.
+
+[[file:original-notes/10][original notes]]
 ** INHERITANCE
 In Lab 3, you modified several methods in the SList class so that a "tail"
 reference could keep track of the end of the list, thereby speeding up the
@@ -2249,6 +2511,8 @@ a TailList.  It returns true if s references a TailList object--even if it's
 a subclass of TailList.
 * Lecture 11
 Today's reading:  Sierra & Bates, pp. 95-109, 662.
+
+[[file:original-notes/11][original notes]]
 ** equals()
 Every class has an equals() method.  If you don't define one explictly, you
 inherit Object.equals(), for which "r1.equals(r2)" returns the same boolean
@@ -2490,6 +2754,8 @@ In real-world software development, the size of the test code is often larger
 than the size of the code being tested.
 * Lecture 12
 Today's reading:  Sierra & Bates, Chapter 8.
+
+[[file:original-notes/12][original notes]]
 ** ABSTRACT CLASSES
 An abstract class is a class whose sole purpose is to be extended.
 
@@ -2698,6 +2964,8 @@ We could also add more method prototypes and constants, but in this example
 I don't.
 * Lecture 13
 Today's reading:  Sierra & Bates, pp. 154-160, 587-591, 667-668.
+
+[[file:original-notes/13][original notes]]
 ** JAVA PACKAGES
 In Java, a _package_ is a collection of classes and Java interfaces, and
 possibly subpackages, that trust each other.  Packages have three benefits.
