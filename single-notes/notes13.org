@@ -1,5 +1,7 @@
 * Lecture 13
 Today's reading:  Sierra & Bates, pp. 154-160, 587-591, 667-668.
+
+[[file:original-notes/13][original notes]]
 ** JAVA PACKAGES
 In Java, a _package_ is a collection of classes and Java interfaces, and
 possibly subpackages, that trust each other.  Packages have three benefits.

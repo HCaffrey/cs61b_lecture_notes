@@ -1,5 +1,7 @@
 * Lecture 2
 Today's reading:  Sierra & Bates, Chapter 2; pp. 54-58, 154-160, 661, 669.
+
+[[file:original-notes/02][original notes]]
 ** OBJECTS AND CONSTRUCTORS
 
 #+Begin_SRC java

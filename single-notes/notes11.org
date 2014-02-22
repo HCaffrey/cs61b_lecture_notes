@@ -1,5 +1,7 @@
 * Lecture 11
 Today's reading:  Sierra & Bates, pp. 95-109, 662.
+
+[[file:original-notes/11][original notes]]
 ** equals()
 Every class has an equals() method.  If you don't define one explictly, you
 inherit Object.equals(), for which "r1.equals(r2)" returns the same boolean

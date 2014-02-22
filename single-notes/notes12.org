@@ -1,5 +1,7 @@
 * Lecture 12
 Today's reading:  Sierra & Bates, Chapter 8.
+
+[[file:original-notes/12][original notes]]
 ** ABSTRACT CLASSES
 An abstract class is a class whose sole purpose is to be extended.
 

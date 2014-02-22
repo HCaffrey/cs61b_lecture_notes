@@ -1,5 +1,7 @@
 * Lecture 5
 Today's reading:  Sierra & Bates pp. 59-62, 83, 114-116, 293-300, 670.
+
+[[file:original-notes/05][original notes]]
 ** LOOPS
 *** "while" Loops
 A "while" statement is like an "if" statement, but the body of the statement is

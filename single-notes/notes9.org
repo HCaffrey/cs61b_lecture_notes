@@ -1,5 +1,7 @@
 * Lecture 9
 Today's reading:  Sierra & Bates pp. 77, 235-239, 258-265, 663.
+
+[[file:original-notes/09][original notes]]
 ** THE STACK AND THE HEAP
 Java stores stuff in two separate pools of memory:  the stack and the heap.
 

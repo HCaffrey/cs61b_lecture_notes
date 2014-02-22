@@ -1,5 +1,7 @@
 * Lecture 7
 Today's reading:  Goodrich & Tamassia, Section 3.2.
+
+[[file:original-notes/07][original notes]]
 ** LISTS
 Let's consider two different data structures for storing a list of things:
 an array and a linked list.

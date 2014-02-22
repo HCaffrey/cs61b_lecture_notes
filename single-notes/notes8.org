@@ -1,5 +1,7 @@
 * Lecture 8
 Today's reading:  Goodrich & Tamassia, Section 3.3.
+
+[[file:original-notes/08][original notes]]
 ** THE "public" AND "private" KEYWORDS
 
 Thus far, we've usually declared fields and methods using the "public" keyword.
