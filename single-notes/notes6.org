@@ -1,6 +1,5 @@
 * Lecture 6
 Today's reading:  Sierra & Bates pp. 282-285.
-
 ** MORE ARRAYS
 ** Automatic Array Construction
 Last lecture, we used a loop to construct all the arrays that the top-level

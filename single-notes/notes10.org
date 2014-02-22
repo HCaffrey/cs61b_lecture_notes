@@ -1,7 +1,5 @@
 * Lecture 10
-
 Today's reading:  All of Chapter 7, plus pp. 28-33, 250-257.
-
 ** INHERITANCE
 In Lab 3, you modified several methods in the SList class so that a "tail"
 reference could keep track of the end of the list, thereby speeding up the

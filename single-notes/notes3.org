@@ -1,8 +1,5 @@
 * Lecture 3
-Monday, January 27, 2014
-
 Today's reading:  Sierra & Bates, pp. 71-74, 76, 85, 240-249, 273-281, 308-309.
-
 ** DEFINING CLASSES
 An object is a repository of data.  _Fields_ are variables that hold the data
 stored in objects.  Fields in objects are also known as _instance variables_.

@@ -1,8 +1,5 @@
 * Lecture 4
-Wednesday, January 29, 2014
-
 Today's reading:  S&B pp. 10-14, 49-53, 75, 78-79, 86, 117, 286-287, 292, 660.
-
 ** PRIMITIVE TYPES
 Not all variables are references to objects.  Some variables are primitive
 types, which store values like "3", "7.2", "h", and "false".  They are:
