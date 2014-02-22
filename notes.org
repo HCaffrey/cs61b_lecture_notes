@@ -1567,7 +1567,7 @@ Here are some important definitions.
 The _interface_ of a class is a set of prototypes for public methods (and
 sometimes public fields), plus descriptions of the methods' behaviors.
 
-An _Abstract_Data_Type_ (ADT) is a class that has a well-defined interface, but
+An _Abstract Data Type_ (ADT) is a class that has a well-defined interface, but
 its implementation details are firmly hidden from other classes.  That way, you
 can change the implementation of a class without jeopardizing the programs that
 depend on it.  The Date class is an ADT.  We'll implement lots of ADTs this
@@ -2269,7 +2269,6 @@ a TailList.  It returns true if s references a TailList object--even if it's
 a subclass of TailList.
 * Lecture 11
 Today's reading:  Sierra & Bates, pp. 95-109, 662.
-
 ** equals()
 Every class has an equals() method.  If you don't define one explictly, you
 inherit Object.equals(), for which "r1.equals(r2)" returns the same boolean
