@@ -15,3 +15,4 @@ Orginal notes from: http://www.cs.berkeley.edu/~jrs/61b/
 - [[file:single-notes/notes9.org][Lecture 9]]
 - [[file:single-notes/notes10.org][Lecture 10]]
 - [[file:single-notes/notes11.org][Lecture 11]]
+- [[file:single-notes/notes12.org][Lecture 12]]
