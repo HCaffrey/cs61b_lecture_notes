@@ -98,3 +98,22 @@
 ;; _empty_string_
 ;; need to be changed to
 ;; _empty\_string_ or _empty string_
+
+
+(defun cs61b-export-to-html ()
+  (interactive)
+  
+  (if (string= (buffer-name) "notes.org")
+      (progn
+	(org-map-entries (lambda ()
+			   (if (looking-at "^\*[ \t]+[Ll]ecture[ \t]+\\([0-9]+\\)")
+			       (let* ((file (format "single-notes/notes%s.org"
+						    (match-string 1))))
+				 (org-copy-subtree)
+				 (with-temp-buffer
+				   (org-paste-subtree)
+				   (write-file file)
+				   (org-export-as-html 3)))))
+			 nil 'file)
+	(org-export-as-html 3))
+    (message "Incorrect buffer: Run in notes.org")))
