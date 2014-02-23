@@ -1,7 +1,7 @@
 #+TITLE: cs61b Lecture Notes
 #+OPTIONS: toc:nil
 Spring 2014 CS61b lecture notes with syntax highlighting and other niceties.
-Orginal notes from: http://www.cs.berkeley.edu/~jrs/61b/
+Original notes from: http://www.cs.berkeley.edu/~jrs/61b/
 
 - [[file:notes.org][monolithic file]]
 - [[file:single-notes/notes1.org][Lecture 1]]
