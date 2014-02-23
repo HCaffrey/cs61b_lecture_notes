@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes2"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T18:42-0800"/>
+<meta name="generated" content="2014-02-22T19:12-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -28,7 +28,6 @@
   pre {
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -152,8 +151,8 @@ for the JavaScript code in this tag.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">Step 1:      declare a String variable.</span>
-s = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>();   <span style="color: #99968b;">// </span><span style="color: #99968b;">Steps 2, 3:  construct new empty String; assign it to s.</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">Step 1:      declare a String variable.</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();   <span style="color: #b22222;">// </span><span style="color: #b22222;">Steps 2, 3:  construct new empty String; assign it to s.</span>
 </pre>
 
 
@@ -168,8 +167,8 @@ a String containing zero characters.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>();  <span style="color: #99968b;">// </span><span style="color: #99968b;">Steps 1, 2, 3 combined.</span>
-s = <span style="color: #95e454;">"Yow!"</span>;               <span style="color: #99968b;">// </span><span style="color: #99968b;">Construct a new String; make s a reference to it.</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();  <span style="color: #b22222;">// </span><span style="color: #b22222;">Steps 1, 2, 3 combined.</span>
+s = <span style="color: #8b2252;">"Yow!"</span>;               <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct a new String; make s a reference to it.</span>
 </pre>
 
 
@@ -181,7 +180,7 @@ s = <span style="color: #95e454;">"Yow!"</span>;               <span style="colo
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s2</span> = s;            <span style="color: #99968b;">// </span><span style="color: #99968b;">Copy the reference stored in s into s2.</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s2</span> = s;            <span style="color: #b22222;">// </span><span style="color: #b22222;">Copy the reference stored in s into s2.</span>
 </pre>
 
 
@@ -196,7 +195,7 @@ Now s and s2 reference the same object.
 
 
 
-<pre class="src src-java">s2 = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>(s);       <span style="color: #99968b;">// </span><span style="color: #99968b;">Construct a copy of object; store reference in s2.</span>
+<pre class="src src-java">s2 = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>(s);       <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct a copy of object; store reference in s2.</span>
 </pre>
 
 
@@ -262,7 +261,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="src src-java">s2 = s.toUppercase();       <span style="color: #99968b;">// </span><span style="color: #99968b;">Create a string like s, but in all upper case.</span>
+<pre class="src src-java">s2 = s.toUppercase();       <span style="color: #b22222;">// </span><span style="color: #b22222;">Create a string like s, but in all upper case.</span>
 </pre>
 
 
@@ -274,7 +273,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s3</span> = s2.concat(<span style="color: #95e454;">"!!"</span>);             <span style="color: #99968b;">// </span><span style="color: #99968b;">Also written:  s3 = s2 + "!!";</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s3</span> = s2.concat(<span style="color: #8b2252;">"!!"</span>);             <span style="color: #b22222;">// </span><span style="color: #b22222;">Also written:  s3 = s2 + "!!";</span>
 </pre>
 
 
@@ -286,7 +285,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s4</span> = <span style="color: #95e454;">"*"</span>.concat(s2).concat(<span style="color: #95e454;">"*"</span>);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Also written:  s4 = "*" + s + "*";</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s4</span> = <span style="color: #8b2252;">"*"</span>.concat(s2).concat(<span style="color: #8b2252;">"*"</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Also written:  s4 = "*" + s + "*";</span>
 </pre>
 
 
@@ -382,13 +381,13 @@ it on the screen.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.io.*</span>;
+<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.io.*</span>;
 
-<span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SimpleIO</span> {
-    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">arg</span>) <span style="color: #8ac6f2; font-weight: bold;">throws</span> <span style="color: #92a65e; font-weight: bold;">Exception</span> {
-        <span style="color: #92a65e; font-weight: bold;">BufferedReader</span> <span style="color: #cae682;">keybd</span> =
-            <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">BufferedReader</span>(<span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span>(System.in));
-        System.out.println(keybd.<span style="color: #92a65e; font-weight: bold;">readLine</span>());
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">SimpleIO</span> {
+    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">arg</span>) <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">Exception</span> {
+        <span style="color: #228b22;">BufferedReader</span> <span style="color: #a0522d;">keybd</span> =
+            <span style="color: #a020f0;">new</span> <span style="color: #228b22;">BufferedReader</span>(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">InputStreamReader</span>(System.in));
+        System.out.println(keybd.<span style="color: #228b22;">readLine</span>());
     }
 }
 </pre>
@@ -431,16 +430,16 @@ How to create an InputStream?  With a URL.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.net.*</span>;
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.io.*</span>;
+<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.net.*</span>;
+<span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.io.*</span>;
 
-<span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">WHWWW</span> {
-    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">arg</span>) <span style="color: #8ac6f2; font-weight: bold;">throws</span> <span style="color: #92a65e; font-weight: bold;">Exception</span> {
-        <span style="color: #92a65e; font-weight: bold;">URL</span> <span style="color: #cae682;">u</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">URL</span>(<span style="color: #95e454;">"http://www.whitehouse.gov</span><span style="color: #92a65e; font-weight: bold;">/");</span>
-<span style="color: #92a65e; font-weight: bold;">        InputStream</span> <span style="color: #cae682;">ins</span> = u.openStream();
-        <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span> <span style="color: #cae682;">isr</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span>(ins);
-        <span style="color: #92a65e; font-weight: bold;">BufferedReader</span> <span style="color: #cae682;">whiteHouse</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">BufferedReader</span>(isr);
-        System.out.println(whiteHouse.<span style="color: #92a65e; font-weight: bold;">readLine</span>());
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">WHWWW</span> {
+    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">arg</span>) <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">Exception</span> {
+        <span style="color: #228b22;">URL</span> <span style="color: #a0522d;">u</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">URL</span>(<span style="color: #8b2252;">"http://www.whitehouse.gov</span><span style="color: #228b22;">/");</span>
+<span style="color: #228b22;">        InputStream</span> <span style="color: #a0522d;">ins</span> = u.openStream();
+        <span style="color: #228b22;">InputStreamReader</span> <span style="color: #a0522d;">isr</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">InputStreamReader</span>(ins);
+        <span style="color: #228b22;">BufferedReader</span> <span style="color: #a0522d;">whiteHouse</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">BufferedReader</span>(isr);
+        System.out.println(whiteHouse.<span style="color: #228b22;">readLine</span>());
     }
 }
 </pre>
@@ -495,7 +494,7 @@ sucks, because you'll probably run into it sooner or later.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T18:42-0800</p>
+<p class="date">Date: 2014-02-22T19:12-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

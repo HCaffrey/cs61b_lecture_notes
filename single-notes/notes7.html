@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes7"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T18:43-0800"/>
+<meta name="generated" content="2014-02-22T19:12-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -28,7 +28,6 @@
   pre {
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -168,27 +167,27 @@ and move all the ints from the old array to the new one.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">AList</span> {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">a</span>[];
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">lastItem</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">AList</span> {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>[];
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">lastItem</span>;
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">AList</span>() {
-    a = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[<span style="color: #ffa07a;">10</span>];                           <span style="color: #99968b;">// </span><span style="color: #99968b;">The number "10" is arbitrary.</span>
-    lastItem = -<span style="color: #ffa07a;">1</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #00008b;">AList</span>() {
+    a = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[<span style="color: #bc8f8f;">10</span>];                           <span style="color: #b22222;">// </span><span style="color: #b22222;">The number "10" is arbitrary.</span>
+    lastItem = -<span style="color: #bc8f8f;">1</span>;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertItem</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">newItem</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">location</span>) {
-    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertItem</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">newItem</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">location</span>) {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
 
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (lastItem + <span style="color: #ffa07a;">1</span> == a.length) {               <span style="color: #99968b;">// </span><span style="color: #99968b;">No room left in the array?</span>
-      <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">b</span>[] = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[<span style="color: #ffa07a;">2</span> * a.length];  <span style="color: #99968b;">// </span><span style="color: #99968b;">Allocate a new array, twice as long.</span>
-      <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">0</span>; i &lt;= lastItem; i++) {      <span style="color: #99968b;">// </span><span style="color: #99968b;">Copy items to the bigger array.</span>
+    <span style="color: #a020f0;">if</span> (lastItem + <span style="color: #bc8f8f;">1</span> == a.length) {               <span style="color: #b22222;">// </span><span style="color: #b22222;">No room left in the array?</span>
+      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">b</span>[] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[<span style="color: #bc8f8f;">2</span> * a.length];  <span style="color: #b22222;">// </span><span style="color: #b22222;">Allocate a new array, twice as long.</span>
+      <span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">0</span>; i &lt;= lastItem; i++) {      <span style="color: #b22222;">// </span><span style="color: #b22222;">Copy items to the bigger array.</span>
         b[i] = a[i];
       }
-      a = b;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Replace the too-small array with the new one.</span>
+      a = b;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Replace the too-small array with the new one.</span>
     }
-    <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = lastItem; i &gt;= location; i--) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Shift items to the right.</span>
-      a[i + <span style="color: #ffa07a;">1</span>] = a[i];
+    <span style="color: #a020f0;">for</span> (i = lastItem; i &gt;= location; i--) {       <span style="color: #b22222;">// </span><span style="color: #b22222;">Shift items to the right.</span>
+      a[i + <span style="color: #bc8f8f;">1</span>] = a[i];
     }
     a[location] = newItem;
     lastItem++;
@@ -213,10 +212,10 @@ to "car" and "cdr".  However, our node is an explicitly defined object.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span> {          <span style="color: #99968b;">// </span><span style="color: #99968b;">ListNode is a recursive type</span>
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">item</span>;
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">next</span>;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Here we're using ListNode before</span>
-}                                <span style="color: #99968b;">//   </span><span style="color: #99968b;">we've finished declaring it.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">ListNode</span> {          <span style="color: #b22222;">// </span><span style="color: #b22222;">ListNode is a recursive type</span>
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">item</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">next</span>;          <span style="color: #b22222;">// </span><span style="color: #b22222;">Here we're using ListNode before</span>
+}                                <span style="color: #b22222;">//   </span><span style="color: #b22222;">we've finished declaring it.</span>
 </pre>
 
 
@@ -226,10 +225,10 @@ Let's make some ListNodes.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">l1</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(), <span style="color: #cae682;">l2</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(), <span style="color: #cae682;">l3</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>();
-l1.item = <span style="color: #ffa07a;">7</span>;
-l2.item = <span style="color: #ffa07a;">0</span>;
-l3.item = <span style="color: #ffa07a;">6</span>;
+<pre class="src src-java"><span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">l1</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(), <span style="color: #a0522d;">l2</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(), <span style="color: #a0522d;">l3</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>();
+l1.item = <span style="color: #bc8f8f;">7</span>;
+l2.item = <span style="color: #bc8f8f;">0</span>;
+l3.item = <span style="color: #bc8f8f;">6</span>;
 </pre>
 
 
@@ -255,7 +254,7 @@ In Java, this is called "null".
 
 
 
-<pre class="src src-java">l3.next = <span style="color: #7fffd4;">null</span>;
+<pre class="src src-java">l3.next = <span style="color: #5f9ea0;">null</span>;
 </pre>
 
 
@@ -270,13 +269,13 @@ To simplify programming, let's add some constructors to the ListNode class.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">ListNode</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">n</span>) {
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">ListNode</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>, <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">n</span>) {
   item = i;
   next = n;
 }
 
-<span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">ListNode</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>) {
-  <span style="color: #8ac6f2; font-weight: bold;">this</span>(i, <span style="color: #7fffd4;">null</span>);
+<span style="color: #da70d6;">public</span> <span style="color: #00008b;">ListNode</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>) {
+  <span style="color: #a020f0;">this</span>(i, <span style="color: #5f9ea0;">null</span>);
 }
 </pre>
 
@@ -287,7 +286,7 @@ These constructors allow us to emulate Scheme's "cons" operation.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">l1</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">7</span>, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">0</span>, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">6</span>)));
+<pre class="src src-java"><span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">l1</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(<span style="color: #bc8f8f;">7</span>, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(<span style="color: #bc8f8f;">0</span>, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(<span style="color: #bc8f8f;">6</span>)));
 </pre>
 
 </div>
@@ -310,11 +309,11 @@ The following method inserts a new item into the list immediately after "this".
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertAfter</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">item</span>) {
-  next = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(item, next);
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertAfter</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">item</span>) {
+  next = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(item, next);
 }
 
-l2.insertAfter(<span style="color: #ffa07a;">3</span>);
+l2.insertAfter(<span style="color: #bc8f8f;">3</span>);
 </pre>
 
 
@@ -352,9 +351,9 @@ declaring a reference of type Object.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> {
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>;
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">next</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SListNode</span> {
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">next</span>;
 }
 </pre>
 
@@ -382,7 +381,7 @@ There are two problems with SListNodes.
 </p>
 
 
-<pre class="src src-java">x = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(<span style="color: #95e454;">"soap"</span>, x);
+<pre class="src src-java">x = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(<span style="color: #8b2252;">"soap"</span>, x);
 </pre>
 
 <p>
@@ -404,17 +403,17 @@ lists in the SList class, rather than the SListNode class.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;             <span style="color: #99968b;">// </span><span style="color: #99968b;">First node in list.</span>
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Number of items in list.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;             <span style="color: #b22222;">// </span><span style="color: #b22222;">First node in list.</span>
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Number of items in list.</span>
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">SList</span>() {                    <span style="color: #99968b;">// </span><span style="color: #99968b;">Here's how to represent an empty list.</span>
-    head = <span style="color: #7fffd4;">null</span>;
-    size = <span style="color: #ffa07a;">0</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #00008b;">SList</span>() {                    <span style="color: #b22222;">// </span><span style="color: #b22222;">Here's how to represent an empty list.</span>
+    head = <span style="color: #5f9ea0;">null</span>;
+    size = <span style="color: #bc8f8f;">0</span>;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>) {
-    head = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(item, head);
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>) {
+    head = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(item, head);
     size++;
   }
 }
@@ -444,7 +443,7 @@ quickly than if the SListNodes had to be counted.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T18:43-0800</p>
+<p class="date">Date: 2014-02-22T19:12-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

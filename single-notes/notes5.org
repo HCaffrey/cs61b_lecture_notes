@@ -70,14 +70,14 @@ wrong and do one loop iteration too few.  For example, suppose you want to
 print all the prime numbers in the range 2...n.
 
 #+Begin_SRC java
-    public static void printPrimes(int n) {
-      int i;
-      for (i = 2; i < n; i++) {        // ERROR!!!  Condition should be i <= n.
-        if (isPrime(i)) {
-          System.out.print(" " + i);
-        }
+  public static void printPrimes(int n) {
+    int i;
+    for (i = 2; i < n; i++) {        // ERROR!!!  Condition should be i <= n.
+      if (isPrime(i)) {
+        System.out.print(" " + i);
       }
     }
+  }
 #+END_SRC
 
 Suppose we correct this method so the loop condition is "i <= n".  Think

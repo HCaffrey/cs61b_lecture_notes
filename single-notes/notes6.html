@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes6"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T18:43-0800"/>
+<meta name="generated" content="2014-02-22T19:12-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -28,7 +28,6 @@
   pre {
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -169,7 +168,7 @@ Java can construct all of the arrays for you at once.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">table</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[x][y];
+<pre class="src src-java"><span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">table</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[x][y];
 </pre>
 
 
@@ -192,8 +191,8 @@ initializers.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">Human</span>[] <span style="color: #cae682;">b</span> = {amanda, rishi, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">Human</span>(<span style="color: #95e454;">"Paolo"</span>)};
-<span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">c</span> = {{<span style="color: #ffa07a;">7</span>, <span style="color: #ffa07a;">3</span>, <span style="color: #ffa07a;">2</span>}, {x}, {<span style="color: #ffa07a;">8</span>, <span style="color: #ffa07a;">5</span>, <span style="color: #ffa07a;">0</span>, <span style="color: #ffa07a;">0</span>}, {y + z, <span style="color: #ffa07a;">3</span>}};
+<pre class="src src-java"><span style="color: #228b22;">Human</span>[] <span style="color: #a0522d;">b</span> = {amanda, rishi, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>(<span style="color: #8b2252;">"Paolo"</span>)};
+<span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">c</span> = {{<span style="color: #bc8f8f;">7</span>, <span style="color: #bc8f8f;">3</span>, <span style="color: #bc8f8f;">2</span>}, {x}, {<span style="color: #bc8f8f;">8</span>, <span style="color: #bc8f8f;">5</span>, <span style="color: #bc8f8f;">0</span>, <span style="color: #bc8f8f;">0</span>}, {y + z, <span style="color: #bc8f8f;">3</span>}};
 </pre>
 
 
@@ -207,8 +206,8 @@ Sadly, you can only use this notation in a declaration.  You can't write
 
 
 
-<pre class="src src-java">d = {<span style="color: #ffa07a;">3</span>, <span style="color: #ffa07a;">7</span>};                  <span style="color: #99968b;">// </span><span style="color: #99968b;">Compile-time ERROR.</span>
-f({<span style="color: #ffa07a;">1</span>, <span style="color: #ffa07a;">2</span>, <span style="color: #ffa07a;">3</span>});                <span style="color: #99968b;">// </span><span style="color: #99968b;">Compile-time ERROR.</span>
+<pre class="src src-java">d = {<span style="color: #bc8f8f;">3</span>, <span style="color: #bc8f8f;">7</span>};                  <span style="color: #b22222;">// </span><span style="color: #b22222;">Compile-time ERROR.</span>
+f({<span style="color: #bc8f8f;">1</span>, <span style="color: #bc8f8f;">2</span>, <span style="color: #bc8f8f;">3</span>});                <span style="color: #b22222;">// </span><span style="color: #b22222;">Compile-time ERROR.</span>
 </pre>
 
 
@@ -218,9 +217,9 @@ Another subtlety of array declarations is the following.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">a</span>, <span style="color: #cae682;">b</span>, <span style="color: #cae682;">c</span>;                           <span style="color: #99968b;">// </span><span style="color: #99968b;">a, b, and c all reference arrays.</span>
-<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">a</span>[], <span style="color: #cae682;">b</span>, <span style="color: #cae682;">c</span>[][];           <span style="color: #99968b;">// </span><span style="color: #99968b;">a is 1D; c is 2D; b is not a reference/array.</span>
-<span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">a</span>, <span style="color: #cae682;">b</span>[];            <span style="color: #99968b;">// </span><span style="color: #99968b;">a references a 1D array; b references a 2D array.</span>
+<pre class="src src-java"><span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span>, <span style="color: #a0522d;">c</span>;                           <span style="color: #b22222;">// </span><span style="color: #b22222;">a, b, and c all reference arrays.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>[], <span style="color: #a0522d;">b</span>, <span style="color: #a0522d;">c</span>[][];           <span style="color: #b22222;">// </span><span style="color: #b22222;">a is 1D; c is 2D; b is not a reference/array.</span>
+<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span>[];            <span style="color: #b22222;">// </span><span style="color: #b22222;">a references a 1D array; b references a 2D array.</span>
 </pre>
 
 
@@ -238,9 +237,9 @@ objects.  You must construct the objects yourself.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">sentence</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>[<span style="color: #ffa07a;">3</span>];
-sentence[<span style="color: #ffa07a;">0</span>] = <span style="color: #95e454;">"Word"</span>;
-sentence[<span style="color: #ffa07a;">2</span>] = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>();
+<pre class="src src-java"><span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">sentence</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>[<span style="color: #bc8f8f;">3</span>];
+sentence[<span style="color: #bc8f8f;">0</span>] = <span style="color: #8b2252;">"Word"</span>;
+sentence[<span style="color: #bc8f8f;">2</span>] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();
 </pre>
 
 
@@ -262,9 +261,9 @@ you by Java.  Consider the following program.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Echo</span> {
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">args</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>; i &lt; args.length; i++) {
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Echo</span> {
+  <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>; i &lt; args.length; i++) {
       System.out.println(args[i]);
     }
   }
@@ -304,10 +303,10 @@ body has been executed.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">do</span> {
+<pre class="src src-java"><span style="color: #a020f0;">do</span> {
   s = keybd.readLine();
   process(s);
-} <span style="color: #8ac6f2; font-weight: bold;">while</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>);               <span style="color: #99968b;">// </span><span style="color: #99968b;">Exit loop if s is an empty String.</span>
+} <span style="color: #a020f0;">while</span> (s.length() &gt; <span style="color: #bc8f8f;">0</span>);               <span style="color: #b22222;">// </span><span style="color: #b22222;">Exit loop if s is an empty String.</span>
 </pre>
 
 
@@ -335,21 +334,21 @@ right thing.  They behave identically.  Each has a different disadvantage.
 
 
 
-<pre class="src src-java">  s = keybd.readLine();                  |  <span style="color: #8ac6f2; font-weight: bold;">while</span> (<span style="color: #7fffd4;">true</span>) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Loop forever.</span>
-  <span style="color: #8ac6f2; font-weight: bold;">while</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>) {               |    s = keybd.readLine();
-    process(s);                          |    <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() == <span style="color: #ffa07a;">0</span>) {      
-    s = keybd.readLine();                |      <span style="color: #8ac6f2; font-weight: bold;">break</span>;
+<pre class="src src-java">  s = keybd.readLine();                  |  <span style="color: #a020f0;">while</span> (<span style="color: #5f9ea0;">true</span>) {       <span style="color: #b22222;">// </span><span style="color: #b22222;">Loop forever.</span>
+  <span style="color: #a020f0;">while</span> (s.length() &gt; <span style="color: #bc8f8f;">0</span>) {               |    s = keybd.readLine();
+    process(s);                          |    <span style="color: #a020f0;">if</span> (s.length() == <span style="color: #bc8f8f;">0</span>) {      
+    s = keybd.readLine();                |      <span style="color: #a020f0;">break</span>;
   }                                      |    }                           
                                          |    process(s);
                                          |}
-<span style="color: #99968b;">/*</span><span style="color: #99968b;">Disadvantage:  The line "s = keybd..." |</span>
-<span style="color: #99968b;">is repeated twice.  It's not really      |</span>
-<span style="color: #99968b;">a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for </span>
-<span style="color: #99968b;">took 100 lines of code, the              | the reader, because the loop isn't </span>
-<span style="color: #99968b;">duplication would make the code harder   | aligned with its natural endpoint. </span>
-<span style="color: #99968b;">to maintain.  Why?  Because a </span>
-<span style="color: #99968b;">programmer improving the code might change one copy of the duplicated code </span>
-<span style="color: #99968b;">without noticing the need to change the other to match.*/</span>
+<span style="color: #b22222;">/*</span><span style="color: #b22222;">Disadvantage:  The line "s = keybd..." |</span>
+<span style="color: #b22222;">is repeated twice.  It's not really      |</span>
+<span style="color: #b22222;">a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for </span>
+<span style="color: #b22222;">took 100 lines of code, the              | the reader, because the loop isn't </span>
+<span style="color: #b22222;">duplication would make the code harder   | aligned with its natural endpoint. </span>
+<span style="color: #b22222;">to maintain.  Why?  Because a </span>
+<span style="color: #b22222;">programmer improving the code might change one copy of the duplicated code </span>
+<span style="color: #b22222;">without noticing the need to change the other to match.*/</span>
 </pre>
 
 
@@ -363,15 +362,15 @@ result is longer and harder to read.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>; i &lt; <span style="color: #ffa07a;">10</span>; i++) {       |  <span style="color: #92a65e; font-weight: bold;">int</span> i = <span style="color: #ffa07a;">0</span>;
-  s = keybd.readLine();              |  <span style="color: #8ac6f2; font-weight: bold;">do</span> {
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() == <span style="color: #ffa07a;">0</span>) {             |    s = keybd.readLine();       
-    <span style="color: #8ac6f2; font-weight: bold;">break</span>;                           |    <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>) {             
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>; i &lt; <span style="color: #bc8f8f;">10</span>; i++) {       |  <span style="color: #228b22;">int</span> i = <span style="color: #bc8f8f;">0</span>;
+  s = keybd.readLine();              |  <span style="color: #a020f0;">do</span> {
+  <span style="color: #a020f0;">if</span> (s.length() == <span style="color: #bc8f8f;">0</span>) {             |    s = keybd.readLine();       
+    <span style="color: #a020f0;">break</span>;                           |    <span style="color: #a020f0;">if</span> (s.length() &gt; <span style="color: #bc8f8f;">0</span>) {             
   }                                  |      process(s);                      
   process(s);                        |    }
 }                                    |    i++;
-                                     |  } <span style="color: #8ac6f2; font-weight: bold;">while</span> ((i &lt; <span style="color: #ffa07a;">10</span>) &amp;&amp;
-                                     |           (s.length() &gt; <span style="color: #ffa07a;">0</span>));
+                                     |  } <span style="color: #a020f0;">while</span> ((i &lt; <span style="color: #bc8f8f;">10</span>) &amp;&amp;
+                                     |           (s.length() &gt; <span style="color: #bc8f8f;">0</span>));
 </pre>
 
 
@@ -421,10 +420,10 @@ difference between the following two loops?
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>;                           | <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>; i &lt; <span style="color: #ffa07a;">10</span>; i++) {
-<span style="color: #8ac6f2; font-weight: bold;">while</span> (i &lt; <span style="color: #ffa07a;">10</span>) {                     |   <span style="color: #8ac6f2; font-weight: bold;">if</span> (condition(i)) {
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (condition(i)) {                |     <span style="color: #8ac6f2; font-weight: bold;">continue</span>;
-    <span style="color: #8ac6f2; font-weight: bold;">continue</span>;                        |   }
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>;                           | <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>; i &lt; <span style="color: #bc8f8f;">10</span>; i++) {
+<span style="color: #a020f0;">while</span> (i &lt; <span style="color: #bc8f8f;">10</span>) {                     |   <span style="color: #a020f0;">if</span> (condition(i)) {
+  <span style="color: #a020f0;">if</span> (condition(i)) {                |     <span style="color: #a020f0;">continue</span>;
+    <span style="color: #a020f0;">continue</span>;                        |   }
   }                                  |   call(i);
   call(i);                           | }
   i++;                               |
@@ -455,13 +454,13 @@ your code, you should probably turn it into a "final" constant.
 
 
 
-<pre class="src src-java"><span style="color: #e5786d;">BAD</span>:     <span style="color: #8ac6f2; font-weight: bold;">if</span> (month == <span style="color: #ffa07a;">2</span>) {
+<pre class="src src-java"><span style="color: #008b8b;">BAD</span>:     <span style="color: #a020f0;">if</span> (month == <span style="color: #bc8f8f;">2</span>) {
 
-<span style="color: #e5786d;">GOOD</span>:    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">final</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">FEBRUARY</span> = <span style="color: #ffa07a;">2</span>;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Usually near top of class.</span>
+<span style="color: #008b8b;">GOOD</span>:    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">final</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">FEBRUARY</span> = <span style="color: #bc8f8f;">2</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Usually near top of class.</span>
 
          ...
 
-         <span style="color: #8ac6f2; font-weight: bold;">if</span> (month == <span style="color: #7fffd4;">FEBRUARY</span>) {
+         <span style="color: #a020f0;">if</span> (month == <span style="color: #5f9ea0;">FEBRUARY</span>) {
 </pre>
 
 
@@ -486,8 +485,8 @@ You can declare local parameters "final" to prevent them from being changed.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">myMethod</span>(<span style="color: #b0c4de;">final</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span>) {
-  x = <span style="color: #ffa07a;">3</span>;                             <span style="color: #99968b;">// </span><span style="color: #99968b;">Compiler ERROR.  Don't mess with X's!</span>
+<pre class="src src-java"><span style="color: #228b22;">void</span> <span style="color: #0000ff;">myMethod</span>(<span style="color: #da70d6;">final</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+  x = <span style="color: #bc8f8f;">3</span>;                             <span style="color: #b22222;">// </span><span style="color: #b22222;">Compiler ERROR.  Don't mess with X's!</span>
 }
 </pre>
 
@@ -502,8 +501,8 @@ return the same value.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Bob</span> {
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">final</span> <span style="color: #92a65e; font-weight: bold;">long</span> <span style="color: #cae682;">creationTime</span> = System.currentTimeMillis();
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Bob</span> {
+  <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">final</span> <span style="color: #228b22;">long</span> <span style="color: #a0522d;">creationTime</span> = System.currentTimeMillis();
 }
 </pre>
 
@@ -546,7 +545,7 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T18:43-0800</p>
+<p class="date">Date: 2014-02-22T19:12-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

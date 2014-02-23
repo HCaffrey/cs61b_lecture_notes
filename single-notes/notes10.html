@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes10"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T18:43-0800"/>
+<meta name="generated" content="2014-02-22T19:12-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -28,7 +28,6 @@
   pre {
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -163,9 +162,9 @@ inherits the fields and methods of the original SList class.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #8ac6f2; font-weight: bold;">extends</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">The "head" and "size" fields are inherited from SList.</span>
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">tail</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">TailList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">The "head" and "size" fields are inherited from SList.</span>
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">tail</span>;
 </pre>
 
 
@@ -196,8 +195,8 @@ TailList, which will <span style="text-decoration:underline;">override</span> SL
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertEnd</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">obj</span>) {
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">Your solution to Lab 3 goes here.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertEnd</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">obj</span>) {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Your solution to Lab 3 goes here.</span>
 }
 </pre>
 
@@ -223,9 +222,9 @@ to TailList.  It can also modify the work done by SList() if appropriate.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">TailList</span>() {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">SList() constructor called automatically; sets size = 0, head = null</span>
-  tail = <span style="color: #7fffd4;">null</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">TailList</span>() {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">SList() constructor called automatically; sets size = 0, head = null</span>
+  tail = <span style="color: #5f9ea0;">null</span>;
 }
 </pre>
 
@@ -239,9 +238,9 @@ superclass by using the "super" keyword.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">TailList</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">super</span>(x);
-    tail = <span style="color: #7fffd4;">null</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">TailList</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+    <span style="color: #a020f0;">super</span>(x);
+    tail = <span style="color: #5f9ea0;">null</span>;
 }
 </pre>
 
@@ -269,10 +268,10 @@ adjust the tail reference.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">obj</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">super</span>.insertFront(obj);             <span style="color: #99968b;">// </span><span style="color: #99968b;">Insert at the front of the list.</span>
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (size == <span style="color: #ffa07a;">1</span>) {                    <span style="color: #99968b;">// </span><span style="color: #99968b;">If necessary,</span>
-        tail = head;                    <span style="color: #99968b;">//   </span><span style="color: #99968b;">adjust the tail reference.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">obj</span>) {
+    <span style="color: #a020f0;">super</span>.insertFront(obj);             <span style="color: #b22222;">// </span><span style="color: #b22222;">Insert at the front of the list.</span>
+    <span style="color: #a020f0;">if</span> (size == <span style="color: #bc8f8f;">1</span>) {                    <span style="color: #b22222;">// </span><span style="color: #b22222;">If necessary,</span>
+        tail = head;                    <span style="color: #b22222;">//   </span><span style="color: #b22222;">adjust the tail reference.</span>
     }
 }
 }
@@ -298,9 +297,9 @@ not "private".
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
-  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;
-  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
+  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 
   [Method definitions.]
 }
@@ -367,8 +366,8 @@ SList is a TailList.  It merits repeating:
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
-<span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #cae682;">t</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+<span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -394,10 +393,10 @@ When we invoke an overridden method, Java calls the method for the object's
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();
-s.insertEnd(obj);                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Calls TailList.insertEnd()</span>
-s = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
-s.insertEnd(obj);                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Calls SList.insertEnd()</span>
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+s.insertEnd(obj);                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Calls TailList.insertEnd()</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+s.insertEnd(obj);                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Calls SList.insertEnd()</span>
 </pre>
 
 
@@ -435,10 +434,10 @@ type SList that references a TailList.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #cae682;">t</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();
-t.eatTail();                      <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
-<span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy--every TailList is an SList.</span>
-s.eatTail();                      <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+<pre class="src src-java"><span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+t.eatTail();                      <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+<span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy--every TailList is an SList.</span>
+s.eatTail();                      <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -459,13 +458,13 @@ another.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span>;
-<span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #cae682;">t</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();
-s = t;                            <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
-t = s;                            <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
-t = (<span style="color: #92a65e; font-weight: bold;">TailList</span>) s;                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
-s = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
-t = (<span style="color: #92a65e; font-weight: bold;">TailList</span>) s;                 <span style="color: #99968b;">// </span><span style="color: #99968b;">RUN-TIME ERROR:  ClassCastException.</span>
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span>;
+<span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+s = t;                            <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+t = s;                            <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
+t = (<span style="color: #228b22;">TailList</span>) s;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+t = (<span style="color: #228b22;">TailList</span>) s;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">RUN-TIME ERROR:  ClassCastException.</span>
 </pre>
 
 
@@ -489,8 +488,8 @@ Suppose we have a list of Integers.  Recall that nth() returns type Object.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span> = t.nth(<span style="color: #ffa07a;">1</span>).intValue();                <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
-<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">y</span> = ( (<span style="color: #92a65e; font-weight: bold;">Integer</span>) t.nth(<span style="color: #ffa07a;">1</span>) ).intValue();  <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = t.nth(<span style="color: #bc8f8f;">1</span>).intValue();                <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">y</span> = ( (<span style="color: #228b22;">Integer</span>) t.nth(<span style="color: #bc8f8f;">1</span>) ).intValue();  <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
 </pre>
 
 
@@ -500,7 +499,7 @@ Some methods are defined on every Object, though.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">z</span> = t.nth(<span style="color: #ffa07a;">1</span>).toString();             <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">z</span> = t.nth(<span style="color: #bc8f8f;">1</span>).toString();             <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
 </pre>
 
 
@@ -511,8 +510,8 @@ a specific class.  WARNING:  The "o" in "instanceof" is not capitalized.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">if</span> (s <span style="color: #8ac6f2; font-weight: bold;">instanceof</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>) {
-  t = (<span style="color: #92a65e; font-weight: bold;">TailList</span>) s;
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (s <span style="color: #a020f0;">instanceof</span> <span style="color: #228b22;">TailList</span>) {
+  t = (<span style="color: #228b22;">TailList</span>) s;
 }
 </pre>
 
@@ -527,7 +526,7 @@ a subclass of TailList.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T18:43-0800</p>
+<p class="date">Date: 2014-02-22T19:12-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

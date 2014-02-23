@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes8"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T18:43-0800"/>
+<meta name="generated" content="2014-02-22T19:12-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -28,7 +28,6 @@
   pre {
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -171,15 +170,15 @@ code of the Date class by fiddling with the internals of a Date object.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Date</span> {                  |  <span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> EvilTamperer {
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">day</span>;                   |    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> tamper() {
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">month</span>;                 |      Date d = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">Date</span>(<span style="color: #ffa07a;">1</span>, <span style="color: #ffa07a;">1</span>, <span style="color: #ffa07a;">2006</span>);
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">Date</span> {                  |  <span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> EvilTamperer {
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">day</span>;                   |    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> tamper() {
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>;                 |      Date d = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Date</span>(<span style="color: #bc8f8f;">1</span>, <span style="color: #bc8f8f;">1</span>, <span style="color: #bc8f8f;">2006</span>);
                                      |
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">void</span> setMonth(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">m</span>) {     |      d.day = <span style="color: #ffa07a;">100</span>;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Foiled!!</span>
-    month = m;                       |      d.setMonth(<span style="color: #ffa07a;">0</span>);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Foiled again!!</span>
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">void</span> setMonth(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">m</span>) {     |      d.day = <span style="color: #bc8f8f;">100</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Foiled!!</span>
+    month = m;                       |      d.setMonth(<span style="color: #bc8f8f;">0</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Foiled again!!</span>
   }                                  |    }
                                      |  }
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Date</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">month</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">day</span>) {  |
+  <span style="color: #da70d6;">public</span> <span style="color: #00008b;">Date</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">day</span>) {  |
     [Implementation with             |
      error-checking code here.]      |
   }
@@ -289,10 +288,10 @@ previous node, as well as the next node.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">DListNode</span> {                    |  <span style="color: #8ac6f2; font-weight: bold;">class</span> DList {
-  <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>;                       |    <span style="color: #b0c4de;">private</span> DListNode head;
-  <span style="color: #92a65e; font-weight: bold;">DListNode</span> <span style="color: #cae682;">next</span>;                    |    <span style="color: #b0c4de;">private</span> DListNode tail;
-  <span style="color: #92a65e; font-weight: bold;">DListNode</span> <span style="color: #cae682;">prev</span>;                    |  }
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">DListNode</span> {                    |  <span style="color: #a020f0;">class</span> DList {
+  <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>;                       |    <span style="color: #da70d6;">private</span> DListNode head;
+  <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">next</span>;                    |    <span style="color: #da70d6;">private</span> DListNode tail;
+  <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">prev</span>;                    |  }
 }                                    |
 </pre>
 
@@ -311,7 +310,7 @@ DList.
 
 
 
-<pre class="src src-java">tail.prev.next = <span style="color: #7fffd4;">null</span>;
+<pre class="src src-java">tail.prev.next = <span style="color: #5f9ea0;">null</span>;
 tail = tail.prev;
 </pre>
 
@@ -332,9 +331,9 @@ pointer points to the sentinel.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">DList</span> {
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">DListNode</span> <span style="color: #cae682;">head</span>;
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">DList</span> {
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">head</span>;
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 }
 </pre>
 
@@ -374,10 +373,10 @@ Here's an example of a method that removes the last item from a DList.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">removeBack</span>() {
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (head.prev != head) {        <span style="color: #99968b;">// </span><span style="color: #99968b;">Do nothing if the DList is empty.</span>
-    head.prev = head.prev.prev;   <span style="color: #99968b;">// </span><span style="color: #99968b;">Sentinel now points to second-last item.</span>
-    head.prev.next = head;        <span style="color: #99968b;">// </span><span style="color: #99968b;">Second-last item now points to sentinel.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">removeBack</span>() {
+  <span style="color: #a020f0;">if</span> (head.prev != head) {        <span style="color: #b22222;">// </span><span style="color: #b22222;">Do nothing if the DList is empty.</span>
+    head.prev = head.prev.prev;   <span style="color: #b22222;">// </span><span style="color: #b22222;">Sentinel now points to second-last item.</span>
+    head.prev.next = head;        <span style="color: #b22222;">// </span><span style="color: #b22222;">Second-last item now points to sentinel.</span>
     size--;
   }
 }
@@ -392,7 +391,7 @@ In Lab 4 and Homework 4, you'll implement more methods for this DList class.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T18:43-0800</p>
+<p class="date">Date: 2014-02-22T19:12-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

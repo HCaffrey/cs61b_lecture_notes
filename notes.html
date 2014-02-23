@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T18:43-0800"/>
+<meta name="generated" content="2014-02-22T19:12-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -28,7 +28,6 @@
   pre {
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -478,8 +477,8 @@ and specify their <span style="text-decoration:underline;">type</span>.
 
 
 
-<pre class="src src-java">Python:  x = <span style="color: #ffa07a;">1</span>       Scheme:  (<span style="color: #92a65e; font-weight: bold;">let</span> ((x <span style="color: #ffa07a;">1</span>)) )       Java:  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span>;
-                                                          x = <span style="color: #ffa07a;">1</span>;
+<pre class="src src-java">Python:  x = <span style="color: #bc8f8f;">1</span>       Scheme:  (<span style="color: #228b22;">let</span> ((x <span style="color: #bc8f8f;">1</span>)) )       Java:  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>;
+                                                          x = <span style="color: #bc8f8f;">1</span>;
 </pre>
 
 <p>
@@ -514,7 +513,7 @@ For example, Java has a built-in class called String.
 </p>
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">myString</span>;
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">myString</span>;
 </pre>
 
 <p>
@@ -570,9 +569,9 @@ is that you have to wait for it to compile.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">HelloWorld</span> {
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span> (<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">args</span>) {
-    System.out.println(<span style="color: #95e454;">"Hello, world"</span>);
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">HelloWorld</span> {
+  <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span> (<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+    System.out.println(<span style="color: #8b2252;">"Hello, world"</span>);
   }
 }
 </pre>
@@ -644,8 +643,8 @@ have to figure out for yourself how to send characters to the terminal.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">Step 1:      declare a String variable.</span>
-s = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>();   <span style="color: #99968b;">// </span><span style="color: #99968b;">Steps 2, 3:  construct new empty String; assign it to s.</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">Step 1:      declare a String variable.</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();   <span style="color: #b22222;">// </span><span style="color: #b22222;">Steps 2, 3:  construct new empty String; assign it to s.</span>
 </pre>
 
 
@@ -660,8 +659,8 @@ a String containing zero characters.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>();  <span style="color: #99968b;">// </span><span style="color: #99968b;">Steps 1, 2, 3 combined.</span>
-s = <span style="color: #95e454;">"Yow!"</span>;               <span style="color: #99968b;">// </span><span style="color: #99968b;">Construct a new String; make s a reference to it.</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();  <span style="color: #b22222;">// </span><span style="color: #b22222;">Steps 1, 2, 3 combined.</span>
+s = <span style="color: #8b2252;">"Yow!"</span>;               <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct a new String; make s a reference to it.</span>
 </pre>
 
 
@@ -673,7 +672,7 @@ s = <span style="color: #95e454;">"Yow!"</span>;               <span style="colo
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s2</span> = s;            <span style="color: #99968b;">// </span><span style="color: #99968b;">Copy the reference stored in s into s2.</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s2</span> = s;            <span style="color: #b22222;">// </span><span style="color: #b22222;">Copy the reference stored in s into s2.</span>
 </pre>
 
 
@@ -688,7 +687,7 @@ Now s and s2 reference the same object.
 
 
 
-<pre class="src src-java">s2 = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>(s);       <span style="color: #99968b;">// </span><span style="color: #99968b;">Construct a copy of object; store reference in s2.</span>
+<pre class="src src-java">s2 = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>(s);       <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct a copy of object; store reference in s2.</span>
 </pre>
 
 
@@ -754,7 +753,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="src src-java">s2 = s.toUppercase();       <span style="color: #99968b;">// </span><span style="color: #99968b;">Create a string like s, but in all upper case.</span>
+<pre class="src src-java">s2 = s.toUppercase();       <span style="color: #b22222;">// </span><span style="color: #b22222;">Create a string like s, but in all upper case.</span>
 </pre>
 
 
@@ -766,7 +765,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s3</span> = s2.concat(<span style="color: #95e454;">"!!"</span>);             <span style="color: #99968b;">// </span><span style="color: #99968b;">Also written:  s3 = s2 + "!!";</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s3</span> = s2.concat(<span style="color: #8b2252;">"!!"</span>);             <span style="color: #b22222;">// </span><span style="color: #b22222;">Also written:  s3 = s2 + "!!";</span>
 </pre>
 
 
@@ -778,7 +777,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s4</span> = <span style="color: #95e454;">"*"</span>.concat(s2).concat(<span style="color: #95e454;">"*"</span>);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Also written:  s4 = "*" + s + "*";</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s4</span> = <span style="color: #8b2252;">"*"</span>.concat(s2).concat(<span style="color: #8b2252;">"*"</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Also written:  s4 = "*" + s + "*";</span>
 </pre>
 
 
@@ -874,13 +873,13 @@ it on the screen.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.io.*</span>;
+<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.io.*</span>;
 
-<span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SimpleIO</span> {
-    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">arg</span>) <span style="color: #8ac6f2; font-weight: bold;">throws</span> <span style="color: #92a65e; font-weight: bold;">Exception</span> {
-        <span style="color: #92a65e; font-weight: bold;">BufferedReader</span> <span style="color: #cae682;">keybd</span> =
-            <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">BufferedReader</span>(<span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span>(System.in));
-        System.out.println(keybd.<span style="color: #92a65e; font-weight: bold;">readLine</span>());
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">SimpleIO</span> {
+    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">arg</span>) <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">Exception</span> {
+        <span style="color: #228b22;">BufferedReader</span> <span style="color: #a0522d;">keybd</span> =
+            <span style="color: #a020f0;">new</span> <span style="color: #228b22;">BufferedReader</span>(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">InputStreamReader</span>(System.in));
+        System.out.println(keybd.<span style="color: #228b22;">readLine</span>());
     }
 }
 </pre>
@@ -923,16 +922,16 @@ How to create an InputStream?  With a URL.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.net.*</span>;
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.io.*</span>;
+<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.net.*</span>;
+<span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.io.*</span>;
 
-<span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">WHWWW</span> {
-    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">arg</span>) <span style="color: #8ac6f2; font-weight: bold;">throws</span> <span style="color: #92a65e; font-weight: bold;">Exception</span> {
-        <span style="color: #92a65e; font-weight: bold;">URL</span> <span style="color: #cae682;">u</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">URL</span>(<span style="color: #95e454;">"http://www.whitehouse.gov</span><span style="color: #92a65e; font-weight: bold;">/");</span>
-<span style="color: #92a65e; font-weight: bold;">        InputStream</span> <span style="color: #cae682;">ins</span> = u.openStream();
-        <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span> <span style="color: #cae682;">isr</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">InputStreamReader</span>(ins);
-        <span style="color: #92a65e; font-weight: bold;">BufferedReader</span> <span style="color: #cae682;">whiteHouse</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">BufferedReader</span>(isr);
-        System.out.println(whiteHouse.<span style="color: #92a65e; font-weight: bold;">readLine</span>());
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">WHWWW</span> {
+    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">arg</span>) <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">Exception</span> {
+        <span style="color: #228b22;">URL</span> <span style="color: #a0522d;">u</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">URL</span>(<span style="color: #8b2252;">"http://www.whitehouse.gov</span><span style="color: #228b22;">/");</span>
+<span style="color: #228b22;">        InputStream</span> <span style="color: #a0522d;">ins</span> = u.openStream();
+        <span style="color: #228b22;">InputStreamReader</span> <span style="color: #a0522d;">isr</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">InputStreamReader</span>(ins);
+        <span style="color: #228b22;">BufferedReader</span> <span style="color: #a0522d;">whiteHouse</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">BufferedReader</span>(isr);
+        System.out.println(whiteHouse.<span style="color: #228b22;">readLine</span>());
     }
 }
 </pre>
@@ -1011,12 +1010,12 @@ amanda.age is a field.  Let's write a <span style="text-decoration:underline;">c
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">age</span>;                <span style="color: #99968b;">// </span><span style="color: #99968b;">The Human's age (an integer).</span>
-    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">name</span>;            <span style="color: #99968b;">// </span><span style="color: #99968b;">The Human's name.</span>
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">age</span>;                <span style="color: #b22222;">// </span><span style="color: #b22222;">The Human's age (an integer).</span>
+    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">name</span>;            <span style="color: #b22222;">// </span><span style="color: #b22222;">The Human's name.</span>
 
-    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">introduce</span>() {      <span style="color: #99968b;">// </span><span style="color: #99968b;">This is a _method definition_.</span>
-        System.out.println(<span style="color: #95e454;">"I'm "</span> + name + <span style="color: #95e454;">" and I'm "</span> + age + <span style="color: #95e454;">" years old."</span>);
+    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">introduce</span>() {      <span style="color: #b22222;">// </span><span style="color: #b22222;">This is a _method definition_.</span>
+        System.out.println(<span style="color: #8b2252;">"I'm "</span> + name + <span style="color: #8b2252;">" and I'm "</span> + age + <span style="color: #8b2252;">" years old."</span>);
     }
 }
 </pre>
@@ -1031,10 +1030,10 @@ amanda by executing the following code.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">Human</span> <span style="color: #cae682;">amanda</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">Human</span>();    <span style="color: #99968b;">// </span><span style="color: #99968b;">Create amanda.</span>
-amanda.age = <span style="color: #ffa07a;">6</span>;                <span style="color: #99968b;">// </span><span style="color: #99968b;">Set amanda's fields.</span>
-amanda.name = <span style="color: #95e454;">"Amanda"</span>;
-amanda.introduce();            <span style="color: #99968b;">// </span><span style="color: #99968b;">_Method call_ has amanda introduce herself.</span>
+<pre class="src src-java"><span style="color: #228b22;">Human</span> <span style="color: #a0522d;">amanda</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>();    <span style="color: #b22222;">// </span><span style="color: #b22222;">Create amanda.</span>
+amanda.age = <span style="color: #bc8f8f;">6</span>;                <span style="color: #b22222;">// </span><span style="color: #b22222;">Set amanda's fields.</span>
+amanda.name = <span style="color: #8b2252;">"Amanda"</span>;
+amanda.introduce();            <span style="color: #b22222;">// </span><span style="color: #b22222;">_Method call_ has amanda introduce herself.</span>
 </pre>
 
 
@@ -1058,10 +1057,10 @@ two or more objects, we can.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">Include all the stuff from the previous definition of Human here.</span>
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Include all the stuff from the previous definition of Human here.</span>
 
-    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">copy</span>(<span style="color: #92a65e; font-weight: bold;">Human</span> <span style="color: #cae682;">original</span>) {
+    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">copy</span>(<span style="color: #228b22;">Human</span> <span style="color: #a0522d;">original</span>) {
         age = original.age;
         name = original.name;
     }
@@ -1089,11 +1088,11 @@ object.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">Include all the stuff from the previous definitions here.</span>
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Include all the stuff from the previous definitions here.</span>
 
-    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>(<span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">givenName</span>) {
-        age = <span style="color: #ffa07a;">6</span>;
+    <span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>(<span style="color: #228b22;">String</span> <span style="color: #a0522d;">givenName</span>) {
+        age = <span style="color: #bc8f8f;">6</span>;
         name = givenName;
     }
 }
@@ -1108,7 +1107,7 @@ is a String reference.  Now, we can shorten amanda's coming-out party to
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">Human</span> <span style="color: #cae682;">amanda</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">Human</span>(<span style="color: #95e454;">"Amanda"</span>);
+<pre class="src src-java"><span style="color: #228b22;">Human</span> <span style="color: #a0522d;">amanda</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>(<span style="color: #8b2252;">"Amanda"</span>);
 amanda.introduce();
 </pre>
 
@@ -1125,7 +1124,7 @@ no parameters and does no initializing.  Hence, when we wrote
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">Human</span> <span style="color: #cae682;">amanda</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">Human</span>();
+<pre class="src src-java"><span style="color: #228b22;">Human</span> <span style="color: #a0522d;">amanda</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>();
 </pre>
 
 
@@ -1136,7 +1135,7 @@ written, it would look like this:
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>() {
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>() {
 }
 </pre>
 
@@ -1153,12 +1152,12 @@ constructor with no parameters.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">Include all the stuff from the previous definitions here.</span>
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Include all the stuff from the previous definitions here.</span>
 
-    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>() {
-        age = <span style="color: #ffa07a;">0</span>;
-        name = <span style="color: #95e454;">"Untitled"</span>;
+    <span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>() {
+        age = <span style="color: #bc8f8f;">0</span>;
+        name = <span style="color: #8b2252;">"Untitled"</span>;
     }
 }
 </pre>
@@ -1179,9 +1178,9 @@ last constructor as follows without changing its meaning.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>() {
-    <span style="color: #8ac6f2; font-weight: bold;">this</span>.age = <span style="color: #ffa07a;">0</span>;
-    <span style="color: #8ac6f2; font-weight: bold;">this</span>.name = <span style="color: #95e454;">"Untitled"</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>() {
+    <span style="color: #a020f0;">this</span>.age = <span style="color: #bc8f8f;">0</span>;
+    <span style="color: #a020f0;">this</span>.name = <span style="color: #8b2252;">"Untitled"</span>;
 }
 </pre>
 
@@ -1195,11 +1194,11 @@ fields.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">change</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">age</span>) {
-    <span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">name</span> = <span style="color: #95e454;">"Tom"</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">change</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">age</span>) {
+    <span style="color: #228b22;">String</span> <span style="color: #a0522d;">name</span> = <span style="color: #8b2252;">"Tom"</span>;
 
-    <span style="color: #8ac6f2; font-weight: bold;">this</span>.age = age;
-    <span style="color: #8ac6f2; font-weight: bold;">this</span>.name = name;
+    <span style="color: #a020f0;">this</span>.age = age;
+    <span style="color: #a020f0;">this</span>.name = name;
 }
 </pre>
 
@@ -1246,14 +1245,14 @@ Static fields are also called <span style="text-decoration:underline;">class var
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
-    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">numberOfHumans</span>;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">numberOfHumans</span>;
 
-    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">age</span>;
-    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">name</span>;
+    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">age</span>;
+    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">name</span>;
 
-    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Human</span>() {
-        numberOfHumans++;    <span style="color: #99968b;">// </span><span style="color: #99968b;">The constructor increments the number by one.</span>
+    <span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>() {
+        numberOfHumans++;    <span style="color: #b22222;">// </span><span style="color: #b22222;">The constructor increments the number by one.</span>
     }
 }
 </pre>
@@ -1267,10 +1266,10 @@ name of a specific object.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">kids</span> = Human.numberOfHumans / <span style="color: #ffa07a;">4</span>;  <span style="color: #99968b;">// </span><span style="color: #99968b;">Good.</span>
-<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">kids</span> = amanda.numberOfHumans / <span style="color: #ffa07a;">4</span>; <span style="color: #99968b;">// </span><span style="color: #99968b;">This works too, but has nothing to</span>
-                                      <span style="color: #99968b;">// </span><span style="color: #99968b;">do with amanda specifically.  Don't</span>
-                                      <span style="color: #99968b;">// </span><span style="color: #99968b;">do this; it's bad (confusing) style.</span>
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">kids</span> = Human.numberOfHumans / <span style="color: #bc8f8f;">4</span>;  <span style="color: #b22222;">// </span><span style="color: #b22222;">Good.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">kids</span> = amanda.numberOfHumans / <span style="color: #bc8f8f;">4</span>; <span style="color: #b22222;">// </span><span style="color: #b22222;">This works too, but has nothing to</span>
+                                      <span style="color: #b22222;">// </span><span style="color: #b22222;">do with amanda specifically.  Don't</span>
+                                      <span style="color: #b22222;">// </span><span style="color: #b22222;">do this; it's bad (confusing) style.</span>
 </pre>
 
 
@@ -1284,9 +1283,9 @@ as a parameter.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Human</span> {
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
     ...
-    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> printHumans() {
+    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> printHumans() {
         System.out.println(numberOfHumans);
     }
 }
@@ -1417,7 +1416,7 @@ The java.lang library has more operations in&hellip;
 
 
 
-<pre class="src src-java">x = Math.abs(y);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Absolute value.  Also see Math.sqrt, Math.sin, etc.</span>
+<pre class="src src-java">x = Math.abs(y);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Absolute value.  Also see Math.sqrt, Math.sin, etc.</span>
 </pre>
 
 <ul>
@@ -1428,7 +1427,7 @@ The java.lang library has more operations in&hellip;
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span> = Integer.parseInt(<span style="color: #95e454;">"1984"</span>);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Convert a string to a number.</span>
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = Integer.parseInt(<span style="color: #8b2252;">"1984"</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Convert a string to a number.</span>
 </pre>
 
 <ul>
@@ -1439,7 +1438,7 @@ The java.lang library has more operations in&hellip;
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">double</span> <span style="color: #cae682;">d</span> = Double.parseDouble(<span style="color: #95e454;">"3.14"</span>);
+<pre class="src src-java"><span style="color: #228b22;">double</span> <span style="color: #a0522d;">d</span> = Double.parseDouble(<span style="color: #8b2252;">"3.14"</span>);
 </pre>
 
 
@@ -1448,11 +1447,11 @@ Converting types:  integers can be assigned to variables of longer types.
 </p>
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">43</span>; 
-<span style="color: #92a65e; font-weight: bold;">long</span> <span style="color: #cae682;">l</span> = <span style="color: #ffa07a;">43</span>;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Okay, because longs are a superset of ints.</span>
-l = i;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Okay, because longs are a superset of ints.</span>
-i = l;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Compiler ERROR.</span>
-i = (<span style="color: #92a65e; font-weight: bold;">int</span>) l;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Okay.</span>
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">43</span>; 
+<span style="color: #228b22;">long</span> <span style="color: #a0522d;">l</span> = <span style="color: #bc8f8f;">43</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Okay, because longs are a superset of ints.</span>
+l = i;          <span style="color: #b22222;">// </span><span style="color: #b22222;">Okay, because longs are a superset of ints.</span>
+i = l;          <span style="color: #b22222;">// </span><span style="color: #b22222;">Compiler ERROR.</span>
+i = (<span style="color: #228b22;">int</span>) l;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Okay.</span>
 </pre>
 
 <p>
@@ -1504,10 +1503,10 @@ the comparison operators "==", "&lt;", "&gt;", "&lt;=", "&gt;=", "!=" (not equal
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">x</span> = <span style="color: #ffa07a;">3</span> == <span style="color: #ffa07a;">5</span>;       <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now false.</span>
-x = <span style="color: #ffa07a;">4.5</span> &gt;= <span style="color: #ffa07a;">4.5</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now true.</span>
-x = <span style="color: #ffa07a;">4</span> != <span style="color: #ffa07a;">5</span> - <span style="color: #ffa07a;">1</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now false.</span>
-x = <span style="color: #7fffd4;">false</span> == (<span style="color: #ffa07a;">3</span> == <span style="color: #ffa07a;">0</span>);    <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now true.</span>
+<pre class="src src-java"><span style="color: #228b22;">boolean</span> <span style="color: #a0522d;">x</span> = <span style="color: #bc8f8f;">3</span> == <span style="color: #bc8f8f;">5</span>;       <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now false.</span>
+x = <span style="color: #bc8f8f;">4.5</span> &gt;= <span style="color: #bc8f8f;">4.5</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now true.</span>
+x = <span style="color: #bc8f8f;">4</span> != <span style="color: #bc8f8f;">5</span> - <span style="color: #bc8f8f;">1</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now false.</span>
+x = <span style="color: #5f9ea0;">false</span> == (<span style="color: #bc8f8f;">3</span> == <span style="color: #bc8f8f;">0</span>);    <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now true.</span>
 </pre>
 
 
@@ -1525,7 +1524,7 @@ of statements.  The form is
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">if</span> (boolValue) {
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (boolValue) {
     statements;
 }
 </pre>
@@ -1538,12 +1537,12 @@ parentheses around the boolean expression are required (for no good reason).
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">pass</span> = score &gt;= <span style="color: #ffa07a;">75</span>;
-<span style="color: #8ac6f2; font-weight: bold;">if</span> (pass) {
-    output(<span style="color: #95e454;">"You pass CS 61B"</span>);
-} <span style="color: #8ac6f2; font-weight: bold;">else</span> {
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">The following line executes if and only if score &lt; 75.</span>
-    output(<span style="color: #95e454;">"You are such an unbelievable loser"</span>);
+<pre class="src src-java"><span style="color: #228b22;">boolean</span> <span style="color: #a0522d;">pass</span> = score &gt;= <span style="color: #bc8f8f;">75</span>;
+<span style="color: #a020f0;">if</span> (pass) {
+    output(<span style="color: #8b2252;">"You pass CS 61B"</span>);
+} <span style="color: #a020f0;">else</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">The following line executes if and only if score &lt; 75.</span>
+    output(<span style="color: #8b2252;">"You are such an unbelievable loser"</span>);
 }
 </pre>
 
@@ -1557,15 +1556,15 @@ numbers.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">if</span> (x &gt; y) {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (x &gt; z) {
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (x &gt; y) {
+    <span style="color: #a020f0;">if</span> (x &gt; z) {
         maximum = x;
-    } <span style="color: #8ac6f2; font-weight: bold;">else</span> {
+    } <span style="color: #a020f0;">else</span> {
         maximum = z;
     }
-} <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> (y &gt; z) {
+} <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (y &gt; z) {
     maximum = y;
-} <span style="color: #8ac6f2; font-weight: bold;">else</span> {
+} <span style="color: #a020f0;">else</span> {
     maximum = z;
 }
 </pre>
@@ -1579,20 +1578,20 @@ variable x is equal to some constant.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">switch</span> (month) {        |      <span style="color: #8ac6f2; font-weight: bold;">if</span> (month == <span style="color: #ffa07a;">2</span>) {                         
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">2</span>:                 |        days = <span style="color: #ffa07a;">28</span>;                              
-  days = <span style="color: #ffa07a;">28</span>;            |      } <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> ((month == <span style="color: #ffa07a;">4</span>) || (month == <span style="color: #ffa07a;">6</span>) ||
-  <span style="color: #8ac6f2; font-weight: bold;">break</span>;                |                 (month == <span style="color: #ffa07a;">9</span>) || (month == <span style="color: #ffa07a;">11</span>)) {
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">4</span>:                 |        days = <span style="color: #ffa07a;">30</span>;                              
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">6</span>:                 |      } <span style="color: #8ac6f2; font-weight: bold;">else</span> {                                  
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">9</span>:                 |        days = <span style="color: #ffa07a;">31</span>;                              
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">11</span>:                |      }                                         
-  days = <span style="color: #ffa07a;">30</span>;            |
-  <span style="color: #8ac6f2; font-weight: bold;">break</span>;
-<span style="color: #8ac6f2; font-weight: bold;">default</span>:
-  days = <span style="color: #ffa07a;">31</span>;
-  <span style="color: #8ac6f2; font-weight: bold;">break</span>;
-}                   <span style="color: #99968b;">//  </span><span style="color: #99968b;">These two code fragments do exactly the same thing.</span>
+<pre class="src src-java"><span style="color: #a020f0;">switch</span> (month) {        |      <span style="color: #a020f0;">if</span> (month == <span style="color: #bc8f8f;">2</span>) {                         
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">2</span>:                 |        days = <span style="color: #bc8f8f;">28</span>;                              
+  days = <span style="color: #bc8f8f;">28</span>;            |      } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> ((month == <span style="color: #bc8f8f;">4</span>) || (month == <span style="color: #bc8f8f;">6</span>) ||
+  <span style="color: #a020f0;">break</span>;                |                 (month == <span style="color: #bc8f8f;">9</span>) || (month == <span style="color: #bc8f8f;">11</span>)) {
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">4</span>:                 |        days = <span style="color: #bc8f8f;">30</span>;                              
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">6</span>:                 |      } <span style="color: #a020f0;">else</span> {                                  
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">9</span>:                 |        days = <span style="color: #bc8f8f;">31</span>;                              
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">11</span>:                |      }                                         
+  days = <span style="color: #bc8f8f;">30</span>;            |
+  <span style="color: #a020f0;">break</span>;
+<span style="color: #a020f0;">default</span>:
+  days = <span style="color: #bc8f8f;">31</span>;
+  <span style="color: #a020f0;">break</span>;
+}                   <span style="color: #b22222;">//  </span><span style="color: #b22222;">These two code fragments do exactly the same thing.</span>
 </pre>
 
 
@@ -1605,14 +1604,14 @@ in the following example, both Strings are printed.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">switch</span> (month) {
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">12</span>:
-    output(<span style="color: #95e454;">"It's December."</span>);
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">Just keep moving right on through.</span>
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">1</span>:
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">2</span>:
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">11</span>:
-    output(<span style="color: #95e454;">"It's cold."</span>);
+<pre class="src src-java"><span style="color: #a020f0;">switch</span> (month) {
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">12</span>:
+    output(<span style="color: #8b2252;">"It's December."</span>);
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Just keep moving right on through.</span>
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">1</span>:
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">2</span>:
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">11</span>:
+    output(<span style="color: #8b2252;">"It's cold."</span>);
 }
 </pre>
 
@@ -1647,11 +1646,11 @@ Here's a recursive method that prints the numbers from 1 to x.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">oneToX</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (x &lt; <span style="color: #ffa07a;">1</span>) {
-        <span style="color: #8ac6f2; font-weight: bold;">return</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">oneToX</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+    <span style="color: #a020f0;">if</span> (x &lt; <span style="color: #bc8f8f;">1</span>) {
+        <span style="color: #a020f0;">return</span>;
     }
-    oneToX(x - <span style="color: #ffa07a;">1</span>);
+    oneToX(x - <span style="color: #bc8f8f;">1</span>);
     System.out.println(x);
 }
 </pre>
@@ -1665,17 +1664,17 @@ a non-void type.  For instance, here's a function that returns an int.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">daysInMonth</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">month</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">switch</span> (month) {
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">2</span>:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #ffa07a;">28</span>;
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">4</span>:
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">6</span>:
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">9</span>:
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">11</span>:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #ffa07a;">30</span>;
-    <span style="color: #8ac6f2; font-weight: bold;">default</span>:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #ffa07a;">31</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">daysInMonth</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>) {
+    <span style="color: #a020f0;">switch</span> (month) {
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">2</span>:
+        <span style="color: #a020f0;">return</span> <span style="color: #bc8f8f;">28</span>;
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">4</span>:
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">6</span>:
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">9</span>:
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">11</span>:
+        <span style="color: #a020f0;">return</span> <span style="color: #bc8f8f;">30</span>;
+    <span style="color: #a020f0;">default</span>:
+        <span style="color: #a020f0;">return</span> <span style="color: #bc8f8f;">31</span>;
     }
 }
 </pre>
@@ -1687,9 +1686,9 @@ The "return" value can be an expression.  Some examples:
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">return</span> x + y - z;
+<pre class="src src-java"><span style="color: #a020f0;">return</span> x + y - z;
 
-<span style="color: #8ac6f2; font-weight: bold;">return</span> car.velocity(time);
+<span style="color: #a020f0;">return</span> car.velocity(time);
 </pre>
 
 </div>
@@ -1727,15 +1726,15 @@ integer in the range 2&hellip;n - 1.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">isPrime</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">divisor</span> = <span style="color: #ffa07a;">2</span>;
-  <span style="color: #8ac6f2; font-weight: bold;">while</span> (divisor &lt; n) {         <span style="color: #7fffd4;">_</span> &lt;- <span style="color: #95e454;">"divisor &lt; n"</span> is the _loop_condition_.
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (n % divisor == <span style="color: #ffa07a;">0</span>) {      |
-      <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;              | These lines inside the braces
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">isPrime</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">divisor</span> = <span style="color: #bc8f8f;">2</span>;
+  <span style="color: #a020f0;">while</span> (divisor &lt; n) {         <span style="color: #5f9ea0;">_</span> &lt;- <span style="color: #8b2252;">"divisor &lt; n"</span> is the _loop_condition_.
+    <span style="color: #a020f0;">if</span> (n % divisor == <span style="color: #bc8f8f;">0</span>) {      |
+      <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;              | These lines inside the braces
     }                            | are called the _loop_body_.  
-    divisor++;                  <span style="color: #7fffd4;">_</span>|
+    divisor++;                  <span style="color: #5f9ea0;">_</span>|
   }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">true</span>;
+  <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">true</span>;
 }
 </pre>
 
@@ -1779,8 +1778,8 @@ following "while" loop.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (initialize; condition; next) {      |    initialize;   
-  statements;                            |    <span style="color: #8ac6f2; font-weight: bold;">while</span> (condition) {
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (initialize; condition; next) {      |    initialize;   
+  statements;                            |    <span style="color: #a020f0;">while</span> (condition) {
 }                                        |      statements;
                                          |      next;
                                          |    }
@@ -1796,13 +1795,13 @@ variable over a fixed range of values.  isPrime can be rewritten thus:
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">isPrime</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-  <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">divisor</span> = <span style="color: #ffa07a;">2</span>; divisor &lt; n; divisor++) {    <span style="color: #7fffd4;">_</span>
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (n % divisor == <span style="color: #ffa07a;">0</span>) {                           |
-      <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;                                   | Loop body.
-    }                                                <span style="color: #7fffd4;">_</span>|
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">isPrime</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">divisor</span> = <span style="color: #bc8f8f;">2</span>; divisor &lt; n; divisor++) {    <span style="color: #5f9ea0;">_</span>
+    <span style="color: #a020f0;">if</span> (n % divisor == <span style="color: #bc8f8f;">0</span>) {                           |
+      <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;                                   | Loop body.
+    }                                                <span style="color: #5f9ea0;">_</span>|
   }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">true</span>;
+  <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">true</span>;
 }
 </pre>
 
@@ -1815,11 +1814,11 @@ print all the prime numbers in the range 2&hellip;n.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">printPrimes</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
-  <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span>; i &lt; n; i++) {        <span style="color: #99968b;">// </span><span style="color: #99968b;">ERROR!!!  Condition should be i &lt;= n.</span>
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (isPrime(i)) {
-      System.out.print(<span style="color: #95e454;">" "</span> + i);
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">printPrimes</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+  <span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">2</span>; i &lt; n; i++) {        <span style="color: #b22222;">// </span><span style="color: #b22222;">ERROR!!!  Condition should be i &lt;= n.</span>
+    <span style="color: #a020f0;">if</span> (isPrime(i)) {
+      System.out.print(<span style="color: #8b2252;">" "</span> + i);
     }
   }
 }
@@ -1859,7 +1858,7 @@ through some reference variable like "c" above.  We declare c thusly:
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">char</span>[] <span style="color: #cae682;">c</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">Reference to an array (of any length) of characters.</span>
+<pre class="src src-java"><span style="color: #228b22;">char</span>[] <span style="color: #a0522d;">c</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">Reference to an array (of any length) of characters.</span>
 </pre>
 
 
@@ -1869,7 +1868,7 @@ We can construct an array of four characters as follows.
 
 
 
-<pre class="src src-java">c = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">char</span>[<span style="color: #ffa07a;">4</span>];
+<pre class="src src-java">c = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">char</span>[<span style="color: #bc8f8f;">4</span>];
 </pre>
 
 
@@ -1879,10 +1878,10 @@ Now that we have an array object, we may fill in its values by indexing c.
 
 
 
-<pre class="src src-java">c[<span style="color: #ffa07a;">0</span>] = <span style="color: #95e454;">'b'</span>;         <span style="color: #99968b;">// </span><span style="color: #99968b;">Store the character 'b' at index 0.</span>
-c[<span style="color: #ffa07a;">1</span>] = <span style="color: #95e454;">'l'</span>;
-c[<span style="color: #ffa07a;">2</span>] = <span style="color: #95e454;">'u'</span>;
-c[<span style="color: #ffa07a;">3</span>] = <span style="color: #95e454;">'e'</span>;
+<pre class="src src-java">c[<span style="color: #bc8f8f;">0</span>] = <span style="color: #8b2252;">'b'</span>;         <span style="color: #b22222;">// </span><span style="color: #b22222;">Store the character 'b' at index 0.</span>
+c[<span style="color: #bc8f8f;">1</span>] = <span style="color: #8b2252;">'l'</span>;
+c[<span style="color: #bc8f8f;">2</span>] = <span style="color: #8b2252;">'u'</span>;
+c[<span style="color: #bc8f8f;">3</span>] = <span style="color: #8b2252;">'e'</span>;
 </pre>
 
 
@@ -1893,7 +1892,7 @@ address any index outside this range, we will trigger a run-time error.
 
 
 
-<pre class="src src-java">c[<span style="color: #ffa07a;">4</span>] = <span style="color: #95e454;">'s'</span>;         <span style="color: #99968b;">// </span><span style="color: #99968b;">Program stops with ArrayIndexOutOfBoundsException</span>
+<pre class="src src-java">c[<span style="color: #bc8f8f;">4</span>] = <span style="color: #8b2252;">'s'</span>;         <span style="color: #b22222;">// </span><span style="color: #b22222;">Program stops with ArrayIndexOutOfBoundsException</span>
 </pre>
 
 
@@ -1929,11 +1928,11 @@ by a given divisor.  Here's the beginning of the method.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">printPrimes</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-    <span style="color: #92a65e; font-weight: bold;">boolean</span>[] <span style="color: #cae682;">prime</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">boolean</span>[n + <span style="color: #ffa07a;">1</span>];                  <span style="color: #99968b;">// </span><span style="color: #99968b;">Numbered 0...n.</span>
-    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
-    <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span>; i &lt;= n; i++) {
-        prime[i] = <span style="color: #7fffd4;">true</span>;                       <span style="color: #99968b;">// </span><span style="color: #99968b;">Prime until proven composite.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">printPrimes</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+    <span style="color: #228b22;">boolean</span>[] <span style="color: #a0522d;">prime</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">boolean</span>[n + <span style="color: #bc8f8f;">1</span>];                  <span style="color: #b22222;">// </span><span style="color: #b22222;">Numbered 0...n.</span>
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+    <span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">2</span>; i &lt;= n; i++) {
+        prime[i] = <span style="color: #5f9ea0;">true</span>;                       <span style="color: #b22222;">// </span><span style="color: #b22222;">Prime until proven composite.</span>
     }
 </pre>
 
@@ -1951,10 +1950,10 @@ integers divisible by divisor, except divisor itself.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">divisor</span> = <span style="color: #ffa07a;">2</span>; divisor * divisor &lt;= n; divisor++) {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (prime[divisor]) {
-        <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span> * divisor; i &lt;= n; i = i + divisor) {
-            prime[i] = <span style="color: #7fffd4;">false</span>;                     <span style="color: #99968b;">// </span><span style="color: #99968b;">i is divisible by divisor.</span>
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">divisor</span> = <span style="color: #bc8f8f;">2</span>; divisor * divisor &lt;= n; divisor++) {
+    <span style="color: #a020f0;">if</span> (prime[divisor]) {
+        <span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">2</span> * divisor; i &lt;= n; i = i + divisor) {
+            prime[i] = <span style="color: #5f9ea0;">false</span>;                     <span style="color: #b22222;">// </span><span style="color: #b22222;">i is divisible by divisor.</span>
         }
     }
 }
@@ -1971,9 +1970,9 @@ Finally, we print every integer from 2 to n that hasn't been marked non-prime.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span>; i &lt;= n; i++) {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (prime[i]) {
-        System.out.print(<span style="color: #95e454;">" "</span> + i);
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">2</span>; i &lt;= n; i++) {
+    <span style="color: #a020f0;">if</span> (prime[i]) {
+        System.out.print(<span style="color: #8b2252;">" "</span> + i);
     }
 }
 </pre>
@@ -2019,8 +2018,8 @@ rows of Pascal's Triangle.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">pascalTriangle</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-    <span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">pt</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[n][];
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span>[][] <span style="color: #0000ff;">pascalTriangle</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+    <span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">pt</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[n][];
 </pre>
 
 
@@ -2033,15 +2032,15 @@ following loop.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>; i &lt; n; i++) {
-    pt[i] = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[i + <span style="color: #ffa07a;">1</span>];                            <span style="color: #99968b;">// </span><span style="color: #99968b;">Construct row i.</span>
-    pt[i][<span style="color: #ffa07a;">0</span>] = <span style="color: #ffa07a;">1</span>;                              <span style="color: #99968b;">// </span><span style="color: #99968b;">Leftmost value of row i.</span>
-    <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">j</span> = <span style="color: #ffa07a;">1</span>; j &lt; i; j++) {
-        pt[i][j] = pt[i - <span style="color: #ffa07a;">1</span>][j - <span style="color: #ffa07a;">1</span>] + pt[i - <span style="color: #ffa07a;">1</span>][j];  <span style="color: #99968b;">// </span><span style="color: #99968b;">Sum 2 entries above.</span>
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>; i &lt; n; i++) {
+    pt[i] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[i + <span style="color: #bc8f8f;">1</span>];                            <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct row i.</span>
+    pt[i][<span style="color: #bc8f8f;">0</span>] = <span style="color: #bc8f8f;">1</span>;                              <span style="color: #b22222;">// </span><span style="color: #b22222;">Leftmost value of row i.</span>
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = <span style="color: #bc8f8f;">1</span>; j &lt; i; j++) {
+        pt[i][j] = pt[i - <span style="color: #bc8f8f;">1</span>][j - <span style="color: #bc8f8f;">1</span>] + pt[i - <span style="color: #bc8f8f;">1</span>][j];  <span style="color: #b22222;">// </span><span style="color: #b22222;">Sum 2 entries above.</span>
     }
-    pt[i][i] = <span style="color: #ffa07a;">1</span>;                             <span style="color: #99968b;">// </span><span style="color: #99968b;">Rightmost value of row i.</span>
+    pt[i][i] = <span style="color: #bc8f8f;">1</span>;                             <span style="color: #b22222;">// </span><span style="color: #b22222;">Rightmost value of row i.</span>
 }
-<span style="color: #8ac6f2; font-weight: bold;">return</span> pt;
+<span style="color: #a020f0;">return</span> pt;
 </pre>
 
 
@@ -2088,7 +2087,7 @@ Java can construct all of the arrays for you at once.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">table</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[x][y];
+<pre class="src src-java"><span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">table</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[x][y];
 </pre>
 
 
@@ -2111,8 +2110,8 @@ initializers.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">Human</span>[] <span style="color: #cae682;">b</span> = {amanda, rishi, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">Human</span>(<span style="color: #95e454;">"Paolo"</span>)};
-<span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">c</span> = {{<span style="color: #ffa07a;">7</span>, <span style="color: #ffa07a;">3</span>, <span style="color: #ffa07a;">2</span>}, {x}, {<span style="color: #ffa07a;">8</span>, <span style="color: #ffa07a;">5</span>, <span style="color: #ffa07a;">0</span>, <span style="color: #ffa07a;">0</span>}, {y + z, <span style="color: #ffa07a;">3</span>}};
+<pre class="src src-java"><span style="color: #228b22;">Human</span>[] <span style="color: #a0522d;">b</span> = {amanda, rishi, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>(<span style="color: #8b2252;">"Paolo"</span>)};
+<span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">c</span> = {{<span style="color: #bc8f8f;">7</span>, <span style="color: #bc8f8f;">3</span>, <span style="color: #bc8f8f;">2</span>}, {x}, {<span style="color: #bc8f8f;">8</span>, <span style="color: #bc8f8f;">5</span>, <span style="color: #bc8f8f;">0</span>, <span style="color: #bc8f8f;">0</span>}, {y + z, <span style="color: #bc8f8f;">3</span>}};
 </pre>
 
 
@@ -2126,8 +2125,8 @@ Sadly, you can only use this notation in a declaration.  You can't write
 
 
 
-<pre class="src src-java">d = {<span style="color: #ffa07a;">3</span>, <span style="color: #ffa07a;">7</span>};                  <span style="color: #99968b;">// </span><span style="color: #99968b;">Compile-time ERROR.</span>
-f({<span style="color: #ffa07a;">1</span>, <span style="color: #ffa07a;">2</span>, <span style="color: #ffa07a;">3</span>});                <span style="color: #99968b;">// </span><span style="color: #99968b;">Compile-time ERROR.</span>
+<pre class="src src-java">d = {<span style="color: #bc8f8f;">3</span>, <span style="color: #bc8f8f;">7</span>};                  <span style="color: #b22222;">// </span><span style="color: #b22222;">Compile-time ERROR.</span>
+f({<span style="color: #bc8f8f;">1</span>, <span style="color: #bc8f8f;">2</span>, <span style="color: #bc8f8f;">3</span>});                <span style="color: #b22222;">// </span><span style="color: #b22222;">Compile-time ERROR.</span>
 </pre>
 
 
@@ -2137,9 +2136,9 @@ Another subtlety of array declarations is the following.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">a</span>, <span style="color: #cae682;">b</span>, <span style="color: #cae682;">c</span>;                           <span style="color: #99968b;">// </span><span style="color: #99968b;">a, b, and c all reference arrays.</span>
-<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">a</span>[], <span style="color: #cae682;">b</span>, <span style="color: #cae682;">c</span>[][];           <span style="color: #99968b;">// </span><span style="color: #99968b;">a is 1D; c is 2D; b is not a reference/array.</span>
-<span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">a</span>, <span style="color: #cae682;">b</span>[];            <span style="color: #99968b;">// </span><span style="color: #99968b;">a references a 1D array; b references a 2D array.</span>
+<pre class="src src-java"><span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span>, <span style="color: #a0522d;">c</span>;                           <span style="color: #b22222;">// </span><span style="color: #b22222;">a, b, and c all reference arrays.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>[], <span style="color: #a0522d;">b</span>, <span style="color: #a0522d;">c</span>[][];           <span style="color: #b22222;">// </span><span style="color: #b22222;">a is 1D; c is 2D; b is not a reference/array.</span>
+<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span>[];            <span style="color: #b22222;">// </span><span style="color: #b22222;">a references a 1D array; b references a 2D array.</span>
 </pre>
 
 
@@ -2157,9 +2156,9 @@ objects.  You must construct the objects yourself.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">sentence</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>[<span style="color: #ffa07a;">3</span>];
-sentence[<span style="color: #ffa07a;">0</span>] = <span style="color: #95e454;">"Word"</span>;
-sentence[<span style="color: #ffa07a;">2</span>] = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">String</span>();
+<pre class="src src-java"><span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">sentence</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>[<span style="color: #bc8f8f;">3</span>];
+sentence[<span style="color: #bc8f8f;">0</span>] = <span style="color: #8b2252;">"Word"</span>;
+sentence[<span style="color: #bc8f8f;">2</span>] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();
 </pre>
 
 
@@ -2181,9 +2180,9 @@ you by Java.  Consider the following program.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Echo</span> {
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">String</span>[] <span style="color: #cae682;">args</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>; i &lt; args.length; i++) {
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Echo</span> {
+  <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>; i &lt; args.length; i++) {
       System.out.println(args[i]);
     }
   }
@@ -2223,10 +2222,10 @@ body has been executed.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">do</span> {
+<pre class="src src-java"><span style="color: #a020f0;">do</span> {
   s = keybd.readLine();
   process(s);
-} <span style="color: #8ac6f2; font-weight: bold;">while</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>);               <span style="color: #99968b;">// </span><span style="color: #99968b;">Exit loop if s is an empty String.</span>
+} <span style="color: #a020f0;">while</span> (s.length() &gt; <span style="color: #bc8f8f;">0</span>);               <span style="color: #b22222;">// </span><span style="color: #b22222;">Exit loop if s is an empty String.</span>
 </pre>
 
 
@@ -2254,21 +2253,21 @@ right thing.  They behave identically.  Each has a different disadvantage.
 
 
 
-<pre class="src src-java">  s = keybd.readLine();                  |  <span style="color: #8ac6f2; font-weight: bold;">while</span> (<span style="color: #7fffd4;">true</span>) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Loop forever.</span>
-  <span style="color: #8ac6f2; font-weight: bold;">while</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>) {               |    s = keybd.readLine();
-    process(s);                          |    <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() == <span style="color: #ffa07a;">0</span>) {      
-    s = keybd.readLine();                |      <span style="color: #8ac6f2; font-weight: bold;">break</span>;
+<pre class="src src-java">  s = keybd.readLine();                  |  <span style="color: #a020f0;">while</span> (<span style="color: #5f9ea0;">true</span>) {       <span style="color: #b22222;">// </span><span style="color: #b22222;">Loop forever.</span>
+  <span style="color: #a020f0;">while</span> (s.length() &gt; <span style="color: #bc8f8f;">0</span>) {               |    s = keybd.readLine();
+    process(s);                          |    <span style="color: #a020f0;">if</span> (s.length() == <span style="color: #bc8f8f;">0</span>) {      
+    s = keybd.readLine();                |      <span style="color: #a020f0;">break</span>;
   }                                      |    }                           
                                          |    process(s);
                                          |}
-<span style="color: #99968b;">/*</span><span style="color: #99968b;">Disadvantage:  The line "s = keybd..." |</span>
-<span style="color: #99968b;">is repeated twice.  It's not really      |</span>
-<span style="color: #99968b;">a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for </span>
-<span style="color: #99968b;">took 100 lines of code, the              | the reader, because the loop isn't </span>
-<span style="color: #99968b;">duplication would make the code harder   | aligned with its natural endpoint. </span>
-<span style="color: #99968b;">to maintain.  Why?  Because a </span>
-<span style="color: #99968b;">programmer improving the code might change one copy of the duplicated code </span>
-<span style="color: #99968b;">without noticing the need to change the other to match.*/</span>
+<span style="color: #b22222;">/*</span><span style="color: #b22222;">Disadvantage:  The line "s = keybd..." |</span>
+<span style="color: #b22222;">is repeated twice.  It's not really      |</span>
+<span style="color: #b22222;">a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for </span>
+<span style="color: #b22222;">took 100 lines of code, the              | the reader, because the loop isn't </span>
+<span style="color: #b22222;">duplication would make the code harder   | aligned with its natural endpoint. </span>
+<span style="color: #b22222;">to maintain.  Why?  Because a </span>
+<span style="color: #b22222;">programmer improving the code might change one copy of the duplicated code </span>
+<span style="color: #b22222;">without noticing the need to change the other to match.*/</span>
 </pre>
 
 
@@ -2282,15 +2281,15 @@ result is longer and harder to read.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>; i &lt; <span style="color: #ffa07a;">10</span>; i++) {       |  <span style="color: #92a65e; font-weight: bold;">int</span> i = <span style="color: #ffa07a;">0</span>;
-  s = keybd.readLine();              |  <span style="color: #8ac6f2; font-weight: bold;">do</span> {
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() == <span style="color: #ffa07a;">0</span>) {             |    s = keybd.readLine();       
-    <span style="color: #8ac6f2; font-weight: bold;">break</span>;                           |    <span style="color: #8ac6f2; font-weight: bold;">if</span> (s.length() &gt; <span style="color: #ffa07a;">0</span>) {             
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>; i &lt; <span style="color: #bc8f8f;">10</span>; i++) {       |  <span style="color: #228b22;">int</span> i = <span style="color: #bc8f8f;">0</span>;
+  s = keybd.readLine();              |  <span style="color: #a020f0;">do</span> {
+  <span style="color: #a020f0;">if</span> (s.length() == <span style="color: #bc8f8f;">0</span>) {             |    s = keybd.readLine();       
+    <span style="color: #a020f0;">break</span>;                           |    <span style="color: #a020f0;">if</span> (s.length() &gt; <span style="color: #bc8f8f;">0</span>) {             
   }                                  |      process(s);                      
   process(s);                        |    }
 }                                    |    i++;
-                                     |  } <span style="color: #8ac6f2; font-weight: bold;">while</span> ((i &lt; <span style="color: #ffa07a;">10</span>) &amp;&amp;
-                                     |           (s.length() &gt; <span style="color: #ffa07a;">0</span>));
+                                     |  } <span style="color: #a020f0;">while</span> ((i &lt; <span style="color: #bc8f8f;">10</span>) &amp;&amp;
+                                     |           (s.length() &gt; <span style="color: #bc8f8f;">0</span>));
 </pre>
 
 
@@ -2340,10 +2339,10 @@ difference between the following two loops?
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>;                           | <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>; i &lt; <span style="color: #ffa07a;">10</span>; i++) {
-<span style="color: #8ac6f2; font-weight: bold;">while</span> (i &lt; <span style="color: #ffa07a;">10</span>) {                     |   <span style="color: #8ac6f2; font-weight: bold;">if</span> (condition(i)) {
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (condition(i)) {                |     <span style="color: #8ac6f2; font-weight: bold;">continue</span>;
-    <span style="color: #8ac6f2; font-weight: bold;">continue</span>;                        |   }
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>;                           | <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>; i &lt; <span style="color: #bc8f8f;">10</span>; i++) {
+<span style="color: #a020f0;">while</span> (i &lt; <span style="color: #bc8f8f;">10</span>) {                     |   <span style="color: #a020f0;">if</span> (condition(i)) {
+  <span style="color: #a020f0;">if</span> (condition(i)) {                |     <span style="color: #a020f0;">continue</span>;
+    <span style="color: #a020f0;">continue</span>;                        |   }
   }                                  |   call(i);
   call(i);                           | }
   i++;                               |
@@ -2374,13 +2373,13 @@ your code, you should probably turn it into a "final" constant.
 
 
 
-<pre class="src src-java"><span style="color: #e5786d;">BAD</span>:     <span style="color: #8ac6f2; font-weight: bold;">if</span> (month == <span style="color: #ffa07a;">2</span>) {
+<pre class="src src-java"><span style="color: #008b8b;">BAD</span>:     <span style="color: #a020f0;">if</span> (month == <span style="color: #bc8f8f;">2</span>) {
 
-<span style="color: #e5786d;">GOOD</span>:    <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">final</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">FEBRUARY</span> = <span style="color: #ffa07a;">2</span>;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Usually near top of class.</span>
+<span style="color: #008b8b;">GOOD</span>:    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">final</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">FEBRUARY</span> = <span style="color: #bc8f8f;">2</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Usually near top of class.</span>
 
          ...
 
-         <span style="color: #8ac6f2; font-weight: bold;">if</span> (month == <span style="color: #7fffd4;">FEBRUARY</span>) {
+         <span style="color: #a020f0;">if</span> (month == <span style="color: #5f9ea0;">FEBRUARY</span>) {
 </pre>
 
 
@@ -2405,8 +2404,8 @@ You can declare local parameters "final" to prevent them from being changed.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">myMethod</span>(<span style="color: #b0c4de;">final</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span>) {
-  x = <span style="color: #ffa07a;">3</span>;                             <span style="color: #99968b;">// </span><span style="color: #99968b;">Compiler ERROR.  Don't mess with X's!</span>
+<pre class="src src-java"><span style="color: #228b22;">void</span> <span style="color: #0000ff;">myMethod</span>(<span style="color: #da70d6;">final</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+  x = <span style="color: #bc8f8f;">3</span>;                             <span style="color: #b22222;">// </span><span style="color: #b22222;">Compiler ERROR.  Don't mess with X's!</span>
 }
 </pre>
 
@@ -2421,8 +2420,8 @@ return the same value.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Bob</span> {
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">final</span> <span style="color: #92a65e; font-weight: bold;">long</span> <span style="color: #cae682;">creationTime</span> = System.currentTimeMillis();
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Bob</span> {
+  <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">final</span> <span style="color: #228b22;">long</span> <span style="color: #a0522d;">creationTime</span> = System.currentTimeMillis();
 }
 </pre>
 
@@ -2499,27 +2498,27 @@ and move all the ints from the old array to the new one.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">AList</span> {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">a</span>[];
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">lastItem</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">AList</span> {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>[];
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">lastItem</span>;
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">AList</span>() {
-    a = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[<span style="color: #ffa07a;">10</span>];                           <span style="color: #99968b;">// </span><span style="color: #99968b;">The number "10" is arbitrary.</span>
-    lastItem = -<span style="color: #ffa07a;">1</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #00008b;">AList</span>() {
+    a = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[<span style="color: #bc8f8f;">10</span>];                           <span style="color: #b22222;">// </span><span style="color: #b22222;">The number "10" is arbitrary.</span>
+    lastItem = -<span style="color: #bc8f8f;">1</span>;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertItem</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">newItem</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">location</span>) {
-    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertItem</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">newItem</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">location</span>) {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
 
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (lastItem + <span style="color: #ffa07a;">1</span> == a.length) {               <span style="color: #99968b;">// </span><span style="color: #99968b;">No room left in the array?</span>
-      <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">b</span>[] = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[<span style="color: #ffa07a;">2</span> * a.length];  <span style="color: #99968b;">// </span><span style="color: #99968b;">Allocate a new array, twice as long.</span>
-      <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">0</span>; i &lt;= lastItem; i++) {      <span style="color: #99968b;">// </span><span style="color: #99968b;">Copy items to the bigger array.</span>
+    <span style="color: #a020f0;">if</span> (lastItem + <span style="color: #bc8f8f;">1</span> == a.length) {               <span style="color: #b22222;">// </span><span style="color: #b22222;">No room left in the array?</span>
+      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">b</span>[] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[<span style="color: #bc8f8f;">2</span> * a.length];  <span style="color: #b22222;">// </span><span style="color: #b22222;">Allocate a new array, twice as long.</span>
+      <span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">0</span>; i &lt;= lastItem; i++) {      <span style="color: #b22222;">// </span><span style="color: #b22222;">Copy items to the bigger array.</span>
         b[i] = a[i];
       }
-      a = b;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Replace the too-small array with the new one.</span>
+      a = b;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Replace the too-small array with the new one.</span>
     }
-    <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = lastItem; i &gt;= location; i--) {       <span style="color: #99968b;">// </span><span style="color: #99968b;">Shift items to the right.</span>
-      a[i + <span style="color: #ffa07a;">1</span>] = a[i];
+    <span style="color: #a020f0;">for</span> (i = lastItem; i &gt;= location; i--) {       <span style="color: #b22222;">// </span><span style="color: #b22222;">Shift items to the right.</span>
+      a[i + <span style="color: #bc8f8f;">1</span>] = a[i];
     }
     a[location] = newItem;
     lastItem++;
@@ -2544,10 +2543,10 @@ to "car" and "cdr".  However, our node is an explicitly defined object.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span> {          <span style="color: #99968b;">// </span><span style="color: #99968b;">ListNode is a recursive type</span>
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">item</span>;
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">next</span>;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Here we're using ListNode before</span>
-}                                <span style="color: #99968b;">//   </span><span style="color: #99968b;">we've finished declaring it.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">ListNode</span> {          <span style="color: #b22222;">// </span><span style="color: #b22222;">ListNode is a recursive type</span>
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">item</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">next</span>;          <span style="color: #b22222;">// </span><span style="color: #b22222;">Here we're using ListNode before</span>
+}                                <span style="color: #b22222;">//   </span><span style="color: #b22222;">we've finished declaring it.</span>
 </pre>
 
 
@@ -2557,10 +2556,10 @@ Let's make some ListNodes.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">l1</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(), <span style="color: #cae682;">l2</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(), <span style="color: #cae682;">l3</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>();
-l1.item = <span style="color: #ffa07a;">7</span>;
-l2.item = <span style="color: #ffa07a;">0</span>;
-l3.item = <span style="color: #ffa07a;">6</span>;
+<pre class="src src-java"><span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">l1</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(), <span style="color: #a0522d;">l2</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(), <span style="color: #a0522d;">l3</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>();
+l1.item = <span style="color: #bc8f8f;">7</span>;
+l2.item = <span style="color: #bc8f8f;">0</span>;
+l3.item = <span style="color: #bc8f8f;">6</span>;
 </pre>
 
 
@@ -2586,7 +2585,7 @@ In Java, this is called "null".
 
 
 
-<pre class="src src-java">l3.next = <span style="color: #7fffd4;">null</span>;
+<pre class="src src-java">l3.next = <span style="color: #5f9ea0;">null</span>;
 </pre>
 
 
@@ -2601,13 +2600,13 @@ To simplify programming, let's add some constructors to the ListNode class.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">ListNode</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">n</span>) {
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">ListNode</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>, <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">n</span>) {
   item = i;
   next = n;
 }
 
-<span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">ListNode</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>) {
-  <span style="color: #8ac6f2; font-weight: bold;">this</span>(i, <span style="color: #7fffd4;">null</span>);
+<span style="color: #da70d6;">public</span> <span style="color: #00008b;">ListNode</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>) {
+  <span style="color: #a020f0;">this</span>(i, <span style="color: #5f9ea0;">null</span>);
 }
 </pre>
 
@@ -2618,7 +2617,7 @@ These constructors allow us to emulate Scheme's "cons" operation.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">ListNode</span> <span style="color: #cae682;">l1</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">7</span>, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">0</span>, <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(<span style="color: #ffa07a;">6</span>)));
+<pre class="src src-java"><span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">l1</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(<span style="color: #bc8f8f;">7</span>, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(<span style="color: #bc8f8f;">0</span>, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(<span style="color: #bc8f8f;">6</span>)));
 </pre>
 
 </div>
@@ -2641,11 +2640,11 @@ The following method inserts a new item into the list immediately after "this".
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertAfter</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">item</span>) {
-  next = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">ListNode</span>(item, next);
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertAfter</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">item</span>) {
+  next = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(item, next);
 }
 
-l2.insertAfter(<span style="color: #ffa07a;">3</span>);
+l2.insertAfter(<span style="color: #bc8f8f;">3</span>);
 </pre>
 
 
@@ -2683,9 +2682,9 @@ declaring a reference of type Object.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> {
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>;
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">next</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SListNode</span> {
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">next</span>;
 }
 </pre>
 
@@ -2713,7 +2712,7 @@ There are two problems with SListNodes.
 </p>
 
 
-<pre class="src src-java">x = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(<span style="color: #95e454;">"soap"</span>, x);
+<pre class="src src-java">x = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(<span style="color: #8b2252;">"soap"</span>, x);
 </pre>
 
 <p>
@@ -2735,17 +2734,17 @@ lists in the SList class, rather than the SListNode class.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;             <span style="color: #99968b;">// </span><span style="color: #99968b;">First node in list.</span>
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Number of items in list.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;             <span style="color: #b22222;">// </span><span style="color: #b22222;">First node in list.</span>
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Number of items in list.</span>
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">SList</span>() {                    <span style="color: #99968b;">// </span><span style="color: #99968b;">Here's how to represent an empty list.</span>
-    head = <span style="color: #7fffd4;">null</span>;
-    size = <span style="color: #ffa07a;">0</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #00008b;">SList</span>() {                    <span style="color: #b22222;">// </span><span style="color: #b22222;">Here's how to represent an empty list.</span>
+    head = <span style="color: #5f9ea0;">null</span>;
+    size = <span style="color: #bc8f8f;">0</span>;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>) {
-    head = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(item, head);
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>) {
+    head = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(item, head);
     size++;
   }
 }
@@ -2814,15 +2813,15 @@ code of the Date class by fiddling with the internals of a Date object.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">Date</span> {                  |  <span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> EvilTamperer {
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">day</span>;                   |    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> tamper() {
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">month</span>;                 |      Date d = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">Date</span>(<span style="color: #ffa07a;">1</span>, <span style="color: #ffa07a;">1</span>, <span style="color: #ffa07a;">2006</span>);
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">Date</span> {                  |  <span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> EvilTamperer {
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">day</span>;                   |    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> tamper() {
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>;                 |      Date d = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Date</span>(<span style="color: #bc8f8f;">1</span>, <span style="color: #bc8f8f;">1</span>, <span style="color: #bc8f8f;">2006</span>);
                                      |
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">void</span> setMonth(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">m</span>) {     |      d.day = <span style="color: #ffa07a;">100</span>;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Foiled!!</span>
-    month = m;                       |      d.setMonth(<span style="color: #ffa07a;">0</span>);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Foiled again!!</span>
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">void</span> setMonth(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">m</span>) {     |      d.day = <span style="color: #bc8f8f;">100</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Foiled!!</span>
+    month = m;                       |      d.setMonth(<span style="color: #bc8f8f;">0</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Foiled again!!</span>
   }                                  |    }
                                      |  }
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">Date</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">month</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">day</span>) {  |
+  <span style="color: #da70d6;">public</span> <span style="color: #00008b;">Date</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">day</span>) {  |
     [Implementation with             |
      error-checking code here.]      |
   }
@@ -2932,10 +2931,10 @@ previous node, as well as the next node.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">DListNode</span> {                    |  <span style="color: #8ac6f2; font-weight: bold;">class</span> DList {
-  <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>;                       |    <span style="color: #b0c4de;">private</span> DListNode head;
-  <span style="color: #92a65e; font-weight: bold;">DListNode</span> <span style="color: #cae682;">next</span>;                    |    <span style="color: #b0c4de;">private</span> DListNode tail;
-  <span style="color: #92a65e; font-weight: bold;">DListNode</span> <span style="color: #cae682;">prev</span>;                    |  }
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">DListNode</span> {                    |  <span style="color: #a020f0;">class</span> DList {
+  <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>;                       |    <span style="color: #da70d6;">private</span> DListNode head;
+  <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">next</span>;                    |    <span style="color: #da70d6;">private</span> DListNode tail;
+  <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">prev</span>;                    |  }
 }                                    |
 </pre>
 
@@ -2954,7 +2953,7 @@ DList.
 
 
 
-<pre class="src src-java">tail.prev.next = <span style="color: #7fffd4;">null</span>;
+<pre class="src src-java">tail.prev.next = <span style="color: #5f9ea0;">null</span>;
 tail = tail.prev;
 </pre>
 
@@ -2975,9 +2974,9 @@ pointer points to the sentinel.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">DList</span> {
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">DListNode</span> <span style="color: #cae682;">head</span>;
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">DList</span> {
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">head</span>;
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 }
 </pre>
 
@@ -3017,10 +3016,10 @@ Here's an example of a method that removes the last item from a DList.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">removeBack</span>() {
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (head.prev != head) {        <span style="color: #99968b;">// </span><span style="color: #99968b;">Do nothing if the DList is empty.</span>
-    head.prev = head.prev.prev;   <span style="color: #99968b;">// </span><span style="color: #99968b;">Sentinel now points to second-last item.</span>
-    head.prev.next = head;        <span style="color: #99968b;">// </span><span style="color: #99968b;">Second-last item now points to sentinel.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">removeBack</span>() {
+  <span style="color: #a020f0;">if</span> (head.prev != head) {        <span style="color: #b22222;">// </span><span style="color: #b22222;">Do nothing if the DList is empty.</span>
+    head.prev = head.prev.prev;   <span style="color: #b22222;">// </span><span style="color: #b22222;">Sentinel now points to second-last item.</span>
+    head.prev.next = head;        <span style="color: #b22222;">// </span><span style="color: #b22222;">Second-last item now points to sentinel.</span>
     size--;
   }
 }
@@ -3228,24 +3227,24 @@ The recursion has two base cases.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #b0c4de;">final</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">FAILURE</span> = -<span style="color: #ffa07a;">1</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #da70d6;">final</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">FAILURE</span> = -<span style="color: #bc8f8f;">1</span>;
 
-<span style="color: #b0c4de;">private</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">bsearch</span>(<span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">left</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">right</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">findMe</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (left &gt; right) {
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">FAILURE</span>;                   <span style="color: #99968b;">// </span><span style="color: #99968b;">Base case 2:  subarray of size zero.</span>
+<span style="color: #da70d6;">private</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">bsearch</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">i</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">left</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">right</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">findMe</span>) {
+    <span style="color: #a020f0;">if</span> (left &gt; right) {
+        <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">FAILURE</span>;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Base case 2:  subarray of size zero.</span>
     }
-    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">mid</span> = (left + right) / <span style="color: #ffa07a;">2</span>;            <span style="color: #99968b;">// </span><span style="color: #99968b;">Halfway between left and right.</span>
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (findMe == i[mid]) {
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> mid;                                     <span style="color: #99968b;">// </span><span style="color: #99968b;">Base case 1:  success!</span>
-    } <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> (findMe &lt; i[mid]) {
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> bsearch(i, left, mid - <span style="color: #ffa07a;">1</span>, findMe);            <span style="color: #99968b;">// </span><span style="color: #99968b;">Search left half.</span>
-    } <span style="color: #8ac6f2; font-weight: bold;">else</span> {
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> bsearch(i, mid + <span style="color: #ffa07a;">1</span>, right, findMe);          <span style="color: #99968b;">// </span><span style="color: #99968b;">Search right half.</span>
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">mid</span> = (left + right) / <span style="color: #bc8f8f;">2</span>;            <span style="color: #b22222;">// </span><span style="color: #b22222;">Halfway between left and right.</span>
+    <span style="color: #a020f0;">if</span> (findMe == i[mid]) {
+        <span style="color: #a020f0;">return</span> mid;                                     <span style="color: #b22222;">// </span><span style="color: #b22222;">Base case 1:  success!</span>
+    } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (findMe &lt; i[mid]) {
+        <span style="color: #a020f0;">return</span> bsearch(i, left, mid - <span style="color: #bc8f8f;">1</span>, findMe);            <span style="color: #b22222;">// </span><span style="color: #b22222;">Search left half.</span>
+    } <span style="color: #a020f0;">else</span> {
+        <span style="color: #a020f0;">return</span> bsearch(i, mid + <span style="color: #bc8f8f;">1</span>, right, findMe);          <span style="color: #b22222;">// </span><span style="color: #b22222;">Search right half.</span>
     }
 }
 
-<span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">bsearch</span>(<span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">i</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">findMe</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> bsearch(i, <span style="color: #ffa07a;">0</span>, i.length - <span style="color: #ffa07a;">1</span>, findMe);
+<span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">bsearch</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">i</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">findMe</span>) {
+    <span style="color: #a020f0;">return</span> bsearch(i, <span style="color: #bc8f8f;">0</span>, i.length - <span style="color: #bc8f8f;">1</span>, findMe);
 }
 </pre>
 
@@ -3260,7 +3259,7 @@ Sections 4.1.2 &amp; 4.1.7.
 </p>
 
 <p>
-<img src="ditaa-images/TEMP_3_2094ede6fa0ffdd7cbac941e64b2690a5ee1806c.png"  alt="ditaa-images/TEMP_3_2094ede6fa0ffdd7cbac941e64b2690a5ee1806c.png" />
+<img src="ditaa-images/TEMP_3_8a3ff1957e48efafbe2b593085f36b159ead98a7.png"  alt="ditaa-images/TEMP_3_8a3ff1957e48efafbe2b593085f36b159ead98a7.png" />
 </p>
 
 <p>
@@ -3358,9 +3357,9 @@ inherits the fields and methods of the original SList class.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #8ac6f2; font-weight: bold;">extends</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">The "head" and "size" fields are inherited from SList.</span>
-  <span style="color: #b0c4de;">private</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">tail</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">TailList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">The "head" and "size" fields are inherited from SList.</span>
+  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">tail</span>;
 </pre>
 
 
@@ -3391,8 +3390,8 @@ TailList, which will <span style="text-decoration:underline;">override</span> SL
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertEnd</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">obj</span>) {
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">Your solution to Lab 3 goes here.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertEnd</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">obj</span>) {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Your solution to Lab 3 goes here.</span>
 }
 </pre>
 
@@ -3418,9 +3417,9 @@ to TailList.  It can also modify the work done by SList() if appropriate.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">TailList</span>() {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">SList() constructor called automatically; sets size = 0, head = null</span>
-  tail = <span style="color: #7fffd4;">null</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">TailList</span>() {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">SList() constructor called automatically; sets size = 0, head = null</span>
+  tail = <span style="color: #5f9ea0;">null</span>;
 }
 </pre>
 
@@ -3434,9 +3433,9 @@ superclass by using the "super" keyword.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">TailList</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">super</span>(x);
-    tail = <span style="color: #7fffd4;">null</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">TailList</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+    <span style="color: #a020f0;">super</span>(x);
+    tail = <span style="color: #5f9ea0;">null</span>;
 }
 </pre>
 
@@ -3464,10 +3463,10 @@ adjust the tail reference.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">obj</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">super</span>.insertFront(obj);             <span style="color: #99968b;">// </span><span style="color: #99968b;">Insert at the front of the list.</span>
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (size == <span style="color: #ffa07a;">1</span>) {                    <span style="color: #99968b;">// </span><span style="color: #99968b;">If necessary,</span>
-        tail = head;                    <span style="color: #99968b;">//   </span><span style="color: #99968b;">adjust the tail reference.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">obj</span>) {
+    <span style="color: #a020f0;">super</span>.insertFront(obj);             <span style="color: #b22222;">// </span><span style="color: #b22222;">Insert at the front of the list.</span>
+    <span style="color: #a020f0;">if</span> (size == <span style="color: #bc8f8f;">1</span>) {                    <span style="color: #b22222;">// </span><span style="color: #b22222;">If necessary,</span>
+        tail = head;                    <span style="color: #b22222;">//   </span><span style="color: #b22222;">adjust the tail reference.</span>
     }
 }
 }
@@ -3493,9 +3492,9 @@ not "private".
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
-  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;
-  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
+  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 
   [Method definitions.]
 }
@@ -3562,8 +3561,8 @@ SList is a TailList.  It merits repeating:
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
-<span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #cae682;">t</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+<span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -3589,10 +3588,10 @@ When we invoke an overridden method, Java calls the method for the object's
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();
-s.insertEnd(obj);                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Calls TailList.insertEnd()</span>
-s = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
-s.insertEnd(obj);                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Calls SList.insertEnd()</span>
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+s.insertEnd(obj);                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Calls TailList.insertEnd()</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+s.insertEnd(obj);                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Calls SList.insertEnd()</span>
 </pre>
 
 
@@ -3630,10 +3629,10 @@ type SList that references a TailList.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #cae682;">t</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();
-t.eatTail();                      <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
-<span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy--every TailList is an SList.</span>
-s.eatTail();                      <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+<pre class="src src-java"><span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+t.eatTail();                      <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+<span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy--every TailList is an SList.</span>
+s.eatTail();                      <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -3654,13 +3653,13 @@ another.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">s</span>;
-<span style="color: #92a65e; font-weight: bold;">TailList</span> <span style="color: #cae682;">t</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>();
-s = t;                            <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
-t = s;                            <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
-t = (<span style="color: #92a65e; font-weight: bold;">TailList</span>) s;                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
-s = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
-t = (<span style="color: #92a65e; font-weight: bold;">TailList</span>) s;                 <span style="color: #99968b;">// </span><span style="color: #99968b;">RUN-TIME ERROR:  ClassCastException.</span>
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span>;
+<span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+s = t;                            <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+t = s;                            <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
+t = (<span style="color: #228b22;">TailList</span>) s;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+t = (<span style="color: #228b22;">TailList</span>) s;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">RUN-TIME ERROR:  ClassCastException.</span>
 </pre>
 
 
@@ -3684,8 +3683,8 @@ Suppose we have a list of Integers.  Recall that nth() returns type Object.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span> = t.nth(<span style="color: #ffa07a;">1</span>).intValue();                <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
-<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">y</span> = ( (<span style="color: #92a65e; font-weight: bold;">Integer</span>) t.nth(<span style="color: #ffa07a;">1</span>) ).intValue();  <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = t.nth(<span style="color: #bc8f8f;">1</span>).intValue();                <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">y</span> = ( (<span style="color: #228b22;">Integer</span>) t.nth(<span style="color: #bc8f8f;">1</span>) ).intValue();  <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
 </pre>
 
 
@@ -3695,7 +3694,7 @@ Some methods are defined on every Object, though.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">z</span> = t.nth(<span style="color: #ffa07a;">1</span>).toString();             <span style="color: #99968b;">// </span><span style="color: #99968b;">Groovy.</span>
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">z</span> = t.nth(<span style="color: #bc8f8f;">1</span>).toString();             <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
 </pre>
 
 
@@ -3706,8 +3705,8 @@ a specific class.  WARNING:  The "o" in "instanceof" is not capitalized.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">if</span> (s <span style="color: #8ac6f2; font-weight: bold;">instanceof</span> <span style="color: #92a65e; font-weight: bold;">TailList</span>) {
-  t = (<span style="color: #92a65e; font-weight: bold;">TailList</span>) s;
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (s <span style="color: #a020f0;">instanceof</span> <span style="color: #228b22;">TailList</span>) {
+  t = (<span style="color: #228b22;">TailList</span>) s;
 }
 </pre>
 
@@ -3786,27 +3785,27 @@ returns true only if the two lists represent identical sequences of items.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
-    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">equals</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">other</span>) {
-        <span style="color: #8ac6f2; font-weight: bold;">if</span> (!(other <span style="color: #8ac6f2; font-weight: bold;">instanceof</span> <span style="color: #92a65e; font-weight: bold;">SList</span>)) {           <span style="color: #99968b;">// </span><span style="color: #99968b;">Reject non-SLists.</span>
-            <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">equals</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">other</span>) {
+        <span style="color: #a020f0;">if</span> (!(other <span style="color: #a020f0;">instanceof</span> <span style="color: #228b22;">SList</span>)) {           <span style="color: #b22222;">// </span><span style="color: #b22222;">Reject non-SLists.</span>
+            <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;
         }
 
-        <span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">o</span> = (<span style="color: #92a65e; font-weight: bold;">SList</span>) other;
-        <span style="color: #8ac6f2; font-weight: bold;">if</span> (size != o.size) {
-            <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;
+        <span style="color: #228b22;">SList</span> <span style="color: #a0522d;">o</span> = (<span style="color: #228b22;">SList</span>) other;
+        <span style="color: #a020f0;">if</span> (size != o.size) {
+            <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;
         }
 
-        <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">n1</span> = head;
-        <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">n2</span> = o.head;
-        <span style="color: #8ac6f2; font-weight: bold;">while</span> (n1 != <span style="color: #7fffd4;">null</span>) {
-            <span style="color: #8ac6f2; font-weight: bold;">if</span> (!n1.item.equals(n2.item)) {          <span style="color: #99968b;">// </span><span style="color: #99968b;">Deep equality of the items.</span>
-                <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;
+        <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n1</span> = head;
+        <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n2</span> = o.head;
+        <span style="color: #a020f0;">while</span> (n1 != <span style="color: #5f9ea0;">null</span>) {
+            <span style="color: #a020f0;">if</span> (!n1.item.equals(n2.item)) {          <span style="color: #b22222;">// </span><span style="color: #b22222;">Deep equality of the items.</span>
+                <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;
             }
             n1 = n1.next;
             n2 = n2.next;
         }
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">true</span>;
+        <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">true</span>;
     }
 }
 </pre>
@@ -3826,7 +3825,7 @@ will compile but it will NOT override.  That means the code
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
+<pre class="src src-java"><span style="color: #228b22;">Object</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
 s.equals(s);
 </pre>
 
@@ -3853,10 +3852,10 @@ the same.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">array</span> = {<span style="color: #ffa07a;">7</span>, <span style="color: #ffa07a;">12</span>, <span style="color: #ffa07a;">3</span>, <span style="color: #ffa07a;">8</span>, <span style="color: #ffa07a;">4</span>, <span style="color: #ffa07a;">9</span>};
+<pre class="src src-java"><span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">array</span> = {<span style="color: #bc8f8f;">7</span>, <span style="color: #bc8f8f;">12</span>, <span style="color: #bc8f8f;">3</span>, <span style="color: #bc8f8f;">8</span>, <span style="color: #bc8f8f;">4</span>, <span style="color: #bc8f8f;">9</span>};
 
-<span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> : array) {
-  System.out.print(i + <span style="color: #95e454;">" "</span>);
+<span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> : array) {
+  System.out.print(i + <span style="color: #8b2252;">" "</span>);
 }
 </pre>
 
@@ -3868,8 +3867,8 @@ array element in turn.  You can iterate over arrays of any type this way.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">concat</span> = <span style="color: #95e454;">""</span>;
-<span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s</span> : stringArray) {
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">concat</span> = <span style="color: #8b2252;">""</span>;
+<span style="color: #a020f0;">for</span> (<span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span> : stringArray) {
   concat = concat + s;
 }
 </pre>
@@ -3882,8 +3881,8 @@ compiler barfs if you try
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
-<span style="color: #8ac6f2; font-weight: bold;">for</span> (i : array) { ... }
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+<span style="color: #a020f0;">for</span> (i : array) { ... }
 </pre>
 
 
@@ -4020,8 +4019,8 @@ own choosing.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">assert</span> <span style="color: #cae682;">x</span> == <span style="color: #ffa07a;">3</span>;
-<span style="color: #8ac6f2; font-weight: bold;">assert</span> list.<span style="color: #cae682;">size</span> == list.countLength() : <span style="color: #95e454;">"wrong SList size:  "</span> + list.size;
+<pre class="src src-java"><span style="color: #a020f0;">assert</span> <span style="color: #a0522d;">x</span> == <span style="color: #bc8f8f;">3</span>;
+<span style="color: #a020f0;">assert</span> list.<span style="color: #a0522d;">size</span> == list.countLength() : <span style="color: #8b2252;">"wrong SList size:  "</span> + list.size;
 </pre>
 
 
@@ -4100,14 +4099,14 @@ than the size of the code being tested.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">abstract</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">List</span> {
-  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">abstract</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">List</span> {
+  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">length</span>() {
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> size;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">length</span>() {
+    <span style="color: #a020f0;">return</span> size;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">abstract</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>);
+  <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">abstract</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>);
 }
 </pre>
 
@@ -4119,8 +4118,8 @@ variable of type List, but you can't create a List object.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">List</span> <span style="color: #cae682;">myList</span>;                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Right on.</span>
-myList = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">List</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+<pre class="src src-java"><span style="color: #228b22;">List</span> <span style="color: #a0522d;">myList</span>;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
+myList = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">List</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -4139,14 +4138,14 @@ for the insertFront method.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #8ac6f2; font-weight: bold;">extends</span> <span style="color: #92a65e; font-weight: bold;">List</span> {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">inherits the "size" field.</span>
-  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">List</span> {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">inherits the "size" field.</span>
+  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
 
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">inherits the "length" method.</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">inherits the "length" method.</span>
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>) {
-    head = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(item, head);
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>) {
+    head = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(item, head);
     size++;
   }  
 }
@@ -4166,8 +4165,8 @@ are Lists, we can assign an SList to a List variable.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">List</span> <span style="color: #cae682;">myList</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();   <span style="color: #99968b;">// </span><span style="color: #99968b;">Right on.</span>
-myList.insertFront(obj);     <span style="color: #99968b;">// </span><span style="color: #99968b;">Right on.</span>
+<pre class="src src-java"><span style="color: #228b22;">List</span> <span style="color: #a0522d;">myList</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();   <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
+myList.insertFront(obj);     <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
 </pre>
 
 
@@ -4200,7 +4199,7 @@ kind of List.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">listSort</span>(<span style="color: #92a65e; font-weight: bold;">List</span> <span style="color: #cae682;">l</span>) { ... }
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">listSort</span>(<span style="color: #228b22;">List</span> <span style="color: #a0522d;">l</span>) { ... }
 </pre>
 
 
@@ -4261,26 +4260,26 @@ A Java interface is just like an abstract class, except for two differences.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">interface</span> <span style="color: #92a65e; font-weight: bold;">Nukeable</span> {               <span style="color: #99968b;">// </span><span style="color: #99968b;">In Nukeable.java</span>
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">nuke</span>();
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Nukeable</span> {               <span style="color: #b22222;">// </span><span style="color: #b22222;">In Nukeable.java</span>
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">nuke</span>();
 }
 
-<span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">interface</span> <span style="color: #92a65e; font-weight: bold;">Comparable</span> {             <span style="color: #99968b;">// </span><span style="color: #99968b;">In java.lang</span>
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">compareTo</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">o</span>);
+<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Comparable</span> {             <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.lang</span>
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">compareTo</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span>);
 }
 
-<span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #8ac6f2; font-weight: bold;">extends</span> <span style="color: #92a65e; font-weight: bold;">List</span> <span style="color: #8ac6f2; font-weight: bold;">implements</span> <span style="color: #92a65e; font-weight: bold;">Nukeable</span>, <span style="color: #92a65e; font-weight: bold;">Comparable</span> {
+<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">List</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Nukeable</span>, <span style="color: #228b22;">Comparable</span> {
   [Previous stuff here.]
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> nuke() {
-    head = <span style="color: #7fffd4;">null</span>;
-    size = <span style="color: #ffa07a;">0</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> nuke() {
+    head = <span style="color: #5f9ea0;">null</span>;
+    size = <span style="color: #bc8f8f;">0</span>;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">compareTo</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">o</span>) {
-    [Returns a number &lt; <span style="color: #ffa07a;">0</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> <span style="color: #8ac6f2; font-weight: bold;">this</span> &lt; o,
-                        <span style="color: #ffa07a;">0</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> <span style="color: #8ac6f2; font-weight: bold;">this</span>.equals(o), 
-                      &gt; <span style="color: #ffa07a;">0</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> <span style="color: #8ac6f2; font-weight: bold;">this</span> &gt; o.]
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">compareTo</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span>) {
+    [Returns a number &lt; <span style="color: #bc8f8f;">0</span> <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span> &lt; o,
+                        <span style="color: #bc8f8f;">0</span> <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span>.equals(o), 
+                      &gt; <span style="color: #bc8f8f;">0</span> <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span> &gt; o.]
   }
 }
 </pre>
@@ -4315,8 +4314,8 @@ of these types.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">Nukeable</span> <span style="color: #cae682;">n</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
-<span style="color: #92a65e; font-weight: bold;">Comparable</span> <span style="color: #cae682;">c</span> = (<span style="color: #92a65e; font-weight: bold;">Comparable</span>) n;
+<pre class="src src-java"><span style="color: #228b22;">Nukeable</span> <span style="color: #a0522d;">n</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+<span style="color: #228b22;">Comparable</span> <span style="color: #a0522d;">c</span> = (<span style="color: #228b22;">Comparable</span>) n;
 </pre>
 
 
@@ -4332,7 +4331,7 @@ of Comparable objects.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">sort</span>(<span style="color: #92a65e; font-weight: bold;">Object</span>[] <span style="color: #cae682;">a</span>)       <span style="color: #99968b;">// </span><span style="color: #99968b;">In java.util</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">sort</span>(<span style="color: #228b22;">Object</span>[] <span style="color: #a0522d;">a</span>)       <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.util</span>
 </pre>
 
 
@@ -4347,7 +4346,7 @@ multiple superinterfaces, so we can group several interfaces into one.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">interface</span> <span style="color: #92a65e; font-weight: bold;">NukeAndCompare</span> <span style="color: #8ac6f2; font-weight: bold;">extends</span> <span style="color: #92a65e; font-weight: bold;">Nukeable</span>, <span style="color: #92a65e; font-weight: bold;">Comparable</span> { }
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">NukeAndCompare</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Nukeable</span>, <span style="color: #228b22;">Comparable</span> { }
 </pre>
 
 
@@ -4420,7 +4419,7 @@ Here's an example of all three in one.
 
 
 
-<pre class="src src-java"><span style="color: #e5786d;">java</span>.<span style="color: #e5786d;">lang</span>.System.out.println(<span style="color: #95e454;">"My fingers are tired."</span>);
+<pre class="src src-java"><span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">lang</span>.System.out.println(<span style="color: #8b2252;">"My fingers are tired."</span>);
 </pre>
 
 
@@ -4431,8 +4430,8 @@ all the time.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.io.</span><span style="color: #92a65e; font-weight: bold;">File</span>;  <span style="color: #99968b;">// </span><span style="color: #99968b;">Can now refer to File class, not just java.io.File.</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.io.*</span>;     <span style="color: #99968b;">// </span><span style="color: #99968b;">Can now refer to everything in java.io.</span>
+<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.io.</span><span style="color: #228b22;">File</span>;  <span style="color: #b22222;">// </span><span style="color: #b22222;">Can now refer to File class, not just java.io.File.</span>
+<span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.io.*</span>;     <span style="color: #b22222;">// </span><span style="color: #b22222;">Can now refer to everything in java.io.</span>
 </pre>
 
 
@@ -4445,7 +4444,7 @@ names explicitly throughout your code.
 
 
 
-<pre class="src src-java"><span style="color: #e5786d;">java</span>.<span style="color: #e5786d;">awt</span>.Frame.add(<span style="color: #e5786d;">photo</span>.Frame.canvas);
+<pre class="src src-java"><span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">awt</span>.Frame.add(<span style="color: #008b8b;">photo</span>.Frame.canvas);
 </pre>
 
 
@@ -4459,7 +4458,7 @@ You can specify a classpath on the command line, as when you type
 
 
 
-<pre class="src src-java">javac -cp <span style="color: #95e454;">".:~jrs/classes:libraries.jar"</span> *.java
+<pre class="src src-java">javac -cp <span style="color: #8b2252;">".:~jrs/classes:libraries.jar"</span> *.java
 </pre>
 
 
@@ -4485,13 +4484,13 @@ in which the files appear.
 
 
 
-<pre class="src src-java"><span style="color: #99968b;">/* </span><span style="color: #99968b;">list/SList.java */</span>                |  <span style="color: #99968b;">/* </span><span style="color: #99968b;">list/SListNode.java */</span>
+<pre class="src src-java"><span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SList.java */</span>                |  <span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SListNode.java */</span>
                                      |
-<span style="color: #8ac6f2; font-weight: bold;">package</span> <span style="color: #63b8ff;">list</span>;                        |  <span style="color: #8ac6f2; font-weight: bold;">package</span> <span style="color: #63b8ff;">list</span>;
+<span style="color: #a020f0;">package</span> <span style="color: #0000cd;">list</span>;                        |  <span style="color: #a020f0;">package</span> <span style="color: #0000cd;">list</span>;
                                      |
-<span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> SList {                 |  <span style="color: #8ac6f2; font-weight: bold;">class</span> SListNode {
-  <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;                    |    Object item;
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;                          |    SListNode next;
+<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> SList {                 |  <span style="color: #a020f0;">class</span> SListNode {
+  <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;                    |    Object item;
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;                          |    SListNode next;
 }                                    |  }
 </pre>
 
@@ -4540,7 +4539,7 @@ done from outside the package, using the following syntax:
 
 
 <pre class="src src-java">javac -g list/SList.java
-java <span style="color: #e5786d;">list</span>.SList
+java <span style="color: #008b8b;">list</span>.SList
 </pre>
 
 
@@ -4579,10 +4578,10 @@ objects.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">interface</span> <span style="color: #92a65e; font-weight: bold;">Iterator</span> {
-  <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">hasNext</span>();
-  <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">next</span>();
-  <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">remove</span>();                          <span style="color: #99968b;">// </span><span style="color: #99968b;">The remove() method is optional.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Iterator</span> {
+  <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">hasNext</span>();
+  <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">next</span>();
+  <span style="color: #228b22;">void</span> <span style="color: #0000ff;">remove</span>();                          <span style="color: #b22222;">// </span><span style="color: #b22222;">The remove() method is optional.</span>
 }
 </pre>
 
@@ -4625,8 +4624,8 @@ java.util called "Iterable".
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">interface</span> <span style="color: #92a65e; font-weight: bold;">Iterable</span> {
-  <span style="color: #92a65e; font-weight: bold;">Iterator</span> <span style="color: #cae682;">iterator</span>();
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Iterable</span> {
+  <span style="color: #228b22;">Iterator</span> <span style="color: #0000ff;">iterator</span>();
 }
 </pre>
 
@@ -4646,14 +4645,14 @@ the items in an SList l.
 
 
 
-<pre class="src src-java">  <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">o</span> : l) {
+<pre class="src src-java">  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span> : l) {
     System.out.println(o);
   }
 
-This loop is <span style="color: #92a65e; font-weight: bold;">equivalent</span> <span style="color: #cae682;">to</span>
+This loop is <span style="color: #228b22;">equivalent</span> <span style="color: #0000ff;">to</span>
 
-  <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">Iterator</span> <span style="color: #cae682;">i</span> = l.iterator(); i.hasNext(); ) {
-    <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">o</span> = i.next();
+  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">Iterator</span> <span style="color: #a0522d;">i</span> = l.iterator(); i.hasNext(); ) {
+    <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span> = i.next();
     System.out.println(o);
   }
 </pre>
@@ -4667,49 +4666,49 @@ package.
 
 
 
-<pre class="src src-java"><span style="color: #99968b;">/* </span><span style="color: #99968b;">list/SListIterator.java */</span>
+<pre class="src src-java"><span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SListIterator.java */</span>
 
-<span style="color: #8ac6f2; font-weight: bold;">package</span> <span style="color: #63b8ff;">list</span>;
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.util.*</span>;
+<span style="color: #a020f0;">package</span> <span style="color: #0000cd;">list</span>;
+<span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.util.*</span>;
 
-<span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SListIterator</span> <span style="color: #8ac6f2; font-weight: bold;">implements</span> <span style="color: #92a65e; font-weight: bold;">Iterator</span> {
-  <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">n</span>;
+<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SListIterator</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Iterator</span> {
+  <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n</span>;
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">SListIterator</span>(<span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">l</span>) {
+  <span style="color: #da70d6;">public</span> <span style="color: #00008b;">SListIterator</span>(<span style="color: #228b22;">SList</span> <span style="color: #a0522d;">l</span>) {
     n = l.head;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">hasNext</span>() {
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> n != <span style="color: #7fffd4;">null</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">hasNext</span>() {
+    <span style="color: #a020f0;">return</span> n != <span style="color: #5f9ea0;">null</span>;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">next</span>() {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (n == <span style="color: #7fffd4;">null</span>) {
-      <span style="color: #99968b;">/* </span><span style="color: #99968b;">We'll learn about throwing exceptions in the next lecture. */</span>
-      <span style="color: #8ac6f2; font-weight: bold;">throw</span> <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">NoSuchElementException</span>();                       <span style="color: #99968b;">// </span><span style="color: #99968b;">In java.util</span>
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">next</span>() {
+    <span style="color: #a020f0;">if</span> (n == <span style="color: #5f9ea0;">null</span>) {
+      <span style="color: #b22222;">/* </span><span style="color: #b22222;">We'll learn about throwing exceptions in the next lecture. */</span>
+      <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">NoSuchElementException</span>();                       <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.util</span>
     }
-    <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">i</span> = n.item;
+    <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">i</span> = n.item;
     n = n.next;
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> i;
+    <span style="color: #a020f0;">return</span> i;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">remove</span>() {
-    <span style="color: #99968b;">/* </span><span style="color: #99968b;">Doing it the lazy way.  Remove this, motherf! */</span>
-    <span style="color: #8ac6f2; font-weight: bold;">throw</span> <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">UnsupportedOperationException</span>(<span style="color: #95e454;">"Nice try, bozo."</span>); <span style="color: #99968b;">// </span><span style="color: #99968b;">In java.lang</span>
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">remove</span>() {
+    <span style="color: #b22222;">/* </span><span style="color: #b22222;">Doing it the lazy way.  Remove this, motherf! */</span>
+    <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">UnsupportedOperationException</span>(<span style="color: #8b2252;">"Nice try, bozo."</span>); <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.lang</span>
   }
 }
 
-<span style="color: #99968b;">/* </span><span style="color: #99968b;">list/SList.java */</span>
+<span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SList.java */</span>
 
-<span style="color: #8ac6f2; font-weight: bold;">package</span> <span style="color: #63b8ff;">list</span>;
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #63b8ff;">java.util.*</span>;
+<span style="color: #a020f0;">package</span> <span style="color: #0000cd;">list</span>;
+<span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.util.*</span>;
 
-<span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #8ac6f2; font-weight: bold;">implements</span> <span style="color: #92a65e; font-weight: bold;">Iterable</span> {
-  <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Iterable</span> {
+  <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">Iterator</span> <span style="color: #cae682;">iterator</span>() {
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListIterator</span>(<span style="color: #8ac6f2; font-weight: bold;">this</span>);
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">Iterator</span> <span style="color: #0000ff;">iterator</span>() {
+    <span style="color: #a020f0;">return</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListIterator</span>(<span style="color: #a020f0;">this</span>);
   }
 
   [other methods here]
@@ -4733,7 +4732,7 @@ prime number as an Integer object.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T18:43-0800</p>
+<p class="date">Date: 2014-02-22T19:12-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

@@ -123,7 +123,6 @@
   pre {
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -158,6 +157,7 @@ Please use the variables `org-export-html-style' and
 `org-export-html-style-extra' to add to this style.  If you wish to not
 have the default style included, customize the variable
 `org-export-html-style-include-default'.")
+
 
 (defun cs61b-export-to-html ()
   (interactive)
