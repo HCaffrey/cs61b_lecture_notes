@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes10"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T19:12-0800"/>
+<meta name="generated" content="2014-02-22T23:03-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -338,9 +338,17 @@ class (including Java's built-in classes like String and BufferedReader.)
 Object is at the top of every class hierarchy.
 </p>
 
-<p>
-<img src="ditaa-images/img1_49e01f5a87853670b8a5a9dedec256441e611d22.png"  alt="ditaa-images/img1_49e01f5a87853670b8a5a9dedec256441e611d22.png" />
-</p>
+
+
+<pre class="src src-text">      Object
+      /    \
+  String  Worker
+         /      \
+Proletariat  Bourgeoisie        Superclasses appear above their subclasses.
+   /     \       |
+Student  TA   Professor
+</pre>
+
 
 <p>
 That's why the "item" field in each listnode is of type Object:  it can
@@ -526,7 +534,7 @@ a subclass of TailList.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T19:12-0800</p>
+<p class="date">Date: 2014-02-22T23:03-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

@@ -128,7 +128,7 @@ a subclass of Worker.  Furthermore, _every_ class is a subclass of the Object
 class (including Java's built-in classes like String and BufferedReader.)
 Object is at the top of every class hierarchy.
 
-#+begin_ditaa ditaa-images/img1
+#+Begin_SRC text
           Object
           /    \
       String  Worker
@@ -136,7 +136,7 @@ Object is at the top of every class hierarchy.
     Proletariat  Bourgeoisie        Superclasses appear above their subclasses.
        /     \       |
     Student  TA   Professor
-#+end_ditaa
+#+END_SRC
 
 That's why the "item" field in each listnode is of type Object:  it can
 reference any object of any class.  (It can't reference a primitive type,

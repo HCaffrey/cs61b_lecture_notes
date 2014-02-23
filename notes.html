@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T19:12-0800"/>
+<meta name="generated" content="2014-02-22T23:04-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -3533,9 +3533,17 @@ class (including Java's built-in classes like String and BufferedReader.)
 Object is at the top of every class hierarchy.
 </p>
 
-<p>
-<img src="ditaa-images/img1_49e01f5a87853670b8a5a9dedec256441e611d22.png"  alt="ditaa-images/img1_49e01f5a87853670b8a5a9dedec256441e611d22.png" />
-</p>
+
+
+<pre class="src src-text">      Object
+      /    \
+  String  Worker
+         /      \
+Proletariat  Bourgeoisie        Superclasses appear above their subclasses.
+   /     \       |
+Student  TA   Professor
+</pre>
+
 
 <p>
 That's why the "item" field in each listnode is of type Object:  it can
@@ -4174,19 +4182,15 @@ myList.insertFront(obj);     <span style="color: #b22222;">// </span><span style
 What are abstract classes good for?  It's all about the interface.
 </p>
 
-<hr/>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="left" />
-</colgroup>
-<tbody>
-<tr><td class="left">An abstract class lets you define an interface</td></tr>
-<tr><td class="left">- for multiple classes to share,</td></tr>
-<tr><td class="left">- without defining any of them yet.</td></tr>
-</tbody>
-</table>
 
 
-<hr/>
+<pre class="src src-text">----------------------------------------------------
+|  An abstract class lets you define an interface  |
+|    - for multiple classes to share,              |
+|    - without defining any of them yet.           |
+----------------------------------------------------
+</pre>
+
 
 <p>
 Let's consider the List class.  Although the List class is abstract, it is an
@@ -4732,7 +4736,7 @@ prime number as an Integer object.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T19:12-0800</p>
+<p class="date">Date: 2014-02-22T23:04-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

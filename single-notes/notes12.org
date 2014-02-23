@@ -64,11 +64,13 @@ are Lists, we can assign an SList to a List variable.
 
 What are abstract classes good for?  It's all about the interface.
 
+#+Begin_SRC text
              ----------------------------------------------------
              |  An abstract class lets you define an interface  |
              |    - for multiple classes to share,              |
              |    - without defining any of them yet.           |
              ----------------------------------------------------
+#+END_SRC
 
 Let's consider the List class.  Although the List class is abstract, it is an
 ADT--even without any implementation!-- because it has an interface with public
