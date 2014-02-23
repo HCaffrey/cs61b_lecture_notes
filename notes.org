@@ -2033,7 +2033,7 @@ can be convenient for debugging--for instance, when you're trying to figure out
 which method called another method with illegal parameters.
 
 ** Parameter Passing
-As in Scheme, Java passes all parameters _by_value_.  This means that the
+As in Scheme, Java passes all parameters _by value_.  This means that the
 method has _copies_ of the actual parameters, and cannot change the originals.
 The copies reside in the method's stack frame for the method.  The method can
 change these copies, but the original values that were copied are not changed.

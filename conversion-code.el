@@ -108,22 +108,23 @@
 (defun cs61b-export-to-html ()
   (interactive)
   (if (string= (buffer-name) "notes.org")
-      (progn
-	(org-map-entries (lambda ()
-			   (if (looking-at "^\*[ \t]+[Ll]ecture[ \t]+\\([0-9]+\\)")
-			       (let* ((name (format "notes%s"
-						    (match-string 1)))
-				      (file (format "single-notes/%s.org" name))
-				      (html (format "%s.html" name)))
-				 (org-copy-subtree)
-				 (with-temp-buffer
-				   (org-paste-subtree)
-				   (write-file file)
-				   (org-export-as-html 3))
-				 (kill-buffer-if-exists html))))
-			 nil 'file)
-	(org-export-as-html 3)
-	(kill-buffer-if-exists "notes.html"))
+      (let ((org-export-with-section-numbers nil))
+	(progn
+	  (org-map-entries (lambda ()
+			     (if (looking-at "^\*[ \t]+[Ll]ecture[ \t]+\\([0-9]+\\)")
+				 (let* ((name (format "notes%s"
+						      (match-string 1)))
+					(file (format "single-notes/%s.org" name))
+					(html (format "%s.html" name)))
+				   (org-copy-subtree)
+				   (with-temp-buffer
+				     (org-paste-subtree)
+				     (write-file file)
+				     (org-export-as-html 3))
+				   (kill-buffer-if-exists html))))
+			   nil 'file)
+	  (org-export-as-html 3)
+	  (kill-buffer-if-exists "notes.html")))
     (message "Incorrect buffer: Run in notes.org")))
 
 

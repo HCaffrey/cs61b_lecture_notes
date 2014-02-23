@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes10"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T15:15-0800"/>
+<meta name="generated" content="2014-02-22T18:16-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -122,15 +122,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Lecture 10</a>
+<li><a href="#sec-1">Lecture 10</a>
 <ul>
-<li><a href="#sec-1-1">1.1 INHERITANCE</a></li>
-<li><a href="#sec-1-2">1.2 Inheritance and Constructors</a></li>
-<li><a href="#sec-1-3">1.3 Invoking Overridden Methods</a></li>
-<li><a href="#sec-1-4">1.4 The "protected" Keyword</a></li>
-<li><a href="#sec-1-5">1.5 Class Hierarchies</a></li>
-<li><a href="#sec-1-6">1.6 Dynamic Method Lookup</a></li>
-<li><a href="#sec-1-7">1.7 Subtleties of Inheritance</a></li>
+<li><a href="#sec-1-1">INHERITANCE</a></li>
+<li><a href="#sec-1-2">Inheritance and Constructors</a></li>
+<li><a href="#sec-1-3">Invoking Overridden Methods</a></li>
+<li><a href="#sec-1-4">The "protected" Keyword</a></li>
+<li><a href="#sec-1-5">Class Hierarchies</a></li>
+<li><a href="#sec-1-6">Dynamic Method Lookup</a></li>
+<li><a href="#sec-1-7">Subtleties of Inheritance</a></li>
 </ul>
 </li>
 </ul>
@@ -138,7 +138,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Lecture 10</h2>
+<h2 id="sec-1">Lecture 10</h2>
 <div class="outline-text-2" id="text-1">
 
 <p>Today's reading:  All of Chapter 7, plus pp. 28-33, 250-257.
@@ -149,7 +149,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> INHERITANCE</h3>
+<h3 id="sec-1-1">INHERITANCE</h3>
 <div class="outline-text-3" id="text-1-1">
 
 <p>In Lab 3, you modified several methods in the SList class so that a "tail"
@@ -214,7 +214,7 @@ SList, and there's no need to rewrite them.
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Inheritance and Constructors</h3>
+<h3 id="sec-1-2">Inheritance and Constructors</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <p>What happens when we construct a TailList?  Java executes a TailList
@@ -260,7 +260,7 @@ choose which of the superclass constructors is called.
 </div>
 
 <div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Invoking Overridden Methods</h3>
+<h3 id="sec-1-3">Invoking Overridden Methods</h3>
 <div class="outline-text-3" id="text-1-3">
 
 <p>Sometimes you want to override a method, yet still be able to call the method
@@ -290,7 +290,7 @@ invocations need not be the first statement in a method.
 </div>
 
 <div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> The "protected" Keyword</h3>
+<h3 id="sec-1-4">The "protected" Keyword</h3>
 <div class="outline-text-3" id="text-1-4">
 
 <p>I lied when I said that we don't need to modify SList.  One change is
@@ -331,7 +331,7 @@ declared "protected" as well.
 </div>
 
 <div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Class Hierarchies</h3>
+<h3 id="sec-1-5">Class Hierarchies</h3>
 <div class="outline-text-3" id="text-1-5">
 
 <p>Subclasses can have subclasses.  Subclassing is transitive:  if Proletariat is
@@ -355,7 +355,7 @@ though.)
 </div>
 
 <div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Dynamic Method Lookup</h3>
+<h3 id="sec-1-6">Dynamic Method Lookup</h3>
 <div class="outline-text-3" id="text-1-6">
 
 <p>Here's where inheritance gets interesting.  Any TailList can masquerade as an
@@ -427,7 +427,7 @@ else in the RunLengthEncoding class.
 </div>
 
 <div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Subtleties of Inheritance</h3>
+<h3 id="sec-1-7">Subtleties of Inheritance</h3>
 <div class="outline-text-3" id="text-1-7">
 
 <p>(1)  Suppose we write a new method in the TailList class called eatTail().  We
@@ -529,7 +529,7 @@ a subclass of TailList.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T15:15-0800</p>
+<p class="date">Date: 2014-02-22T18:16-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
