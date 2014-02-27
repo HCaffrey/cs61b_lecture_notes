@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>notes15</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="notes15"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-02-27T00:49-0800"/>
+<meta name="author" content="michael"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	padding: 5pt;
+	font-family: courier, monospace;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">notes15</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Lecture 15</a>
+<ul>
+<li><a href="#sec-1-1">EXCEPTIONS</a>
+<ul>
+<li><a href="#sec-1-1-1">Purpose #1:  Coping with Errors</a></li>
+<li><a href="#sec-1-1-2">Purpose #2:  Escaping a Sinking Ship</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">Checked and Unchecked Throwables</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Lecture 15</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>(Lecture 14 was the midterm exam)
+</p>
+<p>
+Today's reading:  Sierra &amp; Bates, pp. 315-338.
+</p>
+<p>
+<a href="original-notes/15">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">EXCEPTIONS</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>When a run-time error occurs in Java, the JVM "throws an exception," prints
+an error message, and quits.  Oddly, an exception is a Java object (named
+Exception), and you can prevent the error message from printing and the program
+from terminating by "catching" the Exception that Java threw.
+</p>
+
+</div>
+
+<div id="outline-container-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">Purpose #1:  Coping with Errors</h4>
+<div class="outline-text-4" id="text-1-1-1">
+
+<p>Exceptions are a way of coping with unexpected errors.  By catching exceptions,
+you can recover.  For instance, if you try to open a file that doesn't exist or
+that you aren't allowed to read, Java will throw an exception.  You can catch
+the exception, handle it, and continue, instead of letting the program crash.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #a020f0;">try</span> {
+    f = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">FileInputStream</span>(<span style="color: #8b2252;">"~cs61b/pj2.solution"</span>);
+    i = f.read();
+}
+<span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">FileNotFoundException</span> <span style="color: #a0522d;">e1</span>) {
+    System.out.println(e1);                       <span style="color: #b22222;">// </span><span style="color: #b22222;">An exception handler.</span>
+}
+<span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">IOException</span> <span style="color: #a0522d;">e2</span>) {
+    f.close();                                    <span style="color: #b22222;">// </span><span style="color: #b22222;">Another exception handler.</span>
+}
+</pre>
+
+
+<p>
+What does this code do?
+</p><ol>
+<li>It executes the code inside the "try" braces.
+</li>
+<li>If the "try" code executes normally, we skip over the "catch" clauses.
+</li>
+<li>If the "try" code throws an exception, Java does not finish the "try"
+     code.  It jumps directly to the first "catch" clause that matches the
+     exception, and executes that "catch" clause.  By "matches", I mean that
+     the actual exception object thrown is the same class as, or a subclass of,
+     the static type listed in the "catch" clause.
+
+<p>
+     When the "catch" clause finishes executing, Java jumps to the next line of
+     code immediately after all the "catch" clauses.
+</p></li>
+</ol>
+
+
+<p>
+The code within a "catch" clause is called an <span style="text-decoration:underline;">exception handler</span>.
+</p>
+<p>
+If the FileInputStream constructor fails to find the file, it will throw a
+FileNotFoundException.  The line "i = f.read()" is not executed; execution
+jumps directly to the first exception handler.
+</p>
+<p>
+FileNotFoundException is a subclass of IOException, so the exception matches
+both "catch" clauses.  However, only one "catch" clause is executed&ndash;the first
+one that matches.  The second "catch" clause would execute if the first were
+not present.
+</p>
+<p>
+If the FileInputStream constructor runs without error, but the read() method
+throws an exception (for instance, because a disk track is faulty), it 
+typically generates some sort of IOException that isn't a FileNotFoundException.
+This causes the second "catch" clause to execute and close the file.  Exception
+handlers are often used to recover from errors and clean up loose ends like
+open files.
+</p>
+<p>
+Note that you don't need a "catch" clause for every exception that can occur.
+You can catch some exceptions and let others propagate.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">Purpose #2:  Escaping a Sinking Ship</h4>
+<div class="outline-text-4" id="text-1-1-2">
+
+<p>Believe it or not, you might want to throw your own exception.  Exceptions are
+the easiest way to move program execution out of a method whose purpose has
+been defeated.
+</p>
+<p>
+For example, suppose you're writing a parser that reads Java code and analyzes
+its syntactic structure.  Parsers are quite complicated, and use many recursive
+calls and loops.  Suppose that your parser is executing a method many methods
+deep within the program stack within many levels of loop nesting.  Suddenly,
+your parser unexpectedly reaches the end of the file, because a student
+accidentally erased the last 50 lines of his program.
+</p>
+<p>
+It's quite painful to write code that elegantly retraces its way back up
+through the method calls and loops when a surprise happens deep within a
+parser.  A better solution?  Throw an exception!  You can even roll your own.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">ParserException</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Exception</span> { }
+</pre>
+
+
+<p>
+This class doesn't have any methods except the default constructor.  There's no
+need; the only purpose of a ParserException is to be distinguishable from other
+types of exceptions.  Now we can write some parser methods.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">ParseTree</span> <span style="color: #0000ff;">parseExpression</span>() <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">ParserException</span> {
+    [loops]
+        <span style="color: #a020f0;">if</span> (somethingWrong) {
+            <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ParserException</span>();
+        }
+    [more code]
+        }
+}
+<span style="color: #a020f0;">return</span> pt;
+}
+</pre>
+
+
+<p>
+The "throw" statement throws a ParserException, thereby immediately getting us
+out of the routine.  How is this different from a "return" statement?  First,
+we don't have to return anything.  Second, an exception can propagate several
+stack frames down the stack, not just one, as we'll see shortly.
+</p>
+<p>
+The method signature has the modifier "throws ParserException".  This is
+necessary; Java won't let you compile the method without it.  "throws" clauses
+help you and the compiler keep track of which exceptions can propagate where.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">ParseTree</span> <span style="color: #0000ff;">parse</span>() <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">ParserException</span>, <span style="color: #228b22;">DumbCodeException</span> {
+    [loops and code]
+        p = parseExpression();
+    [more code]
+        }
+    }
+}
+
+<span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">compile</span>() {
+    <span style="color: #228b22;">ParseTree</span> <span style="color: #a0522d;">p</span>;
+    <span style="color: #a020f0;">try</span> {
+        p = parse();
+        p.toByteCode();
+    }
+    <span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">ParserException</span> <span style="color: #a0522d;">e1</span>) { }
+    <span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">DumbCodeException</span> <span style="color: #a0522d;">e2</span>) { }
+}
+</pre>
+
+
+<p>
+The parse() method above shows how to define a method that can throw two (or
+more) exceptions.  Since every exception is a subclass of Exception, we could
+have replaced the two exceptions with "Exception", but then the caller would
+have to catch all types of Exceptions.  We don't want (in this case) to catch
+NullPointerExceptions or otherwise hide our bugs from ourselves.
+</p>
+<p>
+When parseExpression() throws an exception, it propagates right through the
+calling method parse() and down to compile(), where it is caught.  compile()
+doesn't need a "throws ParserException" clause because it catches any
+ParserException that can occur.  In this code, the "catch" clauses don't do
+anything except stop the exceptions.
+</p>
+<p>
+If an exception propagates all the way out of main() without being caught, the
+JVM prints an error message and halts.  You've seen this happen many times.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">Checked and Unchecked Throwables</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+<p>
+The top-level class of things you can "throw" and "catch" is called Throwable.
+Here's part of the Throwable class hierarchy.
+</p>
+
+
+
+<pre class="src src-text">                           Throwable
+                          /         \
+                         /           \
+                        /             \
+                       /               \
+                      /                 \
+             Exception                   Error
+            /    \                      /     \
+ IOException  RunTimeException AssertionError  VirtualMachineError
+               /            \                           \
+NullPointerException  ClassCastException              OutOfMemoryError
+</pre>
+
+
+<p>
+An Error generally represents a fatal error, like running out of memory or
+stack space.  Failed "assert" statements also generate a subclass of Error
+called an AssertionError.  Although you can throw or catch any kind of
+Throwable, catching an Error is rarely appropriate.
+</p>
+<p>
+Most Exceptions, unlike Errors, signify problems you could conceivably recover
+from.  The subclass RunTimeException is made up of exceptions that might be
+thrown by the Java Virtual Machine, such as NullPointerException,
+ArrayIndexOutOfBoundsException, and ClassCastException.
+</p>
+<p>
+There are two types of Throwables.  <span style="text-decoration:underline;">Unchecked</span> Throwables are those a method
+can throw without declaring them in a "throws" clause.  All Errors and
+RunTimeExceptions (including all their subclasses) are unchecked, because
+almost every method can generate them inadvertently, and it would be silly if
+we had to declare them.
+</p>
+<p>
+All Exceptions except RunTimeExceptions are <span style="text-decoration:underline;">checked</span>, which means that if your
+method might throw one without catching it, it must declare that possibility in
+a "throws" clause.  Examples of checked exceptions include IOException and
+almost any Throwable subclass you would make yourself.
+</p>
+<p>
+When a method calls another method that can throw a checked exception, it has
+just two choices.
+</p>
+<ol>
+<li>It can catch the exception, or
+</li>
+<li>it must be declared so that it "throws" the same exception itself.
+</li>
+</ol>
+
+
+<p>
+The easiest way to figure out which exceptions to declare is to declare none
+and let the compiler's error messages tell you.  (This won't work on the exams,
+though.)
+</p></div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-02-27T00:49-0800</p>
+<p class="author">Author: michael</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

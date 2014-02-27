@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T23:04-0800"/>
+<meta name="generated" content="2014-02-27T00:49-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -248,6 +248,17 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#sec-13-2">ITERATORS</a></li>
+</ul>
+</li>
+<li><a href="#sec-14">Lecture 15</a>
+<ul>
+<li><a href="#sec-14-1">EXCEPTIONS</a>
+<ul>
+<li><a href="#sec-14-1-1">Purpose #1:  Coping with Errors</a></li>
+<li><a href="#sec-14-1-2">Purpose #2:  Escaping a Sinking Ship</a></li>
+</ul>
+</li>
+<li><a href="#sec-14-2">Checked and Unchecked Throwables</a></li>
 </ul>
 </li>
 </ul>
@@ -3259,7 +3270,7 @@ Sections 4.1.2 &amp; 4.1.7.
 </p>
 
 <p>
-<img src="ditaa-images/TEMP_3_8a3ff1957e48efafbe2b593085f36b159ead98a7.png"  alt="ditaa-images/TEMP_3_8a3ff1957e48efafbe2b593085f36b159ead98a7.png" />
+<img src="ditaa-images/TEMP_3_2094ede6fa0ffdd7cbac941e64b2690a5ee1806c.png"  alt="ditaa-images/TEMP_3_2094ede6fa0ffdd7cbac941e64b2690a5ee1806c.png" />
 </p>
 
 <p>
@@ -3948,27 +3959,32 @@ method calls your test driver.
 (b)  Stubs are small bits of code that are <span style="text-decoration:underline;">called</span> by the code being tested.
 They are often quite short.  They serve three purposes.
 </p>
-<p>
-(i)  If you write a method that calls other methods that haven't yet been
-     implemented, you can write simple stubs that fake the missing methods.
-(ii) Suppose you are having difficulty determining whether a bug lies in
-     a calling method, or a method it calls.  You can temporarily replace the
-     callee with a stub that returns controlled results to the caller, so you
-     can see if the caller is responsible for the problem.
-(iii)Stubs allow you to create repeatable test cases that might not arise often
-     in practice.  For instance, suppose a subroutine fetches and returns input
-     from an airline database, and your code calls this subroutine.  You might
-     want to test whether your code operates correctly when ten airplanes
-     depart at the same time.  Such an event might be rare in practice, but you
-     can replace the database access subroutine with a stub that feeds fake
-     data to your code.  There are two advantages:
-</p>
+<ol>
+<li>If you write a method that calls other methods that haven't yet been
+    implemented, you can write simple stubs that fake the missing methods.
+</li>
+<li>Suppose you are having difficulty determining whether a bug lies in
+    a calling method, or a method it calls.  You can temporarily replace the
+    callee with a stub that returns controlled results to the caller, so you
+    can see if the caller is responsible for the problem.
+</li>
+<li>Stubs allow you to create repeatable test cases that might not arise often
+    in practice.  For instance, suppose a subroutine fetches and returns input
+    from an airline database, and your code calls this subroutine.  You might
+    want to test whether your code operates correctly when ten airplanes
+    depart at the same time.  Such an event might be rare in practice, but you
+    can replace the database access subroutine with a stub that feeds fake
+    data to your code.  There are two advantages:
+
 <ul>
 <li>Stubs can produce test data that the real code rarely or never produces.
 </li>
 <li>Stubs produce <span style="text-decoration:underline;">repeatable</span> test data, so that bugs can be reproduced.
 </li>
 </ul>
+
+</li>
+</ol>
 
 
 </div>
@@ -4007,16 +4023,20 @@ The best advice I can give on integration testing:  learn to use a debugger.
 <p>A result verifier is a method that checks the results of other methods.  There
 are at least two types of result verifiers you can write.
 </p>
-<p>
-(a)  Data structure integrity checkers.  A method can inspect a data structure
-     (like a list) and verify that all the invariants are satisfied.  For
-     Project 1, we are asking you to write a simple checker named "check()"
-     that verifies the integrity of your run-length encodings.
-(b)  Algorithm result checkers.  A method can inspect the output of another
-     method for correctness.  For example, if a method is supposed to sort an
-     array of numbers, a result checker can walk through the output and check
-     that each item really is less than or equal to its successor.
-</p>
+<ol>
+<li>Data structure integrity checkers.  A method can inspect a data structure
+    (like a list) and verify that all the invariants are satisfied.  For
+    Project 1, we are asking you to write a simple checker named "check()"
+    that verifies the integrity of your run-length encodings.
+</li>
+<li>Algorithm result checkers.  A method can inspect the output of another
+    method for correctness.  For example, if a method is supposed to sort an
+    array of numbers, a result checker can walk through the output and check
+    that each item really is less than or equal to its successor.
+</li>
+</ol>
+
+
 <p>
 An <span style="text-decoration:underline;">assertion</span> is a piece of code that tests an invariant or a result.
 Java offers an "assert" keyword that tests whether an assertion evaluates to
@@ -4061,23 +4081,28 @@ product.  They run them again every time they fix a bug or add a feature.
 <p>
 Some principles of regression testing:
 </p>
-<p>
- a.  All-paths testing:  your test cases should try to test every path through
+<ol>
+<li>All-paths testing:  your test cases should try to test every path through
      the code.  Test every method.  For every "if" statement, you should try to
      write a test case for each of the two paths.
- b.  "Boundary cases" should be tested, as well as non-boundary cases.  For
+</li>
+<li>"Boundary cases" should be tested, as well as non-boundary cases.  For
      instance, if you write a binary search method, test it on arrays of
      lengths zero and one, as well as longer lengths.  Test the cases where the
      item sought is the first element, the last element, in the middle, not
      present.  For every loop in the code, try to test the cases where it
      iterates zero or one times, as well as the case where it iterates several
      times.  Test the branch "if (x &gt;= 1)" for x equal to 0, 1, and 2.
- c.  Generally, methods can be divided into two types:  extenders, which
+</li>
+<li>Generally, methods can be divided into two types:  extenders, which
      construct or change an object; and observers, which return information
      about an object.  (Some methods do both, but you should always think hard
      about whether that's good design.)  Ideally, your test cases should test
      every combination of extender and observer.
-</p>
+</li>
+</ol>
+
+
 <p>
 In real-world software development, the size of the test code is often larger
 than the size of the code being tested.
@@ -4220,6 +4245,7 @@ have to change a line of sorting code.  You may have written your list sorter
 years before TransactionLists were ever thought of.
 </p>
 
+
 <p>
 The list sorter is built on the foundation of a list  
 ADT, and the application is built on the foundation of
@@ -4230,9 +4256,8 @@ features like transaction logging.  This is a big
 advantage of object-oriented languages like Java.
 </p>
 <p>
-<img src="ditaa-images/TEMP_2_07f8ba5ffaf13fb531100754106baba5dd99a57c.png"  alt="ditaa-images/TEMP_2_07f8ba5ffaf13fb531100754106baba5dd99a57c.png" />
+<img src="ditaa-images/TEMP_2_4f59996096292d48e6065cc3ce5a099a0b28190f.png"  alt="ditaa-images/TEMP_2_4f59996096292d48e6065cc3ce5a099a0b28190f.png" />
 </p>
-
 </div>
 
 </div>
@@ -4732,11 +4757,290 @@ can implement an Iterator subclass called Primes that returns each successive
 prime number as an Integer object.
 </p></div>
 </div>
+
+</div>
+
+<div id="outline-container-14" class="outline-2">
+<h2 id="sec-14">Lecture 15</h2>
+<div class="outline-text-2" id="text-14">
+
+<p>(Lecture 14 was the midterm exam)
+</p>
+<p>
+Today's reading:  Sierra &amp; Bates, pp. 315-338.
+</p>
+<p>
+<a href="original-notes/15">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-14-1" class="outline-3">
+<h3 id="sec-14-1">EXCEPTIONS</h3>
+<div class="outline-text-3" id="text-14-1">
+
+<p>When a run-time error occurs in Java, the JVM "throws an exception," prints
+an error message, and quits.  Oddly, an exception is a Java object (named
+Exception), and you can prevent the error message from printing and the program
+from terminating by "catching" the Exception that Java threw.
+</p>
+
+</div>
+
+<div id="outline-container-14-1-1" class="outline-4">
+<h4 id="sec-14-1-1">Purpose #1:  Coping with Errors</h4>
+<div class="outline-text-4" id="text-14-1-1">
+
+<p>Exceptions are a way of coping with unexpected errors.  By catching exceptions,
+you can recover.  For instance, if you try to open a file that doesn't exist or
+that you aren't allowed to read, Java will throw an exception.  You can catch
+the exception, handle it, and continue, instead of letting the program crash.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #a020f0;">try</span> {
+    f = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">FileInputStream</span>(<span style="color: #8b2252;">"~cs61b/pj2.solution"</span>);
+    i = f.read();
+}
+<span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">FileNotFoundException</span> <span style="color: #a0522d;">e1</span>) {
+    System.out.println(e1);                       <span style="color: #b22222;">// </span><span style="color: #b22222;">An exception handler.</span>
+}
+<span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">IOException</span> <span style="color: #a0522d;">e2</span>) {
+    f.close();                                    <span style="color: #b22222;">// </span><span style="color: #b22222;">Another exception handler.</span>
+}
+</pre>
+
+
+<p>
+What does this code do?
+</p><ol>
+<li>It executes the code inside the "try" braces.
+</li>
+<li>If the "try" code executes normally, we skip over the "catch" clauses.
+</li>
+<li>If the "try" code throws an exception, Java does not finish the "try"
+     code.  It jumps directly to the first "catch" clause that matches the
+     exception, and executes that "catch" clause.  By "matches", I mean that
+     the actual exception object thrown is the same class as, or a subclass of,
+     the static type listed in the "catch" clause.
+
+<p>
+     When the "catch" clause finishes executing, Java jumps to the next line of
+     code immediately after all the "catch" clauses.
+</p></li>
+</ol>
+
+
+<p>
+The code within a "catch" clause is called an <span style="text-decoration:underline;">exception handler</span>.
+</p>
+<p>
+If the FileInputStream constructor fails to find the file, it will throw a
+FileNotFoundException.  The line "i = f.read()" is not executed; execution
+jumps directly to the first exception handler.
+</p>
+<p>
+FileNotFoundException is a subclass of IOException, so the exception matches
+both "catch" clauses.  However, only one "catch" clause is executed&ndash;the first
+one that matches.  The second "catch" clause would execute if the first were
+not present.
+</p>
+<p>
+If the FileInputStream constructor runs without error, but the read() method
+throws an exception (for instance, because a disk track is faulty), it 
+typically generates some sort of IOException that isn't a FileNotFoundException.
+This causes the second "catch" clause to execute and close the file.  Exception
+handlers are often used to recover from errors and clean up loose ends like
+open files.
+</p>
+<p>
+Note that you don't need a "catch" clause for every exception that can occur.
+You can catch some exceptions and let others propagate.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-14-1-2" class="outline-4">
+<h4 id="sec-14-1-2">Purpose #2:  Escaping a Sinking Ship</h4>
+<div class="outline-text-4" id="text-14-1-2">
+
+<p>Believe it or not, you might want to throw your own exception.  Exceptions are
+the easiest way to move program execution out of a method whose purpose has
+been defeated.
+</p>
+<p>
+For example, suppose you're writing a parser that reads Java code and analyzes
+its syntactic structure.  Parsers are quite complicated, and use many recursive
+calls and loops.  Suppose that your parser is executing a method many methods
+deep within the program stack within many levels of loop nesting.  Suddenly,
+your parser unexpectedly reaches the end of the file, because a student
+accidentally erased the last 50 lines of his program.
+</p>
+<p>
+It's quite painful to write code that elegantly retraces its way back up
+through the method calls and loops when a surprise happens deep within a
+parser.  A better solution?  Throw an exception!  You can even roll your own.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">ParserException</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Exception</span> { }
+</pre>
+
+
+<p>
+This class doesn't have any methods except the default constructor.  There's no
+need; the only purpose of a ParserException is to be distinguishable from other
+types of exceptions.  Now we can write some parser methods.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">ParseTree</span> <span style="color: #0000ff;">parseExpression</span>() <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">ParserException</span> {
+    [loops]
+        <span style="color: #a020f0;">if</span> (somethingWrong) {
+            <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ParserException</span>();
+        }
+    [more code]
+        }
+}
+<span style="color: #a020f0;">return</span> pt;
+}
+</pre>
+
+
+<p>
+The "throw" statement throws a ParserException, thereby immediately getting us
+out of the routine.  How is this different from a "return" statement?  First,
+we don't have to return anything.  Second, an exception can propagate several
+stack frames down the stack, not just one, as we'll see shortly.
+</p>
+<p>
+The method signature has the modifier "throws ParserException".  This is
+necessary; Java won't let you compile the method without it.  "throws" clauses
+help you and the compiler keep track of which exceptions can propagate where.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">ParseTree</span> <span style="color: #0000ff;">parse</span>() <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">ParserException</span>, <span style="color: #228b22;">DumbCodeException</span> {
+    [loops and code]
+        p = parseExpression();
+    [more code]
+        }
+    }
+}
+
+<span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">compile</span>() {
+    <span style="color: #228b22;">ParseTree</span> <span style="color: #a0522d;">p</span>;
+    <span style="color: #a020f0;">try</span> {
+        p = parse();
+        p.toByteCode();
+    }
+    <span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">ParserException</span> <span style="color: #a0522d;">e1</span>) { }
+    <span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">DumbCodeException</span> <span style="color: #a0522d;">e2</span>) { }
+}
+</pre>
+
+
+<p>
+The parse() method above shows how to define a method that can throw two (or
+more) exceptions.  Since every exception is a subclass of Exception, we could
+have replaced the two exceptions with "Exception", but then the caller would
+have to catch all types of Exceptions.  We don't want (in this case) to catch
+NullPointerExceptions or otherwise hide our bugs from ourselves.
+</p>
+<p>
+When parseExpression() throws an exception, it propagates right through the
+calling method parse() and down to compile(), where it is caught.  compile()
+doesn't need a "throws ParserException" clause because it catches any
+ParserException that can occur.  In this code, the "catch" clauses don't do
+anything except stop the exceptions.
+</p>
+<p>
+If an exception propagates all the way out of main() without being caught, the
+JVM prints an error message and halts.  You've seen this happen many times.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-14-2" class="outline-3">
+<h3 id="sec-14-2">Checked and Unchecked Throwables</h3>
+<div class="outline-text-3" id="text-14-2">
+
+
+<p>
+The top-level class of things you can "throw" and "catch" is called Throwable.
+Here's part of the Throwable class hierarchy.
+</p>
+
+
+
+<pre class="src src-text">                           Throwable
+                          /         \
+                         /           \
+                        /             \
+                       /               \
+                      /                 \
+             Exception                   Error
+            /    \                      /     \
+ IOException  RunTimeException AssertionError  VirtualMachineError
+               /            \                           \
+NullPointerException  ClassCastException              OutOfMemoryError
+</pre>
+
+
+<p>
+An Error generally represents a fatal error, like running out of memory or
+stack space.  Failed "assert" statements also generate a subclass of Error
+called an AssertionError.  Although you can throw or catch any kind of
+Throwable, catching an Error is rarely appropriate.
+</p>
+<p>
+Most Exceptions, unlike Errors, signify problems you could conceivably recover
+from.  The subclass RunTimeException is made up of exceptions that might be
+thrown by the Java Virtual Machine, such as NullPointerException,
+ArrayIndexOutOfBoundsException, and ClassCastException.
+</p>
+<p>
+There are two types of Throwables.  <span style="text-decoration:underline;">Unchecked</span> Throwables are those a method
+can throw without declaring them in a "throws" clause.  All Errors and
+RunTimeExceptions (including all their subclasses) are unchecked, because
+almost every method can generate them inadvertently, and it would be silly if
+we had to declare them.
+</p>
+<p>
+All Exceptions except RunTimeExceptions are <span style="text-decoration:underline;">checked</span>, which means that if your
+method might throw one without catching it, it must declare that possibility in
+a "throws" clause.  Examples of checked exceptions include IOException and
+almost any Throwable subclass you would make yourself.
+</p>
+<p>
+When a method calls another method that can throw a checked exception, it has
+just two choices.
+</p>
+<ol>
+<li>It can catch the exception, or
+</li>
+<li>it must be declared so that it "throws" the same exception itself.
+</li>
+</ol>
+
+
+<p>
+The easiest way to figure out which exceptions to declare is to declare none
+and let the compiler's error messages tell you.  (This won't work on the exams,
+though.)
+</p></div>
+</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T23:04-0800</p>
+<p class="date">Date: 2014-02-27T00:49-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

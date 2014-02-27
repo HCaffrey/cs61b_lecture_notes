@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes11"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T23:03-0800"/>
+<meta name="generated" content="2014-02-27T00:49-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -357,27 +357,32 @@ method calls your test driver.
 (b)  Stubs are small bits of code that are <span style="text-decoration:underline;">called</span> by the code being tested.
 They are often quite short.  They serve three purposes.
 </p>
-<p>
-(i)  If you write a method that calls other methods that haven't yet been
-     implemented, you can write simple stubs that fake the missing methods.
-(ii) Suppose you are having difficulty determining whether a bug lies in
-     a calling method, or a method it calls.  You can temporarily replace the
-     callee with a stub that returns controlled results to the caller, so you
-     can see if the caller is responsible for the problem.
-(iii)Stubs allow you to create repeatable test cases that might not arise often
-     in practice.  For instance, suppose a subroutine fetches and returns input
-     from an airline database, and your code calls this subroutine.  You might
-     want to test whether your code operates correctly when ten airplanes
-     depart at the same time.  Such an event might be rare in practice, but you
-     can replace the database access subroutine with a stub that feeds fake
-     data to your code.  There are two advantages:
-</p>
+<ol>
+<li>If you write a method that calls other methods that haven't yet been
+    implemented, you can write simple stubs that fake the missing methods.
+</li>
+<li>Suppose you are having difficulty determining whether a bug lies in
+    a calling method, or a method it calls.  You can temporarily replace the
+    callee with a stub that returns controlled results to the caller, so you
+    can see if the caller is responsible for the problem.
+</li>
+<li>Stubs allow you to create repeatable test cases that might not arise often
+    in practice.  For instance, suppose a subroutine fetches and returns input
+    from an airline database, and your code calls this subroutine.  You might
+    want to test whether your code operates correctly when ten airplanes
+    depart at the same time.  Such an event might be rare in practice, but you
+    can replace the database access subroutine with a stub that feeds fake
+    data to your code.  There are two advantages:
+
 <ul>
 <li>Stubs can produce test data that the real code rarely or never produces.
 </li>
 <li>Stubs produce <span style="text-decoration:underline;">repeatable</span> test data, so that bugs can be reproduced.
 </li>
 </ul>
+
+</li>
+</ol>
 
 
 </div>
@@ -416,16 +421,20 @@ The best advice I can give on integration testing:  learn to use a debugger.
 <p>A result verifier is a method that checks the results of other methods.  There
 are at least two types of result verifiers you can write.
 </p>
-<p>
-(a)  Data structure integrity checkers.  A method can inspect a data structure
-     (like a list) and verify that all the invariants are satisfied.  For
-     Project 1, we are asking you to write a simple checker named "check()"
-     that verifies the integrity of your run-length encodings.
-(b)  Algorithm result checkers.  A method can inspect the output of another
-     method for correctness.  For example, if a method is supposed to sort an
-     array of numbers, a result checker can walk through the output and check
-     that each item really is less than or equal to its successor.
-</p>
+<ol>
+<li>Data structure integrity checkers.  A method can inspect a data structure
+    (like a list) and verify that all the invariants are satisfied.  For
+    Project 1, we are asking you to write a simple checker named "check()"
+    that verifies the integrity of your run-length encodings.
+</li>
+<li>Algorithm result checkers.  A method can inspect the output of another
+    method for correctness.  For example, if a method is supposed to sort an
+    array of numbers, a result checker can walk through the output and check
+    that each item really is less than or equal to its successor.
+</li>
+</ol>
+
+
 <p>
 An <span style="text-decoration:underline;">assertion</span> is a piece of code that tests an invariant or a result.
 Java offers an "assert" keyword that tests whether an assertion evaluates to
@@ -470,23 +479,28 @@ product.  They run them again every time they fix a bug or add a feature.
 <p>
 Some principles of regression testing:
 </p>
-<p>
- a.  All-paths testing:  your test cases should try to test every path through
+<ol>
+<li>All-paths testing:  your test cases should try to test every path through
      the code.  Test every method.  For every "if" statement, you should try to
      write a test case for each of the two paths.
- b.  "Boundary cases" should be tested, as well as non-boundary cases.  For
+</li>
+<li>"Boundary cases" should be tested, as well as non-boundary cases.  For
      instance, if you write a binary search method, test it on arrays of
      lengths zero and one, as well as longer lengths.  Test the cases where the
      item sought is the first element, the last element, in the middle, not
      present.  For every loop in the code, try to test the cases where it
      iterates zero or one times, as well as the case where it iterates several
      times.  Test the branch "if (x &gt;= 1)" for x equal to 0, 1, and 2.
- c.  Generally, methods can be divided into two types:  extenders, which
+</li>
+<li>Generally, methods can be divided into two types:  extenders, which
      construct or change an object; and observers, which return information
      about an object.  (Some methods do both, but you should always think hard
      about whether that's good design.)  Ideally, your test cases should test
      every combination of extender and observer.
-</p>
+</li>
+</ol>
+
+
 <p>
 In real-world software development, the size of the test code is often larger
 than the size of the code being tested.
@@ -497,7 +511,7 @@ than the size of the code being tested.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T23:03-0800</p>
+<p class="date">Date: 2014-02-27T00:49-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

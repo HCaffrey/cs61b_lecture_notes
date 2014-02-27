@@ -95,6 +95,7 @@ have to change a line of sorting code.  You may have written your list sorter
 years before TransactionLists were ever thought of.
 
 
+
 The list sorter is built on the foundation of a list  
 ADT, and the application is built on the foundation of
 the list sorter.  However, it's the application, and  
@@ -118,8 +119,8 @@ advantage of object-oriented languages like Java.
     +---------------+
     |   List ADT    |
     +---------------+
-#+end_ditaa
 
+#+end_ditaa
 ** JAVA INTERFACES
 Java has an "interface" keyword which refers to something quite different than
 the interfaces I defined in Lecture 8, even though the two interfaces are

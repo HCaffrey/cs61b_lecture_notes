@@ -2658,19 +2658,19 @@ method calls your test driver.
 (b)  Stubs are small bits of code that are _called_ by the code being tested.
 They are often quite short.  They serve three purposes.
 
-(i)  If you write a method that calls other methods that haven't yet been
-     implemented, you can write simple stubs that fake the missing methods.
-(ii) Suppose you are having difficulty determining whether a bug lies in
-     a calling method, or a method it calls.  You can temporarily replace the
-     callee with a stub that returns controlled results to the caller, so you
-     can see if the caller is responsible for the problem.
-(iii)Stubs allow you to create repeatable test cases that might not arise often
-     in practice.  For instance, suppose a subroutine fetches and returns input
-     from an airline database, and your code calls this subroutine.  You might
-     want to test whether your code operates correctly when ten airplanes
-     depart at the same time.  Such an event might be rare in practice, but you
-     can replace the database access subroutine with a stub that feeds fake
-     data to your code.  There are two advantages:
+ 1. If you write a method that calls other methods that haven't yet been
+    implemented, you can write simple stubs that fake the missing methods.
+ 2. Suppose you are having difficulty determining whether a bug lies in
+    a calling method, or a method it calls.  You can temporarily replace the
+    callee with a stub that returns controlled results to the caller, so you
+    can see if the caller is responsible for the problem.
+ 3. Stubs allow you to create repeatable test cases that might not arise often
+    in practice.  For instance, suppose a subroutine fetches and returns input
+    from an airline database, and your code calls this subroutine.  You might
+    want to test whether your code operates correctly when ten airplanes
+    depart at the same time.  Such an event might be rare in practice, but you
+    can replace the database access subroutine with a stub that feeds fake
+    data to your code.  There are two advantages:
 
      - Stubs can produce test data that the real code rarely or never produces.
      - Stubs produce _repeatable_ test data, so that bugs can be reproduced.
@@ -2695,14 +2695,14 @@ The best advice I can give on integration testing:  learn to use a debugger.
 A result verifier is a method that checks the results of other methods.  There
 are at least two types of result verifiers you can write.
 
-(a)  Data structure integrity checkers.  A method can inspect a data structure
-     (like a list) and verify that all the invariants are satisfied.  For
-     Project 1, we are asking you to write a simple checker named "check()"
-     that verifies the integrity of your run-length encodings.
-(b)  Algorithm result checkers.  A method can inspect the output of another
-     method for correctness.  For example, if a method is supposed to sort an
-     array of numbers, a result checker can walk through the output and check
-     that each item really is less than or equal to its successor.
+ 1. Data structure integrity checkers.  A method can inspect a data structure
+    (like a list) and verify that all the invariants are satisfied.  For
+    Project 1, we are asking you to write a simple checker named "check()"
+    that verifies the integrity of your run-length encodings.
+ 2. Algorithm result checkers.  A method can inspect the output of another
+    method for correctness.  For example, if a method is supposed to sort an
+    array of numbers, a result checker can walk through the output and check
+    that each item really is less than or equal to its successor.
 
 An _assertion_ is a piece of code that tests an invariant or a result.
 Java offers an "assert" keyword that tests whether an assertion evaluates to
@@ -2734,17 +2734,17 @@ product.  They run them again every time they fix a bug or add a feature.
 
 Some principles of regression testing:
 
- a.  All-paths testing:  your test cases should try to test every path through
+ 1.  All-paths testing:  your test cases should try to test every path through
      the code.  Test every method.  For every "if" statement, you should try to
      write a test case for each of the two paths.
- b.  "Boundary cases" should be tested, as well as non-boundary cases.  For
+ 2.  "Boundary cases" should be tested, as well as non-boundary cases.  For
      instance, if you write a binary search method, test it on arrays of
      lengths zero and one, as well as longer lengths.  Test the cases where the
      item sought is the first element, the last element, in the middle, not
      present.  For every loop in the code, try to test the cases where it
      iterates zero or one times, as well as the case where it iterates several
      times.  Test the branch "if (x >= 1)" for x equal to 0, 1, and 2.
- c.  Generally, methods can be divided into two types:  extenders, which
+ 3.  Generally, methods can be divided into two types:  extenders, which
      construct or change an object; and observers, which return information
      about an object.  (Some methods do both, but you should always think hard
      about whether that's good design.)  Ideally, your test cases should test
@@ -2849,6 +2849,7 @@ have to change a line of sorting code.  You may have written your list sorter
 years before TransactionLists were ever thought of.
 
 
+
 The list sorter is built on the foundation of a list  
 ADT, and the application is built on the foundation of
 the list sorter.  However, it's the application, and  
@@ -2872,8 +2873,8 @@ advantage of object-oriented languages like Java.
     +---------------+
     |   List ADT    |
     +---------------+
-#+end_ditaa
 
+#+end_ditaa
 ** JAVA INTERFACES
 Java has an "interface" keyword which refers to something quite different than
 the interfaces I defined in Lecture 8, even though the two interfaces are
@@ -3228,3 +3229,197 @@ be able to find the rest of the nodes.
 An Iterator doesn't have to iterate over a data structure.  For example, you
 can implement an Iterator subclass called Primes that returns each successive
 prime number as an Integer object.
+* Lecture 15
+(Lecture 14 was the midterm exam)
+
+Today's reading:  Sierra & Bates, pp. 315-338.
+
+[[file:original-notes/15][original notes]]
+** EXCEPTIONS
+When a run-time error occurs in Java, the JVM "throws an exception," prints
+an error message, and quits.  Oddly, an exception is a Java object (named
+Exception), and you can prevent the error message from printing and the program
+from terminating by "catching" the Exception that Java threw.
+
+*** Purpose #1:  Coping with Errors
+Exceptions are a way of coping with unexpected errors.  By catching exceptions,
+you can recover.  For instance, if you try to open a file that doesn't exist or
+that you aren't allowed to read, Java will throw an exception.  You can catch
+the exception, handle it, and continue, instead of letting the program crash.
+
+#+Begin_SRC java
+  try {
+      f = new FileInputStream("~cs61b/pj2.solution");
+      i = f.read();
+  }
+  catch (FileNotFoundException e1) {
+      System.out.println(e1);                       // An exception handler.
+  }
+  catch (IOException e2) {
+      f.close();                                    // Another exception handler.
+  }
+#+END_SRC
+
+What does this code do?
+ 1.  It executes the code inside the "try" braces.
+ 2.  If the "try" code executes normally, we skip over the "catch" clauses.
+ 3.  If the "try" code throws an exception, Java does not finish the "try"
+     code.  It jumps directly to the first "catch" clause that matches the
+     exception, and executes that "catch" clause.  By "matches", I mean that
+     the actual exception object thrown is the same class as, or a subclass of,
+     the static type listed in the "catch" clause.
+
+     When the "catch" clause finishes executing, Java jumps to the next line of
+     code immediately after all the "catch" clauses.
+
+The code within a "catch" clause is called an _exception handler_.
+
+If the FileInputStream constructor fails to find the file, it will throw a
+FileNotFoundException.  The line "i = f.read()" is not executed; execution
+jumps directly to the first exception handler.
+
+FileNotFoundException is a subclass of IOException, so the exception matches
+both "catch" clauses.  However, only one "catch" clause is executed--the first
+one that matches.  The second "catch" clause would execute if the first were
+not present.
+
+If the FileInputStream constructor runs without error, but the read() method
+throws an exception (for instance, because a disk track is faulty), it 
+typically generates some sort of IOException that isn't a FileNotFoundException.
+This causes the second "catch" clause to execute and close the file.  Exception
+handlers are often used to recover from errors and clean up loose ends like
+open files.
+
+Note that you don't need a "catch" clause for every exception that can occur.
+You can catch some exceptions and let others propagate.
+
+*** Purpose #2:  Escaping a Sinking Ship
+Believe it or not, you might want to throw your own exception.  Exceptions are
+the easiest way to move program execution out of a method whose purpose has
+been defeated.
+
+For example, suppose you're writing a parser that reads Java code and analyzes
+its syntactic structure.  Parsers are quite complicated, and use many recursive
+calls and loops.  Suppose that your parser is executing a method many methods
+deep within the program stack within many levels of loop nesting.  Suddenly,
+your parser unexpectedly reaches the end of the file, because a student
+accidentally erased the last 50 lines of his program.
+
+It's quite painful to write code that elegantly retraces its way back up
+through the method calls and loops when a surprise happens deep within a
+parser.  A better solution?  Throw an exception!  You can even roll your own.
+
+#+Begin_SRC java
+  public class ParserException extends Exception { }
+#+END_SRC
+
+This class doesn't have any methods except the default constructor.  There's no
+need; the only purpose of a ParserException is to be distinguishable from other
+types of exceptions.  Now we can write some parser methods.
+
+#+Begin_SRC java
+  public ParseTree parseExpression() throws ParserException {
+      [loops]
+          if (somethingWrong) {
+              throw new ParserException();
+          }
+      [more code]
+          }
+  }
+  return pt;
+  }
+#+END_SRC
+
+The "throw" statement throws a ParserException, thereby immediately getting us
+out of the routine.  How is this different from a "return" statement?  First,
+we don't have to return anything.  Second, an exception can propagate several
+stack frames down the stack, not just one, as we'll see shortly.
+
+The method signature has the modifier "throws ParserException".  This is
+necessary; Java won't let you compile the method without it.  "throws" clauses
+help you and the compiler keep track of which exceptions can propagate where.
+
+#+Begin_SRC java
+  public ParseTree parse() throws ParserException, DumbCodeException {
+      [loops and code]
+          p = parseExpression();
+      [more code]
+          }
+      }
+  }
+  
+  public void compile() {
+      ParseTree p;
+      try {
+          p = parse();
+          p.toByteCode();
+      }
+      catch (ParserException e1) { }
+      catch (DumbCodeException e2) { }
+  }
+#+END_SRC
+
+The parse() method above shows how to define a method that can throw two (or
+more) exceptions.  Since every exception is a subclass of Exception, we could
+have replaced the two exceptions with "Exception", but then the caller would
+have to catch all types of Exceptions.  We don't want (in this case) to catch
+NullPointerExceptions or otherwise hide our bugs from ourselves.
+
+When parseExpression() throws an exception, it propagates right through the
+calling method parse() and down to compile(), where it is caught.  compile()
+doesn't need a "throws ParserException" clause because it catches any
+ParserException that can occur.  In this code, the "catch" clauses don't do
+anything except stop the exceptions.
+
+If an exception propagates all the way out of main() without being caught, the
+JVM prints an error message and halts.  You've seen this happen many times.
+
+** Checked and Unchecked Throwables
+
+The top-level class of things you can "throw" and "catch" is called Throwable.
+Here's part of the Throwable class hierarchy.
+
+#+Begin_SRC text
+                                   Throwable
+                                  /         \
+                                 /           \
+                                /             \
+                               /               \
+                              /                 \
+                     Exception                   Error
+                    /    \                      /     \
+         IOException  RunTimeException AssertionError  VirtualMachineError
+                       /            \                           \
+        NullPointerException  ClassCastException              OutOfMemoryError
+#+END_SRC
+
+An Error generally represents a fatal error, like running out of memory or
+stack space.  Failed "assert" statements also generate a subclass of Error
+called an AssertionError.  Although you can throw or catch any kind of
+Throwable, catching an Error is rarely appropriate.
+
+Most Exceptions, unlike Errors, signify problems you could conceivably recover
+from.  The subclass RunTimeException is made up of exceptions that might be
+thrown by the Java Virtual Machine, such as NullPointerException,
+ArrayIndexOutOfBoundsException, and ClassCastException.
+
+There are two types of Throwables.  _Unchecked_ Throwables are those a method
+can throw without declaring them in a "throws" clause.  All Errors and
+RunTimeExceptions (including all their subclasses) are unchecked, because
+almost every method can generate them inadvertently, and it would be silly if
+we had to declare them.
+
+All Exceptions except RunTimeExceptions are _checked_, which means that if your
+method might throw one without catching it, it must declare that possibility in
+a "throws" clause.  Examples of checked exceptions include IOException and
+almost any Throwable subclass you would make yourself.
+
+When a method calls another method that can throw a checked exception, it has
+just two choices.
+
+ 1.  It can catch the exception, or
+ 2.  it must be declared so that it "throws" the same exception itself.
+
+The easiest way to figure out which exceptions to declare is to declare none
+and let the compiler's error messages tell you.  (This won't work on the exams,
+though.)
