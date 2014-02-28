@@ -18,3 +18,4 @@ Original notes from: http://www.cs.berkeley.edu/~jrs/61b/
 - [[file:single-notes/notes12.org][Lecture 12]]
 - [[file:single-notes/notes13.org][Lecture 13]]
 - [[file:single-notes/notes15.org][Lecture 15]]
+- [[file:single-notes/notes16.org][Lecture 16]]
