@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes11"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T15:23-0800"/>
+<meta name="generated" content="2014-02-28T00:56-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -26,11 +26,8 @@
   .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -122,16 +119,16 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Lecture 11</a>
+<li><a href="#sec-1">Lecture 11</a>
 <ul>
-<li><a href="#sec-1-1">1.1 equals()</a></li>
-<li><a href="#sec-1-2">1.2 "for each" LOOPS</a></li>
-<li><a href="#sec-1-3">1.3 TESTING</a>
+<li><a href="#sec-1-1">equals()</a></li>
+<li><a href="#sec-1-2">"for each" LOOPS</a></li>
+<li><a href="#sec-1-3">TESTING</a>
 <ul>
-<li><a href="#sec-1-3-1">1.3.1 Modular Testing</a></li>
-<li><a href="#sec-1-3-2">1.3.2 Integration Testing</a></li>
-<li><a href="#sec-1-3-3">1.3.3 Result Verification</a></li>
-<li><a href="#sec-1-3-4">1.3.4 Regression Testing</a></li>
+<li><a href="#sec-1-3-1">Modular Testing</a></li>
+<li><a href="#sec-1-3-2">Integration Testing</a></li>
+<li><a href="#sec-1-3-3">Result Verification</a></li>
+<li><a href="#sec-1-3-4">Regression Testing</a></li>
 </ul>
 </li>
 </ul>
@@ -141,7 +138,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Lecture 11</h2>
+<h2 id="sec-1">Lecture 11</h2>
 <div class="outline-text-2" id="text-1">
 
 <p>Today's reading:  Sierra &amp; Bates, pp. 95-109, 662.
@@ -152,7 +149,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> equals()</h3>
+<h3 id="sec-1-1">equals()</h3>
 <div class="outline-text-3" id="text-1-1">
 
 <p>Every class has an equals() method.  If you don't define one explictly, you
@@ -205,27 +202,27 @@ returns true only if the two lists represent identical sequences of items.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> {
-    <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">equals</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">other</span>) {
-        <span style="color: #8ac6f2; font-weight: bold;">if</span> (!(other <span style="color: #8ac6f2; font-weight: bold;">instanceof</span> <span style="color: #92a65e; font-weight: bold;">SList</span>)) {           <span style="color: #99968b;">// </span><span style="color: #99968b;">Reject non-SLists.</span>
-            <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">equals</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">other</span>) {
+        <span style="color: #a020f0;">if</span> (!(other <span style="color: #a020f0;">instanceof</span> <span style="color: #228b22;">SList</span>)) {           <span style="color: #b22222;">// </span><span style="color: #b22222;">Reject non-SLists.</span>
+            <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;
         }
 
-        <span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #cae682;">o</span> = (<span style="color: #92a65e; font-weight: bold;">SList</span>) other;
-        <span style="color: #8ac6f2; font-weight: bold;">if</span> (size != o.size) {
-            <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;
+        <span style="color: #228b22;">SList</span> <span style="color: #a0522d;">o</span> = (<span style="color: #228b22;">SList</span>) other;
+        <span style="color: #a020f0;">if</span> (size != o.size) {
+            <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;
         }
 
-        <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">n1</span> = head;
-        <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">n2</span> = o.head;
-        <span style="color: #8ac6f2; font-weight: bold;">while</span> (n1 != <span style="color: #7fffd4;">null</span>) {
-            <span style="color: #8ac6f2; font-weight: bold;">if</span> (!n1.item.equals(n2.item)) {          <span style="color: #99968b;">// </span><span style="color: #99968b;">Deep equality of the items.</span>
-                <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;
+        <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n1</span> = head;
+        <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n2</span> = o.head;
+        <span style="color: #a020f0;">while</span> (n1 != <span style="color: #5f9ea0;">null</span>) {
+            <span style="color: #a020f0;">if</span> (!n1.item.equals(n2.item)) {          <span style="color: #b22222;">// </span><span style="color: #b22222;">Deep equality of the items.</span>
+                <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;
             }
             n1 = n1.next;
             n2 = n2.next;
         }
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">true</span>;
+        <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">true</span>;
     }
 }
 </pre>
@@ -245,7 +242,7 @@ will compile but it will NOT override.  That means the code
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">s</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
+<pre class="src src-java"><span style="color: #228b22;">Object</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
 s.equals(s);
 </pre>
 
@@ -264,7 +261,7 @@ the same.
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> "for each" LOOPS</h3>
+<h3 id="sec-1-2">"for each" LOOPS</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <p>Java has a "for each" loop for iterating through the elements of an array.
@@ -272,10 +269,10 @@ the same.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span>[] <span style="color: #cae682;">array</span> = {<span style="color: #ffa07a;">7</span>, <span style="color: #ffa07a;">12</span>, <span style="color: #ffa07a;">3</span>, <span style="color: #ffa07a;">8</span>, <span style="color: #ffa07a;">4</span>, <span style="color: #ffa07a;">9</span>};
+<pre class="src src-java"><span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">array</span> = {<span style="color: #bc8f8f;">7</span>, <span style="color: #bc8f8f;">12</span>, <span style="color: #bc8f8f;">3</span>, <span style="color: #bc8f8f;">8</span>, <span style="color: #bc8f8f;">4</span>, <span style="color: #bc8f8f;">9</span>};
 
-<span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> : array) {
-  System.out.print(i + <span style="color: #95e454;">" "</span>);
+<span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> : array) {
+  System.out.print(i + <span style="color: #8b2252;">" "</span>);
 }
 </pre>
 
@@ -287,8 +284,8 @@ array element in turn.  You can iterate over arrays of any type this way.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">concat</span> = <span style="color: #95e454;">""</span>;
-<span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">String</span> <span style="color: #cae682;">s</span> : stringArray) {
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">concat</span> = <span style="color: #8b2252;">""</span>;
+<span style="color: #a020f0;">for</span> (<span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span> : stringArray) {
   concat = concat + s;
 }
 </pre>
@@ -301,8 +298,8 @@ compiler barfs if you try
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
-<span style="color: #8ac6f2; font-weight: bold;">for</span> (i : array) { ... }
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+<span style="color: #a020f0;">for</span> (i : array) { ... }
 </pre>
 
 
@@ -311,7 +308,7 @@ compiler barfs if you try
 </div>
 
 <div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> TESTING</h3>
+<h3 id="sec-1-3">TESTING</h3>
 <div class="outline-text-3" id="text-1-3">
 
 <p>Complex software, like Project 1, is easier to debug if you write lots of test
@@ -332,7 +329,7 @@ code.  We'll consider three types of testing:
 </div>
 
 <div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Modular Testing</h4>
+<h4 id="sec-1-3-1">Modular Testing</h4>
 <div class="outline-text-4" id="text-1-3-1">
 
 <p>When you write a program and it fails, it can be quite difficult to determine
@@ -360,21 +357,23 @@ method calls your test driver.
 (b)  Stubs are small bits of code that are <span style="text-decoration:underline;">called</span> by the code being tested.
 They are often quite short.  They serve three purposes.
 </p>
-<p>
-(i)  If you write a method that calls other methods that haven't yet been
-     implemented, you can write simple stubs that fake the missing methods.
-(ii) Suppose you are having difficulty determining whether a bug lies in
-     a calling method, or a method it calls.  You can temporarily replace the
-     callee with a stub that returns controlled results to the caller, so you
-     can see if the caller is responsible for the problem.
-(iii)Stubs allow you to create repeatable test cases that might not arise often
-     in practice.  For instance, suppose a subroutine fetches and returns input
-     from an airline database, and your code calls this subroutine.  You might
-     want to test whether your code operates correctly when ten airplanes
-     depart at the same time.  Such an event might be rare in practice, but you
-     can replace the database access subroutine with a stub that feeds fake
-     data to your code.  There are two advantages:
-</p>
+<ol>
+<li>If you write a method that calls other methods that haven't yet been
+    implemented, you can write simple stubs that fake the missing methods.
+</li>
+<li>Suppose you are having difficulty determining whether a bug lies in
+    a calling method, or a method it calls.  You can temporarily replace the
+    callee with a stub that returns controlled results to the caller, so you
+    can see if the caller is responsible for the problem.
+</li>
+<li>Stubs allow you to create repeatable test cases that might not arise often
+    in practice.  For instance, suppose a subroutine fetches and returns input
+    from an airline database, and your code calls this subroutine.  You might
+    want to test whether your code operates correctly when ten airplanes
+    depart at the same time.  Such an event might be rare in practice, but you
+    can replace the database access subroutine with a stub that feeds fake
+    data to your code.  There are two advantages:
+
 <ul>
 <li>Stubs can produce test data that the real code rarely or never produces.
 </li>
@@ -382,13 +381,16 @@ They are often quite short.  They serve three purposes.
 </li>
 </ul>
 
+</li>
+</ol>
+
 
 </div>
 
 </div>
 
 <div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Integration Testing</h4>
+<h4 id="sec-1-3-2">Integration Testing</h4>
 <div class="outline-text-4" id="text-1-3-2">
 
 <p>Integration testing is testing all the components together (preferably <span style="text-decoration:underline;">after</span>
@@ -413,22 +415,26 @@ The best advice I can give on integration testing:  learn to use a debugger.
 </div>
 
 <div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Result Verification</h4>
+<h4 id="sec-1-3-3">Result Verification</h4>
 <div class="outline-text-4" id="text-1-3-3">
 
 <p>A result verifier is a method that checks the results of other methods.  There
 are at least two types of result verifiers you can write.
 </p>
-<p>
-(a)  Data structure integrity checkers.  A method can inspect a data structure
-     (like a list) and verify that all the invariants are satisfied.  For
-     Project 1, we are asking you to write a simple checker named "check()"
-     that verifies the integrity of your run-length encodings.
-(b)  Algorithm result checkers.  A method can inspect the output of another
-     method for correctness.  For example, if a method is supposed to sort an
-     array of numbers, a result checker can walk through the output and check
-     that each item really is less than or equal to its successor.
-</p>
+<ol>
+<li>Data structure integrity checkers.  A method can inspect a data structure
+    (like a list) and verify that all the invariants are satisfied.  For
+    Project 1, we are asking you to write a simple checker named "check()"
+    that verifies the integrity of your run-length encodings.
+</li>
+<li>Algorithm result checkers.  A method can inspect the output of another
+    method for correctness.  For example, if a method is supposed to sort an
+    array of numbers, a result checker can walk through the output and check
+    that each item really is less than or equal to its successor.
+</li>
+</ol>
+
+
 <p>
 An <span style="text-decoration:underline;">assertion</span> is a piece of code that tests an invariant or a result.
 Java offers an "assert" keyword that tests whether an assertion evaluates to
@@ -439,8 +445,8 @@ own choosing.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">assert</span> <span style="color: #cae682;">x</span> == <span style="color: #ffa07a;">3</span>;
-<span style="color: #8ac6f2; font-weight: bold;">assert</span> list.<span style="color: #cae682;">size</span> == list.countLength() : <span style="color: #95e454;">"wrong SList size:  "</span> + list.size;
+<pre class="src src-java"><span style="color: #a020f0;">assert</span> <span style="color: #a0522d;">x</span> == <span style="color: #bc8f8f;">3</span>;
+<span style="color: #a020f0;">assert</span> list.<span style="color: #a0522d;">size</span> == list.countLength() : <span style="color: #8b2252;">"wrong SList size:  "</span> + list.size;
 </pre>
 
 
@@ -463,7 +469,7 @@ that is necessary for your program's correctness.
 </div>
 
 <div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Regression Testing</h4>
+<h4 id="sec-1-3-4">Regression Testing</h4>
 <div class="outline-text-4" id="text-1-3-4">
 
 <p>A <span style="text-decoration:underline;">regression test</span> is a test suite can be re-run whenever changes are made to
@@ -473,23 +479,28 @@ product.  They run them again every time they fix a bug or add a feature.
 <p>
 Some principles of regression testing:
 </p>
-<p>
- a.  All-paths testing:  your test cases should try to test every path through
+<ol>
+<li>All-paths testing:  your test cases should try to test every path through
      the code.  Test every method.  For every "if" statement, you should try to
      write a test case for each of the two paths.
- b.  "Boundary cases" should be tested, as well as non-boundary cases.  For
+</li>
+<li>"Boundary cases" should be tested, as well as non-boundary cases.  For
      instance, if you write a binary search method, test it on arrays of
      lengths zero and one, as well as longer lengths.  Test the cases where the
      item sought is the first element, the last element, in the middle, not
      present.  For every loop in the code, try to test the cases where it
      iterates zero or one times, as well as the case where it iterates several
      times.  Test the branch "if (x &gt;= 1)" for x equal to 0, 1, and 2.
- c.  Generally, methods can be divided into two types:  extenders, which
+</li>
+<li>Generally, methods can be divided into two types:  extenders, which
      construct or change an object; and observers, which return information
      about an object.  (Some methods do both, but you should always think hard
      about whether that's good design.)  Ideally, your test cases should test
      every combination of extender and observer.
-</p>
+</li>
+</ol>
+
+
 <p>
 In real-world software development, the size of the test code is often larger
 than the size of the code being tested.
@@ -500,7 +511,7 @@ than the size of the code being tested.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T15:23-0800</p>
+<p class="date">Date: 2014-02-28T00:56-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

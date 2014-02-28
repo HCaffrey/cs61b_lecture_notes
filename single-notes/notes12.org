@@ -64,11 +64,13 @@ are Lists, we can assign an SList to a List variable.
 
 What are abstract classes good for?  It's all about the interface.
 
+#+Begin_SRC text
              ----------------------------------------------------
              |  An abstract class lets you define an interface  |
              |    - for multiple classes to share,              |
              |    - without defining any of them yet.           |
              ----------------------------------------------------
+#+END_SRC
 
 Let's consider the List class.  Although the List class is abstract, it is an
 ADT--even without any implementation!-- because it has an interface with public
@@ -91,6 +93,7 @@ send them to your listSort algorithm to be sorted.  An airline flight database
 that uses TransactionLists can send them to you for sorting, too, and you don't
 have to change a line of sorting code.  You may have written your list sorter
 years before TransactionLists were ever thought of.
+
 
 
 The list sorter is built on the foundation of a list  
@@ -116,8 +119,8 @@ advantage of object-oriented languages like Java.
     +---------------+
     |   List ADT    |
     +---------------+
-#+end_ditaa
 
+#+end_ditaa
 ** JAVA INTERFACES
 Java has an "interface" keyword which refers to something quite different than
 the interfaces I defined in Lecture 8, even though the two interfaces are

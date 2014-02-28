@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes4"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T15:23-0800"/>
+<meta name="generated" content="2014-02-28T00:56-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -26,11 +26,8 @@
   .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -122,12 +119,12 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Lecture 4</a>
+<li><a href="#sec-1">Lecture 4</a>
 <ul>
-<li><a href="#sec-1-1">1.1 PRIMITIVE TYPES</a></li>
-<li><a href="#sec-1-2">1.2 Boolean Values</a></li>
-<li><a href="#sec-1-3">1.3 CONDITIONALS</a></li>
-<li><a href="#sec-1-4">1.4 THE "return" KEYWORD</a></li>
+<li><a href="#sec-1-1">PRIMITIVE TYPES</a></li>
+<li><a href="#sec-1-2">Boolean Values</a></li>
+<li><a href="#sec-1-3">CONDITIONALS</a></li>
+<li><a href="#sec-1-4">THE "return" KEYWORD</a></li>
 </ul>
 </li>
 </ul>
@@ -135,7 +132,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Lecture 4</h2>
+<h2 id="sec-1">Lecture 4</h2>
 <div class="outline-text-2" id="text-1">
 
 <p>Today's reading:  S&amp;B pp. 10-14, 49-53, 75, 78-79, 86, 117, 286-287, 292, 660.
@@ -146,7 +143,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> PRIMITIVE TYPES</h3>
+<h3 id="sec-1-1">PRIMITIVE TYPES</h3>
 <div class="outline-text-3" id="text-1-1">
 
 <p>Not all variables are references to objects.  Some variables are primitive
@@ -215,7 +212,7 @@ The java.lang library has more operations in&hellip;
 
 
 
-<pre class="src src-java">x = Math.abs(y);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Absolute value.  Also see Math.sqrt, Math.sin, etc.</span>
+<pre class="src src-java">x = Math.abs(y);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Absolute value.  Also see Math.sqrt, Math.sin, etc.</span>
 </pre>
 
 <ul>
@@ -226,7 +223,7 @@ The java.lang library has more operations in&hellip;
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span> = Integer.parseInt(<span style="color: #95e454;">"1984"</span>);  <span style="color: #99968b;">// </span><span style="color: #99968b;">Convert a string to a number.</span>
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = Integer.parseInt(<span style="color: #8b2252;">"1984"</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Convert a string to a number.</span>
 </pre>
 
 <ul>
@@ -237,7 +234,7 @@ The java.lang library has more operations in&hellip;
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">double</span> <span style="color: #cae682;">d</span> = Double.parseDouble(<span style="color: #95e454;">"3.14"</span>);
+<pre class="src src-java"><span style="color: #228b22;">double</span> <span style="color: #a0522d;">d</span> = Double.parseDouble(<span style="color: #8b2252;">"3.14"</span>);
 </pre>
 
 
@@ -246,11 +243,11 @@ Converting types:  integers can be assigned to variables of longer types.
 </p>
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">43</span>; 
-<span style="color: #92a65e; font-weight: bold;">long</span> <span style="color: #cae682;">l</span> = <span style="color: #ffa07a;">43</span>;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Okay, because longs are a superset of ints.</span>
-l = i;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Okay, because longs are a superset of ints.</span>
-i = l;          <span style="color: #99968b;">// </span><span style="color: #99968b;">Compiler ERROR.</span>
-i = (<span style="color: #92a65e; font-weight: bold;">int</span>) l;    <span style="color: #99968b;">// </span><span style="color: #99968b;">Okay.</span>
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">43</span>; 
+<span style="color: #228b22;">long</span> <span style="color: #a0522d;">l</span> = <span style="color: #bc8f8f;">43</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Okay, because longs are a superset of ints.</span>
+l = i;          <span style="color: #b22222;">// </span><span style="color: #b22222;">Okay, because longs are a superset of ints.</span>
+i = l;          <span style="color: #b22222;">// </span><span style="color: #b22222;">Compiler ERROR.</span>
+i = (<span style="color: #228b22;">int</span>) l;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Okay.</span>
 </pre>
 
 <p>
@@ -272,7 +269,7 @@ the reverse requires a cast because the number is truncated to an integer.
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Boolean Values</h3>
+<h3 id="sec-1-2">Boolean Values</h3>
 <div class="outline-text-3" id="text-1-2">
 
 
@@ -302,10 +299,10 @@ the comparison operators "==", "&lt;", "&gt;", "&lt;=", "&gt;=", "!=" (not equal
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">x</span> = <span style="color: #ffa07a;">3</span> == <span style="color: #ffa07a;">5</span>;       <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now false.</span>
-x = <span style="color: #ffa07a;">4.5</span> &gt;= <span style="color: #ffa07a;">4.5</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now true.</span>
-x = <span style="color: #ffa07a;">4</span> != <span style="color: #ffa07a;">5</span> - <span style="color: #ffa07a;">1</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now false.</span>
-x = <span style="color: #7fffd4;">false</span> == (<span style="color: #ffa07a;">3</span> == <span style="color: #ffa07a;">0</span>);    <span style="color: #99968b;">// </span><span style="color: #99968b;">x is now true.</span>
+<pre class="src src-java"><span style="color: #228b22;">boolean</span> <span style="color: #a0522d;">x</span> = <span style="color: #bc8f8f;">3</span> == <span style="color: #bc8f8f;">5</span>;       <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now false.</span>
+x = <span style="color: #bc8f8f;">4.5</span> &gt;= <span style="color: #bc8f8f;">4.5</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now true.</span>
+x = <span style="color: #bc8f8f;">4</span> != <span style="color: #bc8f8f;">5</span> - <span style="color: #bc8f8f;">1</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now false.</span>
+x = <span style="color: #5f9ea0;">false</span> == (<span style="color: #bc8f8f;">3</span> == <span style="color: #bc8f8f;">0</span>);    <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now true.</span>
 </pre>
 
 
@@ -314,7 +311,7 @@ x = <span style="color: #7fffd4;">false</span> == (<span style="color: #ffa07a;"
 </div>
 
 <div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> CONDITIONALS</h3>
+<h3 id="sec-1-3">CONDITIONALS</h3>
 <div class="outline-text-3" id="text-1-3">
 
 <p>An "if" statement uses a boolean expression to decide whether to execute a set
@@ -323,7 +320,7 @@ of statements.  The form is
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">if</span> (boolValue) {
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (boolValue) {
     statements;
 }
 </pre>
@@ -336,12 +333,12 @@ parentheses around the boolean expression are required (for no good reason).
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">pass</span> = score &gt;= <span style="color: #ffa07a;">75</span>;
-<span style="color: #8ac6f2; font-weight: bold;">if</span> (pass) {
-    output(<span style="color: #95e454;">"You pass CS 61B"</span>);
-} <span style="color: #8ac6f2; font-weight: bold;">else</span> {
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">The following line executes if and only if score &lt; 75.</span>
-    output(<span style="color: #95e454;">"You are such an unbelievable loser"</span>);
+<pre class="src src-java"><span style="color: #228b22;">boolean</span> <span style="color: #a0522d;">pass</span> = score &gt;= <span style="color: #bc8f8f;">75</span>;
+<span style="color: #a020f0;">if</span> (pass) {
+    output(<span style="color: #8b2252;">"You pass CS 61B"</span>);
+} <span style="color: #a020f0;">else</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">The following line executes if and only if score &lt; 75.</span>
+    output(<span style="color: #8b2252;">"You are such an unbelievable loser"</span>);
 }
 </pre>
 
@@ -355,15 +352,15 @@ numbers.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">if</span> (x &gt; y) {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (x &gt; z) {
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (x &gt; y) {
+    <span style="color: #a020f0;">if</span> (x &gt; z) {
         maximum = x;
-    } <span style="color: #8ac6f2; font-weight: bold;">else</span> {
+    } <span style="color: #a020f0;">else</span> {
         maximum = z;
     }
-} <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> (y &gt; z) {
+} <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (y &gt; z) {
     maximum = y;
-} <span style="color: #8ac6f2; font-weight: bold;">else</span> {
+} <span style="color: #a020f0;">else</span> {
     maximum = z;
 }
 </pre>
@@ -377,20 +374,20 @@ variable x is equal to some constant.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">switch</span> (month) {        |      <span style="color: #8ac6f2; font-weight: bold;">if</span> (month == <span style="color: #ffa07a;">2</span>) {                         
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">2</span>:                 |        days = <span style="color: #ffa07a;">28</span>;                              
-  days = <span style="color: #ffa07a;">28</span>;            |      } <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> ((month == <span style="color: #ffa07a;">4</span>) || (month == <span style="color: #ffa07a;">6</span>) ||
-  <span style="color: #8ac6f2; font-weight: bold;">break</span>;                |                 (month == <span style="color: #ffa07a;">9</span>) || (month == <span style="color: #ffa07a;">11</span>)) {
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">4</span>:                 |        days = <span style="color: #ffa07a;">30</span>;                              
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">6</span>:                 |      } <span style="color: #8ac6f2; font-weight: bold;">else</span> {                                  
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">9</span>:                 |        days = <span style="color: #ffa07a;">31</span>;                              
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">11</span>:                |      }                                         
-  days = <span style="color: #ffa07a;">30</span>;            |
-  <span style="color: #8ac6f2; font-weight: bold;">break</span>;
-<span style="color: #8ac6f2; font-weight: bold;">default</span>:
-  days = <span style="color: #ffa07a;">31</span>;
-  <span style="color: #8ac6f2; font-weight: bold;">break</span>;
-}                   <span style="color: #99968b;">//  </span><span style="color: #99968b;">These two code fragments do exactly the same thing.</span>
+<pre class="src src-java"><span style="color: #a020f0;">switch</span> (month) {        |      <span style="color: #a020f0;">if</span> (month == <span style="color: #bc8f8f;">2</span>) {                         
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">2</span>:                 |        days = <span style="color: #bc8f8f;">28</span>;                              
+  days = <span style="color: #bc8f8f;">28</span>;            |      } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> ((month == <span style="color: #bc8f8f;">4</span>) || (month == <span style="color: #bc8f8f;">6</span>) ||
+  <span style="color: #a020f0;">break</span>;                |                 (month == <span style="color: #bc8f8f;">9</span>) || (month == <span style="color: #bc8f8f;">11</span>)) {
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">4</span>:                 |        days = <span style="color: #bc8f8f;">30</span>;                              
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">6</span>:                 |      } <span style="color: #a020f0;">else</span> {                                  
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">9</span>:                 |        days = <span style="color: #bc8f8f;">31</span>;                              
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">11</span>:                |      }                                         
+  days = <span style="color: #bc8f8f;">30</span>;            |
+  <span style="color: #a020f0;">break</span>;
+<span style="color: #a020f0;">default</span>:
+  days = <span style="color: #bc8f8f;">31</span>;
+  <span style="color: #a020f0;">break</span>;
+}                   <span style="color: #b22222;">//  </span><span style="color: #b22222;">These two code fragments do exactly the same thing.</span>
 </pre>
 
 
@@ -403,14 +400,14 @@ in the following example, both Strings are printed.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">switch</span> (month) {
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">12</span>:
-    output(<span style="color: #95e454;">"It's December."</span>);
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">Just keep moving right on through.</span>
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">1</span>:
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">2</span>:
-<span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">11</span>:
-    output(<span style="color: #95e454;">"It's cold."</span>);
+<pre class="src src-java"><span style="color: #a020f0;">switch</span> (month) {
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">12</span>:
+    output(<span style="color: #8b2252;">"It's December."</span>);
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Just keep moving right on through.</span>
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">1</span>:
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">2</span>:
+<span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">11</span>:
+    output(<span style="color: #8b2252;">"It's cold."</span>);
 }
 </pre>
 
@@ -432,7 +429,7 @@ statement (just past the closing brace) and continues execution from there.
 </div>
 
 <div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> THE "return" KEYWORD</h3>
+<h3 id="sec-1-4">THE "return" KEYWORD</h3>
 <div class="outline-text-3" id="text-1-4">
 
 <p>Like conditionals, "return" affects the flow of control of a program.  It
@@ -445,11 +442,11 @@ Here's a recursive method that prints the numbers from 1 to x.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">oneToX</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">x</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (x &lt; <span style="color: #ffa07a;">1</span>) {
-        <span style="color: #8ac6f2; font-weight: bold;">return</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">oneToX</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+    <span style="color: #a020f0;">if</span> (x &lt; <span style="color: #bc8f8f;">1</span>) {
+        <span style="color: #a020f0;">return</span>;
     }
-    oneToX(x - <span style="color: #ffa07a;">1</span>);
+    oneToX(x - <span style="color: #bc8f8f;">1</span>);
     System.out.println(x);
 }
 </pre>
@@ -463,17 +460,17 @@ a non-void type.  For instance, here's a function that returns an int.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">daysInMonth</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">month</span>) {
-    <span style="color: #8ac6f2; font-weight: bold;">switch</span> (month) {
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">2</span>:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #ffa07a;">28</span>;
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">4</span>:
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">6</span>:
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">9</span>:
-    <span style="color: #8ac6f2; font-weight: bold;">case</span> <span style="color: #ffa07a;">11</span>:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #ffa07a;">30</span>;
-    <span style="color: #8ac6f2; font-weight: bold;">default</span>:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #ffa07a;">31</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">daysInMonth</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>) {
+    <span style="color: #a020f0;">switch</span> (month) {
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">2</span>:
+        <span style="color: #a020f0;">return</span> <span style="color: #bc8f8f;">28</span>;
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">4</span>:
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">6</span>:
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">9</span>:
+    <span style="color: #a020f0;">case</span> <span style="color: #bc8f8f;">11</span>:
+        <span style="color: #a020f0;">return</span> <span style="color: #bc8f8f;">30</span>;
+    <span style="color: #a020f0;">default</span>:
+        <span style="color: #a020f0;">return</span> <span style="color: #bc8f8f;">31</span>;
     }
 }
 </pre>
@@ -485,9 +482,9 @@ The "return" value can be an expression.  Some examples:
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">return</span> x + y - z;
+<pre class="src src-java"><span style="color: #a020f0;">return</span> x + y - z;
 
-<span style="color: #8ac6f2; font-weight: bold;">return</span> car.velocity(time);
+<span style="color: #a020f0;">return</span> car.velocity(time);
 </pre>
 
 </div>
@@ -496,7 +493,7 @@ The "return" value can be an expression.  Some examples:
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T15:23-0800</p>
+<p class="date">Date: 2014-02-28T00:56-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

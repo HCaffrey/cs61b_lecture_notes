@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes5"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T15:23-0800"/>
+<meta name="generated" content="2014-02-28T00:56-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -26,11 +26,8 @@
   .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -122,17 +119,17 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Lecture 5</a>
+<li><a href="#sec-1">Lecture 5</a>
 <ul>
-<li><a href="#sec-1-1">1.1 LOOPS</a>
+<li><a href="#sec-1-1">LOOPS</a>
 <ul>
-<li><a href="#sec-1-1-1">1.1.1 "while" Loops</a></li>
-<li><a href="#sec-1-1-2">1.1.2 "for" Loops</a></li>
+<li><a href="#sec-1-1-1">"while" Loops</a></li>
+<li><a href="#sec-1-1-2">"for" Loops</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-2">1.2 ARRAYS</a></li>
-<li><a href="#sec-1-3">1.3 Primes Revisited</a></li>
-<li><a href="#sec-1-4">1.4 Multi-Dimensional Arrays</a></li>
+<li><a href="#sec-1-2">ARRAYS</a></li>
+<li><a href="#sec-1-3">Primes Revisited</a></li>
+<li><a href="#sec-1-4">Multi-Dimensional Arrays</a></li>
 </ul>
 </li>
 </ul>
@@ -140,7 +137,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Lecture 5</h2>
+<h2 id="sec-1">Lecture 5</h2>
 <div class="outline-text-2" id="text-1">
 
 <p>Today's reading:  Sierra &amp; Bates pp. 59-62, 83, 114-116, 293-300, 670.
@@ -151,14 +148,14 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> LOOPS</h3>
+<h3 id="sec-1-1">LOOPS</h3>
 <div class="outline-text-3" id="text-1-1">
 
 
 </div>
 
 <div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> "while" Loops</h4>
+<h4 id="sec-1-1-1">"while" Loops</h4>
 <div class="outline-text-4" id="text-1-1-1">
 
 <p>A "while" statement is like an "if" statement, but the body of the statement is
@@ -169,15 +166,15 @@ integer in the range 2&hellip;n - 1.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">isPrime</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">divisor</span> = <span style="color: #ffa07a;">2</span>;
-  <span style="color: #8ac6f2; font-weight: bold;">while</span> (divisor &lt; n) {         <span style="color: #7fffd4;">_</span> &lt;- <span style="color: #95e454;">"divisor &lt; n"</span> is the _loop_condition_.
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (n % divisor == <span style="color: #ffa07a;">0</span>) {      |
-      <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;              | These lines inside the braces
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">isPrime</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">divisor</span> = <span style="color: #bc8f8f;">2</span>;
+  <span style="color: #a020f0;">while</span> (divisor &lt; n) {         <span style="color: #5f9ea0;">_</span> &lt;- <span style="color: #8b2252;">"divisor &lt; n"</span> is the _loop_condition_.
+    <span style="color: #a020f0;">if</span> (n % divisor == <span style="color: #bc8f8f;">0</span>) {      |
+      <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;              | These lines inside the braces
     }                            | are called the _loop_body_.  
-    divisor++;                  <span style="color: #7fffd4;">_</span>|
+    divisor++;                  <span style="color: #5f9ea0;">_</span>|
   }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">true</span>;
+  <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">true</span>;
 }
 </pre>
 
@@ -211,7 +208,7 @@ less, the loop body won't iterate even once.
 </div>
 
 <div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> "for" Loops</h4>
+<h4 id="sec-1-1-2">"for" Loops</h4>
 <div class="outline-text-4" id="text-1-1-2">
 
 <p>"for" loops are a convenient shorthand that can be used to write some "while"
@@ -221,8 +218,8 @@ following "while" loop.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (initialize; condition; next) {      |    initialize;   
-  statements;                            |    <span style="color: #8ac6f2; font-weight: bold;">while</span> (condition) {
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (initialize; condition; next) {      |    initialize;   
+  statements;                            |    <span style="color: #a020f0;">while</span> (condition) {
 }                                        |      statements;
                                          |      next;
                                          |    }
@@ -238,13 +235,13 @@ variable over a fixed range of values.  isPrime can be rewritten thus:
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">boolean</span> <span style="color: #cae682;">isPrime</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-  <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">divisor</span> = <span style="color: #ffa07a;">2</span>; divisor &lt; n; divisor++) {    <span style="color: #7fffd4;">_</span>
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (n % divisor == <span style="color: #ffa07a;">0</span>) {                           |
-      <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">false</span>;                                   | Loop body.
-    }                                                <span style="color: #7fffd4;">_</span>|
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">isPrime</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">divisor</span> = <span style="color: #bc8f8f;">2</span>; divisor &lt; n; divisor++) {    <span style="color: #5f9ea0;">_</span>
+    <span style="color: #a020f0;">if</span> (n % divisor == <span style="color: #bc8f8f;">0</span>) {                           |
+      <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;                                   | Loop body.
+    }                                                <span style="color: #5f9ea0;">_</span>|
   }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">true</span>;
+  <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">true</span>;
 }
 </pre>
 
@@ -257,11 +254,11 @@ print all the prime numbers in the range 2&hellip;n.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">printPrimes</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
-  <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span>; i &lt; n; i++) {        <span style="color: #99968b;">// </span><span style="color: #99968b;">ERROR!!!  Condition should be i &lt;= n.</span>
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (isPrime(i)) {
-      System.out.print(<span style="color: #95e454;">" "</span> + i);
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">printPrimes</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+  <span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">2</span>; i &lt; n; i++) {        <span style="color: #b22222;">// </span><span style="color: #b22222;">ERROR!!!  Condition should be i &lt;= n.</span>
+    <span style="color: #a020f0;">if</span> (isPrime(i)) {
+      System.out.print(<span style="color: #8b2252;">" "</span> + i);
     }
   }
 }
@@ -282,7 +279,7 @@ interesting to iterate on.
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> ARRAYS</h3>
+<h3 id="sec-1-2">ARRAYS</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <p>An array is an object consisting of a numbered list of variables, each of which
@@ -301,7 +298,7 @@ through some reference variable like "c" above.  We declare c thusly:
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">char</span>[] <span style="color: #cae682;">c</span>;           <span style="color: #99968b;">// </span><span style="color: #99968b;">Reference to an array (of any length) of characters.</span>
+<pre class="src src-java"><span style="color: #228b22;">char</span>[] <span style="color: #a0522d;">c</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">Reference to an array (of any length) of characters.</span>
 </pre>
 
 
@@ -311,7 +308,7 @@ We can construct an array of four characters as follows.
 
 
 
-<pre class="src src-java">c = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">char</span>[<span style="color: #ffa07a;">4</span>];
+<pre class="src src-java">c = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">char</span>[<span style="color: #bc8f8f;">4</span>];
 </pre>
 
 
@@ -321,10 +318,10 @@ Now that we have an array object, we may fill in its values by indexing c.
 
 
 
-<pre class="src src-java">c[<span style="color: #ffa07a;">0</span>] = <span style="color: #95e454;">'b'</span>;         <span style="color: #99968b;">// </span><span style="color: #99968b;">Store the character 'b' at index 0.</span>
-c[<span style="color: #ffa07a;">1</span>] = <span style="color: #95e454;">'l'</span>;
-c[<span style="color: #ffa07a;">2</span>] = <span style="color: #95e454;">'u'</span>;
-c[<span style="color: #ffa07a;">3</span>] = <span style="color: #95e454;">'e'</span>;
+<pre class="src src-java">c[<span style="color: #bc8f8f;">0</span>] = <span style="color: #8b2252;">'b'</span>;         <span style="color: #b22222;">// </span><span style="color: #b22222;">Store the character 'b' at index 0.</span>
+c[<span style="color: #bc8f8f;">1</span>] = <span style="color: #8b2252;">'l'</span>;
+c[<span style="color: #bc8f8f;">2</span>] = <span style="color: #8b2252;">'u'</span>;
+c[<span style="color: #bc8f8f;">3</span>] = <span style="color: #8b2252;">'e'</span>;
 </pre>
 
 
@@ -335,7 +332,7 @@ address any index outside this range, we will trigger a run-time error.
 
 
 
-<pre class="src src-java">c[<span style="color: #ffa07a;">4</span>] = <span style="color: #95e454;">'s'</span>;         <span style="color: #99968b;">// </span><span style="color: #99968b;">Program stops with ArrayIndexOutOfBoundsException</span>
+<pre class="src src-java">c[<span style="color: #bc8f8f;">4</span>] = <span style="color: #8b2252;">'s'</span>;         <span style="color: #b22222;">// </span><span style="color: #b22222;">Program stops with ArrayIndexOutOfBoundsException</span>
 </pre>
 
 
@@ -354,7 +351,7 @@ will give you a compile-time error if you try.
 </div>
 
 <div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Primes Revisited</h3>
+<h3 id="sec-1-3">Primes Revisited</h3>
 <div class="outline-text-3" id="text-1-3">
 
 
@@ -371,11 +368,11 @@ by a given divisor.  Here's the beginning of the method.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">printPrimes</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-    <span style="color: #92a65e; font-weight: bold;">boolean</span>[] <span style="color: #cae682;">prime</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">boolean</span>[n + <span style="color: #ffa07a;">1</span>];                  <span style="color: #99968b;">// </span><span style="color: #99968b;">Numbered 0...n.</span>
-    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
-    <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span>; i &lt;= n; i++) {
-        prime[i] = <span style="color: #7fffd4;">true</span>;                       <span style="color: #99968b;">// </span><span style="color: #99968b;">Prime until proven composite.</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">printPrimes</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+    <span style="color: #228b22;">boolean</span>[] <span style="color: #a0522d;">prime</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">boolean</span>[n + <span style="color: #bc8f8f;">1</span>];                  <span style="color: #b22222;">// </span><span style="color: #b22222;">Numbered 0...n.</span>
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+    <span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">2</span>; i &lt;= n; i++) {
+        prime[i] = <span style="color: #5f9ea0;">true</span>;                       <span style="color: #b22222;">// </span><span style="color: #b22222;">Prime until proven composite.</span>
     }
 </pre>
 
@@ -393,10 +390,10 @@ integers divisible by divisor, except divisor itself.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">divisor</span> = <span style="color: #ffa07a;">2</span>; divisor * divisor &lt;= n; divisor++) {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (prime[divisor]) {
-        <span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span> * divisor; i &lt;= n; i = i + divisor) {
-            prime[i] = <span style="color: #7fffd4;">false</span>;                     <span style="color: #99968b;">// </span><span style="color: #99968b;">i is divisible by divisor.</span>
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">divisor</span> = <span style="color: #bc8f8f;">2</span>; divisor * divisor &lt;= n; divisor++) {
+    <span style="color: #a020f0;">if</span> (prime[divisor]) {
+        <span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">2</span> * divisor; i &lt;= n; i = i + divisor) {
+            prime[i] = <span style="color: #5f9ea0;">false</span>;                     <span style="color: #b22222;">// </span><span style="color: #b22222;">i is divisible by divisor.</span>
         }
     }
 }
@@ -413,9 +410,9 @@ Finally, we print every integer from 2 to n that hasn't been marked non-prime.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (i = <span style="color: #ffa07a;">2</span>; i &lt;= n; i++) {
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (prime[i]) {
-        System.out.print(<span style="color: #95e454;">" "</span> + i);
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (i = <span style="color: #bc8f8f;">2</span>; i &lt;= n; i++) {
+    <span style="color: #a020f0;">if</span> (prime[i]) {
+        System.out.print(<span style="color: #8b2252;">" "</span> + i);
     }
 }
 </pre>
@@ -430,7 +427,7 @@ memory is wasted, but the readability of the code is better for it.
 </div>
 
 <div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Multi-Dimensional Arrays</h3>
+<h3 id="sec-1-4">Multi-Dimensional Arrays</h3>
 <div class="outline-text-3" id="text-1-4">
 
 <p>A <span style="text-decoration:underline;">two-dimensional array</span> is an array of references to arrays.  A three-
@@ -461,8 +458,8 @@ rows of Pascal's Triangle.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">pascalTriangle</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">n</span>) {
-    <span style="color: #92a65e; font-weight: bold;">int</span>[][] <span style="color: #cae682;">pt</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[n][];
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span>[][] <span style="color: #0000ff;">pascalTriangle</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+    <span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">pt</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[n][];
 </pre>
 
 
@@ -475,15 +472,15 @@ following loop.
 
 
 
-<pre class="src src-java"><span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span> = <span style="color: #ffa07a;">0</span>; i &lt; n; i++) {
-    pt[i] = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">int</span>[i + <span style="color: #ffa07a;">1</span>];                            <span style="color: #99968b;">// </span><span style="color: #99968b;">Construct row i.</span>
-    pt[i][<span style="color: #ffa07a;">0</span>] = <span style="color: #ffa07a;">1</span>;                              <span style="color: #99968b;">// </span><span style="color: #99968b;">Leftmost value of row i.</span>
-    <span style="color: #8ac6f2; font-weight: bold;">for</span> (<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">j</span> = <span style="color: #ffa07a;">1</span>; j &lt; i; j++) {
-        pt[i][j] = pt[i - <span style="color: #ffa07a;">1</span>][j - <span style="color: #ffa07a;">1</span>] + pt[i - <span style="color: #ffa07a;">1</span>][j];  <span style="color: #99968b;">// </span><span style="color: #99968b;">Sum 2 entries above.</span>
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = <span style="color: #bc8f8f;">0</span>; i &lt; n; i++) {
+    pt[i] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[i + <span style="color: #bc8f8f;">1</span>];                            <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct row i.</span>
+    pt[i][<span style="color: #bc8f8f;">0</span>] = <span style="color: #bc8f8f;">1</span>;                              <span style="color: #b22222;">// </span><span style="color: #b22222;">Leftmost value of row i.</span>
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = <span style="color: #bc8f8f;">1</span>; j &lt; i; j++) {
+        pt[i][j] = pt[i - <span style="color: #bc8f8f;">1</span>][j - <span style="color: #bc8f8f;">1</span>] + pt[i - <span style="color: #bc8f8f;">1</span>][j];  <span style="color: #b22222;">// </span><span style="color: #b22222;">Sum 2 entries above.</span>
     }
-    pt[i][i] = <span style="color: #ffa07a;">1</span>;                             <span style="color: #99968b;">// </span><span style="color: #99968b;">Rightmost value of row i.</span>
+    pt[i][i] = <span style="color: #bc8f8f;">1</span>;                             <span style="color: #b22222;">// </span><span style="color: #b22222;">Rightmost value of row i.</span>
 }
-<span style="color: #8ac6f2; font-weight: bold;">return</span> pt;
+<span style="color: #a020f0;">return</span> pt;
 </pre>
 
 
@@ -500,7 +497,7 @@ Our array objects look like this:
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T15:23-0800</p>
+<p class="date">Date: 2014-02-28T00:56-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

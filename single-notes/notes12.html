@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes12"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-22T15:23-0800"/>
+<meta name="generated" content="2014-02-28T00:56-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -26,11 +26,8 @@
   .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -122,10 +119,10 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Lecture 12</a>
+<li><a href="#sec-1">Lecture 12</a>
 <ul>
-<li><a href="#sec-1-1">1.1 ABSTRACT CLASSES</a></li>
-<li><a href="#sec-1-2">1.2 JAVA INTERFACES</a></li>
+<li><a href="#sec-1-1">ABSTRACT CLASSES</a></li>
+<li><a href="#sec-1-2">JAVA INTERFACES</a></li>
 </ul>
 </li>
 </ul>
@@ -133,7 +130,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Lecture 12</h2>
+<h2 id="sec-1">Lecture 12</h2>
 <div class="outline-text-2" id="text-1">
 
 <p>Today's reading:  Sierra &amp; Bates, Chapter 8.
@@ -144,7 +141,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> ABSTRACT CLASSES</h3>
+<h3 id="sec-1-1">ABSTRACT CLASSES</h3>
 <div class="outline-text-3" id="text-1-1">
 
 <p>An abstract class is a class whose sole purpose is to be extended.
@@ -152,14 +149,14 @@ for the JavaScript code in this tag.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">abstract</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">List</span> {
-  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">abstract</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">List</span> {
+  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">length</span>() {
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> size;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">length</span>() {
+    <span style="color: #a020f0;">return</span> size;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">abstract</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>);
+  <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">abstract</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>);
 }
 </pre>
 
@@ -171,8 +168,8 @@ variable of type List, but you can't create a List object.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">List</span> <span style="color: #cae682;">myList</span>;                 <span style="color: #99968b;">// </span><span style="color: #99968b;">Right on.</span>
-myList = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">List</span>();         <span style="color: #99968b;">// </span><span style="color: #99968b;">COMPILE-TIME ERROR.</span>
+<pre class="src src-java"><span style="color: #228b22;">List</span> <span style="color: #a0522d;">myList</span>;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
+myList = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">List</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -191,14 +188,14 @@ for the insertFront method.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #8ac6f2; font-weight: bold;">extends</span> <span style="color: #92a65e; font-weight: bold;">List</span> {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">inherits the "size" field.</span>
-  <span style="color: #b0c4de;">protected</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span> <span style="color: #cae682;">head</span>;
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">List</span> {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">inherits the "size" field.</span>
+  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
 
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">inherits the "length" method.</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">inherits the "length" method.</span>
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">insertFront</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>) {
-    head = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SListNode</span>(item, head);
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>) {
+    head = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(item, head);
     size++;
   }  
 }
@@ -218,8 +215,8 @@ are Lists, we can assign an SList to a List variable.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">List</span> <span style="color: #cae682;">myList</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();   <span style="color: #99968b;">// </span><span style="color: #99968b;">Right on.</span>
-myList.insertFront(obj);     <span style="color: #99968b;">// </span><span style="color: #99968b;">Right on.</span>
+<pre class="src src-java"><span style="color: #228b22;">List</span> <span style="color: #a0522d;">myList</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();   <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
+myList.insertFront(obj);     <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
 </pre>
 
 
@@ -227,19 +224,15 @@ myList.insertFront(obj);     <span style="color: #99968b;">// </span><span style
 What are abstract classes good for?  It's all about the interface.
 </p>
 
-<hr/>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="left" />
-</colgroup>
-<tbody>
-<tr><td class="left">An abstract class lets you define an interface</td></tr>
-<tr><td class="left">- for multiple classes to share,</td></tr>
-<tr><td class="left">- without defining any of them yet.</td></tr>
-</tbody>
-</table>
 
 
-<hr/>
+<pre class="src src-text">----------------------------------------------------
+|  An abstract class lets you define an interface  |
+|    - for multiple classes to share,              |
+|    - without defining any of them yet.           |
+----------------------------------------------------
+</pre>
+
 
 <p>
 Let's consider the List class.  Although the List class is abstract, it is an
@@ -252,7 +245,7 @@ kind of List.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">listSort</span>(<span style="color: #92a65e; font-weight: bold;">List</span> <span style="color: #cae682;">l</span>) { ... }
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">listSort</span>(<span style="color: #228b22;">List</span> <span style="color: #a0522d;">l</span>) { ... }
 </pre>
 
 
@@ -269,6 +262,7 @@ have to change a line of sorting code.  You may have written your list sorter
 years before TransactionLists were ever thought of.
 </p>
 
+
 <p>
 The list sorter is built on the foundation of a list  
 ADT, and the application is built on the foundation of
@@ -279,15 +273,14 @@ features like transaction logging.  This is a big
 advantage of object-oriented languages like Java.
 </p>
 <p>
-<img src="ditaa-images/TEMP_2_07f8ba5ffaf13fb531100754106baba5dd99a57c.png"  alt="ditaa-images/TEMP_2_07f8ba5ffaf13fb531100754106baba5dd99a57c.png" />
+<img src="ditaa-images/TEMP_2_4f59996096292d48e6065cc3ce5a099a0b28190f.png"  alt="ditaa-images/TEMP_2_4f59996096292d48e6065cc3ce5a099a0b28190f.png" />
 </p>
-
 </div>
 
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> JAVA INTERFACES</h3>
+<h3 id="sec-1-2">JAVA INTERFACES</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <p>Java has an "interface" keyword which refers to something quite different than
@@ -313,26 +306,26 @@ A Java interface is just like an abstract class, except for two differences.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">interface</span> <span style="color: #92a65e; font-weight: bold;">Nukeable</span> {               <span style="color: #99968b;">// </span><span style="color: #99968b;">In Nukeable.java</span>
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">nuke</span>();
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Nukeable</span> {               <span style="color: #b22222;">// </span><span style="color: #b22222;">In Nukeable.java</span>
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">nuke</span>();
 }
 
-<span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">interface</span> <span style="color: #92a65e; font-weight: bold;">Comparable</span> {             <span style="color: #99968b;">// </span><span style="color: #99968b;">In java.lang</span>
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">compareTo</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">o</span>);
+<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Comparable</span> {             <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.lang</span>
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">compareTo</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span>);
 }
 
-<span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">SList</span> <span style="color: #8ac6f2; font-weight: bold;">extends</span> <span style="color: #92a65e; font-weight: bold;">List</span> <span style="color: #8ac6f2; font-weight: bold;">implements</span> <span style="color: #92a65e; font-weight: bold;">Nukeable</span>, <span style="color: #92a65e; font-weight: bold;">Comparable</span> {
+<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">List</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Nukeable</span>, <span style="color: #228b22;">Comparable</span> {
   [Previous stuff here.]
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> nuke() {
-    head = <span style="color: #7fffd4;">null</span>;
-    size = <span style="color: #ffa07a;">0</span>;
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> nuke() {
+    head = <span style="color: #5f9ea0;">null</span>;
+    size = <span style="color: #bc8f8f;">0</span>;
   }
 
-  <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">compareTo</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">o</span>) {
-    [Returns a number &lt; <span style="color: #ffa07a;">0</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> <span style="color: #8ac6f2; font-weight: bold;">this</span> &lt; o,
-                        <span style="color: #ffa07a;">0</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> <span style="color: #8ac6f2; font-weight: bold;">this</span>.equals(o), 
-                      &gt; <span style="color: #ffa07a;">0</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> <span style="color: #8ac6f2; font-weight: bold;">this</span> &gt; o.]
+  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">compareTo</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span>) {
+    [Returns a number &lt; <span style="color: #bc8f8f;">0</span> <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span> &lt; o,
+                        <span style="color: #bc8f8f;">0</span> <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span>.equals(o), 
+                      &gt; <span style="color: #bc8f8f;">0</span> <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span> &gt; o.]
   }
 }
 </pre>
@@ -367,8 +360,8 @@ of these types.
 
 
 
-<pre class="src src-java"><span style="color: #92a65e; font-weight: bold;">Nukeable</span> <span style="color: #cae682;">n</span> = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">SList</span>();
-<span style="color: #92a65e; font-weight: bold;">Comparable</span> <span style="color: #cae682;">c</span> = (<span style="color: #92a65e; font-weight: bold;">Comparable</span>) n;
+<pre class="src src-java"><span style="color: #228b22;">Nukeable</span> <span style="color: #a0522d;">n</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+<span style="color: #228b22;">Comparable</span> <span style="color: #a0522d;">c</span> = (<span style="color: #228b22;">Comparable</span>) n;
 </pre>
 
 
@@ -384,7 +377,7 @@ of Comparable objects.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #b0c4de;">static</span> <span style="color: #92a65e; font-weight: bold;">void</span> <span style="color: #cae682;">sort</span>(<span style="color: #92a65e; font-weight: bold;">Object</span>[] <span style="color: #cae682;">a</span>)       <span style="color: #99968b;">// </span><span style="color: #99968b;">In java.util</span>
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">sort</span>(<span style="color: #228b22;">Object</span>[] <span style="color: #a0522d;">a</span>)       <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.util</span>
 </pre>
 
 
@@ -399,7 +392,7 @@ multiple superinterfaces, so we can group several interfaces into one.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">interface</span> <span style="color: #92a65e; font-weight: bold;">NukeAndCompare</span> <span style="color: #8ac6f2; font-weight: bold;">extends</span> <span style="color: #92a65e; font-weight: bold;">Nukeable</span>, <span style="color: #92a65e; font-weight: bold;">Comparable</span> { }
+<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">NukeAndCompare</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Nukeable</span>, <span style="color: #228b22;">Comparable</span> { }
 </pre>
 
 
@@ -412,7 +405,7 @@ I don't.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-22T15:23-0800</p>
+<p class="date">Date: 2014-02-28T00:56-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
