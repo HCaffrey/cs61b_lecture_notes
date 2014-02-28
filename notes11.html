@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes11"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:15-0800"/>
+<meta name="generated" content="2014-02-28T01:47-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -202,27 +202,27 @@ returns true only if the two lists represent identical sequences of items.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
-    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">equals</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">other</span>) {
-        <span style="color: #a020f0;">if</span> (!(other <span style="color: #a020f0;">instanceof</span> <span style="color: #228b22;">SList</span>)) {           <span style="color: #b22222;">// </span><span style="color: #b22222;">Reject non-SLists.</span>
-            <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;
+<pre class="example">public class SList {
+    public boolean equals(Object other) {
+        if (!(other instanceof SList)) {           // Reject non-SLists.
+            return false;
         }
 
-        <span style="color: #228b22;">SList</span> <span style="color: #a0522d;">o</span> = (<span style="color: #228b22;">SList</span>) other;
-        <span style="color: #a020f0;">if</span> (size != o.size) {
-            <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;
+        SList o = (SList) other;
+        if (size != o.size) {
+            return false;
         }
 
-        <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n1</span> = head;
-        <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n2</span> = o.head;
-        <span style="color: #a020f0;">while</span> (n1 != <span style="color: #5f9ea0;">null</span>) {
-            <span style="color: #a020f0;">if</span> (!n1.item.equals(n2.item)) {          <span style="color: #b22222;">// </span><span style="color: #b22222;">Deep equality of the items.</span>
-                <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">false</span>;
+        SListNode n1 = head;
+        SListNode n2 = o.head;
+        while (n1 != null) {
+            if (!n1.item.equals(n2.item)) {          // Deep equality of the items.
+                return false;
             }
             n1 = n1.next;
             n2 = n2.next;
         }
-        <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">true</span>;
+        return true;
     }
 }
 </pre>
@@ -242,7 +242,7 @@ will compile but it will NOT override.  That means the code
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">Object</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+<pre class="example">Object s = new SList();
 s.equals(s);
 </pre>
 
@@ -269,10 +269,10 @@ the same.
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">array</span> = {<span style="color: #bc8f8f;">7</span>, <span style="color: #bc8f8f;">12</span>, <span style="color: #bc8f8f;">3</span>, <span style="color: #bc8f8f;">8</span>, <span style="color: #bc8f8f;">4</span>, <span style="color: #bc8f8f;">9</span>};
+<pre class="example">int[] array = {7, 12, 3, 8, 4, 9};
 
-<span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> : array) {
-  System.out.print(i + <span style="color: #8b2252;">" "</span>);
+for (int i : array) {
+  System.out.print(i + " ");
 }
 </pre>
 
@@ -284,8 +284,8 @@ array element in turn.  You can iterate over arrays of any type this way.
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">concat</span> = <span style="color: #8b2252;">""</span>;
-<span style="color: #a020f0;">for</span> (<span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span> : stringArray) {
+<pre class="example">String concat = "";
+for (String s : stringArray) {
   concat = concat + s;
 }
 </pre>
@@ -298,8 +298,8 @@ compiler barfs if you try
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
-<span style="color: #a020f0;">for</span> (i : array) { ... }
+<pre class="example">int i;
+for (i : array) { ... }
 </pre>
 
 
@@ -445,8 +445,8 @@ own choosing.
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">assert</span> <span style="color: #a0522d;">x</span> == <span style="color: #bc8f8f;">3</span>;
-<span style="color: #a020f0;">assert</span> list.<span style="color: #a0522d;">size</span> == list.countLength() : <span style="color: #8b2252;">"wrong SList size:  "</span> + list.size;
+<pre class="example">assert x == 3;
+assert list.size == list.countLength() : "wrong SList size:  " + list.size;
 </pre>
 
 
@@ -511,9 +511,9 @@ than the size of the code being tested.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:15-0800</p>
+<p class="date">Date: 2014-02-28T01:47-0800</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

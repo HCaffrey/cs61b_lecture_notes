@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes3"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:15-0800"/>
+<meta name="generated" content="2014-02-28T01:47-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -157,12 +157,12 @@ amanda.age is a field.  Let's write a <span style="text-decoration:underline;">c
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
-    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">age</span>;                <span style="color: #b22222;">// </span><span style="color: #b22222;">The Human's age (an integer).</span>
-    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">name</span>;            <span style="color: #b22222;">// </span><span style="color: #b22222;">The Human's name.</span>
+<pre class="example">class Human {
+    public int age;                // The Human's age (an integer).
+    public String name;            // The Human's name.
 
-    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">introduce</span>() {      <span style="color: #b22222;">// </span><span style="color: #b22222;">This is a _method definition_.</span>
-        System.out.println(<span style="color: #8b2252;">"I'm "</span> + name + <span style="color: #8b2252;">" and I'm "</span> + age + <span style="color: #8b2252;">" years old."</span>);
+    public void introduce() {      // This is a _method definition_.
+        System.out.println("I'm " + name + " and I'm " + age + " years old.");
     }
 }
 </pre>
@@ -177,10 +177,10 @@ amanda by executing the following code.
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">Human</span> <span style="color: #a0522d;">amanda</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>();    <span style="color: #b22222;">// </span><span style="color: #b22222;">Create amanda.</span>
-amanda.age = <span style="color: #bc8f8f;">6</span>;                <span style="color: #b22222;">// </span><span style="color: #b22222;">Set amanda's fields.</span>
-amanda.name = <span style="color: #8b2252;">"Amanda"</span>;
-amanda.introduce();            <span style="color: #b22222;">// </span><span style="color: #b22222;">_Method call_ has amanda introduce herself.</span>
+<pre class="example">Human amanda = new Human();    // Create amanda.
+amanda.age = 6;                // Set amanda's fields.
+amanda.name = "Amanda";
+amanda.introduce();            // _Method call_ has amanda introduce herself.
 </pre>
 
 
@@ -204,10 +204,10 @@ two or more objects, we can.
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
-    <span style="color: #b22222;">// </span><span style="color: #b22222;">Include all the stuff from the previous definition of Human here.</span>
+<pre class="example">class Human {
+    // Include all the stuff from the previous definition of Human here.
 
-    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">copy</span>(<span style="color: #228b22;">Human</span> <span style="color: #a0522d;">original</span>) {
+    public void copy(Human original) {
         age = original.age;
         name = original.name;
     }
@@ -235,11 +235,11 @@ object.
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
-    <span style="color: #b22222;">// </span><span style="color: #b22222;">Include all the stuff from the previous definitions here.</span>
+<pre class="example">class Human {
+    // Include all the stuff from the previous definitions here.
 
-    <span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>(<span style="color: #228b22;">String</span> <span style="color: #a0522d;">givenName</span>) {
-        age = <span style="color: #bc8f8f;">6</span>;
+    public Human(String givenName) {
+        age = 6;
         name = givenName;
     }
 }
@@ -254,7 +254,7 @@ is a String reference.  Now, we can shorten amanda's coming-out party to
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">Human</span> <span style="color: #a0522d;">amanda</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>(<span style="color: #8b2252;">"Amanda"</span>);
+<pre class="example">Human amanda = new Human("Amanda");
 amanda.introduce();
 </pre>
 
@@ -271,7 +271,7 @@ no parameters and does no initializing.  Hence, when we wrote
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">Human</span> <span style="color: #a0522d;">amanda</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>();
+<pre class="example">Human amanda = new Human();
 </pre>
 
 
@@ -282,7 +282,7 @@ written, it would look like this:
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>() {
+<pre class="example">public Human() {
 }
 </pre>
 
@@ -299,12 +299,12 @@ constructor with no parameters.
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
-    <span style="color: #b22222;">// </span><span style="color: #b22222;">Include all the stuff from the previous definitions here.</span>
+<pre class="example">class Human {
+    // Include all the stuff from the previous definitions here.
 
-    <span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>() {
-        age = <span style="color: #bc8f8f;">0</span>;
-        name = <span style="color: #8b2252;">"Untitled"</span>;
+    public Human() {
+        age = 0;
+        name = "Untitled";
     }
 }
 </pre>
@@ -325,9 +325,9 @@ last constructor as follows without changing its meaning.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>() {
-    <span style="color: #a020f0;">this</span>.age = <span style="color: #bc8f8f;">0</span>;
-    <span style="color: #a020f0;">this</span>.name = <span style="color: #8b2252;">"Untitled"</span>;
+<pre class="example">public Human() {
+    this.age = 0;
+    this.name = "Untitled";
 }
 </pre>
 
@@ -341,11 +341,11 @@ fields.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">change</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">age</span>) {
-    <span style="color: #228b22;">String</span> <span style="color: #a0522d;">name</span> = <span style="color: #8b2252;">"Tom"</span>;
+<pre class="example">public void change(int age) {
+    String name = "Tom";
 
-    <span style="color: #a020f0;">this</span>.age = age;
-    <span style="color: #a020f0;">this</span>.name = name;
+    this.age = age;
+    this.name = name;
 }
 </pre>
 
@@ -392,14 +392,14 @@ Static fields are also called <span style="text-decoration:underline;">class var
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
-    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">numberOfHumans</span>;
+<pre class="example">class Human {
+    public static int numberOfHumans;
 
-    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">age</span>;
-    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">name</span>;
+    public int age;
+    public String name;
 
-    <span style="color: #da70d6;">public</span> <span style="color: #00008b;">Human</span>() {
-        numberOfHumans++;    <span style="color: #b22222;">// </span><span style="color: #b22222;">The constructor increments the number by one.</span>
+    public Human() {
+        numberOfHumans++;    // The constructor increments the number by one.
     }
 }
 </pre>
@@ -413,10 +413,10 @@ name of a specific object.
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">kids</span> = Human.numberOfHumans / <span style="color: #bc8f8f;">4</span>;  <span style="color: #b22222;">// </span><span style="color: #b22222;">Good.</span>
-<span style="color: #228b22;">int</span> <span style="color: #a0522d;">kids</span> = amanda.numberOfHumans / <span style="color: #bc8f8f;">4</span>; <span style="color: #b22222;">// </span><span style="color: #b22222;">This works too, but has nothing to</span>
-                                      <span style="color: #b22222;">// </span><span style="color: #b22222;">do with amanda specifically.  Don't</span>
-                                      <span style="color: #b22222;">// </span><span style="color: #b22222;">do this; it's bad (confusing) style.</span>
+<pre class="example">int kids = Human.numberOfHumans / 4;  // Good.
+int kids = amanda.numberOfHumans / 4; // This works too, but has nothing to
+                                      // do with amanda specifically.  Don't
+                                      // do this; it's bad (confusing) style.
 </pre>
 
 
@@ -430,9 +430,9 @@ as a parameter.
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+<pre class="example">class Human {
     ...
-    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> printHumans() {
+    public static void printHumans() {
         System.out.println(numberOfHumans);
     }
 }
@@ -483,9 +483,9 @@ Any attempt to reference "this" will cause a compile-time error.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:15-0800</p>
+<p class="date">Date: 2014-02-28T01:47-0800</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

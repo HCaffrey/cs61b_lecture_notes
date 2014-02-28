@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes13"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:15-0800"/>
+<meta name="generated" content="2014-02-28T01:47-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -195,7 +195,7 @@ Here's an example of all three in one.
 
 
 
-<pre class="src src-java"><span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">lang</span>.System.out.println(<span style="color: #8b2252;">"My fingers are tired."</span>);
+<pre class="example">java.lang.System.out.println("My fingers are tired.");
 </pre>
 
 
@@ -206,8 +206,8 @@ all the time.
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.io.</span><span style="color: #228b22;">File</span>;  <span style="color: #b22222;">// </span><span style="color: #b22222;">Can now refer to File class, not just java.io.File.</span>
-<span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.io.*</span>;     <span style="color: #b22222;">// </span><span style="color: #b22222;">Can now refer to everything in java.io.</span>
+<pre class="example">import java.io.File;  // Can now refer to File class, not just java.io.File.
+import java.io.*;     // Can now refer to everything in java.io.
 </pre>
 
 
@@ -220,7 +220,7 @@ names explicitly throughout your code.
 
 
 
-<pre class="src src-java"><span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">awt</span>.Frame.add(<span style="color: #008b8b;">photo</span>.Frame.canvas);
+<pre class="example">java.awt.Frame.add(photo.Frame.canvas);
 </pre>
 
 
@@ -234,7 +234,7 @@ You can specify a classpath on the command line, as when you type
 
 
 
-<pre class="src src-java">javac -cp <span style="color: #8b2252;">".:~jrs/classes:libraries.jar"</span> *.java
+<pre class="example">javac -cp ".:~jrs/classes:libraries.jar" *.java
 </pre>
 
 
@@ -260,13 +260,13 @@ in which the files appear.
 
 
 
-<pre class="src src-java"><span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SList.java */</span>                |  <span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SListNode.java */</span>
+<pre class="example">/* list/SList.java */                |  /* list/SListNode.java */
                                      |
-<span style="color: #a020f0;">package</span> <span style="color: #0000cd;">list</span>;                        |  <span style="color: #a020f0;">package</span> <span style="color: #0000cd;">list</span>;
+package list;                        |  package list;
                                      |
-<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> SList {                 |  <span style="color: #a020f0;">class</span> SListNode {
-  <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;                    |    Object item;
-  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;                          |    SListNode next;
+public class SList {                 |  class SListNode {
+  SListNode head;                    |    Object item;
+  int size;                          |    SListNode next;
 }                                    |  }
 </pre>
 
@@ -314,8 +314,8 @@ done from outside the package, using the following syntax:
 
 
 
-<pre class="src src-java">javac -g list/SList.java
-java <span style="color: #008b8b;">list</span>.SList
+<pre class="example">javac -g list/SList.java
+java list.SList
 </pre>
 
 
@@ -354,10 +354,10 @@ objects.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Iterator</span> {
-  <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">hasNext</span>();
-  <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">next</span>();
-  <span style="color: #228b22;">void</span> <span style="color: #0000ff;">remove</span>();                          <span style="color: #b22222;">// </span><span style="color: #b22222;">The remove() method is optional.</span>
+<pre class="example">public interface Iterator {
+  boolean hasNext();
+  Object next();
+  void remove();                          // The remove() method is optional.
 }
 </pre>
 
@@ -400,8 +400,8 @@ java.util called "Iterable".
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Iterable</span> {
-  <span style="color: #228b22;">Iterator</span> <span style="color: #0000ff;">iterator</span>();
+<pre class="example">public interface Iterable {
+  Iterator iterator();
 }
 </pre>
 
@@ -421,14 +421,14 @@ the items in an SList l.
 
 
 
-<pre class="src src-java">  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span> : l) {
+<pre class="example">  for (Object o : l) {
     System.out.println(o);
   }
 
-This loop is <span style="color: #228b22;">equivalent</span> <span style="color: #0000ff;">to</span>
+This loop is equivalent to
 
-  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">Iterator</span> <span style="color: #a0522d;">i</span> = l.iterator(); i.hasNext(); ) {
-    <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span> = i.next();
+  for (Iterator i = l.iterator(); i.hasNext(); ) {
+    Object o = i.next();
     System.out.println(o);
   }
 </pre>
@@ -442,49 +442,49 @@ package.
 
 
 
-<pre class="src src-java"><span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SListIterator.java */</span>
+<pre class="example">/* list/SListIterator.java */
 
-<span style="color: #a020f0;">package</span> <span style="color: #0000cd;">list</span>;
-<span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.util.*</span>;
+package list;
+import java.util.*;
 
-<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SListIterator</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Iterator</span> {
-  <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n</span>;
+public class SListIterator implements Iterator {
+  SListNode n;
 
-  <span style="color: #da70d6;">public</span> <span style="color: #00008b;">SListIterator</span>(<span style="color: #228b22;">SList</span> <span style="color: #a0522d;">l</span>) {
+  public SListIterator(SList l) {
     n = l.head;
   }
 
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">hasNext</span>() {
-    <span style="color: #a020f0;">return</span> n != <span style="color: #5f9ea0;">null</span>;
+  public boolean hasNext() {
+    return n != null;
   }
 
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">next</span>() {
-    <span style="color: #a020f0;">if</span> (n == <span style="color: #5f9ea0;">null</span>) {
-      <span style="color: #b22222;">/* </span><span style="color: #b22222;">We'll learn about throwing exceptions in the next lecture. */</span>
-      <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">NoSuchElementException</span>();                       <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.util</span>
+  public Object next() {
+    if (n == null) {
+      /* We'll learn about throwing exceptions in the next lecture. */
+      throw new NoSuchElementException();                       // In java.util
     }
-    <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">i</span> = n.item;
+    Object i = n.item;
     n = n.next;
-    <span style="color: #a020f0;">return</span> i;
+    return i;
   }
 
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">remove</span>() {
-    <span style="color: #b22222;">/* </span><span style="color: #b22222;">Doing it the lazy way.  Remove this, motherf! */</span>
-    <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">UnsupportedOperationException</span>(<span style="color: #8b2252;">"Nice try, bozo."</span>); <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.lang</span>
+  public void remove() {
+    /* Doing it the lazy way.  Remove this, motherf! */
+    throw new UnsupportedOperationException("Nice try, bozo."); // In java.lang
   }
 }
 
-<span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SList.java */</span>
+/* list/SList.java */
 
-<span style="color: #a020f0;">package</span> <span style="color: #0000cd;">list</span>;
-<span style="color: #a020f0;">import</span> <span style="color: #0000cd;">java.util.*</span>;
+package list;
+import java.util.*;
 
-<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Iterable</span> {
-  <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
-  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
+public class SList implements Iterable {
+  SListNode head;
+  int size;
 
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">Iterator</span> <span style="color: #0000ff;">iterator</span>() {
-    <span style="color: #a020f0;">return</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListIterator</span>(<span style="color: #a020f0;">this</span>);
+  public Iterator iterator() {
+    return new SListIterator(this);
   }
 
   [other methods here]
@@ -508,9 +508,9 @@ prime number as an Integer object.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:15-0800</p>
+<p class="date">Date: 2014-02-28T01:47-0800</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
