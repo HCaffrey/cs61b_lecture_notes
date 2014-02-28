@@ -169,7 +169,7 @@ have the default style included, customize the variable
 			     (if (looking-at "^\*[ \t]+[Ll]ecture[ \t]+\\([0-9]+\\)")
 				 (let* ((name (format "notes%s"
 						      (match-string 1)))
-					(file (format "single-notes/%s.org" name))
+					(file (format "%s.org" name))
 					(html (format "%s.html" name)))
 				   (org-copy-subtree)
 				   (with-temp-buffer
