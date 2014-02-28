@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T00:57-0800"/>
+<meta name="generated" content="2014-02-28T01:22-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -26,11 +26,8 @@
   .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
 	padding: 5pt;
 	font-family: courier, monospace;
-        font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -122,159 +119,159 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Lecture 1</a>
+<li><a href="#sec-1">Lecture 1</a>
 <ul>
-<li><a href="#sec-1-1">1.1 Labs</a></li>
-<li><a href="#sec-1-2">1.2 Prerequisites</a></li>
-<li><a href="#sec-1-3">1.3 Textbooks</a></li>
-<li><a href="#sec-1-4">1.4 Grading</a></li>
-<li><a href="#sec-1-5">1.5 Cheating</a></li>
-<li><a href="#sec-1-6">1.6 Goals of CS 61B</a></li>
-<li><a href="#sec-1-7">1.7 THE LANGUAGE OF OBJECT-ORIENTED PROGRAMMING</a></li>
-<li><a href="#sec-1-8">1.8 Java</a></li>
-<li><a href="#sec-1-9">1.9 Postscript:  Anatomy of a Small Java Program (for discussion section)</a></li>
+<li><a href="#sec-1-1">Labs</a></li>
+<li><a href="#sec-1-2">Prerequisites</a></li>
+<li><a href="#sec-1-3">Textbooks</a></li>
+<li><a href="#sec-1-4">Grading</a></li>
+<li><a href="#sec-1-5">Cheating</a></li>
+<li><a href="#sec-1-6">Goals of CS 61B</a></li>
+<li><a href="#sec-1-7">THE LANGUAGE OF OBJECT-ORIENTED PROGRAMMING</a></li>
+<li><a href="#sec-1-8">Java</a></li>
+<li><a href="#sec-1-9">Postscript:  Anatomy of a Small Java Program (for discussion section)</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2 Lecture 2</a>
+<li><a href="#sec-2">Lecture 2</a>
 <ul>
-<li><a href="#sec-2-1">2.1 OBJECTS AND CONSTRUCTORS</a></li>
-<li><a href="#sec-2-2">2.2 METHODS</a></li>
-<li><a href="#sec-2-3">2.3 I/O Classes and Objects in Java</a></li>
-<li><a href="#sec-2-4">2.4 Classes for Web Access</a></li>
-<li><a href="#sec-2-5">2.5 Postscript:  Object-Oriented Terminology (not examinable)</a></li>
+<li><a href="#sec-2-1">OBJECTS AND CONSTRUCTORS</a></li>
+<li><a href="#sec-2-2">METHODS</a></li>
+<li><a href="#sec-2-3">I/O Classes and Objects in Java</a></li>
+<li><a href="#sec-2-4">Classes for Web Access</a></li>
+<li><a href="#sec-2-5">Postscript:  Object-Oriented Terminology (not examinable)</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">3 Lecture 3</a>
+<li><a href="#sec-3">Lecture 3</a>
 <ul>
-<li><a href="#sec-3-1">3.1 DEFINING CLASSES</a></li>
-<li><a href="#sec-3-2">3.2 Constructors</a></li>
-<li><a href="#sec-3-3">3.3 The "this" Keyword</a></li>
-<li><a href="#sec-3-4">3.4 The "static" Keyword</a></li>
-<li><a href="#sec-3-5">3.5 Lifetimes of Variables</a></li>
+<li><a href="#sec-3-1">DEFINING CLASSES</a></li>
+<li><a href="#sec-3-2">Constructors</a></li>
+<li><a href="#sec-3-3">The "this" Keyword</a></li>
+<li><a href="#sec-3-4">The "static" Keyword</a></li>
+<li><a href="#sec-3-5">Lifetimes of Variables</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4 Lecture 4</a>
+<li><a href="#sec-4">Lecture 4</a>
 <ul>
-<li><a href="#sec-4-1">4.1 PRIMITIVE TYPES</a></li>
-<li><a href="#sec-4-2">4.2 Boolean Values</a></li>
-<li><a href="#sec-4-3">4.3 CONDITIONALS</a></li>
-<li><a href="#sec-4-4">4.4 THE "return" KEYWORD</a></li>
+<li><a href="#sec-4-1">PRIMITIVE TYPES</a></li>
+<li><a href="#sec-4-2">Boolean Values</a></li>
+<li><a href="#sec-4-3">CONDITIONALS</a></li>
+<li><a href="#sec-4-4">THE "return" KEYWORD</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5 Lecture 5</a>
+<li><a href="#sec-5">Lecture 5</a>
 <ul>
-<li><a href="#sec-5-1">5.1 LOOPS</a>
+<li><a href="#sec-5-1">LOOPS</a>
 <ul>
-<li><a href="#sec-5-1-1">5.1.1 "while" Loops</a></li>
-<li><a href="#sec-5-1-2">5.1.2 "for" Loops</a></li>
+<li><a href="#sec-5-1-1">"while" Loops</a></li>
+<li><a href="#sec-5-1-2">"for" Loops</a></li>
 </ul>
 </li>
-<li><a href="#sec-5-2">5.2 ARRAYS</a></li>
-<li><a href="#sec-5-3">5.3 Primes Revisited</a></li>
-<li><a href="#sec-5-4">5.4 Multi-Dimensional Arrays</a></li>
+<li><a href="#sec-5-2">ARRAYS</a></li>
+<li><a href="#sec-5-3">Primes Revisited</a></li>
+<li><a href="#sec-5-4">Multi-Dimensional Arrays</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">6 Lecture 6</a>
+<li><a href="#sec-6">Lecture 6</a>
 <ul>
-<li><a href="#sec-6-1">6.1 MORE ARRAYS</a></li>
-<li><a href="#sec-6-2">6.2 Automatic Array Construction</a></li>
-<li><a href="#sec-6-3">6.3 MORE LOOPS</a>
+<li><a href="#sec-6-1">MORE ARRAYS</a></li>
+<li><a href="#sec-6-2">Automatic Array Construction</a></li>
+<li><a href="#sec-6-3">MORE LOOPS</a>
 <ul>
-<li><a href="#sec-6-3-1">6.3.1 "do" Loops</a></li>
-<li><a href="#sec-6-3-2">6.3.2 The "break" and "continue" Statements</a></li>
+<li><a href="#sec-6-3-1">"do" Loops</a></li>
+<li><a href="#sec-6-3-2">The "break" and "continue" Statements</a></li>
 </ul>
 </li>
-<li><a href="#sec-6-4">6.4 CONSTANTS</a></li>
-<li><a href="#sec-6-5">6.5 SCOPE</a></li>
+<li><a href="#sec-6-4">CONSTANTS</a></li>
+<li><a href="#sec-6-5">SCOPE</a></li>
 </ul>
 </li>
-<li><a href="#sec-7">7 Lecture 7</a>
+<li><a href="#sec-7">Lecture 7</a>
 <ul>
-<li><a href="#sec-7-1">7.1 LISTS</a></li>
-<li><a href="#sec-7-2">7.2 LINKED LISTS (a recursive data type)</a></li>
-<li><a href="#sec-7-3">7.3 Linked lists vs. array lists</a></li>
-<li><a href="#sec-7-4">7.4 Lists of Objects</a></li>
-<li><a href="#sec-7-5">7.5 A List Class</a></li>
+<li><a href="#sec-7-1">LISTS</a></li>
+<li><a href="#sec-7-2">LINKED LISTS (a recursive data type)</a></li>
+<li><a href="#sec-7-3">Linked lists vs. array lists</a></li>
+<li><a href="#sec-7-4">Lists of Objects</a></li>
+<li><a href="#sec-7-5">A List Class</a></li>
 </ul>
 </li>
-<li><a href="#sec-8">8 Lecture 8</a>
+<li><a href="#sec-8">Lecture 8</a>
 <ul>
-<li><a href="#sec-8-1">8.1 THE "public" AND "private" KEYWORDS</a></li>
-<li><a href="#sec-8-2">8.2 The SList ADT</a></li>
-<li><a href="#sec-8-3">8.3 DOUBLY-LINKED LISTS</a></li>
+<li><a href="#sec-8-1">THE "public" AND "private" KEYWORDS</a></li>
+<li><a href="#sec-8-2">The SList ADT</a></li>
+<li><a href="#sec-8-3">DOUBLY-LINKED LISTS</a></li>
 </ul>
 </li>
-<li><a href="#sec-9">9 Lecture 9</a>
+<li><a href="#sec-9">Lecture 9</a>
 <ul>
-<li><a href="#sec-9-1">9.1 THE STACK AND THE HEAP</a></li>
-<li><a href="#sec-9-2">9.2 Parameter Passing</a></li>
-<li><a href="#sec-9-3">9.3 Binary search</a></li>
-<li><a href="#sec-9-4">9.4 Scope and Recursion</a></li>
+<li><a href="#sec-9-1">THE STACK AND THE HEAP</a></li>
+<li><a href="#sec-9-2">Parameter Passing</a></li>
+<li><a href="#sec-9-3">Binary search</a></li>
+<li><a href="#sec-9-4">Scope and Recursion</a></li>
 </ul>
 </li>
-<li><a href="#sec-10">10 Lecture 10</a>
+<li><a href="#sec-10">Lecture 10</a>
 <ul>
-<li><a href="#sec-10-1">10.1 INHERITANCE</a></li>
-<li><a href="#sec-10-2">10.2 Inheritance and Constructors</a></li>
-<li><a href="#sec-10-3">10.3 Invoking Overridden Methods</a></li>
-<li><a href="#sec-10-4">10.4 The "protected" Keyword</a></li>
-<li><a href="#sec-10-5">10.5 Class Hierarchies</a></li>
-<li><a href="#sec-10-6">10.6 Dynamic Method Lookup</a></li>
-<li><a href="#sec-10-7">10.7 Subtleties of Inheritance</a></li>
+<li><a href="#sec-10-1">INHERITANCE</a></li>
+<li><a href="#sec-10-2">Inheritance and Constructors</a></li>
+<li><a href="#sec-10-3">Invoking Overridden Methods</a></li>
+<li><a href="#sec-10-4">The "protected" Keyword</a></li>
+<li><a href="#sec-10-5">Class Hierarchies</a></li>
+<li><a href="#sec-10-6">Dynamic Method Lookup</a></li>
+<li><a href="#sec-10-7">Subtleties of Inheritance</a></li>
 </ul>
 </li>
-<li><a href="#sec-11">11 Lecture 11</a>
+<li><a href="#sec-11">Lecture 11</a>
 <ul>
-<li><a href="#sec-11-1">11.1 equals()</a></li>
-<li><a href="#sec-11-2">11.2 "for each" LOOPS</a></li>
-<li><a href="#sec-11-3">11.3 TESTING</a>
+<li><a href="#sec-11-1">equals()</a></li>
+<li><a href="#sec-11-2">"for each" LOOPS</a></li>
+<li><a href="#sec-11-3">TESTING</a>
 <ul>
-<li><a href="#sec-11-3-1">11.3.1 Modular Testing</a></li>
-<li><a href="#sec-11-3-2">11.3.2 Integration Testing</a></li>
-<li><a href="#sec-11-3-3">11.3.3 Result Verification</a></li>
-<li><a href="#sec-11-3-4">11.3.4 Regression Testing</a></li>
+<li><a href="#sec-11-3-1">Modular Testing</a></li>
+<li><a href="#sec-11-3-2">Integration Testing</a></li>
+<li><a href="#sec-11-3-3">Result Verification</a></li>
+<li><a href="#sec-11-3-4">Regression Testing</a></li>
 </ul></li>
 </ul>
 </li>
-<li><a href="#sec-12">12 Lecture 12</a>
+<li><a href="#sec-12">Lecture 12</a>
 <ul>
-<li><a href="#sec-12-1">12.1 ABSTRACT CLASSES</a></li>
-<li><a href="#sec-12-2">12.2 JAVA INTERFACES</a></li>
+<li><a href="#sec-12-1">ABSTRACT CLASSES</a></li>
+<li><a href="#sec-12-2">JAVA INTERFACES</a></li>
 </ul>
 </li>
-<li><a href="#sec-13">13 Lecture 13</a>
+<li><a href="#sec-13">Lecture 13</a>
 <ul>
-<li><a href="#sec-13-1">13.1 JAVA PACKAGES</a>
+<li><a href="#sec-13-1">JAVA PACKAGES</a>
 <ul>
-<li><a href="#sec-13-1-1">13.1.1 Using Packages</a></li>
-<li><a href="#sec-13-1-2">13.1.2 Building Packages</a></li>
+<li><a href="#sec-13-1-1">Using Packages</a></li>
+<li><a href="#sec-13-1-2">Building Packages</a></li>
 </ul>
 </li>
-<li><a href="#sec-13-2">13.2 ITERATORS</a></li>
+<li><a href="#sec-13-2">ITERATORS</a></li>
 </ul>
 </li>
-<li><a href="#sec-14">14 Lecture 15</a>
+<li><a href="#sec-14">Lecture 15</a>
 <ul>
-<li><a href="#sec-14-1">14.1 EXCEPTIONS</a>
+<li><a href="#sec-14-1">EXCEPTIONS</a>
 <ul>
-<li><a href="#sec-14-1-1">14.1.1 Purpose #1:  Coping with Errors</a></li>
-<li><a href="#sec-14-1-2">14.1.2 Purpose #2:  Escaping a Sinking Ship</a></li>
+<li><a href="#sec-14-1-1">Purpose #1:  Coping with Errors</a></li>
+<li><a href="#sec-14-1-2">Purpose #2:  Escaping a Sinking Ship</a></li>
 </ul>
 </li>
-<li><a href="#sec-14-2">14.2 Checked and Unchecked Throwables</a></li>
+<li><a href="#sec-14-2">Checked and Unchecked Throwables</a></li>
 </ul>
 </li>
-<li><a href="#sec-15">15 Lecture 16</a>
+<li><a href="#sec-15">Lecture 16</a>
 <ul>
-<li><a href="#sec-15-1">15.1 EXCEPTIONS (continued)</a>
+<li><a href="#sec-15-1">EXCEPTIONS (continued)</a>
 <ul>
-<li><a href="#sec-15-1-1">15.1.1 The "finally" keyword</a></li>
-<li><a href="#sec-15-1-2">15.1.2 Exception constructors</a></li>
+<li><a href="#sec-15-1-1">The "finally" keyword</a></li>
+<li><a href="#sec-15-1-2">Exception constructors</a></li>
 </ul>
 </li>
-<li><a href="#sec-15-2">15.2 GENERICS</a></li>
-<li><a href="#sec-15-3">15.3 FIELD SHADOWING</a></li>
-<li><a href="#sec-15-4">15.4 "final" METHODS AND CLASSES</a></li>
+<li><a href="#sec-15-2">GENERICS</a></li>
+<li><a href="#sec-15-3">FIELD SHADOWING</a></li>
+<li><a href="#sec-15-4">"final" METHODS AND CLASSES</a></li>
 </ul>
 </li>
 </ul>
@@ -282,7 +279,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Lecture 1</h2>
+<h2 id="sec-1">Lecture 1</h2>
 <div class="outline-text-2" id="text-1">
 
 <p><a href="original-notes/01">original notes</a>
@@ -305,7 +302,7 @@ The Piazza board is required reading:  <a href="https://piazza.com/berkeley/spri
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Labs</h3>
+<h3 id="sec-1-1">Labs</h3>
 <div class="outline-text-3" id="text-1-1">
 
 <p>Labs (in 271, 273, 275, 330 Soda) start Thursday.  Discussion sections start
@@ -337,7 +334,7 @@ please always attend the one you're enrolled in.
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Prerequisites</h3>
+<h3 id="sec-1-2">Prerequisites</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <p>Ideally, you have taken CS 61A or E 7, or at least you're taking one of them
@@ -351,7 +348,7 @@ the Course Overview and Brian Harvey (781 Soda) for details.
 </div>
 
 <div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Textbooks</h3>
+<h3 id="sec-1-3">Textbooks</h3>
 <div class="outline-text-3" id="text-1-3">
 
 <p>Kathy Sierra and Bert Bates, Head First Java, Second Edition, O'Reilly, 2005.
@@ -376,7 +373,7 @@ reader is stuff you'll want to have handy when you're in lab, hacking.
 </div>
 
 <div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Grading</h3>
+<h3 id="sec-1-4">Grading</h3>
 <div class="outline-text-3" id="text-1-4">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -405,7 +402,7 @@ All homeworks and projects will be turned in electronically.
 </div>
 
 <div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Cheating</h3>
+<h3 id="sec-1-5">Cheating</h3>
 <div class="outline-text-3" id="text-1-5">
 
 <p>&hellip;will be reported to the Office of Student Conduct.
@@ -432,7 +429,7 @@ All homeworks and projects will be turned in electronically.
 </div>
 
 <div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Goals of CS 61B</h3>
+<h3 id="sec-1-6">Goals of CS 61B</h3>
 <div class="outline-text-3" id="text-1-6">
 
 <ol>
@@ -452,7 +449,7 @@ All homeworks and projects will be turned in electronically.
 </div>
 
 <div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> THE LANGUAGE OF OBJECT-ORIENTED PROGRAMMING</h3>
+<h3 id="sec-1-7">THE LANGUAGE OF OBJECT-ORIENTED PROGRAMMING</h3>
 <div class="outline-text-3" id="text-1-7">
 
 <p><span style="text-decoration:underline;">Object</span>:  An object is a repository of data.  For example, if MyList is a
@@ -495,7 +492,7 @@ from procedural languages (C, Fortran, Basic, Pascal) is polymorphism.
 </div>
 
 <div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Java</h3>
+<h3 id="sec-1-8">Java</h3>
 <div class="outline-text-3" id="text-1-8">
 
 <p>Java allows you to store data in variables, but first you must <span style="text-decoration:underline;">declare</span> them
@@ -588,7 +585,7 @@ is that you have to wait for it to compile.
 </div>
 
 <div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Postscript:  Anatomy of a Small Java Program (for discussion section)</h3>
+<h3 id="sec-1-9">Postscript:  Anatomy of a Small Java Program (for discussion section)</h3>
 <div class="outline-text-3" id="text-1-9">
 
 <p>Assume the following code is in a file called HelloWorld.java:
@@ -652,7 +649,7 @@ have to figure out for yourself how to send characters to the terminal.
 </div>
 
 <div id="outline-container-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Lecture 2</h2>
+<h2 id="sec-2">Lecture 2</h2>
 <div class="outline-text-2" id="text-2">
 
 <p>Today's reading:  Sierra &amp; Bates, Chapter 2; pp. 54-58, 154-160, 661, 669.
@@ -663,7 +660,7 @@ have to figure out for yourself how to send characters to the terminal.
 </div>
 
 <div id="outline-container-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> OBJECTS AND CONSTRUCTORS</h3>
+<h3 id="sec-2-1">OBJECTS AND CONSTRUCTORS</h3>
 <div class="outline-text-3" id="text-2-1">
 
 
@@ -772,7 +769,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 </div>
 
 <div id="outline-container-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> METHODS</h3>
+<h3 id="sec-2-2">METHODS</h3>
 <div class="outline-text-3" id="text-2-2">
 
 <p>Let's look at some methods that aren't constructors.
@@ -845,7 +842,7 @@ constructed Strings.
 </div>
 
 <div id="outline-container-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> I/O Classes and Objects in Java</h3>
+<h3 id="sec-2-3">I/O Classes and Objects in Java</h3>
 <div class="outline-text-3" id="text-2-3">
 
 
@@ -932,7 +929,7 @@ few weeks from now.
 </div>
 
 <div id="outline-container-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Classes for Web Access</h3>
+<h3 id="sec-2-4">Classes for Web Access</h3>
 <div class="outline-text-3" id="text-2-4">
 
 
@@ -969,7 +966,7 @@ How to create an InputStream?  With a URL.
 </div>
 
 <div id="outline-container-2-5" class="outline-3">
-<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Postscript:  Object-Oriented Terminology (not examinable)</h3>
+<h3 id="sec-2-5">Postscript:  Object-Oriented Terminology (not examinable)</h3>
 <div class="outline-text-3" id="text-2-5">
 
 
@@ -1013,7 +1010,7 @@ sucks, because you'll probably run into it sooner or later.
 </div>
 
 <div id="outline-container-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Lecture 3</h2>
+<h2 id="sec-3">Lecture 3</h2>
 <div class="outline-text-2" id="text-3">
 
 <p>Today's reading:  Sierra &amp; Bates, pp. 71-74, 76, 85, 240-249, 273-281, 308-309.
@@ -1024,7 +1021,7 @@ sucks, because you'll probably run into it sooner or later.
 </div>
 
 <div id="outline-container-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> DEFINING CLASSES</h3>
+<h3 id="sec-3-1">DEFINING CLASSES</h3>
 <div class="outline-text-3" id="text-3-1">
 
 <p>An object is a repository of data.  <span style="text-decoration:underline;">Fields</span> are variables that hold the data
@@ -1103,7 +1100,7 @@ Now, "amanda.copy(rishi)" copies rishi's fields to amanda.
 </div>
 
 <div id="outline-container-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Constructors</h3>
+<h3 id="sec-3-2">Constructors</h3>
 <div class="outline-text-3" id="text-3-2">
 
 <p>Let's write a constructor, a method that constructs a Human.  The constructor
@@ -1195,7 +1192,7 @@ constructor with no parameters.
 </div>
 
 <div id="outline-container-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> The "this" Keyword</h3>
+<h3 id="sec-3-3">The "this" Keyword</h3>
 <div class="outline-text-3" id="text-3-3">
 
 <p>A method invocation, like "amanda.introduce()", implicitly passes an object
@@ -1256,7 +1253,7 @@ A statement like "this = amanda;" will trigger a compile-time error.
 </div>
 
 <div id="outline-container-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> The "static" Keyword</h3>
+<h3 id="sec-3-4">The "static" Keyword</h3>
 <div class="outline-text-3" id="text-3-4">
 
 <p>A <span style="text-decoration:underline;">static field</span> is a single variable shared by a whole class of objects; its
@@ -1341,7 +1338,7 @@ Any attempt to reference "this" will cause a compile-time error.
 </div>
 
 <div id="outline-container-3-5" class="outline-3">
-<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Lifetimes of Variables</h3>
+<h3 id="sec-3-5">Lifetimes of Variables</h3>
 <div class="outline-text-3" id="text-3-5">
 
 
@@ -1363,7 +1360,7 @@ Any attempt to reference "this" will cause a compile-time error.
 </div>
 
 <div id="outline-container-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Lecture 4</h2>
+<h2 id="sec-4">Lecture 4</h2>
 <div class="outline-text-2" id="text-4">
 
 <p>Today's reading:  S&amp;B pp. 10-14, 49-53, 75, 78-79, 86, 117, 286-287, 292, 660.
@@ -1374,7 +1371,7 @@ Any attempt to reference "this" will cause a compile-time error.
 </div>
 
 <div id="outline-container-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> PRIMITIVE TYPES</h3>
+<h3 id="sec-4-1">PRIMITIVE TYPES</h3>
 <div class="outline-text-3" id="text-4-1">
 
 <p>Not all variables are references to objects.  Some variables are primitive
@@ -1500,7 +1497,7 @@ the reverse requires a cast because the number is truncated to an integer.
 </div>
 
 <div id="outline-container-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Boolean Values</h3>
+<h3 id="sec-4-2">Boolean Values</h3>
 <div class="outline-text-3" id="text-4-2">
 
 
@@ -1542,7 +1539,7 @@ x = <span style="color: #5f9ea0;">false</span> == (<span style="color: #bc8f8f;"
 </div>
 
 <div id="outline-container-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> CONDITIONALS</h3>
+<h3 id="sec-4-3">CONDITIONALS</h3>
 <div class="outline-text-3" id="text-4-3">
 
 <p>An "if" statement uses a boolean expression to decide whether to execute a set
@@ -1660,7 +1657,7 @@ statement (just past the closing brace) and continues execution from there.
 </div>
 
 <div id="outline-container-4-4" class="outline-3">
-<h3 id="sec-4-4"><span class="section-number-3">4.4</span> THE "return" KEYWORD</h3>
+<h3 id="sec-4-4">THE "return" KEYWORD</h3>
 <div class="outline-text-3" id="text-4-4">
 
 <p>Like conditionals, "return" affects the flow of control of a program.  It
@@ -1724,7 +1721,7 @@ The "return" value can be an expression.  Some examples:
 </div>
 
 <div id="outline-container-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Lecture 5</h2>
+<h2 id="sec-5">Lecture 5</h2>
 <div class="outline-text-2" id="text-5">
 
 <p>Today's reading:  Sierra &amp; Bates pp. 59-62, 83, 114-116, 293-300, 670.
@@ -1735,14 +1732,14 @@ The "return" value can be an expression.  Some examples:
 </div>
 
 <div id="outline-container-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> LOOPS</h3>
+<h3 id="sec-5-1">LOOPS</h3>
 <div class="outline-text-3" id="text-5-1">
 
 
 </div>
 
 <div id="outline-container-5-1-1" class="outline-4">
-<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> "while" Loops</h4>
+<h4 id="sec-5-1-1">"while" Loops</h4>
 <div class="outline-text-4" id="text-5-1-1">
 
 <p>A "while" statement is like an "if" statement, but the body of the statement is
@@ -1795,7 +1792,7 @@ less, the loop body won't iterate even once.
 </div>
 
 <div id="outline-container-5-1-2" class="outline-4">
-<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> "for" Loops</h4>
+<h4 id="sec-5-1-2">"for" Loops</h4>
 <div class="outline-text-4" id="text-5-1-2">
 
 <p>"for" loops are a convenient shorthand that can be used to write some "while"
@@ -1866,7 +1863,7 @@ interesting to iterate on.
 </div>
 
 <div id="outline-container-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> ARRAYS</h3>
+<h3 id="sec-5-2">ARRAYS</h3>
 <div class="outline-text-3" id="text-5-2">
 
 <p>An array is an object consisting of a numbered list of variables, each of which
@@ -1938,7 +1935,7 @@ will give you a compile-time error if you try.
 </div>
 
 <div id="outline-container-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Primes Revisited</h3>
+<h3 id="sec-5-3">Primes Revisited</h3>
 <div class="outline-text-3" id="text-5-3">
 
 
@@ -2014,7 +2011,7 @@ memory is wasted, but the readability of the code is better for it.
 </div>
 
 <div id="outline-container-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Multi-Dimensional Arrays</h3>
+<h3 id="sec-5-4">Multi-Dimensional Arrays</h3>
 <div class="outline-text-3" id="text-5-4">
 
 <p>A <span style="text-decoration:underline;">two-dimensional array</span> is an array of references to arrays.  A three-
@@ -2084,7 +2081,7 @@ Our array objects look like this:
 </div>
 
 <div id="outline-container-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Lecture 6</h2>
+<h2 id="sec-6">Lecture 6</h2>
 <div class="outline-text-2" id="text-6">
 
 <p>Today's reading:  Sierra &amp; Bates pp. 282-285.
@@ -2095,7 +2092,7 @@ Our array objects look like this:
 </div>
 
 <div id="outline-container-6-1" class="outline-3">
-<h3 id="sec-6-1"><span class="section-number-3">6.1</span> MORE ARRAYS</h3>
+<h3 id="sec-6-1">MORE ARRAYS</h3>
 <div class="outline-text-3" id="text-6-1">
 
 </div>
@@ -2103,7 +2100,7 @@ Our array objects look like this:
 </div>
 
 <div id="outline-container-6-2" class="outline-3">
-<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Automatic Array Construction</h3>
+<h3 id="sec-6-2">Automatic Array Construction</h3>
 <div class="outline-text-3" id="text-6-2">
 
 <p>Last lecture, we used a loop to construct all the arrays that the top-level
@@ -2229,14 +2226,14 @@ If we compile this and type "java Echo kneel and worship Java", java prints
 </div>
 
 <div id="outline-container-6-3" class="outline-3">
-<h3 id="sec-6-3"><span class="section-number-3">6.3</span> MORE LOOPS</h3>
+<h3 id="sec-6-3">MORE LOOPS</h3>
 <div class="outline-text-3" id="text-6-3">
 
 
 </div>
 
 <div id="outline-container-6-3-1" class="outline-4">
-<h4 id="sec-6-3-1"><span class="section-number-4">6.3.1</span> "do" Loops</h4>
+<h4 id="sec-6-3-1">"do" Loops</h4>
 <div class="outline-text-4" id="text-6-3-1">
 
 <p>A "do" loop has just one difference from a "while" loop.  If Java reaches
@@ -2261,7 +2258,7 @@ body has been executed.
 </div>
 
 <div id="outline-container-6-3-2" class="outline-4">
-<h4 id="sec-6-3-2"><span class="section-number-4">6.3.2</span> The "break" and "continue" Statements</h4>
+<h4 id="sec-6-3-2">The "break" and "continue" Statements</h4>
 <div class="outline-text-4" id="text-6-3-2">
 
 
@@ -2388,7 +2385,7 @@ even iterations where "continue" is called.
 </div>
 
 <div id="outline-container-6-4" class="outline-3">
-<h3 id="sec-6-4"><span class="section-number-3">6.4</span> CONSTANTS</h3>
+<h3 id="sec-6-4">CONSTANTS</h3>
 <div class="outline-text-3" id="text-6-4">
 
 
@@ -2462,7 +2459,7 @@ moment.  Afterward, the creationTime can never be changed.
 </div>
 
 <div id="outline-container-6-5" class="outline-3">
-<h3 id="sec-6-5"><span class="section-number-3">6.5</span> SCOPE</h3>
+<h3 id="sec-6-5">SCOPE</h3>
 <div class="outline-text-3" id="text-6-5">
 
 
@@ -2491,7 +2488,7 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="outline-container-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> Lecture 7</h2>
+<h2 id="sec-7">Lecture 7</h2>
 <div class="outline-text-2" id="text-7">
 
 <p>Today's reading:  Goodrich &amp; Tamassia, Section 3.2.
@@ -2502,7 +2499,7 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="outline-container-7-1" class="outline-3">
-<h3 id="sec-7-1"><span class="section-number-3">7.1</span> LISTS</h3>
+<h3 id="sec-7-1">LISTS</h3>
 <div class="outline-text-3" id="text-7-1">
 
 <p>Let's consider two different data structures for storing a list of things:
@@ -2559,7 +2556,7 @@ and move all the ints from the old array to the new one.
 </div>
 
 <div id="outline-container-7-2" class="outline-3">
-<h3 id="sec-7-2"><span class="section-number-3">7.2</span> LINKED LISTS (a recursive data type)</h3>
+<h3 id="sec-7-2">LINKED LISTS (a recursive data type)</h3>
 <div class="outline-text-3" id="text-7-2">
 
 <p>We can avoid these problems by choosing a Scheme-like representation of lists.
@@ -2652,7 +2649,7 @@ These constructors allow us to emulate Scheme's "cons" operation.
 </div>
 
 <div id="outline-container-7-3" class="outline-3">
-<h3 id="sec-7-3"><span class="section-number-3">7.3</span> Linked lists vs. array lists</h3>
+<h3 id="sec-7-3">Linked lists vs. array lists</h3>
 <div class="outline-text-3" id="text-7-3">
 
 <p>Linked lists have several advantages over array-based lists.  Inserting an item
@@ -2697,7 +2694,7 @@ insertions (like linked lists).
 </div>
 
 <div id="outline-container-7-4" class="outline-3">
-<h3 id="sec-7-4"><span class="section-number-3">7.4</span> Lists of Objects</h3>
+<h3 id="sec-7-4">Lists of Objects</h3>
 <div class="outline-text-3" id="text-7-4">
 
 
@@ -2726,7 +2723,7 @@ class in next week's lab and homework.
 </div>
 
 <div id="outline-container-7-5" class="outline-3">
-<h3 id="sec-7-5"><span class="section-number-3">7.5</span> A List Class</h3>
+<h3 id="sec-7-5">A List Class</h3>
 <div class="outline-text-3" id="text-7-5">
 
 
@@ -2801,7 +2798,7 @@ quickly than if the SListNodes had to be counted.
 </div>
 
 <div id="outline-container-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> Lecture 8</h2>
+<h2 id="sec-8">Lecture 8</h2>
 <div class="outline-text-2" id="text-8">
 
 <p>Today's reading:  Goodrich &amp; Tamassia, Section 3.3.
@@ -2812,7 +2809,7 @@ quickly than if the SListNodes had to be counted.
 </div>
 
 <div id="outline-container-8-1" class="outline-3">
-<h3 id="sec-8-1"><span class="section-number-3">8.1</span> THE "public" AND "private" KEYWORDS</h3>
+<h3 id="sec-8-1">THE "public" AND "private" KEYWORDS</h3>
 <div class="outline-text-3" id="text-8-1">
 
 
@@ -2899,7 +2896,7 @@ fields may be declared public.
 </div>
 
 <div id="outline-container-8-2" class="outline-3">
-<h3 id="sec-8-2"><span class="section-number-3">8.2</span> The SList ADT</h3>
+<h3 id="sec-8-2">The SList ADT</h3>
 <div class="outline-text-3" id="text-8-2">
 
 <p>Last lecture, I created an SList class to solve the problems of representing
@@ -2940,7 +2937,7 @@ in a list, thereby violating invariant (2).
 </div>
 
 <div id="outline-container-8-3" class="outline-3">
-<h3 id="sec-8-3"><span class="section-number-3">8.3</span> DOUBLY-LINKED LISTS</h3>
+<h3 id="sec-8-3">DOUBLY-LINKED LISTS</h3>
 <div class="outline-text-3" id="text-8-3">
 
 
@@ -3061,7 +3058,7 @@ In Lab 4 and Homework 4, you'll implement more methods for this DList class.
 </div>
 
 <div id="outline-container-9" class="outline-2">
-<h2 id="sec-9"><span class="section-number-2">9</span> Lecture 9</h2>
+<h2 id="sec-9">Lecture 9</h2>
 <div class="outline-text-2" id="text-9">
 
 <p>Today's reading:  Sierra &amp; Bates pp. 77, 235-239, 258-265, 663.
@@ -3072,7 +3069,7 @@ In Lab 4 and Homework 4, you'll implement more methods for this DList class.
 </div>
 
 <div id="outline-container-9-1" class="outline-3">
-<h3 id="sec-9-1"><span class="section-number-3">9.1</span> THE STACK AND THE HEAP</h3>
+<h3 id="sec-9-1">THE STACK AND THE HEAP</h3>
 <div class="outline-text-3" id="text-9-1">
 
 <p>Java stores stuff in two separate pools of memory:  the stack and the heap.
@@ -3122,7 +3119,7 @@ which method called another method with illegal parameters.
 </div>
 
 <div id="outline-container-9-2" class="outline-3">
-<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Parameter Passing</h3>
+<h3 id="sec-9-2">Parameter Passing</h3>
 <div class="outline-text-3" id="text-9-2">
 
 <p>As in Scheme, Java passes all parameters <span style="text-decoration:underline;">by value</span>.  This means that the
@@ -3212,7 +3209,7 @@ method call:                       |    b | .-+-------------&gt;|i |3|
 </div>
 
 <div id="outline-container-9-3" class="outline-3">
-<h3 id="sec-9-3"><span class="section-number-3">9.3</span> Binary search</h3>
+<h3 id="sec-9-3">Binary search</h3>
 <div class="outline-text-3" id="text-9-3">
 
 <p>When a method calls itself recursively, the JVM's internal stack holds two or
@@ -3322,7 +3319,7 @@ Unfortunately, binary search can't be used on linked lists.  Think about why.
 </div>
 
 <div id="outline-container-9-4" class="outline-3">
-<h3 id="sec-9-4"><span class="section-number-3">9.4</span> Scope and Recursion</h3>
+<h3 id="sec-9-4">Scope and Recursion</h3>
 <div class="outline-text-3" id="text-9-4">
 
 <p>The <span style="text-decoration:underline;">scope</span> of a variable is the portion of the program that can access the
@@ -3357,7 +3354,7 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="outline-container-10" class="outline-2">
-<h2 id="sec-10"><span class="section-number-2">10</span> Lecture 10</h2>
+<h2 id="sec-10">Lecture 10</h2>
 <div class="outline-text-2" id="text-10">
 
 <p>Today's reading:  All of Chapter 7, plus pp. 28-33, 250-257.
@@ -3368,7 +3365,7 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="outline-container-10-1" class="outline-3">
-<h3 id="sec-10-1"><span class="section-number-3">10.1</span> INHERITANCE</h3>
+<h3 id="sec-10-1">INHERITANCE</h3>
 <div class="outline-text-3" id="text-10-1">
 
 <p>In Lab 3, you modified several methods in the SList class so that a "tail"
@@ -3433,7 +3430,7 @@ SList, and there's no need to rewrite them.
 </div>
 
 <div id="outline-container-10-2" class="outline-3">
-<h3 id="sec-10-2"><span class="section-number-3">10.2</span> Inheritance and Constructors</h3>
+<h3 id="sec-10-2">Inheritance and Constructors</h3>
 <div class="outline-text-3" id="text-10-2">
 
 <p>What happens when we construct a TailList?  Java executes a TailList
@@ -3479,7 +3476,7 @@ choose which of the superclass constructors is called.
 </div>
 
 <div id="outline-container-10-3" class="outline-3">
-<h3 id="sec-10-3"><span class="section-number-3">10.3</span> Invoking Overridden Methods</h3>
+<h3 id="sec-10-3">Invoking Overridden Methods</h3>
 <div class="outline-text-3" id="text-10-3">
 
 <p>Sometimes you want to override a method, yet still be able to call the method
@@ -3509,7 +3506,7 @@ invocations need not be the first statement in a method.
 </div>
 
 <div id="outline-container-10-4" class="outline-3">
-<h3 id="sec-10-4"><span class="section-number-3">10.4</span> The "protected" Keyword</h3>
+<h3 id="sec-10-4">The "protected" Keyword</h3>
 <div class="outline-text-3" id="text-10-4">
 
 <p>I lied when I said that we don't need to modify SList.  One change is
@@ -3550,7 +3547,7 @@ declared "protected" as well.
 </div>
 
 <div id="outline-container-10-5" class="outline-3">
-<h3 id="sec-10-5"><span class="section-number-3">10.5</span> Class Hierarchies</h3>
+<h3 id="sec-10-5">Class Hierarchies</h3>
 <div class="outline-text-3" id="text-10-5">
 
 <p>Subclasses can have subclasses.  Subclassing is transitive:  if Proletariat is
@@ -3582,7 +3579,7 @@ though.)
 </div>
 
 <div id="outline-container-10-6" class="outline-3">
-<h3 id="sec-10-6"><span class="section-number-3">10.6</span> Dynamic Method Lookup</h3>
+<h3 id="sec-10-6">Dynamic Method Lookup</h3>
 <div class="outline-text-3" id="text-10-6">
 
 <p>Here's where inheritance gets interesting.  Any TailList can masquerade as an
@@ -3654,7 +3651,7 @@ else in the RunLengthEncoding class.
 </div>
 
 <div id="outline-container-10-7" class="outline-3">
-<h3 id="sec-10-7"><span class="section-number-3">10.7</span> Subtleties of Inheritance</h3>
+<h3 id="sec-10-7">Subtleties of Inheritance</h3>
 <div class="outline-text-3" id="text-10-7">
 
 <p>(1)  Suppose we write a new method in the TailList class called eatTail().  We
@@ -3756,7 +3753,7 @@ a subclass of TailList.
 </div>
 
 <div id="outline-container-11" class="outline-2">
-<h2 id="sec-11"><span class="section-number-2">11</span> Lecture 11</h2>
+<h2 id="sec-11">Lecture 11</h2>
 <div class="outline-text-2" id="text-11">
 
 <p>Today's reading:  Sierra &amp; Bates, pp. 95-109, 662.
@@ -3767,7 +3764,7 @@ a subclass of TailList.
 </div>
 
 <div id="outline-container-11-1" class="outline-3">
-<h3 id="sec-11-1"><span class="section-number-3">11.1</span> equals()</h3>
+<h3 id="sec-11-1">equals()</h3>
 <div class="outline-text-3" id="text-11-1">
 
 <p>Every class has an equals() method.  If you don't define one explictly, you
@@ -3879,7 +3876,7 @@ the same.
 </div>
 
 <div id="outline-container-11-2" class="outline-3">
-<h3 id="sec-11-2"><span class="section-number-3">11.2</span> "for each" LOOPS</h3>
+<h3 id="sec-11-2">"for each" LOOPS</h3>
 <div class="outline-text-3" id="text-11-2">
 
 <p>Java has a "for each" loop for iterating through the elements of an array.
@@ -3926,7 +3923,7 @@ compiler barfs if you try
 </div>
 
 <div id="outline-container-11-3" class="outline-3">
-<h3 id="sec-11-3"><span class="section-number-3">11.3</span> TESTING</h3>
+<h3 id="sec-11-3">TESTING</h3>
 <div class="outline-text-3" id="text-11-3">
 
 <p>Complex software, like Project 1, is easier to debug if you write lots of test
@@ -3947,7 +3944,7 @@ code.  We'll consider three types of testing:
 </div>
 
 <div id="outline-container-11-3-1" class="outline-4">
-<h4 id="sec-11-3-1"><span class="section-number-4">11.3.1</span> Modular Testing</h4>
+<h4 id="sec-11-3-1">Modular Testing</h4>
 <div class="outline-text-4" id="text-11-3-1">
 
 <p>When you write a program and it fails, it can be quite difficult to determine
@@ -4008,7 +4005,7 @@ They are often quite short.  They serve three purposes.
 </div>
 
 <div id="outline-container-11-3-2" class="outline-4">
-<h4 id="sec-11-3-2"><span class="section-number-4">11.3.2</span> Integration Testing</h4>
+<h4 id="sec-11-3-2">Integration Testing</h4>
 <div class="outline-text-4" id="text-11-3-2">
 
 <p>Integration testing is testing all the components together (preferably <span style="text-decoration:underline;">after</span>
@@ -4033,7 +4030,7 @@ The best advice I can give on integration testing:  learn to use a debugger.
 </div>
 
 <div id="outline-container-11-3-3" class="outline-4">
-<h4 id="sec-11-3-3"><span class="section-number-4">11.3.3</span> Result Verification</h4>
+<h4 id="sec-11-3-3">Result Verification</h4>
 <div class="outline-text-4" id="text-11-3-3">
 
 <p>A result verifier is a method that checks the results of other methods.  There
@@ -4087,7 +4084,7 @@ that is necessary for your program's correctness.
 </div>
 
 <div id="outline-container-11-3-4" class="outline-4">
-<h4 id="sec-11-3-4"><span class="section-number-4">11.3.4</span> Regression Testing</h4>
+<h4 id="sec-11-3-4">Regression Testing</h4>
 <div class="outline-text-4" id="text-11-3-4">
 
 <p>A <span style="text-decoration:underline;">regression test</span> is a test suite can be re-run whenever changes are made to
@@ -4129,7 +4126,7 @@ than the size of the code being tested.
 </div>
 
 <div id="outline-container-12" class="outline-2">
-<h2 id="sec-12"><span class="section-number-2">12</span> Lecture 12</h2>
+<h2 id="sec-12">Lecture 12</h2>
 <div class="outline-text-2" id="text-12">
 
 <p>Today's reading:  Sierra &amp; Bates, Chapter 8.
@@ -4140,7 +4137,7 @@ than the size of the code being tested.
 </div>
 
 <div id="outline-container-12-1" class="outline-3">
-<h3 id="sec-12-1"><span class="section-number-3">12.1</span> ABSTRACT CLASSES</h3>
+<h3 id="sec-12-1">ABSTRACT CLASSES</h3>
 <div class="outline-text-3" id="text-12-1">
 
 <p>An abstract class is a class whose sole purpose is to be extended.
@@ -4279,7 +4276,7 @@ advantage of object-oriented languages like Java.
 </div>
 
 <div id="outline-container-12-2" class="outline-3">
-<h3 id="sec-12-2"><span class="section-number-3">12.2</span> JAVA INTERFACES</h3>
+<h3 id="sec-12-2">JAVA INTERFACES</h3>
 <div class="outline-text-3" id="text-12-2">
 
 <p>Java has an "interface" keyword which refers to something quite different than
@@ -4404,7 +4401,7 @@ I don't.
 </div>
 
 <div id="outline-container-13" class="outline-2">
-<h2 id="sec-13"><span class="section-number-2">13</span> Lecture 13</h2>
+<h2 id="sec-13">Lecture 13</h2>
 <div class="outline-text-2" id="text-13">
 
 <p>Today's reading:  Sierra &amp; Bates, pp. 154-160, 587-591, 667-668.
@@ -4415,7 +4412,7 @@ I don't.
 </div>
 
 <div id="outline-container-13-1" class="outline-3">
-<h3 id="sec-13-1"><span class="section-number-3">13.1</span> JAVA PACKAGES</h3>
+<h3 id="sec-13-1">JAVA PACKAGES</h3>
 <div class="outline-text-3" id="text-13-1">
 
 <p>In Java, a <span style="text-decoration:underline;">package</span> is a collection of classes and Java interfaces, and
@@ -4455,7 +4452,7 @@ inside the package image inside the package awt inside the package java.
 </div>
 
 <div id="outline-container-13-1-1" class="outline-4">
-<h4 id="sec-13-1-1"><span class="section-number-4">13.1.1</span> Using Packages</h4>
+<h4 id="sec-13-1-1">Using Packages</h4>
 <div class="outline-text-4" id="text-13-1-1">
 
 <p>You can address any class, field, or method with a fully-qualified name.
@@ -4519,7 +4516,7 @@ javax).  The Java compiler knows where to find them.
 </div>
 
 <div id="outline-container-13-1-2" class="outline-4">
-<h4 id="sec-13-1-2"><span class="section-number-4">13.1.2</span> Building Packages</h4>
+<h4 id="sec-13-1-2">Building Packages</h4>
 <div class="outline-text-4" id="text-13-1-2">
 
 <p>The files that form a package are annotated with a "package" command, which
@@ -4614,7 +4611,7 @@ Here's the correspondence between declarations and their visibility.
 </div>
 
 <div id="outline-container-13-2" class="outline-3">
-<h3 id="sec-13-2"><span class="section-number-3">13.2</span> ITERATORS</h3>
+<h3 id="sec-13-2">ITERATORS</h3>
 <div class="outline-text-3" id="text-13-2">
 
 <p>In java.util there is a standard Java interface for iterating over sequences of
@@ -4777,7 +4774,7 @@ prime number as an Integer object.
 </div>
 
 <div id="outline-container-14" class="outline-2">
-<h2 id="sec-14"><span class="section-number-2">14</span> Lecture 15</h2>
+<h2 id="sec-14">Lecture 15</h2>
 <div class="outline-text-2" id="text-14">
 
 <p>(Lecture 14 was the midterm exam)
@@ -4791,7 +4788,7 @@ Today's reading:  Sierra &amp; Bates, pp. 315-338.
 </div>
 
 <div id="outline-container-14-1" class="outline-3">
-<h3 id="sec-14-1"><span class="section-number-3">14.1</span> EXCEPTIONS</h3>
+<h3 id="sec-14-1">EXCEPTIONS</h3>
 <div class="outline-text-3" id="text-14-1">
 
 <p>When a run-time error occurs in Java, the JVM "throws an exception," prints
@@ -4803,7 +4800,7 @@ from terminating by "catching" the Exception that Java threw.
 </div>
 
 <div id="outline-container-14-1-1" class="outline-4">
-<h4 id="sec-14-1-1"><span class="section-number-4">14.1.1</span> Purpose #1:  Coping with Errors</h4>
+<h4 id="sec-14-1-1">Purpose #1:  Coping with Errors</h4>
 <div class="outline-text-4" id="text-14-1-1">
 
 <p>Exceptions are a way of coping with unexpected errors.  By catching exceptions,
@@ -4878,7 +4875,7 @@ You can catch some exceptions and let others propagate.
 </div>
 
 <div id="outline-container-14-1-2" class="outline-4">
-<h4 id="sec-14-1-2"><span class="section-number-4">14.1.2</span> Purpose #2:  Escaping a Sinking Ship</h4>
+<h4 id="sec-14-1-2">Purpose #2:  Escaping a Sinking Ship</h4>
 <div class="outline-text-4" id="text-14-1-2">
 
 <p>Believe it or not, you might want to throw your own exception.  Exceptions are
@@ -4984,7 +4981,7 @@ JVM prints an error message and halts.  You've seen this happen many times.
 </div>
 
 <div id="outline-container-14-2" class="outline-3">
-<h3 id="sec-14-2"><span class="section-number-3">14.2</span> Checked and Unchecked Throwables</h3>
+<h3 id="sec-14-2">Checked and Unchecked Throwables</h3>
 <div class="outline-text-3" id="text-14-2">
 
 
@@ -5056,7 +5053,7 @@ though.)
 </div>
 
 <div id="outline-container-15" class="outline-2">
-<h2 id="sec-15"><span class="section-number-2">15</span> Lecture 16</h2>
+<h2 id="sec-15">Lecture 16</h2>
 <div class="outline-text-2" id="text-15">
 
 
@@ -5069,14 +5066,14 @@ Today's reading:  Sierra &amp; Bates, pp. 189, 283.
 </div>
 
 <div id="outline-container-15-1" class="outline-3">
-<h3 id="sec-15-1"><span class="section-number-3">15.1</span> EXCEPTIONS (continued)</h3>
+<h3 id="sec-15-1">EXCEPTIONS (continued)</h3>
 <div class="outline-text-3" id="text-15-1">
 
 
 </div>
 
 <div id="outline-container-15-1-1" class="outline-4">
-<h4 id="sec-15-1-1"><span class="section-number-4">15.1.1</span> The "finally" keyword</h4>
+<h4 id="sec-15-1-1">The "finally" keyword</h4>
 <div class="outline-text-4" id="text-15-1-1">
 
 <p>A finally clause can also be added to a "try."
@@ -5137,7 +5134,7 @@ thereby catching those exceptions as well.
 </div>
 
 <div id="outline-container-15-1-2" class="outline-4">
-<h4 id="sec-15-1-2"><span class="section-number-4">15.1.2</span> Exception constructors</h4>
+<h4 id="sec-15-1-2">Exception constructors</h4>
 <div class="outline-text-4" id="text-15-1-2">
 
 <p>By convention, most Throwables (including Exceptions) have two constructors.
@@ -5165,7 +5162,7 @@ superclass constructors, which are defined in Throwable.
 </div>
 
 <div id="outline-container-15-2" class="outline-3">
-<h3 id="sec-15-2"><span class="section-number-3">15.2</span> GENERICS</h3>
+<h3 id="sec-15-2">GENERICS</h3>
 <div class="outline-text-3" id="text-15-2">
 
 <p>Suppose you're using a list of Objects to store Strings.  When you fetch a
@@ -5252,7 +5249,7 @@ work with primitive types.
 </div>
 
 <div id="outline-container-15-3" class="outline-3">
-<h3 id="sec-15-3"><span class="section-number-3">15.3</span> FIELD SHADOWING</h3>
+<h3 id="sec-15-3">FIELD SHADOWING</h3>
 <div class="outline-text-3" id="text-15-3">
 
 <p>Just as methods can be overridden in subclasses, fields can be "shadowed" in
@@ -5365,7 +5362,7 @@ Static method shadowing, like field shadowing, is largely a nuisance.
 </div>
 
 <div id="outline-container-15-4" class="outline-3">
-<h3 id="sec-15-4"><span class="section-number-3">15.4</span> "final" METHODS AND CLASSES</h3>
+<h3 id="sec-15-4">"final" METHODS AND CLASSES</h3>
 <div class="outline-text-3" id="text-15-4">
 
 <p>A method can be declared "final" to prevent subclasses from overriding it.  Any
@@ -5384,7 +5381,7 @@ a program.  The compiler can speed up method calls that cannot be overridden.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T00:57-0800</p>
+<p class="date">Date: 2014-02-28T01:22-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
