@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes12"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:22-0800"/>
+<meta name="generated" content="2014-02-28T01:47-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -149,14 +149,14 @@ for the JavaScript code in this tag.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">abstract</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">List</span> {
-  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
+<pre class="example">public abstract class List {
+  protected int size;
 
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">length</span>() {
-    <span style="color: #a020f0;">return</span> size;
+  public int length() {
+    return size;
   }
 
-  <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">abstract</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>);
+  public abstract void insertFront(Object item);
 }
 </pre>
 
@@ -168,8 +168,8 @@ variable of type List, but you can't create a List object.
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">List</span> <span style="color: #a0522d;">myList</span>;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
-myList = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">List</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
+<pre class="example">List myList;                 // Right on.
+myList = new List();         // COMPILE-TIME ERROR.
 </pre>
 
 
@@ -188,14 +188,14 @@ for the insertFront method.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">List</span> {
-  <span style="color: #b22222;">// </span><span style="color: #b22222;">inherits the "size" field.</span>
-  <span style="color: #da70d6;">protected</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
+<pre class="example">public class SList extends List {
+  // inherits the "size" field.
+  protected SListNode head;
 
-  <span style="color: #b22222;">// </span><span style="color: #b22222;">inherits the "length" method.</span>
+  // inherits the "length" method.
 
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>) {
-    head = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(item, head);
+  public void insertFront(Object item) {
+    head = new SListNode(item, head);
     size++;
   }  
 }
@@ -215,8 +215,8 @@ are Lists, we can assign an SList to a List variable.
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">List</span> <span style="color: #a0522d;">myList</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();   <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
-myList.insertFront(obj);     <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
+<pre class="example">List myList = new SList();   // Right on.
+myList.insertFront(obj);     // Right on.
 </pre>
 
 
@@ -226,7 +226,7 @@ What are abstract classes good for?  It's all about the interface.
 
 
 
-<pre class="src src-text">----------------------------------------------------
+<pre class="example">----------------------------------------------------
 |  An abstract class lets you define an interface  |
 |    - for multiple classes to share,              |
 |    - without defining any of them yet.           |
@@ -245,7 +245,7 @@ kind of List.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">listSort</span>(<span style="color: #228b22;">List</span> <span style="color: #a0522d;">l</span>) { ... }
+<pre class="example">public void listSort(List l) { ... }
 </pre>
 
 
@@ -306,26 +306,26 @@ A Java interface is just like an abstract class, except for two differences.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Nukeable</span> {               <span style="color: #b22222;">// </span><span style="color: #b22222;">In Nukeable.java</span>
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">nuke</span>();
+<pre class="example">public interface Nukeable {               // In Nukeable.java
+  public void nuke();
 }
 
-<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Comparable</span> {             <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.lang</span>
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">compareTo</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span>);
+public interface Comparable {             // In java.lang
+  public int compareTo(Object o);
 }
 
-<span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">List</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Nukeable</span>, <span style="color: #228b22;">Comparable</span> {
+public class SList extends List implements Nukeable, Comparable {
   [Previous stuff here.]
 
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> nuke() {
-    head = <span style="color: #5f9ea0;">null</span>;
-    size = <span style="color: #bc8f8f;">0</span>;
+  public void nuke() {
+    head = null;
+    size = 0;
   }
 
-  <span style="color: #da70d6;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">compareTo</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span>) {
-    [Returns a number &lt; <span style="color: #bc8f8f;">0</span> <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span> &lt; o,
-                        <span style="color: #bc8f8f;">0</span> <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span>.equals(o), 
-                      &gt; <span style="color: #bc8f8f;">0</span> <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span> &gt; o.]
+  public int compareTo(Object o) {
+    [Returns a number &lt; 0 if this &lt; o,
+                        0 if this.equals(o), 
+                      &gt; 0 if this &gt; o.]
   }
 }
 </pre>
@@ -360,8 +360,8 @@ of these types.
 
 
 
-<pre class="src src-java"><span style="color: #228b22;">Nukeable</span> <span style="color: #a0522d;">n</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
-<span style="color: #228b22;">Comparable</span> <span style="color: #a0522d;">c</span> = (<span style="color: #228b22;">Comparable</span>) n;
+<pre class="example">Nukeable n = new SList();
+Comparable c = (Comparable) n;
 </pre>
 
 
@@ -377,7 +377,7 @@ of Comparable objects.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">sort</span>(<span style="color: #228b22;">Object</span>[] <span style="color: #a0522d;">a</span>)       <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.util</span>
+<pre class="example">public static void sort(Object[] a)       // In java.util
 </pre>
 
 
@@ -392,7 +392,7 @@ multiple superinterfaces, so we can group several interfaces into one.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">NukeAndCompare</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Nukeable</span>, <span style="color: #228b22;">Comparable</span> { }
+<pre class="example">public interface NukeAndCompare extends Nukeable, Comparable { }
 </pre>
 
 
@@ -405,9 +405,9 @@ I don't.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:22-0800</p>
+<p class="date">Date: 2014-02-28T01:47-0800</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

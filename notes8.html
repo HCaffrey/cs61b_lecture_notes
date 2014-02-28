@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes8"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:22-0800"/>
+<meta name="generated" content="2014-02-28T01:47-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -170,15 +170,15 @@ code of the Date class by fiddling with the internals of a Date object.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">Date</span> {                  |  <span style="color: #da70d6;">public</span> <span style="color: #a020f0;">class</span> EvilTamperer {
-  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">day</span>;                   |    <span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> tamper() {
-  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>;                 |      Date d = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Date</span>(<span style="color: #bc8f8f;">1</span>, <span style="color: #bc8f8f;">1</span>, <span style="color: #bc8f8f;">2006</span>);
+<pre class="example">public class Date {                  |  public class EvilTamperer {
+  private int day;                   |    public void tamper() {
+  private int month;                 |      Date d = new Date(1, 1, 2006);
                                      |
-  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">void</span> setMonth(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">m</span>) {     |      d.day = <span style="color: #bc8f8f;">100</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Foiled!!</span>
-    month = m;                       |      d.setMonth(<span style="color: #bc8f8f;">0</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Foiled again!!</span>
+  private void setMonth(int m) {     |      d.day = 100;    // Foiled!!
+    month = m;                       |      d.setMonth(0);  // Foiled again!!
   }                                  |    }
                                      |  }
-  <span style="color: #da70d6;">public</span> <span style="color: #00008b;">Date</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">day</span>) {  |
+  public Date(int month, int day) {  |
     [Implementation with             |
      error-checking code here.]      |
   }
@@ -288,10 +288,10 @@ previous node, as well as the next node.
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">DListNode</span> {                    |  <span style="color: #a020f0;">class</span> DList {
-  <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>;                       |    <span style="color: #da70d6;">private</span> DListNode head;
-  <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">next</span>;                    |    <span style="color: #da70d6;">private</span> DListNode tail;
-  <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">prev</span>;                    |  }
+<pre class="example">class DListNode {                    |  class DList {
+  Object item;                       |    private DListNode head;
+  DListNode next;                    |    private DListNode tail;
+  DListNode prev;                    |  }
 }                                    |
 </pre>
 
@@ -310,7 +310,7 @@ DList.
 
 
 
-<pre class="src src-java">tail.prev.next = <span style="color: #5f9ea0;">null</span>;
+<pre class="example">tail.prev.next = null;
 tail = tail.prev;
 </pre>
 
@@ -331,9 +331,9 @@ pointer points to the sentinel.
 
 
 
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">DList</span> {
-  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">head</span>;
-  <span style="color: #da70d6;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
+<pre class="example">class DList {
+  private DListNode head;
+  private int size;
 }
 </pre>
 
@@ -373,10 +373,10 @@ Here's an example of a method that removes the last item from a DList.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">removeBack</span>() {
-  <span style="color: #a020f0;">if</span> (head.prev != head) {        <span style="color: #b22222;">// </span><span style="color: #b22222;">Do nothing if the DList is empty.</span>
-    head.prev = head.prev.prev;   <span style="color: #b22222;">// </span><span style="color: #b22222;">Sentinel now points to second-last item.</span>
-    head.prev.next = head;        <span style="color: #b22222;">// </span><span style="color: #b22222;">Second-last item now points to sentinel.</span>
+<pre class="example">public void removeBack() {
+  if (head.prev != head) {        // Do nothing if the DList is empty.
+    head.prev = head.prev.prev;   // Sentinel now points to second-last item.
+    head.prev.next = head;        // Second-last item now points to sentinel.
     size--;
   }
 }
@@ -391,9 +391,9 @@ In Lab 4 and Homework 4, you'll implement more methods for this DList class.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:22-0800</p>
+<p class="date">Date: 2014-02-28T01:47-0800</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes9"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:22-0800"/>
+<meta name="generated" content="2014-02-28T01:47-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -170,7 +170,7 @@ order in which the stack frames were created.
 </p>
 
 <p>
-<img src="ditaa-images/TEMP_1_79b96362c6f5a001d95e9b6c17990b88bda4ba98.png"  alt="ditaa-images/TEMP_1_79b96362c6f5a001d95e9b6c17990b88bda4ba98.png" />
+<img src="ditaa-images/TEMP_1_560c5a912cfc17dcfe5375905233a268a67417e8.png"  alt="ditaa-images/TEMP_1_560c5a912cfc17dcfe5375905233a268a67417e8.png" />
 </p>
 
 <p>
@@ -208,7 +208,7 @@ effect on the value of the calling method's variable a:
 
 
 
-<pre class="src src-text">method:                            | STACK (just before the method returns)
+<pre class="example">method:                            | STACK (just before the method returns)
                                    |
   static void doNothing(int x) {   |      -----
     x = 2;                         |    x | 2 |
@@ -235,7 +235,7 @@ object that is visible to the calling method:
 
 
 
-<pre class="src src-text">method:                            | STACK              | HEAP
+<pre class="example">method:                            | STACK              | HEAP
                                    |                set3|
 class IntBox {                     |      -----         |
   public int i;                    |   ib | .-+----------------\
@@ -264,7 +264,7 @@ executed the example above, so b is set up.)
 </p>
 
 
-<pre class="src src-text">method:                            | STACK              | HEAP
+<pre class="example">method:                            | STACK              | HEAP
                                    |             badSet4|
 class IntBox {                     |      -----         |    ------
   static void badSet4(IntBox ib) { |   ib | .-+-------------&gt;|i |4|
@@ -325,24 +325,24 @@ The recursion has two base cases.
 
 
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #da70d6;">final</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">FAILURE</span> = -<span style="color: #bc8f8f;">1</span>;
+<pre class="example">public static final int FAILURE = -1;
 
-<span style="color: #da70d6;">private</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">bsearch</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">i</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">left</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">right</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">findMe</span>) {
-    <span style="color: #a020f0;">if</span> (left &gt; right) {
-        <span style="color: #a020f0;">return</span> <span style="color: #5f9ea0;">FAILURE</span>;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Base case 2:  subarray of size zero.</span>
+private static int bsearch(int[] i, int left, int right, int findMe) {
+    if (left &gt; right) {
+        return FAILURE;                   // Base case 2:  subarray of size zero.
     }
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">mid</span> = (left + right) / <span style="color: #bc8f8f;">2</span>;            <span style="color: #b22222;">// </span><span style="color: #b22222;">Halfway between left and right.</span>
-    <span style="color: #a020f0;">if</span> (findMe == i[mid]) {
-        <span style="color: #a020f0;">return</span> mid;                                     <span style="color: #b22222;">// </span><span style="color: #b22222;">Base case 1:  success!</span>
-    } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (findMe &lt; i[mid]) {
-        <span style="color: #a020f0;">return</span> bsearch(i, left, mid - <span style="color: #bc8f8f;">1</span>, findMe);            <span style="color: #b22222;">// </span><span style="color: #b22222;">Search left half.</span>
-    } <span style="color: #a020f0;">else</span> {
-        <span style="color: #a020f0;">return</span> bsearch(i, mid + <span style="color: #bc8f8f;">1</span>, right, findMe);          <span style="color: #b22222;">// </span><span style="color: #b22222;">Search right half.</span>
+    int mid = (left + right) / 2;            // Halfway between left and right.
+    if (findMe == i[mid]) {
+        return mid;                                     // Base case 1:  success!
+    } else if (findMe &lt; i[mid]) {
+        return bsearch(i, left, mid - 1, findMe);            // Search left half.
+    } else {
+        return bsearch(i, mid + 1, right, findMe);          // Search right half.
     }
 }
 
-<span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">bsearch</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">i</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">findMe</span>) {
-    <span style="color: #a020f0;">return</span> bsearch(i, <span style="color: #bc8f8f;">0</span>, i.length - <span style="color: #bc8f8f;">1</span>, findMe);
+public static int bsearch(int[] i, int findMe) {
+    return bsearch(i, 0, i.length - 1, findMe);
 }
 </pre>
 
@@ -357,7 +357,7 @@ Sections 4.1.2 &amp; 4.1.7.
 </p>
 
 <p>
-<img src="ditaa-images/TEMP_3_8a3ff1957e48efafbe2b593085f36b159ead98a7.png"  alt="ditaa-images/TEMP_3_8a3ff1957e48efafbe2b593085f36b159ead98a7.png" />
+<img src="ditaa-images/TEMP_3_10aefea28e93286eaeaa65591d8281f1efe53a08.png"  alt="ditaa-images/TEMP_3_10aefea28e93286eaeaa65591d8281f1efe53a08.png" />
 </p>
 
 <p>
@@ -428,9 +428,9 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:22-0800</p>
+<p class="date">Date: 2014-02-28T01:47-0800</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
