@@ -75,3 +75,7 @@ have the default style included, customize the variable
 			       (org-export-as-html 3)))))
 		     nil 'file)
     (org-export-as-html 3)))
+
+(find-file "index.org")
+(org-export-as-html 3)
+
