@@ -1,5 +1,9 @@
 ;;code to help convert diagrams to proper ditaa format
 ;; and wrap code in org blocks
+(require 'org)
+(require 'org-html)
+(add-to-list 'load-path "~/elisp/org/contrib/lisp")
+(require 'htmlize)
 
 (defun fix-ditaa ()
   (interactive)
@@ -62,6 +66,9 @@
   (mbs-wrap-region (format "#+begin_ditaa %s" (file-path-concat image-dir
 								file))
 		   "#+end_ditaa"))
+
+(setq org-ditaa-jar-path "~/configs/lisp/org/contrib/scripts/ditaa.jar")
+
 (defun java-wrap-block ()
   (interactive)
   (mbs-wrap-region "#+Begin_SRC java" "#+END_SRC"))
@@ -181,3 +188,39 @@ have the default style included, customize the variable
 	  (org-export-as-html 3)
 	  (kill-buffer-if-exists "notes.html")))
     (message "Incorrect buffer: Run in notes.org")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun char-split-string (string)
+  "split a string into its charaters"
+  (cdr (butlast (split-string string ""))))
+
+
+(defun strip-end (string &optional char)
+  "if CHAR occurs at the end of STRING, remove it"
+  (let ((split (char-split-string string))
+	(char (or char " ")))
+
+    (while (string= char (car (last split)))
+      (setq split (butlast split)))
+    (mapconcat 'identity split "")))
+
+(defun strip-start (string &optional char)
+  "if CHAR occurs at the beginning of STRING, remove all occurrences"
+  (let ((split (char-split-string string))
+	(char (or char " ")))
+    
+    (while (string= char (car split))
+      (setq split (cdr split)))
+    (mapconcat 'identity split "")))
+
+(defun file-path-concat (&rest dirs)
+  "concatenate strings representing file paths
+prevents multiple/none '/' seporating file names"
+  (let* ((first (strip-end (car dirs) "/"))
+	 (last (strip-start (car (last dirs)) "/"))
+	 (dirs (append (list first)
+		       (mapcar '(lambda (x)  (strip-start (strip-end x "/") "/")) 
+			       (cdr (butlast dirs)))
+		       (list last))))
+    (mapconcat 'identity dirs "/")))
