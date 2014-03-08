@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:47-0800"/>
+<meta name="generated" content="2014-03-03T14:40-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012  Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -501,7 +501,7 @@ and specify their <span style="text-decoration:underline;">type</span>.
 
 
 
-<pre class="example">Python:  x = 1       Scheme:  (let ((x 1)) )       Java:  int x;
+<pre class="src src-java">Python:  x = 1       Scheme:  (<span style="color: #228b22;">let</span> ((x 1)) )       Java:  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>;
                                                           x = 1;
 </pre>
 
@@ -537,7 +537,7 @@ For example, Java has a built-in class called String.
 </p>
 
 
-<pre class="example">String myString;
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">myString</span>;
 </pre>
 
 <p>
@@ -593,9 +593,9 @@ is that you have to wait for it to compile.
 
 
 
-<pre class="example">class HelloWorld {
-  public static void main (String[] args) {
-    System.out.println("Hello, world");
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">HelloWorld</span> {
+  <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span> (<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+    System.out.println(<span style="color: #8b2252;">"Hello, world"</span>);
   }
 }
 </pre>
@@ -667,8 +667,8 @@ have to figure out for yourself how to send characters to the terminal.
 
 
 
-<pre class="example">String s;           // Step 1:      declare a String variable.
-s = new String();   // Steps 2, 3:  construct new empty String; assign it to s.
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">Step 1:      declare a String variable.</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();   <span style="color: #b22222;">// </span><span style="color: #b22222;">Steps 2, 3:  construct new empty String; assign it to s.</span>
 </pre>
 
 
@@ -683,8 +683,8 @@ a String containing zero characters.
 
 
 
-<pre class="example">String s = new String();  // Steps 1, 2, 3 combined.
-s = "Yow!";               // Construct a new String; make s a reference to it.
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();  <span style="color: #b22222;">// </span><span style="color: #b22222;">Steps 1, 2, 3 combined.</span>
+s = <span style="color: #8b2252;">"Yow!"</span>;               <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct a new String; make s a reference to it.</span>
 </pre>
 
 
@@ -696,7 +696,7 @@ s = "Yow!";               // Construct a new String; make s a reference to it.
 
 
 
-<pre class="example">String s2 = s;            // Copy the reference stored in s into s2.
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s2</span> = s;            <span style="color: #b22222;">// </span><span style="color: #b22222;">Copy the reference stored in s into s2.</span>
 </pre>
 
 
@@ -711,7 +711,7 @@ Now s and s2 reference the same object.
 
 
 
-<pre class="example">s2 = new String(s);       // Construct a copy of object; store reference in s2.
+<pre class="src src-java">s2 = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>(s);       <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct a copy of object; store reference in s2.</span>
 </pre>
 
 
@@ -777,7 +777,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="example">s2 = s.toUppercase();       // Create a string like s, but in all upper case.
+<pre class="src src-java">s2 = s.toUppercase();       <span style="color: #b22222;">// </span><span style="color: #b22222;">Create a string like s, but in all upper case.</span>
 </pre>
 
 
@@ -789,7 +789,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="example">String s3 = s2.concat("!!");             // Also written:  s3 = s2 + "!!";
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s3</span> = s2.concat(<span style="color: #8b2252;">"!!"</span>);             <span style="color: #b22222;">// </span><span style="color: #b22222;">Also written:  s3 = s2 + "!!";</span>
 </pre>
 
 
@@ -801,7 +801,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="example">String s4 = "*".concat(s2).concat("*");  // Also written:  s4 = "*" + s + "*";
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s4</span> = <span style="color: #8b2252;">"*"</span>.concat(s2).concat(<span style="color: #8b2252;">"*"</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Also written:  s4 = "*" + s + "*";</span>
 </pre>
 
 
@@ -816,7 +816,7 @@ Now, here's an important fact:  when Java executed the line
 
 
 
-<pre class="example">s2 = s.toUppercase();
+<pre class="src src-java">s2 = s.toUppercase();
 </pre>
 
 
@@ -897,13 +897,13 @@ it on the screen.
 
 
 
-<pre class="example">import java.io.*;
+<pre class="src src-java"><span style="color: #228b22;">im</span><span style="color: #a020f0;">port</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">io</span>.*;
 
-class SimpleIO {
-    public static void main(String[] arg) throws Exception {
-        BufferedReader keybd =
-            new BufferedReader(new InputStreamReader(System.in));
-        System.out.println(keybd.readLine());
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">SimpleIO</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">arg</span>) <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">Exception</span> {
+        <span style="color: #228b22;">BufferedReader</span> <span style="color: #a0522d;">keybd</span> =
+            <span style="color: #a020f0;">new</span> <span style="color: #228b22;">BufferedReader</span>(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">InputStreamReader</span>(System.in));
+        System.out.println(keybd.<span style="color: #228b22;">readLine</span>());
     }
 }
 </pre>
@@ -946,16 +946,16 @@ How to create an InputStream?  With a URL.
 
 
 
-<pre class="example">import java.net.*;
-import java.io.*;
+<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">net</span>.*;
+<span style="color: #a020f0;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">io</span>.*;
 
-class WHWWW {
-    public static void main(String[] arg) throws Exception {
-        URL u = new URL("http://www.whitehouse.gov/");
-        InputStream ins = u.openStream();
-        InputStreamReader isr = new InputStreamReader(ins);
-        BufferedReader whiteHouse = new BufferedReader(isr);
-        System.out.println(whiteHouse.readLine());
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">WHWWW</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">arg</span>) <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">Exception</span> {
+        <span style="color: #228b22;">URL</span> <span style="color: #a0522d;">u</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">URL</span>(<span style="color: #8b2252;">"http://www.whitehouse.gov</span><span style="color: #228b22;">/");</span>
+<span style="color: #228b22;">        InputStream</span> <span style="color: #a0522d;">ins</span> = u.openStream();
+        <span style="color: #228b22;">InputStreamReader</span> <span style="color: #a0522d;">isr</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">InputStreamReader</span>(ins);
+        <span style="color: #228b22;">BufferedReader</span> <span style="color: #a0522d;">whiteHouse</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">BufferedReader</span>(isr);
+        System.out.println(whiteHouse.<span style="color: #228b22;">readLine</span>());
     }
 }
 </pre>
@@ -1034,12 +1034,12 @@ amanda.age is a field.  Let's write a <span style="text-decoration:underline;">c
 
 
 
-<pre class="example">class Human {
-    public int age;                // The Human's age (an integer).
-    public String name;            // The Human's name.
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">age</span>;                <span style="color: #b22222;">// </span><span style="color: #b22222;">The Human's age (an integer).</span>
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">name</span>;            <span style="color: #b22222;">// </span><span style="color: #b22222;">The Human's name.</span>
 
-    public void introduce() {      // This is a _method definition_.
-        System.out.println("I'm " + name + " and I'm " + age + " years old.");
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">introduce</span>() {      <span style="color: #b22222;">// </span><span style="color: #b22222;">This is a _method definition_.</span>
+        System.out.println(<span style="color: #8b2252;">"I'm "</span> + name + <span style="color: #8b2252;">" and I'm "</span> + age + <span style="color: #8b2252;">" years old."</span>);
     }
 }
 </pre>
@@ -1054,10 +1054,10 @@ amanda by executing the following code.
 
 
 
-<pre class="example">Human amanda = new Human();    // Create amanda.
-amanda.age = 6;                // Set amanda's fields.
-amanda.name = "Amanda";
-amanda.introduce();            // _Method call_ has amanda introduce herself.
+<pre class="src src-java"><span style="color: #228b22;">Human</span> <span style="color: #a0522d;">amanda</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>();    <span style="color: #b22222;">// </span><span style="color: #b22222;">Create amanda.</span>
+amanda.age = 6;                <span style="color: #b22222;">// </span><span style="color: #b22222;">Set amanda's fields.</span>
+amanda.name = <span style="color: #8b2252;">"Amanda"</span>;
+amanda.introduce();            <span style="color: #b22222;">// </span><span style="color: #b22222;">_Method call_ has amanda introduce herself.</span>
 </pre>
 
 
@@ -1081,10 +1081,10 @@ two or more objects, we can.
 
 
 
-<pre class="example">class Human {
-    // Include all the stuff from the previous definition of Human here.
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Include all the stuff from the previous definition of Human here.</span>
 
-    public void copy(Human original) {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">copy</span>(<span style="color: #228b22;">Human</span> <span style="color: #a0522d;">original</span>) {
         age = original.age;
         name = original.name;
     }
@@ -1112,10 +1112,10 @@ object.
 
 
 
-<pre class="example">class Human {
-    // Include all the stuff from the previous definitions here.
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Include all the stuff from the previous definitions here.</span>
 
-    public Human(String givenName) {
+    <span style="color: #a020f0;">public</span> Human(<span style="color: #228b22;">String</span> <span style="color: #a0522d;">givenName</span>) {
         age = 6;
         name = givenName;
     }
@@ -1131,7 +1131,7 @@ is a String reference.  Now, we can shorten amanda's coming-out party to
 
 
 
-<pre class="example">Human amanda = new Human("Amanda");
+<pre class="src src-java"><span style="color: #228b22;">Human</span> <span style="color: #a0522d;">amanda</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>(<span style="color: #8b2252;">"Amanda"</span>);
 amanda.introduce();
 </pre>
 
@@ -1148,7 +1148,7 @@ no parameters and does no initializing.  Hence, when we wrote
 
 
 
-<pre class="example">Human amanda = new Human();
+<pre class="src src-java"><span style="color: #228b22;">Human</span> <span style="color: #a0522d;">amanda</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>();
 </pre>
 
 
@@ -1159,7 +1159,7 @@ written, it would look like this:
 
 
 
-<pre class="example">public Human() {
+<pre class="src src-java"><span style="color: #a020f0;">public</span> Human() {
 }
 </pre>
 
@@ -1176,12 +1176,12 @@ constructor with no parameters.
 
 
 
-<pre class="example">class Human {
-    // Include all the stuff from the previous definitions here.
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Include all the stuff from the previous definitions here.</span>
 
-    public Human() {
+    <span style="color: #a020f0;">public</span> Human() {
         age = 0;
-        name = "Untitled";
+        name = <span style="color: #8b2252;">"Untitled"</span>;
     }
 }
 </pre>
@@ -1202,9 +1202,9 @@ last constructor as follows without changing its meaning.
 
 
 
-<pre class="example">public Human() {
-    this.age = 0;
-    this.name = "Untitled";
+<pre class="src src-java"><span style="color: #a020f0;">public</span> Human() {
+    <span style="color: #a020f0;">this</span>.age = 0;
+    <span style="color: #a020f0;">this</span>.name = <span style="color: #8b2252;">"Untitled"</span>;
 }
 </pre>
 
@@ -1218,11 +1218,11 @@ fields.
 
 
 
-<pre class="example">public void change(int age) {
-    String name = "Tom";
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">change</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">age</span>) {
+    <span style="color: #228b22;">String</span> <span style="color: #a0522d;">name</span> = <span style="color: #8b2252;">"Tom"</span>;
 
-    this.age = age;
-    this.name = name;
+    <span style="color: #a020f0;">this</span>.age = age;
+    <span style="color: #a020f0;">this</span>.name = name;
 }
 </pre>
 
@@ -1269,14 +1269,14 @@ Static fields are also called <span style="text-decoration:underline;">class var
 
 
 
-<pre class="example">class Human {
-    public static int numberOfHumans;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">numberOfHumans</span>;
 
-    public int age;
-    public String name;
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">age</span>;
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">name</span>;
 
-    public Human() {
-        numberOfHumans++;    // The constructor increments the number by one.
+    <span style="color: #a020f0;">public</span> Human() {
+        numberOfHumans++;    <span style="color: #b22222;">// </span><span style="color: #b22222;">The constructor increments the number by one.</span>
     }
 }
 </pre>
@@ -1290,10 +1290,10 @@ name of a specific object.
 
 
 
-<pre class="example">int kids = Human.numberOfHumans / 4;  // Good.
-int kids = amanda.numberOfHumans / 4; // This works too, but has nothing to
-                                      // do with amanda specifically.  Don't
-                                      // do this; it's bad (confusing) style.
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">kids</span> = Human.numberOfHumans / 4;  <span style="color: #b22222;">// </span><span style="color: #b22222;">Good.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">kids</span> = amanda.numberOfHumans / 4; <span style="color: #b22222;">// </span><span style="color: #b22222;">This works too, but has nothing to</span>
+                                      <span style="color: #b22222;">// </span><span style="color: #b22222;">do with amanda specifically.  Don't</span>
+                                      <span style="color: #b22222;">// </span><span style="color: #b22222;">do this; it's bad (confusing) style.</span>
 </pre>
 
 
@@ -1307,9 +1307,9 @@ as a parameter.
 
 
 
-<pre class="example">class Human {
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Human</span> {
     ...
-    public static void printHumans() {
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> printHumans() {
         System.out.println(numberOfHumans);
     }
 }
@@ -1420,7 +1420,7 @@ Operations on int, long, short, and byte types.
 </p>
 
 
-<pre class="example">-x               x * y 
+<pre class="src src-text">-x               x * y 
 x + y            x / y    &lt;-- rounds toward zero (drops the remainder).
 x - y            x % y    &lt;-- calculates the remainder of x / y.
 </pre>
@@ -1440,7 +1440,7 @@ The java.lang library has more operations in&hellip;
 
 
 
-<pre class="example">x = Math.abs(y);  // Absolute value.  Also see Math.sqrt, Math.sin, etc.
+<pre class="src src-java">x = Math.abs(y);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Absolute value.  Also see Math.sqrt, Math.sin, etc.</span>
 </pre>
 
 <ul>
@@ -1451,7 +1451,7 @@ The java.lang library has more operations in&hellip;
 
 
 
-<pre class="example">int x = Integer.parseInt("1984");  // Convert a string to a number.
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = Integer.parseInt(<span style="color: #8b2252;">"1984"</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Convert a string to a number.</span>
 </pre>
 
 <ul>
@@ -1462,7 +1462,7 @@ The java.lang library has more operations in&hellip;
 
 
 
-<pre class="example">double d = Double.parseDouble("3.14");
+<pre class="src src-java"><span style="color: #228b22;">double</span> <span style="color: #a0522d;">d</span> = Double.parseDouble(<span style="color: #8b2252;">"3.14"</span>);
 </pre>
 
 
@@ -1471,11 +1471,11 @@ Converting types:  integers can be assigned to variables of longer types.
 </p>
 
 
-<pre class="example">int i = 43; 
-long l = 43;    // Okay, because longs are a superset of ints.
-l = i;          // Okay, because longs are a superset of ints.
-i = l;          // Compiler ERROR.
-i = (int) l;    // Okay.
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 43; 
+<span style="color: #228b22;">long</span> <span style="color: #a0522d;">l</span> = 43;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Okay, because longs are a superset of ints.</span>
+l = i;          <span style="color: #b22222;">// </span><span style="color: #b22222;">Okay, because longs are a superset of ints.</span>
+i = l;          <span style="color: #b22222;">// </span><span style="color: #b22222;">Compiler ERROR.</span>
+i = (<span style="color: #228b22;">int</span>) l;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Okay.</span>
 </pre>
 
 <p>
@@ -1527,10 +1527,10 @@ the comparison operators "==", "&lt;", "&gt;", "&lt;=", "&gt;=", "!=" (not equal
 
 
 
-<pre class="example">boolean x = 3 == 5;       // x is now false.
-x = 4.5 &gt;= 4.5;           // x is now true.
-x = 4 != 5 - 1;           // x is now false.
-x = false == (3 == 0);    // x is now true.
+<pre class="src src-java"><span style="color: #228b22;">boolean</span> <span style="color: #a0522d;">x</span> = 3 == 5;       <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now false.</span>
+x = 4.5 &gt;= 4.5;           <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now true.</span>
+x = 4 != 5 - 1;           <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now false.</span>
+x = <span style="color: #008b8b;">false</span> == (3 == 0);    <span style="color: #b22222;">// </span><span style="color: #b22222;">x is now true.</span>
 </pre>
 
 
@@ -1548,7 +1548,7 @@ of statements.  The form is
 
 
 
-<pre class="example">if (boolValue) {
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (boolValue) {
     statements;
 }
 </pre>
@@ -1561,12 +1561,12 @@ parentheses around the boolean expression are required (for no good reason).
 
 
 
-<pre class="example">boolean pass = score &gt;= 75;
-if (pass) {
-    output("You pass CS 61B");
-} else {
-    // The following line executes if and only if score &lt; 75.
-    output("You are such an unbelievable loser");
+<pre class="src src-java"><span style="color: #228b22;">boolean</span> <span style="color: #a0522d;">pass</span> = score &gt;= 75;
+<span style="color: #a020f0;">if</span> (pass) {
+    output(<span style="color: #8b2252;">"You pass CS 61B"</span>);
+} <span style="color: #a020f0;">else</span> {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">The following line executes if and only if score &lt; 75.</span>
+    output(<span style="color: #8b2252;">"You are such an unbelievable loser"</span>);
 }
 </pre>
 
@@ -1580,15 +1580,15 @@ numbers.
 
 
 
-<pre class="example">if (x &gt; y) {
-    if (x &gt; z) {
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (x &gt; y) {
+    <span style="color: #a020f0;">if</span> (x &gt; z) {
         maximum = x;
-    } else {
+    } <span style="color: #a020f0;">else</span> {
         maximum = z;
     }
-} else if (y &gt; z) {
+} <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (y &gt; z) {
     maximum = y;
-} else {
+} <span style="color: #a020f0;">else</span> {
     maximum = z;
 }
 </pre>
@@ -1602,20 +1602,20 @@ variable x is equal to some constant.
 
 
 
-<pre class="example">switch (month) {        |      if (month == 2) {                         
-case 2:                 |        days = 28;                              
-  days = 28;            |      } else if ((month == 4) || (month == 6) ||
-  break;                |                 (month == 9) || (month == 11)) {
-case 4:                 |        days = 30;                              
-case 6:                 |      } else {                                  
-case 9:                 |        days = 31;                              
-case 11:                |      }                                         
+<pre class="src src-java"><span style="color: #a020f0;">switch</span> (month) {        |      <span style="color: #a020f0;">if</span> (month == 2) {                         
+<span style="color: #a020f0;">case</span> 2:                 |        days = 28;                              
+  days = 28;            |      } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> ((month == 4) || (month == 6) ||
+  <span style="color: #a020f0;">break</span>;                |                 (month == 9) || (month == 11)) {
+<span style="color: #a020f0;">case</span> 4:                 |        days = 30;                              
+<span style="color: #a020f0;">case</span> 6:                 |      } <span style="color: #a020f0;">else</span> {                                  
+<span style="color: #a020f0;">case</span> 9:                 |        days = 31;                              
+<span style="color: #a020f0;">case</span> 11:                |      }                                         
   days = 30;            |
-  break;
-default:
+  <span style="color: #a020f0;">break</span>;
+<span style="color: #a020f0;">default</span>:
   days = 31;
-  break;
-}                   //  These two code fragments do exactly the same thing.
+  <span style="color: #a020f0;">break</span>;
+}                   <span style="color: #b22222;">//  </span><span style="color: #b22222;">These two code fragments do exactly the same thing.</span>
 </pre>
 
 
@@ -1628,14 +1628,14 @@ in the following example, both Strings are printed.
 
 
 
-<pre class="example">switch (month) {
-case 12:
-    output("It's December.");
-    // Just keep moving right on through.
-case 1:
-case 2:
-case 11:
-    output("It's cold.");
+<pre class="src src-java"><span style="color: #a020f0;">switch</span> (month) {
+<span style="color: #a020f0;">case</span> 12:
+    output(<span style="color: #8b2252;">"It's December."</span>);
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Just keep moving right on through.</span>
+<span style="color: #a020f0;">case</span> 1:
+<span style="color: #a020f0;">case</span> 2:
+<span style="color: #a020f0;">case</span> 11:
+    output(<span style="color: #8b2252;">"It's cold."</span>);
 }
 </pre>
 
@@ -1670,9 +1670,9 @@ Here's a recursive method that prints the numbers from 1 to x.
 
 
 
-<pre class="example">public static void oneToX(int x) {
-    if (x &lt; 1) {
-        return;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">oneToX</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+    <span style="color: #a020f0;">if</span> (x &lt; 1) {
+        <span style="color: #a020f0;">return</span>;
     }
     oneToX(x - 1);
     System.out.println(x);
@@ -1688,17 +1688,17 @@ a non-void type.  For instance, here's a function that returns an int.
 
 
 
-<pre class="example">public int daysInMonth(int month) {
-    switch (month) {
-    case 2:
-        return 28;
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-        return 30;
-    default:
-        return 31;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">daysInMonth</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>) {
+    <span style="color: #a020f0;">switch</span> (month) {
+    <span style="color: #a020f0;">case</span> 2:
+        <span style="color: #a020f0;">return</span> 28;
+    <span style="color: #a020f0;">case</span> 4:
+    <span style="color: #a020f0;">case</span> 6:
+    <span style="color: #a020f0;">case</span> 9:
+    <span style="color: #a020f0;">case</span> 11:
+        <span style="color: #a020f0;">return</span> 30;
+    <span style="color: #a020f0;">default</span>:
+        <span style="color: #a020f0;">return</span> 31;
     }
 }
 </pre>
@@ -1710,9 +1710,9 @@ The "return" value can be an expression.  Some examples:
 
 
 
-<pre class="example">return x + y - z;
+<pre class="src src-java"><span style="color: #a020f0;">return</span> x + y - z;
 
-return car.velocity(time);
+<span style="color: #a020f0;">return</span> car.velocity(time);
 </pre>
 
 </div>
@@ -1750,15 +1750,15 @@ integer in the range 2&hellip;n - 1.
 
 
 
-<pre class="example">public static boolean isPrime(int n) {
-  int divisor = 2;
-  while (divisor &lt; n) {         _ &lt;- "divisor &lt; n" is the _loop_condition_.
-    if (n % divisor == 0) {      |
-      return false;              | These lines inside the braces
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">isPrime</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">divisor</span> = 2;
+  <span style="color: #a020f0;">while</span> (divisor &lt; n) {         _ &lt;- <span style="color: #8b2252;">"divisor &lt; n"</span> is the _loop_condition_.
+    <span style="color: #a020f0;">if</span> (n % divisor == 0) {      |
+      <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">false</span>;              | These lines inside the braces
     }                            | are called the _loop_body_.  
     divisor++;                  _|
   }
-  return true;
+  <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">true</span>;
 }
 </pre>
 
@@ -1802,8 +1802,8 @@ following "while" loop.
 
 
 
-<pre class="example">for (initialize; condition; next) {      |    initialize;   
-  statements;                            |    while (condition) {
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (initialize; condition; next) {      |    initialize;   
+  statements;                            |    <span style="color: #a020f0;">while</span> (condition) {
 }                                        |      statements;
                                          |      next;
                                          |    }
@@ -1819,13 +1819,13 @@ variable over a fixed range of values.  isPrime can be rewritten thus:
 
 
 
-<pre class="example">public static boolean isPrime(int n) {
-  for (int divisor = 2; divisor &lt; n; divisor++) {    _
-    if (n % divisor == 0) {                           |
-      return false;                                   | Loop body.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">isPrime</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">divisor</span> = 2; divisor &lt; n; divisor++) {    _
+    <span style="color: #a020f0;">if</span> (n % divisor == 0) {                           |
+      <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">false</span>;                                   | Loop body.
     }                                                _|
   }
-  return true;
+  <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">true</span>;
 }
 </pre>
 
@@ -1838,11 +1838,11 @@ print all the prime numbers in the range 2&hellip;n.
 
 
 
-<pre class="example">public static void printPrimes(int n) {
-  int i;
-  for (i = 2; i &lt; n; i++) {        // ERROR!!!  Condition should be i &lt;= n.
-    if (isPrime(i)) {
-      System.out.print(" " + i);
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">printPrimes</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+  <span style="color: #a020f0;">for</span> (i = 2; i &lt; n; i++) {        <span style="color: #b22222;">// </span><span style="color: #b22222;">ERROR!!!  Condition should be i &lt;= n.</span>
+    <span style="color: #a020f0;">if</span> (isPrime(i)) {
+      System.out.print(<span style="color: #8b2252;">" "</span> + i);
     }
   }
 }
@@ -1882,7 +1882,7 @@ through some reference variable like "c" above.  We declare c thusly:
 
 
 
-<pre class="example">char[] c;           // Reference to an array (of any length) of characters.
+<pre class="src src-java"><span style="color: #228b22;">char</span>[] <span style="color: #a0522d;">c</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">Reference to an array (of any length) of characters.</span>
 </pre>
 
 
@@ -1892,7 +1892,7 @@ We can construct an array of four characters as follows.
 
 
 
-<pre class="example">c = new char[4];
+<pre class="src src-java">c = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">char</span>[4];
 </pre>
 
 
@@ -1902,10 +1902,10 @@ Now that we have an array object, we may fill in its values by indexing c.
 
 
 
-<pre class="example">c[0] = 'b';         // Store the character 'b' at index 0.
-c[1] = 'l';
-c[2] = 'u';
-c[3] = 'e';
+<pre class="src src-java">c[0] = <span style="color: #8b2252;">'b'</span>;         <span style="color: #b22222;">// </span><span style="color: #b22222;">Store the character 'b' at index 0.</span>
+c[1] = <span style="color: #8b2252;">'l'</span>;
+c[2] = <span style="color: #8b2252;">'u'</span>;
+c[3] = <span style="color: #8b2252;">'e'</span>;
 </pre>
 
 
@@ -1916,7 +1916,7 @@ address any index outside this range, we will trigger a run-time error.
 
 
 
-<pre class="example">c[4] = 's';         // Program stops with ArrayIndexOutOfBoundsException
+<pre class="src src-java">c[4] = <span style="color: #8b2252;">'s'</span>;         <span style="color: #b22222;">// </span><span style="color: #b22222;">Program stops with ArrayIndexOutOfBoundsException</span>
 </pre>
 
 
@@ -1952,11 +1952,11 @@ by a given divisor.  Here's the beginning of the method.
 
 
 
-<pre class="example">public static void printPrimes(int n) {
-    boolean[] prime = new boolean[n + 1];                  // Numbered 0...n.
-    int i;
-    for (i = 2; i &lt;= n; i++) {
-        prime[i] = true;                       // Prime until proven composite.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">printPrimes</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+    <span style="color: #228b22;">boolean</span>[] <span style="color: #a0522d;">prime</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">boolean</span>[n + 1];                  <span style="color: #b22222;">// </span><span style="color: #b22222;">Numbered 0...n.</span>
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+    <span style="color: #a020f0;">for</span> (i = 2; i &lt;= n; i++) {
+        prime[i] = <span style="color: #008b8b;">true</span>;                       <span style="color: #b22222;">// </span><span style="color: #b22222;">Prime until proven composite.</span>
     }
 </pre>
 
@@ -1974,10 +1974,10 @@ integers divisible by divisor, except divisor itself.
 
 
 
-<pre class="example">for (int divisor = 2; divisor * divisor &lt;= n; divisor++) {
-    if (prime[divisor]) {
-        for (i = 2 * divisor; i &lt;= n; i = i + divisor) {
-            prime[i] = false;                     // i is divisible by divisor.
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">divisor</span> = 2; divisor * divisor &lt;= n; divisor++) {
+    <span style="color: #a020f0;">if</span> (prime[divisor]) {
+        <span style="color: #a020f0;">for</span> (i = 2 * divisor; i &lt;= n; i = i + divisor) {
+            prime[i] = <span style="color: #008b8b;">false</span>;                     <span style="color: #b22222;">// </span><span style="color: #b22222;">i is divisible by divisor.</span>
         }
     }
 }
@@ -1994,9 +1994,9 @@ Finally, we print every integer from 2 to n that hasn't been marked non-prime.
 
 
 
-<pre class="example">for (i = 2; i &lt;= n; i++) {
-    if (prime[i]) {
-        System.out.print(" " + i);
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (i = 2; i &lt;= n; i++) {
+    <span style="color: #a020f0;">if</span> (prime[i]) {
+        System.out.print(<span style="color: #8b2252;">" "</span> + i);
     }
 }
 </pre>
@@ -2021,7 +2021,7 @@ Pascal's Triangle.
 
 
 
-<pre class="example">               1                  &lt;-- row 0
+<pre class="src src-texta">               1                  &lt;-- row 0
             1     1
          1     2     1
       1     3     3     1
@@ -2042,8 +2042,8 @@ rows of Pascal's Triangle.
 
 
 
-<pre class="example">public static int[][] pascalTriangle(int n) {
-    int[][] pt = new int[n][];
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">int</span>[][] <span style="color: #0000ff;">pascalTriangle</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+    <span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">pt</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[n][];
 </pre>
 
 
@@ -2056,15 +2056,15 @@ following loop.
 
 
 
-<pre class="example">for (int i = 0; i &lt; n; i++) {
-    pt[i] = new int[i + 1];                            // Construct row i.
-    pt[i][0] = 1;                              // Leftmost value of row i.
-    for (int j = 1; j &lt; i; j++) {
-        pt[i][j] = pt[i - 1][j - 1] + pt[i - 1][j];  // Sum 2 entries above.
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; n; i++) {
+    pt[i] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[i + 1];                            <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct row i.</span>
+    pt[i][0] = 1;                              <span style="color: #b22222;">// </span><span style="color: #b22222;">Leftmost value of row i.</span>
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = 1; j &lt; i; j++) {
+        pt[i][j] = pt[i - 1][j - 1] + pt[i - 1][j];  <span style="color: #b22222;">// </span><span style="color: #b22222;">Sum 2 entries above.</span>
     }
-    pt[i][i] = 1;                             // Rightmost value of row i.
+    pt[i][i] = 1;                             <span style="color: #b22222;">// </span><span style="color: #b22222;">Rightmost value of row i.</span>
 }
-return pt;
+<span style="color: #a020f0;">return</span> pt;
 </pre>
 
 
@@ -2111,7 +2111,7 @@ Java can construct all of the arrays for you at once.
 
 
 
-<pre class="example">int[][] table = new int[x][y];
+<pre class="src src-java"><span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">table</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[x][y];
 </pre>
 
 
@@ -2134,8 +2134,8 @@ initializers.
 
 
 
-<pre class="example">Human[] b = {amanda, rishi, new Human("Paolo")};
-int[][] c = {{7, 3, 2}, {x}, {8, 5, 0, 0}, {y + z, 3}};
+<pre class="src src-java"><span style="color: #228b22;">Human</span>[] <span style="color: #a0522d;">b</span> = {amanda, rishi, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>(<span style="color: #8b2252;">"Paolo"</span>)};
+<span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">c</span> = {{7, 3, 2}, {x}, {8, 5, 0, 0}, {y + z, 3}};
 </pre>
 
 
@@ -2149,8 +2149,8 @@ Sadly, you can only use this notation in a declaration.  You can't write
 
 
 
-<pre class="example">d = {3, 7};                  // Compile-time ERROR.
-f({1, 2, 3});                // Compile-time ERROR.
+<pre class="src src-java">d = {3, 7};                  <span style="color: #b22222;">// </span><span style="color: #b22222;">Compile-time ERROR.</span>
+f({1, 2, 3});                <span style="color: #b22222;">// </span><span style="color: #b22222;">Compile-time ERROR.</span>
 </pre>
 
 
@@ -2160,9 +2160,9 @@ Another subtlety of array declarations is the following.
 
 
 
-<pre class="example">int[] a, b, c;                           // a, b, and c all reference arrays.
-int a[], b, c[][];           // a is 1D; c is 2D; b is not a reference/array.
-int[] a, b[];            // a references a 1D array; b references a 2D array.
+<pre class="src src-java"><span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span>, <span style="color: #a0522d;">c</span>;                           <span style="color: #b22222;">// </span><span style="color: #b22222;">a, b, and c all reference arrays.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>[], <span style="color: #a0522d;">b</span>, <span style="color: #a0522d;">c</span>[][];           <span style="color: #b22222;">// </span><span style="color: #b22222;">a is 1D; c is 2D; b is not a reference/array.</span>
+<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span>[];            <span style="color: #b22222;">// </span><span style="color: #b22222;">a references a 1D array; b references a 2D array.</span>
 </pre>
 
 
@@ -2180,9 +2180,9 @@ objects.  You must construct the objects yourself.
 
 
 
-<pre class="example">String[] sentence = new String[3];
-sentence[0] = "Word";
-sentence[2] = new String();
+<pre class="src src-java"><span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">sentence</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>[3];
+sentence[0] = <span style="color: #8b2252;">"Word"</span>;
+sentence[2] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();
 </pre>
 
 
@@ -2204,9 +2204,9 @@ you by Java.  Consider the following program.
 
 
 
-<pre class="example">class Echo {
-  public static void main(String[] args) {
-    for (int i = 0; i &lt; args.length; i++) {
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Echo</span> {
+  <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; args.length; i++) {
       System.out.println(args[i]);
     }
   }
@@ -2246,10 +2246,10 @@ body has been executed.
 
 
 
-<pre class="example">do {
+<pre class="src src-java"><span style="color: #a020f0;">do</span> {
   s = keybd.readLine();
   process(s);
-} while (s.length() &gt; 0);               // Exit loop if s is an empty String.
+} <span style="color: #a020f0;">while</span> (s.length() &gt; 0);               <span style="color: #b22222;">// </span><span style="color: #b22222;">Exit loop if s is an empty String.</span>
 </pre>
 
 
@@ -2277,21 +2277,21 @@ right thing.  They behave identically.  Each has a different disadvantage.
 
 
 
-<pre class="example">  s = keybd.readLine();                  |  while (true) {       // Loop forever.
-  while (s.length() &gt; 0) {               |    s = keybd.readLine();
-    process(s);                          |    if (s.length() == 0) {      
-    s = keybd.readLine();                |      break;
+<pre class="src src-java">  s = keybd.readLine();                  |  <span style="color: #a020f0;">while</span> (<span style="color: #008b8b;">true</span>) {       <span style="color: #b22222;">// </span><span style="color: #b22222;">Loop forever.</span>
+  <span style="color: #a020f0;">while</span> (s.length() &gt; 0) {               |    s = keybd.readLine();
+    process(s);                          |    <span style="color: #a020f0;">if</span> (s.length() == 0) {      
+    s = keybd.readLine();                |      <span style="color: #a020f0;">break</span>;
   }                                      |    }                           
                                          |    process(s);
                                          |}
-/*Disadvantage:  The line "s = keybd..." |
-is repeated twice.  It's not really      |
-a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for 
-took 100 lines of code, the              | the reader, because the loop isn't 
-duplication would make the code harder   | aligned with its natural endpoint. 
-to maintain.  Why?  Because a 
-programmer improving the code might change one copy of the duplicated code 
-without noticing the need to change the other to match.*/
+<span style="color: #b22222;">/*</span><span style="color: #b22222;">Disadvantage:  The line "s = keybd..." |</span>
+<span style="color: #b22222;">is repeated twice.  It's not really      |</span>
+<span style="color: #b22222;">a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for </span>
+<span style="color: #b22222;">took 100 lines of code, the              | the reader, because the loop isn't </span>
+<span style="color: #b22222;">duplication would make the code harder   | aligned with its natural endpoint. </span>
+<span style="color: #b22222;">to maintain.  Why?  Because a </span>
+<span style="color: #b22222;">programmer improving the code might change one copy of the duplicated code </span>
+<span style="color: #b22222;">without noticing the need to change the other to match.*/</span>
 </pre>
 
 
@@ -2305,14 +2305,14 @@ result is longer and harder to read.
 
 
 
-<pre class="example">for (int i = 0; i &lt; 10; i++) {       |  int i = 0;
-  s = keybd.readLine();              |  do {
-  if (s.length() == 0) {             |    s = keybd.readLine();       
-    break;                           |    if (s.length() &gt; 0) {             
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; 10; i++) {       |  <span style="color: #228b22;">int</span> i = 0;
+  s = keybd.readLine();              |  <span style="color: #a020f0;">do</span> {
+  <span style="color: #a020f0;">if</span> (s.length() == 0) {             |    s = keybd.readLine();       
+    <span style="color: #a020f0;">break</span>;                           |    <span style="color: #a020f0;">if</span> (s.length() &gt; 0) {             
   }                                  |      process(s);                      
   process(s);                        |    }
 }                                    |    i++;
-                                     |  } while ((i &lt; 10) &amp;&amp;
+                                     |  } <span style="color: #a020f0;">while</span> ((i &lt; 10) &amp;&amp;
                                      |           (s.length() &gt; 0));
 </pre>
 
@@ -2363,10 +2363,10 @@ difference between the following two loops?
 
 
 
-<pre class="example">int i = 0;                           | for (int i = 0; i &lt; 10; i++) {
-while (i &lt; 10) {                     |   if (condition(i)) {
-  if (condition(i)) {                |     continue;
-    continue;                        |   }
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0;                           | <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; 10; i++) {
+<span style="color: #a020f0;">while</span> (i &lt; 10) {                     |   <span style="color: #a020f0;">if</span> (condition(i)) {
+  <span style="color: #a020f0;">if</span> (condition(i)) {                |     <span style="color: #a020f0;">continue</span>;
+    <span style="color: #a020f0;">continue</span>;                        |   }
   }                                  |   call(i);
   call(i);                           | }
   i++;                               |
@@ -2397,13 +2397,13 @@ your code, you should probably turn it into a "final" constant.
 
 
 
-<pre class="example">BAD:     if (month == 2) {
+<pre class="src src-java"><span style="color: #008b8b;">BAD</span>:     <span style="color: #a020f0;">if</span> (month == 2) {
 
-GOOD:    public final static int FEBRUARY = 2;    // Usually near top of class.
+<span style="color: #008b8b;">GOOD</span>:    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">FEBRUARY</span> = 2;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Usually near top of class.</span>
 
          ...
 
-         if (month == FEBRUARY) {
+         <span style="color: #a020f0;">if</span> (month == FEBRUARY) {
 </pre>
 
 
@@ -2428,8 +2428,8 @@ You can declare local parameters "final" to prevent them from being changed.
 
 
 
-<pre class="example">void myMethod(final int x) {
-  x = 3;                             // Compiler ERROR.  Don't mess with X's!
+<pre class="src src-java"><span style="color: #228b22;">void</span> <span style="color: #0000ff;">myMethod</span>(<span style="color: #a020f0;">final</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+  x = 3;                             <span style="color: #b22222;">// </span><span style="color: #b22222;">Compiler ERROR.  Don't mess with X's!</span>
 }
 </pre>
 
@@ -2444,8 +2444,8 @@ return the same value.
 
 
 
-<pre class="example">class Bob {
-  public final long creationTime = System.currentTimeMillis();
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Bob</span> {
+  <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">long</span> <span style="color: #a0522d;">creationTime</span> = System.currentTimeMillis();
 }
 </pre>
 
@@ -2522,26 +2522,26 @@ and move all the ints from the old array to the new one.
 
 
 
-<pre class="example">public class AList {
-  int a[];
-  int lastItem;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">AList</span> {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>[];
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">lastItem</span>;
 
-  public AList() {
-    a = new int[10];                           // The number "10" is arbitrary.
+  <span style="color: #a020f0;">public</span> AList() {
+    a = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[10];                           <span style="color: #b22222;">// </span><span style="color: #b22222;">The number "10" is arbitrary.</span>
     lastItem = -1;
   }
 
-  public void insertItem(int newItem, int location) {
-    int i;
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertItem</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">newItem</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">location</span>) {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
 
-    if (lastItem + 1 == a.length) {               // No room left in the array?
-      int b[] = new int[2 * a.length];  // Allocate a new array, twice as long.
-      for (i = 0; i &lt;= lastItem; i++) {      // Copy items to the bigger array.
+    <span style="color: #a020f0;">if</span> (lastItem + 1 == a.length) {               <span style="color: #b22222;">// </span><span style="color: #b22222;">No room left in the array?</span>
+      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">b</span>[] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[2 * a.length];  <span style="color: #b22222;">// </span><span style="color: #b22222;">Allocate a new array, twice as long.</span>
+      <span style="color: #a020f0;">for</span> (i = 0; i &lt;= lastItem; i++) {      <span style="color: #b22222;">// </span><span style="color: #b22222;">Copy items to the bigger array.</span>
         b[i] = a[i];
       }
-      a = b;                   // Replace the too-small array with the new one.
+      a = b;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Replace the too-small array with the new one.</span>
     }
-    for (i = lastItem; i &gt;= location; i--) {       // Shift items to the right.
+    <span style="color: #a020f0;">for</span> (i = lastItem; i &gt;= location; i--) {       <span style="color: #b22222;">// </span><span style="color: #b22222;">Shift items to the right.</span>
       a[i + 1] = a[i];
     }
     a[location] = newItem;
@@ -2567,10 +2567,10 @@ to "car" and "cdr".  However, our node is an explicitly defined object.
 
 
 
-<pre class="example">public class ListNode {          // ListNode is a recursive type
-  public int item;
-  public ListNode next;          // Here we're using ListNode before
-}                                //   we've finished declaring it.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">ListNode</span> {          <span style="color: #b22222;">// </span><span style="color: #b22222;">ListNode is a recursive type</span>
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">item</span>;
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">next</span>;          <span style="color: #b22222;">// </span><span style="color: #b22222;">Here we're using ListNode before</span>
+}                                <span style="color: #b22222;">//   </span><span style="color: #b22222;">we've finished declaring it.</span>
 </pre>
 
 
@@ -2580,7 +2580,7 @@ Let's make some ListNodes.
 
 
 
-<pre class="example">ListNode l1 = new ListNode(), l2 = new ListNode(), l3 = new ListNode();
+<pre class="src src-java"><span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">l1</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(), <span style="color: #a0522d;">l2</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(), <span style="color: #a0522d;">l3</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>();
 l1.item = 7;
 l2.item = 0;
 l3.item = 6;
@@ -2597,7 +2597,7 @@ Now let's link them together.
 
 
 
-<pre class="example">l1.next = l2;
+<pre class="src src-java">l1.next = l2;
 l2.next = l3;
 </pre>
 
@@ -2609,7 +2609,7 @@ In Java, this is called "null".
 
 
 
-<pre class="example">l3.next = null;
+<pre class="src src-java">l3.next = <span style="color: #008b8b;">null</span>;
 </pre>
 
 
@@ -2624,13 +2624,13 @@ To simplify programming, let's add some constructors to the ListNode class.
 
 
 
-<pre class="example">public ListNode(int i, ListNode n) {
+<pre class="src src-java"><span style="color: #a020f0;">public</span> ListNode(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>, <span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">n</span>) {
   item = i;
   next = n;
 }
 
-public ListNode(int i) {
-  this(i, null);
+<span style="color: #a020f0;">public</span> ListNode(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>) {
+  <span style="color: #a020f0;">this</span>(i, <span style="color: #008b8b;">null</span>);
 }
 </pre>
 
@@ -2641,7 +2641,7 @@ These constructors allow us to emulate Scheme's "cons" operation.
 
 
 
-<pre class="example">ListNode l1 = new ListNode(7, new ListNode(0, new ListNode(6)));
+<pre class="src src-java"><span style="color: #228b22;">ListNode</span> <span style="color: #a0522d;">l1</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(7, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(0, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(6)));
 </pre>
 
 </div>
@@ -2664,8 +2664,8 @@ The following method inserts a new item into the list immediately after "this".
 
 
 
-<pre class="example">public void insertAfter(int item) {
-  next = new ListNode(item, next);
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertAfter</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">item</span>) {
+  next = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ListNode</span>(item, next);
 }
 
 l2.insertAfter(3);
@@ -2706,9 +2706,9 @@ declaring a reference of type Object.
 
 
 
-<pre class="example">public class SListNode {
-  public Object item;
-  public SListNode next;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SListNode</span> {
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>;
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">next</span>;
 }
 </pre>
 
@@ -2736,7 +2736,7 @@ There are two problems with SListNodes.
 </p>
 
 
-<pre class="example">x = new SListNode("soap", x);
+<pre class="src src-java">x = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(<span style="color: #8b2252;">"soap"</span>, x);
 </pre>
 
 <p>
@@ -2758,17 +2758,17 @@ lists in the SList class, rather than the SListNode class.
 
 
 
-<pre class="example">public class SList {
-  private SListNode head;             // First node in list.
-  private int size;                   // Number of items in list.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #a020f0;">private</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;             <span style="color: #b22222;">// </span><span style="color: #b22222;">First node in list.</span>
+  <span style="color: #a020f0;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Number of items in list.</span>
 
-  public SList() {                    // Here's how to represent an empty list.
-    head = null;
+  <span style="color: #a020f0;">public</span> SList() {                    <span style="color: #b22222;">// </span><span style="color: #b22222;">Here's how to represent an empty list.</span>
+    head = <span style="color: #008b8b;">null</span>;
     size = 0;
   }
 
-  public void insertFront(Object item) {
-    head = new SListNode(item, head);
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>) {
+    head = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(item, head);
     size++;
   }
 }
@@ -2837,15 +2837,15 @@ code of the Date class by fiddling with the internals of a Date object.
 
 
 
-<pre class="example">public class Date {                  |  public class EvilTamperer {
-  private int day;                   |    public void tamper() {
-  private int month;                 |      Date d = new Date(1, 1, 2006);
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">Date</span> {                  |  <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> EvilTamperer {
+  <span style="color: #a020f0;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">day</span>;                   |    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> tamper() {
+  <span style="color: #a020f0;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>;                 |      Date d = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Date</span>(1, 1, 2006);
                                      |
-  private void setMonth(int m) {     |      d.day = 100;    // Foiled!!
-    month = m;                       |      d.setMonth(0);  // Foiled again!!
+  <span style="color: #a020f0;">private</span> <span style="color: #228b22;">void</span> setMonth(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">m</span>) {     |      d.day = 100;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Foiled!!</span>
+    month = m;                       |      d.setMonth(0);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Foiled again!!</span>
   }                                  |    }
                                      |  }
-  public Date(int month, int day) {  |
+  <span style="color: #a020f0;">public</span> Date(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">month</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">day</span>) {  |
     [Implementation with             |
      error-checking code here.]      |
   }
@@ -2955,10 +2955,10 @@ previous node, as well as the next node.
 
 
 
-<pre class="example">class DListNode {                    |  class DList {
-  Object item;                       |    private DListNode head;
-  DListNode next;                    |    private DListNode tail;
-  DListNode prev;                    |  }
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">DListNode</span> {                    |  <span style="color: #a020f0;">class</span> DList {
+  <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>;                       |    <span style="color: #a020f0;">private</span> DListNode head;
+  <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">next</span>;                    |    <span style="color: #a020f0;">private</span> DListNode tail;
+  <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">prev</span>;                    |  }
 }                                    |
 </pre>
 
@@ -2977,7 +2977,7 @@ DList.
 
 
 
-<pre class="example">tail.prev.next = null;
+<pre class="src src-java">tail.prev.next = <span style="color: #008b8b;">null</span>;
 tail = tail.prev;
 </pre>
 
@@ -2998,9 +2998,9 @@ pointer points to the sentinel.
 
 
 
-<pre class="example">class DList {
-  private DListNode head;
-  private int size;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">DList</span> {
+  <span style="color: #a020f0;">private</span> <span style="color: #228b22;">DListNode</span> <span style="color: #a0522d;">head</span>;
+  <span style="color: #a020f0;">private</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 }
 </pre>
 
@@ -3040,10 +3040,10 @@ Here's an example of a method that removes the last item from a DList.
 
 
 
-<pre class="example">public void removeBack() {
-  if (head.prev != head) {        // Do nothing if the DList is empty.
-    head.prev = head.prev.prev;   // Sentinel now points to second-last item.
-    head.prev.next = head;        // Second-last item now points to sentinel.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">removeBack</span>() {
+  <span style="color: #a020f0;">if</span> (head.prev != head) {        <span style="color: #b22222;">// </span><span style="color: #b22222;">Do nothing if the DList is empty.</span>
+    head.prev = head.prev.prev;   <span style="color: #b22222;">// </span><span style="color: #b22222;">Sentinel now points to second-last item.</span>
+    head.prev.next = head;        <span style="color: #b22222;">// </span><span style="color: #b22222;">Second-last item now points to sentinel.</span>
     size--;
   }
 }
@@ -3096,7 +3096,7 @@ order in which the stack frames were created.
 </p>
 
 <p>
-<img src="ditaa-images/TEMP_1_560c5a912cfc17dcfe5375905233a268a67417e8.png"  alt="ditaa-images/TEMP_1_560c5a912cfc17dcfe5375905233a268a67417e8.png" />
+<img src="ditaa-images/TEMP_1_79b96362c6f5a001d95e9b6c17990b88bda4ba98.png"  alt="ditaa-images/TEMP_1_79b96362c6f5a001d95e9b6c17990b88bda4ba98.png" />
 </p>
 
 <p>
@@ -3134,7 +3134,7 @@ effect on the value of the calling method's variable a:
 
 
 
-<pre class="example">method:                            | STACK (just before the method returns)
+<pre class="src src-text">method:                            | STACK (just before the method returns)
                                    |
   static void doNothing(int x) {   |      -----
     x = 2;                         |    x | 2 |
@@ -3161,7 +3161,7 @@ object that is visible to the calling method:
 
 
 
-<pre class="example">method:                            | STACK              | HEAP
+<pre class="src src-text">method:                            | STACK              | HEAP
                                    |                set3|
 class IntBox {                     |      -----         |
   public int i;                    |   ib | .-+----------------\
@@ -3190,7 +3190,7 @@ executed the example above, so b is set up.)
 </p>
 
 
-<pre class="example">method:                            | STACK              | HEAP
+<pre class="src src-text">method:                            | STACK              | HEAP
                                    |             badSet4|
 class IntBox {                     |      -----         |    ------
   static void badSet4(IntBox ib) { |   ib | .-+-------------&gt;|i |4|
@@ -3251,24 +3251,24 @@ The recursion has two base cases.
 
 
 
-<pre class="example">public static final int FAILURE = -1;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">FAILURE</span> = -1;
 
-private static int bsearch(int[] i, int left, int right, int findMe) {
-    if (left &gt; right) {
-        return FAILURE;                   // Base case 2:  subarray of size zero.
+<span style="color: #a020f0;">private</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">bsearch</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">i</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">left</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">right</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">findMe</span>) {
+    <span style="color: #a020f0;">if</span> (left &gt; right) {
+        <span style="color: #a020f0;">return</span> FAILURE;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Base case 2:  subarray of size zero.</span>
     }
-    int mid = (left + right) / 2;            // Halfway between left and right.
-    if (findMe == i[mid]) {
-        return mid;                                     // Base case 1:  success!
-    } else if (findMe &lt; i[mid]) {
-        return bsearch(i, left, mid - 1, findMe);            // Search left half.
-    } else {
-        return bsearch(i, mid + 1, right, findMe);          // Search right half.
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">mid</span> = (left + right) / 2;            <span style="color: #b22222;">// </span><span style="color: #b22222;">Halfway between left and right.</span>
+    <span style="color: #a020f0;">if</span> (findMe == i[mid]) {
+        <span style="color: #a020f0;">return</span> mid;                                     <span style="color: #b22222;">// </span><span style="color: #b22222;">Base case 1:  success!</span>
+    } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (findMe &lt; i[mid]) {
+        <span style="color: #a020f0;">return</span> bsearch(i, left, mid - 1, findMe);            <span style="color: #b22222;">// </span><span style="color: #b22222;">Search left half.</span>
+    } <span style="color: #a020f0;">else</span> {
+        <span style="color: #a020f0;">return</span> bsearch(i, mid + 1, right, findMe);          <span style="color: #b22222;">// </span><span style="color: #b22222;">Search right half.</span>
     }
 }
 
-public static int bsearch(int[] i, int findMe) {
-    return bsearch(i, 0, i.length - 1, findMe);
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">bsearch</span>(<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">i</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">findMe</span>) {
+    <span style="color: #a020f0;">return</span> bsearch(i, 0, i.length - 1, findMe);
 }
 </pre>
 
@@ -3283,7 +3283,7 @@ Sections 4.1.2 &amp; 4.1.7.
 </p>
 
 <p>
-<img src="ditaa-images/TEMP_3_10aefea28e93286eaeaa65591d8281f1efe53a08.png"  alt="ditaa-images/TEMP_3_10aefea28e93286eaeaa65591d8281f1efe53a08.png" />
+<img src="ditaa-images/TEMP_3_8a3ff1957e48efafbe2b593085f36b159ead98a7.png"  alt="ditaa-images/TEMP_3_8a3ff1957e48efafbe2b593085f36b159ead98a7.png" />
 </p>
 
 <p>
@@ -3381,9 +3381,9 @@ inherits the fields and methods of the original SList class.
 
 
 
-<pre class="example">public class TailList extends SList {
-  // The "head" and "size" fields are inherited from SList.
-  private SListNode tail;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">TailList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">The "head" and "size" fields are inherited from SList.</span>
+  <span style="color: #a020f0;">private</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">tail</span>;
 </pre>
 
 
@@ -3414,8 +3414,8 @@ TailList, which will <span style="text-decoration:underline;">override</span> SL
 
 
 
-<pre class="example">public void insertEnd(Object obj) {
-    // Your solution to Lab 3 goes here.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertEnd</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">obj</span>) {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Your solution to Lab 3 goes here.</span>
 }
 </pre>
 
@@ -3441,9 +3441,9 @@ to TailList.  It can also modify the work done by SList() if appropriate.
 
 
 
-<pre class="example">public TailList() {
-  // SList() constructor called automatically; sets size = 0, head = null
-  tail = null;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> TailList() {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">SList() constructor called automatically; sets size = 0, head = null</span>
+  tail = <span style="color: #008b8b;">null</span>;
 }
 </pre>
 
@@ -3457,9 +3457,9 @@ superclass by using the "super" keyword.
 
 
 
-<pre class="example">public TailList(int x) {
-    super(x);
-    tail = null;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> TailList(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+    <span style="color: #a020f0;">super</span>(x);
+    tail = <span style="color: #008b8b;">null</span>;
 }
 </pre>
 
@@ -3487,10 +3487,10 @@ adjust the tail reference.
 
 
 
-<pre class="example">public void insertFront(Object obj) {
-    super.insertFront(obj);             // Insert at the front of the list.
-    if (size == 1) {                    // If necessary,
-        tail = head;                    //   adjust the tail reference.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">obj</span>) {
+    <span style="color: #a020f0;">super</span>.insertFront(obj);             <span style="color: #b22222;">// </span><span style="color: #b22222;">Insert at the front of the list.</span>
+    <span style="color: #a020f0;">if</span> (size == 1) {                    <span style="color: #b22222;">// </span><span style="color: #b22222;">If necessary,</span>
+        tail = head;                    <span style="color: #b22222;">//   </span><span style="color: #b22222;">adjust the tail reference.</span>
     }
 }
 }
@@ -3516,9 +3516,9 @@ not "private".
 
 
 
-<pre class="example">public class SList {
-  protected SListNode head;
-  protected int size;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #a020f0;">protected</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
+  <span style="color: #a020f0;">protected</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 
   [Method definitions.]
 }
@@ -3559,7 +3559,7 @@ Object is at the top of every class hierarchy.
 
 
 
-<pre class="example">      Object
+<pre class="src src-text">      Object
       /    \
   String  Worker
          /      \
@@ -3593,8 +3593,8 @@ SList is a TailList.  It merits repeating:
 
 
 
-<pre class="example">SList s = new TailList();         // Groovy.
-TailList t = new SList();         // COMPILE-TIME ERROR.
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+<span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -3620,10 +3620,10 @@ When we invoke an overridden method, Java calls the method for the object's
 
 
 
-<pre class="example">SList s = new TailList();
-s.insertEnd(obj);                 // Calls TailList.insertEnd()
-s = new SList();
-s.insertEnd(obj);                 // Calls SList.insertEnd()
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+s.insertEnd(obj);                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Calls TailList.insertEnd()</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+s.insertEnd(obj);                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Calls SList.insertEnd()</span>
 </pre>
 
 
@@ -3661,10 +3661,10 @@ type SList that references a TailList.
 
 
 
-<pre class="example">TailList t = new TailList();
-t.eatTail();                      // Groovy.
-SList s = new TailList();         // Groovy--every TailList is an SList.
-s.eatTail();                      // COMPILE-TIME ERROR.
+<pre class="src src-java"><span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+t.eatTail();                      <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+<span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy--every TailList is an SList.</span>
+s.eatTail();                      <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -3685,13 +3685,13 @@ another.
 
 
 
-<pre class="example">SList s;
-TailList t = new TailList();
-s = t;                            // Groovy.
-t = s;                            // COMPILE-TIME ERROR.
-t = (TailList) s;                 // Groovy.
-s = new SList();
-t = (TailList) s;                 // RUN-TIME ERROR:  ClassCastException.
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span>;
+<span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+s = t;                            <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+t = s;                            <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
+t = (<span style="color: #228b22;">TailList</span>) s;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+t = (<span style="color: #228b22;">TailList</span>) s;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">RUN-TIME ERROR:  ClassCastException.</span>
 </pre>
 
 
@@ -3715,8 +3715,8 @@ Suppose we have a list of Integers.  Recall that nth() returns type Object.
 
 
 
-<pre class="example">int x = t.nth(1).intValue();                // COMPILE-TIME ERROR.
-int y = ( (Integer) t.nth(1) ).intValue();  // Groovy.
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = t.nth(1).intValue();                <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">y</span> = ( (<span style="color: #228b22;">Integer</span>) t.nth(1) ).intValue();  <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
 </pre>
 
 
@@ -3726,7 +3726,7 @@ Some methods are defined on every Object, though.
 
 
 
-<pre class="example">String z = t.nth(1).toString();             // Groovy.
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">z</span> = t.nth(1).toString();             <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
 </pre>
 
 
@@ -3737,8 +3737,8 @@ a specific class.  WARNING:  The "o" in "instanceof" is not capitalized.
 
 
 
-<pre class="example">if (s instanceof TailList) {
-  t = (TailList) s;
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (s <span style="color: #a020f0;">instanceof</span> TailList) {
+  t = (<span style="color: #228b22;">TailList</span>) s;
 }
 </pre>
 
@@ -3817,27 +3817,27 @@ returns true only if the two lists represent identical sequences of items.
 
 
 
-<pre class="example">public class SList {
-    public boolean equals(Object other) {
-        if (!(other instanceof SList)) {           // Reject non-SLists.
-            return false;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">equals</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">other</span>) {
+        <span style="color: #a020f0;">if</span> (!(other <span style="color: #a020f0;">instanceof</span> SList)) {           <span style="color: #b22222;">// </span><span style="color: #b22222;">Reject non-SLists.</span>
+            <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">false</span>;
         }
 
-        SList o = (SList) other;
-        if (size != o.size) {
-            return false;
+        <span style="color: #228b22;">SList</span> <span style="color: #a0522d;">o</span> = (<span style="color: #228b22;">SList</span>) other;
+        <span style="color: #a020f0;">if</span> (size != o.size) {
+            <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">false</span>;
         }
 
-        SListNode n1 = head;
-        SListNode n2 = o.head;
-        while (n1 != null) {
-            if (!n1.item.equals(n2.item)) {          // Deep equality of the items.
-                return false;
+        <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n1</span> = head;
+        <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n2</span> = o.head;
+        <span style="color: #a020f0;">while</span> (n1 != <span style="color: #008b8b;">null</span>) {
+            <span style="color: #a020f0;">if</span> (!n1.item.equals(n2.item)) {          <span style="color: #b22222;">// </span><span style="color: #b22222;">Deep equality of the items.</span>
+                <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">false</span>;
             }
             n1 = n1.next;
             n2 = n2.next;
         }
-        return true;
+        <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">true</span>;
     }
 }
 </pre>
@@ -3857,7 +3857,7 @@ will compile but it will NOT override.  That means the code
 
 
 
-<pre class="example">Object s = new SList();
+<pre class="src src-java"><span style="color: #228b22;">Object</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
 s.equals(s);
 </pre>
 
@@ -3884,10 +3884,10 @@ the same.
 
 
 
-<pre class="example">int[] array = {7, 12, 3, 8, 4, 9};
+<pre class="src src-java"><span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">array</span> = {7, 12, 3, 8, 4, 9};
 
-for (int i : array) {
-  System.out.print(i + " ");
+<span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> : array) {
+  System.out.print(i + <span style="color: #8b2252;">" "</span>);
 }
 </pre>
 
@@ -3899,8 +3899,8 @@ array element in turn.  You can iterate over arrays of any type this way.
 
 
 
-<pre class="example">String concat = "";
-for (String s : stringArray) {
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">concat</span> = <span style="color: #8b2252;">""</span>;
+<span style="color: #a020f0;">for</span> (<span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span> : stringArray) {
   concat = concat + s;
 }
 </pre>
@@ -3913,8 +3913,8 @@ compiler barfs if you try
 
 
 
-<pre class="example">int i;
-for (i : array) { ... }
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+<span style="color: #a020f0;">for</span> (i : array) { ... }
 </pre>
 
 
@@ -4060,8 +4060,8 @@ own choosing.
 
 
 
-<pre class="example">assert x == 3;
-assert list.size == list.countLength() : "wrong SList size:  " + list.size;
+<pre class="src src-java"><span style="color: #228b22;">assert</span> <span style="color: #a0522d;">x</span> == 3;
+<span style="color: #228b22;">assert</span> list.<span style="color: #a0522d;">size</span> == list.countLength() : <span style="color: #8b2252;">"wrong SList size:  "</span> + list.size;
 </pre>
 
 
@@ -4145,14 +4145,14 @@ than the size of the code being tested.
 
 
 
-<pre class="example">public abstract class List {
-  protected int size;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">abstract</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">List</span> {
+  <span style="color: #a020f0;">protected</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 
-  public int length() {
-    return size;
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">length</span>() {
+    <span style="color: #a020f0;">return</span> size;
   }
 
-  public abstract void insertFront(Object item);
+  <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">abstract</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>);
 }
 </pre>
 
@@ -4164,8 +4164,8 @@ variable of type List, but you can't create a List object.
 
 
 
-<pre class="example">List myList;                 // Right on.
-myList = new List();         // COMPILE-TIME ERROR.
+<pre class="src src-java"><span style="color: #228b22;">List</span> <span style="color: #a0522d;">myList</span>;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
+myList = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">List</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -4184,14 +4184,14 @@ for the insertFront method.
 
 
 
-<pre class="example">public class SList extends List {
-  // inherits the "size" field.
-  protected SListNode head;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">List</span> {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">inherits the "size" field.</span>
+  <span style="color: #a020f0;">protected</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
 
-  // inherits the "length" method.
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">inherits the "length" method.</span>
 
-  public void insertFront(Object item) {
-    head = new SListNode(item, head);
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>) {
+    head = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>(item, head);
     size++;
   }  
 }
@@ -4211,8 +4211,8 @@ are Lists, we can assign an SList to a List variable.
 
 
 
-<pre class="example">List myList = new SList();   // Right on.
-myList.insertFront(obj);     // Right on.
+<pre class="src src-java"><span style="color: #228b22;">List</span> <span style="color: #a0522d;">myList</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();   <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
+myList.insertFront(obj);     <span style="color: #b22222;">// </span><span style="color: #b22222;">Right on.</span>
 </pre>
 
 
@@ -4222,7 +4222,7 @@ What are abstract classes good for?  It's all about the interface.
 
 
 
-<pre class="example">----------------------------------------------------
+<pre class="src src-text">----------------------------------------------------
 |  An abstract class lets you define an interface  |
 |    - for multiple classes to share,              |
 |    - without defining any of them yet.           |
@@ -4241,7 +4241,7 @@ kind of List.
 
 
 
-<pre class="example">public void listSort(List l) { ... }
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">listSort</span>(<span style="color: #228b22;">List</span> <span style="color: #a0522d;">l</span>) { ... }
 </pre>
 
 
@@ -4302,26 +4302,26 @@ A Java interface is just like an abstract class, except for two differences.
 
 
 
-<pre class="example">public interface Nukeable {               // In Nukeable.java
-  public void nuke();
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Nukeable</span> {               <span style="color: #b22222;">// </span><span style="color: #b22222;">In Nukeable.java</span>
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">nuke</span>();
 }
 
-public interface Comparable {             // In java.lang
-  public int compareTo(Object o);
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Comparable</span> {             <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.lang</span>
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">compareTo</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span>);
 }
 
-public class SList extends List implements Nukeable, Comparable {
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">List</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Nukeable</span>, <span style="color: #228b22;">Comparable</span> {
   [Previous stuff here.]
 
-  public void nuke() {
-    head = null;
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> nuke() {
+    head = <span style="color: #008b8b;">null</span>;
     size = 0;
   }
 
-  public int compareTo(Object o) {
-    [Returns a number &lt; 0 if this &lt; o,
-                        0 if this.equals(o), 
-                      &gt; 0 if this &gt; o.]
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">compareTo</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span>) {
+    [Returns a number &lt; 0 <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span> &lt; o,
+                        0 <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span>.equals(o), 
+                      &gt; 0 <span style="color: #a020f0;">if</span> <span style="color: #a020f0;">this</span> &gt; o.]
   }
 }
 </pre>
@@ -4356,8 +4356,8 @@ of these types.
 
 
 
-<pre class="example">Nukeable n = new SList();
-Comparable c = (Comparable) n;
+<pre class="src src-java"><span style="color: #228b22;">Nukeable</span> <span style="color: #a0522d;">n</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+<span style="color: #228b22;">Comparable</span> <span style="color: #a0522d;">c</span> = (<span style="color: #228b22;">Comparable</span>) n;
 </pre>
 
 
@@ -4373,7 +4373,7 @@ of Comparable objects.
 
 
 
-<pre class="example">public static void sort(Object[] a)       // In java.util
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">sort</span>(<span style="color: #228b22;">Object</span>[] <span style="color: #a0522d;">a</span>)       <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.util</span>
 </pre>
 
 
@@ -4388,7 +4388,7 @@ multiple superinterfaces, so we can group several interfaces into one.
 
 
 
-<pre class="example">public interface NukeAndCompare extends Nukeable, Comparable { }
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">NukeAndCompare</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Nukeable</span>, <span style="color: #228b22;">Comparable</span> { }
 </pre>
 
 
@@ -4461,7 +4461,7 @@ Here's an example of all three in one.
 
 
 
-<pre class="example">java.lang.System.out.println("My fingers are tired.");
+<pre class="src src-java"><span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">lang</span>.System.out.println(<span style="color: #8b2252;">"My fingers are tired."</span>);
 </pre>
 
 
@@ -4472,8 +4472,8 @@ all the time.
 
 
 
-<pre class="example">import java.io.File;  // Can now refer to File class, not just java.io.File.
-import java.io.*;     // Can now refer to everything in java.io.
+<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">io</span>.<span style="color: #228b22;">File</span>;  <span style="color: #b22222;">// </span><span style="color: #b22222;">Can now refer to File class, not just java.io.File.</span>
+<span style="color: #a020f0;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">io</span>.*;     <span style="color: #b22222;">// </span><span style="color: #b22222;">Can now refer to everything in java.io.</span>
 </pre>
 
 
@@ -4486,7 +4486,7 @@ names explicitly throughout your code.
 
 
 
-<pre class="example">java.awt.Frame.add(photo.Frame.canvas);
+<pre class="src src-java"><span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">awt</span>.Frame.add(<span style="color: #008b8b;">photo</span>.Frame.canvas);
 </pre>
 
 
@@ -4500,7 +4500,7 @@ You can specify a classpath on the command line, as when you type
 
 
 
-<pre class="example">javac -cp ".:~jrs/classes:libraries.jar" *.java
+<pre class="src src-java">javac -cp <span style="color: #8b2252;">".:~jrs/classes:libraries.jar"</span> *.java
 </pre>
 
 
@@ -4526,13 +4526,13 @@ in which the files appear.
 
 
 
-<pre class="example">/* list/SList.java */                |  /* list/SListNode.java */
+<pre class="src src-java"><span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SList.java */</span>                |  <span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SListNode.java */</span>
                                      |
-package list;                        |  package list;
+<span style="color: #a020f0;">package</span> <span style="color: #008b8b;">list</span>;                        |  <span style="color: #a020f0;">package</span> <span style="color: #008b8b;">list</span>;
                                      |
-public class SList {                 |  class SListNode {
-  SListNode head;                    |    Object item;
-  int size;                          |    SListNode next;
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> SList {                 |  <span style="color: #a020f0;">class</span> SListNode {
+  <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;                    |    Object item;
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;                          |    SListNode next;
 }                                    |  }
 </pre>
 
@@ -4580,8 +4580,8 @@ done from outside the package, using the following syntax:
 
 
 
-<pre class="example">javac -g list/SList.java
-java list.SList
+<pre class="src src-java">javac -g list/SList.java
+java <span style="color: #008b8b;">list</span>.SList
 </pre>
 
 
@@ -4620,10 +4620,10 @@ objects.
 
 
 
-<pre class="example">public interface Iterator {
-  boolean hasNext();
-  Object next();
-  void remove();                          // The remove() method is optional.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Iterator</span> {
+  <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">hasNext</span>();
+  <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">next</span>();
+  <span style="color: #228b22;">void</span> <span style="color: #0000ff;">remove</span>();                          <span style="color: #b22222;">// </span><span style="color: #b22222;">The remove() method is optional.</span>
 }
 </pre>
 
@@ -4666,8 +4666,8 @@ java.util called "Iterable".
 
 
 
-<pre class="example">public interface Iterable {
-  Iterator iterator();
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Iterable</span> {
+  <span style="color: #228b22;">Iterator</span> <span style="color: #0000ff;">iterator</span>();
 }
 </pre>
 
@@ -4687,14 +4687,14 @@ the items in an SList l.
 
 
 
-<pre class="example">  for (Object o : l) {
+<pre class="src src-java">  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span> : l) {
     System.out.println(o);
   }
 
-This loop is equivalent to
+This loop is <span style="color: #228b22;">equivalent</span> <span style="color: #0000ff;">to</span>
 
-  for (Iterator i = l.iterator(); i.hasNext(); ) {
-    Object o = i.next();
+  <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">Iterator</span> <span style="color: #a0522d;">i</span> = l.iterator(); i.hasNext(); ) {
+    <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">o</span> = i.next();
     System.out.println(o);
   }
 </pre>
@@ -4708,49 +4708,49 @@ package.
 
 
 
-<pre class="example">/* list/SListIterator.java */
+<pre class="src src-java"><span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SListIterator.java */</span>
 
-package list;
-import java.util.*;
+<span style="color: #a020f0;">package</span> <span style="color: #228b22;">list</span>;
+<span style="color: #a020f0;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">util</span>.*;
 
-public class SListIterator implements Iterator {
-  SListNode n;
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SListIterator</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Iterator</span> {
+  <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">n</span>;
 
-  public SListIterator(SList l) {
+  <span style="color: #a020f0;">public</span> SListIterator(<span style="color: #228b22;">SList</span> <span style="color: #a0522d;">l</span>) {
     n = l.head;
   }
 
-  public boolean hasNext() {
-    return n != null;
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">hasNext</span>() {
+    <span style="color: #a020f0;">return</span> n != <span style="color: #008b8b;">null</span>;
   }
 
-  public Object next() {
-    if (n == null) {
-      /* We'll learn about throwing exceptions in the next lecture. */
-      throw new NoSuchElementException();                       // In java.util
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">next</span>() {
+    <span style="color: #a020f0;">if</span> (n == <span style="color: #008b8b;">null</span>) {
+      <span style="color: #b22222;">/* </span><span style="color: #b22222;">We'll learn about throwing exceptions in the next lecture. */</span>
+      <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">NoSuchElementException</span>();                       <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.util</span>
     }
-    Object i = n.item;
+    <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">i</span> = n.item;
     n = n.next;
-    return i;
+    <span style="color: #a020f0;">return</span> i;
   }
 
-  public void remove() {
-    /* Doing it the lazy way.  Remove this, motherf! */
-    throw new UnsupportedOperationException("Nice try, bozo."); // In java.lang
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">remove</span>() {
+    <span style="color: #b22222;">/* </span><span style="color: #b22222;">Doing it the lazy way.  Remove this, motherf! */</span>
+    <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">UnsupportedOperationException</span>(<span style="color: #8b2252;">"Nice try, bozo."</span>); <span style="color: #b22222;">// </span><span style="color: #b22222;">In java.lang</span>
   }
 }
 
-/* list/SList.java */
+<span style="color: #b22222;">/* </span><span style="color: #b22222;">list/SList.java */</span>
 
-package list;
-import java.util.*;
+<span style="color: #a020f0;">package</span> <span style="color: #228b22;">list</span>;
+<span style="color: #a020f0;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">util</span>.*;
 
-public class SList implements Iterable {
-  SListNode head;
-  int size;
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Iterable</span> {
+  <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 
-  public Iterator iterator() {
-    return new SListIterator(this);
+  <span style="color: #a020f0;">public</span> <span style="color: #228b22;">Iterator</span> <span style="color: #0000ff;">iterator</span>() {
+    <span style="color: #a020f0;">return</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListIterator</span>(<span style="color: #a020f0;">this</span>);
   }
 
   [other methods here]
@@ -4811,15 +4811,15 @@ the exception, handle it, and continue, instead of letting the program crash.
 
 
 
-<pre class="example">try {
-    f = new FileInputStream("~cs61b/pj2.solution");
+<pre class="src src-java"><span style="color: #a020f0;">try</span> {
+    f = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">FileInputStream</span>(<span style="color: #8b2252;">"~cs61b/pj2.solution"</span>);
     i = f.read();
 }
-catch (FileNotFoundException e1) {
-    System.out.println(e1);                       // An exception handler.
+<span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">FileNotFoundException</span> <span style="color: #a0522d;">e1</span>) {
+    System.out.println(e1);                       <span style="color: #b22222;">// </span><span style="color: #b22222;">An exception handler.</span>
 }
-catch (IOException e2) {
-    f.close();                                    // Another exception handler.
+<span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">IOException</span> <span style="color: #a0522d;">e2</span>) {
+    f.close();                                    <span style="color: #b22222;">// </span><span style="color: #b22222;">Another exception handler.</span>
 }
 </pre>
 
@@ -4898,7 +4898,7 @@ parser.  A better solution?  Throw an exception!  You can even roll your own.
 
 
 
-<pre class="example">public class ParserException extends Exception { }
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">ParserException</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Exception</span> { }
 </pre>
 
 
@@ -4910,15 +4910,15 @@ types of exceptions.  Now we can write some parser methods.
 
 
 
-<pre class="example">public ParseTree parseExpression() throws ParserException {
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">ParseTree</span> <span style="color: #0000ff;">parseExpression</span>() <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">ParserException</span> {
     [loops]
-        if (somethingWrong) {
-            throw new ParserException();
+        <span style="color: #a020f0;">if</span> (somethingWrong) {
+            <span style="color: #a020f0;">throw</span> <span style="color: #a020f0;">new</span> <span style="color: #228b22;">ParserException</span>();
         }
     [more code]
         }
 }
-return pt;
+<span style="color: #a020f0;">return</span> pt;
 }
 </pre>
 
@@ -4937,7 +4937,7 @@ help you and the compiler keep track of which exceptions can propagate where.
 
 
 
-<pre class="example">public ParseTree parse() throws ParserException, DumbCodeException {
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">ParseTree</span> <span style="color: #0000ff;">parse</span>() <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">ParserException</span>, <span style="color: #228b22;">DumbCodeException</span> {
     [loops and code]
         p = parseExpression();
     [more code]
@@ -4945,14 +4945,14 @@ help you and the compiler keep track of which exceptions can propagate where.
     }
 }
 
-public void compile() {
-    ParseTree p;
-    try {
+<span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">compile</span>() {
+    <span style="color: #228b22;">ParseTree</span> <span style="color: #a0522d;">p</span>;
+    <span style="color: #a020f0;">try</span> {
         p = parse();
         p.toByteCode();
     }
-    catch (ParserException e1) { }
-    catch (DumbCodeException e2) { }
+    <span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">ParserException</span> <span style="color: #a0522d;">e1</span>) { }
+    <span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">DumbCodeException</span> <span style="color: #a0522d;">e2</span>) { }
 }
 </pre>
 
@@ -4992,7 +4992,7 @@ Here's part of the Throwable class hierarchy.
 
 
 
-<pre class="example">                           Throwable
+<pre class="src src-text">                           Throwable
                           /         \
                          /           \
                         /             \
@@ -5081,14 +5081,14 @@ Today's reading:  Sierra &amp; Bates, pp. 189, 283.
 
 
 
-<pre class="example">FileInputStream f = new FileInputStream("filename");
-try {
+<pre class="src src-java"><span style="color: #228b22;">FileInputStream</span> <span style="color: #a0522d;">f</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">FileInputStream</span>(<span style="color: #8b2252;">"filename"</span>);
+<span style="color: #a020f0;">try</span> {
     statementX;
-    return 1;
-} catch (IOException e) {
+    <span style="color: #a020f0;">return</span> 1;
+} <span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">IOException</span> <span style="color: #a0522d;">e</span>) {
     e.printStackTrace();
-    return 2;
-} finally {
+    <span style="color: #a020f0;">return</span> 2;
+} <span style="color: #a020f0;">finally</span> {
     f.close();
 }
 </pre>
@@ -5144,9 +5144,9 @@ String.
 
 
 
-<pre class="example">class MyException extends Exception {
-    public MyException() { super(); }
-    public MyException(String s) { super(s); }
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyException</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Exception</span> {
+    <span style="color: #a020f0;">public</span> MyException() { <span style="color: #a020f0;">super</span>(); }
+    <span style="color: #a020f0;">public</span> MyException(<span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span>) { <span style="color: #a020f0;">super</span>(s); }
 }
 </pre>
 
@@ -5182,21 +5182,21 @@ SList class.  To specify the class, SList takes a <span style="text-decoration:u
 
 
 
-<pre class="example">class SListNode&lt;T&gt; {                         // T is the formal parameter.
-    T item;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">SListNode</span>&lt;T&gt; {                         <span style="color: #b22222;">// </span><span style="color: #b22222;">T is the formal parameter.</span>
+    <span style="color: #228b22;">T</span> <span style="color: #a0522d;">item</span>;
     SListNode&lt;T&gt; next;
 
-    SListNode(T i, SListNode&lt;T&gt; n) {
+    SListNode(<span style="color: #228b22;">T</span> <span style="color: #a0522d;">i</span>, SListNode&lt;T&gt; n) {
         item = i;
         next = n;
     }
 }
 
-public class SList&lt;T&gt; {
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span>&lt;T&gt; {
     SListNode&lt;T&gt; head;
 
-    public void insertFront(T item) {
-        head = new SListNode&lt;T&gt;(item, head);
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #a0522d;">insertFront</span>(<span style="color: #228b22;">T</span> <span style="color: #a0522d;">item</span>) {
+        head = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>&lt;T&gt;(item, head);
     }
 }
 </pre>
@@ -5208,8 +5208,8 @@ You can now create and use an SList of Strings as follows.
 
 
 
-<pre class="example">SList&lt;String&gt; l = new SList&lt;String&gt;();     // String is the actual parameter.
-l.insertFront("Hello");
+<pre class="src src-java">SList&lt;String&gt; l = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>&lt;String&gt;();     <span style="color: #b22222;">// </span><span style="color: #b22222;">String is the actual parameter.</span>
+l.insertFront(<span style="color: #8b2252;">"Hello"</span>);
 </pre>
 
 
@@ -5260,17 +5260,17 @@ the choice of fields is dictated by the <span style="text-decoration:underline;"
 
 
 
-<pre class="example">class Super {
-    int x = 2;
-    int f() {
-        return 2;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Super</span> {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = 2;
+    <span style="color: #228b22;">int</span> <span style="color: #0000ff;">f</span>() {
+        <span style="color: #a020f0;">return</span> 2;
     }
 }
 
-class Sub extends Super {
-    int x = 4;                // shadows Super.x
-    int f() {                 // overrides Super.f()
-        return 4;
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Sub</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Super</span> {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = 4;                <span style="color: #b22222;">// </span><span style="color: #b22222;">shadows Super.x</span>
+    <span style="color: #228b22;">int</span> <span style="color: #0000ff;">f</span>() {                 <span style="color: #b22222;">// </span><span style="color: #b22222;">overrides Super.f()</span>
+        <span style="color: #a020f0;">return</span> 4;
     }
 }
 </pre>
@@ -5284,9 +5284,9 @@ It depends on the static type of the expression whose x field is accessed.
 
 
 
-<pre class="example">Sub sub = new Sub();
-Super supe = sub;       // supe and sub reference the same object.
-int i;
+<pre class="src src-java"><span style="color: #228b22;">Sub</span> <span style="color: #a0522d;">sub</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Sub</span>();
+<span style="color: #228b22;">Super</span> <span style="color: #a0522d;">supe</span> = sub;       <span style="color: #b22222;">// </span><span style="color: #b22222;">supe and sub reference the same object.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
 </pre>
 
 
@@ -5296,10 +5296,10 @@ int i;
 
 
 
-<pre class="example">i = supe.x;             // 2
-i = sub.x;              // 4
-i = ((Super) sub).x;    // 2
-i = ((Sub) supe).x;     // 4
+<pre class="src src-java">i = supe.x;             <span style="color: #b22222;">// </span><span style="color: #b22222;">2</span>
+i = sub.x;              <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+i = ((<span style="color: #228b22;">Super</span>) sub).x;    <span style="color: #b22222;">// </span><span style="color: #b22222;">2</span>
+i = ((<span style="color: #228b22;">Sub</span>) supe).x;     <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
 </pre>
 
 
@@ -5311,10 +5311,10 @@ reference a Sub, the method Sub.f always overrides Super.f.
 
 
 
-<pre class="example">i = supe.f();           // 4
-i = sub.f();            // 4
-i = ((Super) sub).f();  // 4
-i = ((Sub) supe).f();   // 4
+<pre class="src src-java">i = supe.f();           <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+i = sub.f();            <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+i = ((<span style="color: #228b22;">Super</span>) sub).f();  <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+i = ((<span style="color: #228b22;">Sub</span>) supe).f();   <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
 </pre>
 
 
@@ -5326,14 +5326,14 @@ You can cast "this" too, but a simpler alternative is to replace "this" with
 
 
 
-<pre class="example">class Sub extends Super {
-    int x = 4;                  // shadows Super.x
-    void g() {
-        int i;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Sub</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Super</span> {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = 4;                  <span style="color: #b22222;">// </span><span style="color: #b22222;">shadows Super.x</span>
+    <span style="color: #228b22;">void</span> <span style="color: #0000ff;">g</span>() {
+        <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
 
-        i = this.x;             // 4
-        i = ((Super) this).x    // 2
-            i = super.x;        // 2
+        i = <span style="color: #a020f0;">this</span>.x;             <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+        i = ((<span style="color: #228b22;">Super</span>) <span style="color: #a020f0;">this</span>).x    <span style="color: #b22222;">// </span><span style="color: #b22222;">2</span>
+            i = <span style="color: #a020f0;">super</span>.x;        <span style="color: #b22222;">// </span><span style="color: #b22222;">2</span>
     }
 }
 </pre>
@@ -5381,9 +5381,9 @@ a program.  The compiler can speed up method calls that cannot be overridden.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:47-0800</p>
+<p class="date">Date: 2014-03-03T14:40-0800</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
