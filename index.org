@@ -21,3 +21,4 @@ Original notes from: http://www.cs.berkeley.edu/~jrs/61b/
 - [[file:notes16.org][Lecture 16]]
 - [[file:17.pdf][Lecture 17]]
 - [[file:notes18.org][Lecture 18]]
+- [[file:notes19.org][Lecture 19]]

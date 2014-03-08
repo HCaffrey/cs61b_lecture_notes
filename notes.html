@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-07T23:38-0800"/>
+<meta name="generated" content="2014-03-07T23:45-0800"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -285,6 +285,11 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#sec-17-2">Modules and Interfaces in Project 2</a></li>
+</ul>
+</li>
+<li><a href="#sec-18">Lecture 19</a>
+<ul>
+<li><a href="#sec-18-1">ENCAPSULATED LISTS (a case study in encapsulation)</a></li>
 </ul>
 </li>
 </ul>
@@ -5397,7 +5402,8 @@ a program.  The compiler can speed up method calls that cannot be overridden.
 <h2 id="sec-16">Lecture 17</h2>
 <div class="outline-text-2" id="text-16">
 
-</div>
+<p> <a href="17.pdf">Lecture 17</a>
+</p></div>
 
 </div>
 
@@ -5737,13 +5743,262 @@ both GRADER and the code comments) to reflect your new design decisions.
 I recommend you write a draft of your interfaces this week so you'll have lots
 of time to program.  The interfaces in the GRADER file are worth 10% of your
 project score.  You will need to show them to your TA next week in Lab 8.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-18" class="outline-2">
+<h2 id="sec-18">Lecture 19</h2>
+<div class="outline-text-2" id="text-18">
+
+
+<p>
+Today's reading:  Sierra &amp; Bates, p. 664.
+</p>
+<p>
+<a href="original-notes/19">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-18-1" class="outline-3">
+<h3 id="sec-18-1">ENCAPSULATED LISTS (a case study in encapsulation)</h3>
+<div class="outline-text-3" id="text-18-1">
+
+<p>Homeworks 3, 4, and 5 introduced you to three different implementations of
+linked lists, each fundamentally different.
+</p>
+<p>
+With the Homework 3 lists, if an application writer wants to query the identity
+of every item in the list without modifying the list, it takes time
+proportional to the square of n, the number of items in the list (i.e.,
+Theta(n<sup>2</sup>) time), because you have to use nth(i) to identify each item in time
+proportional to i.
+</p>
+<p>
+The lists in Homeworks 4 and 5 allow an application to directly hold a node in
+a list.  By alternating between the next() method and the item field or method,
+you can query all the list's items in Theta(n) time.  Similarly, if an
+application holds a node in the middle of a list, it can insert or delete c
+items there in time proportional to c, no matter how long the list is.
+</p>
+<p>
+The Homework 5 lists (SList and DList) are well-encapsulated, whereas the
+Homework 4 DList has flaws.  I will discuss these flaws today to illustrate why
+designing the really good list ADTs of Homework 5 was tricky.  Let's ask some
+questions about how lists should behave.
+</p>
+<ol>
+<li>What happens if we invoke l.remove(n)&ndash;but the node n is in a different
+     list than l?
+
+<p>
+     In Homework 4, Part II asks whether it is possible for an application to
+     break the DList invariants.  One way to do this is to mismatch nodes and
+     lists in method calls.  When an application does this, the "size" field of
+     the wrong list is updated, thereby breaking the invariant that a list's
+     size field should be correct.  How can we fix this?
+</p>
+<p>
+     ADT interface answer:  The methods remove(), insertAfter(), etc. should
+     always update the right list's "size" field.
+</p>
+<p>
+     Implementation answer:  It's unacceptably slow to walk through a whole
+     list just to see if the node n is really in the list l.  Instead, every
+     node should keep a reference to the list that contains it.  In Homework 5,
+     each ListNode has a "myList" field.
+</p>
+</li>
+<li>Should insertAfter(), remove(), etc. be methods of List or ListNode?
+
+<p>
+     Normally, we expect the methods that modify a data structure (like a List)
+     to be methods within that data structure's class.  However, if we define
+     methods like insertAfter() and remove() in the ListNode class, rather than
+     the List class, we completely avoid the question of what happens if
+     they're invoked for a node that's not in "this" list.  This way, the
+     interface is more elegant.
+</p>
+<p>
+     ADT interface answer:  the list methods are divided among List and
+     ListNode.
+</p></li>
+</ol>
+
+
+
+
+
+<pre class="src src-java">Some methods <span style="color: #228b22;">of</span> <span style="color: #0000ff;">List</span>                  | Some methods of ListNode
+                                      |
+<span style="color: #a020f0;">public</span> <span style="color: #228b22;">boolean</span> isEmpty()              | <span style="color: #a020f0;">public</span> Object item()
+<span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> insertFront(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>)  | <span style="color: #a020f0;">public</span> ListNode next()               
+<span style="color: #a020f0;">public</span> ListNode front()               | <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> insertAfter(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>) 
+</pre>
+
+
+<p>
+     Implementation answer:  again, each node has a "myList" field so we can
+     update a list's "size" field when we call n.remove(), n.insertAfter(),
+     etc.
+</p>
+<ol>
+<li>What happens if we invoke l.remove(n), then l.insertAfter(i, n)?
+
+<p>
+     Another way to trash the DList invariants is to treat a node that's been
+     removed from a list as if it's still active.  If we call insertAfter on a
+     node we've already removed, we may mangle the pointers.
+</p></li>
+</ol>
+
+
+
+<p>
+<img src="ditaa-images/img1_cdfafd9355a7753ba0348fcd1462b1afee467db8.png"  alt="ditaa-images/img1_cdfafd9355a7753ba0348fcd1462b1afee467db8.png" />
+</p>
+
+<p>
+     The result violates the invariant that if x.next == y, then y.prev == x.
+     We would prevent the pointer mangling if remove(n) set n's pointers to
+     null, but that wouldn't stop insertAfter() from incrementing the list's
+     "size" field (or throwing a NullPointerException), which is not a
+     reasonable result.
+</p>
+<p>
+     Calling remove(n) twice on the same node also corrupts "size".
+</p>
+<p>
+     How can we fix this?
+</p>
+<p>
+     ADT interface answer:  After n.remove() is executed, removing n from the
+     list, n is considered to be an "invalid" node.  Any attempt to use n,
+     except to call n.isValidNode(), throws an exception.
+</p>
+<p>
+     Why do we change the node, rather than erasing the reference to it?
+     First, the remove() method can't erase the reference, which is passed by
+     value.  Second, there might be lots of other references to the same node,
+     and we need to erase all of them too!  All those other references could be
+     used to corrupt the data structure if the node itself isn't neutralized.
+</p>
+<p>
+     Implementation answer:  When an item is removed from a list, the
+     corresponding ListNode's "myList" reference is set to null.  This is just
+     a convenient way to mark a node as "invalid".  The "next" and "prev"
+     references are also set to null.  These steps eliminate opportunities for
+     accidentally corrupting a list as illustrated above.  (Also, they help
+     Java's garbage collection to reclaim unused DListNodes.  We'll discuss
+     garbage collection near the end of the semester.)
+</p>
+<p>
+     Any ListNode whose "myList" reference is null is considered "invalid",
+     and any attempt to use it will incite an exception.
+</p>
+<ol>
+<li>What happens if we walk off the end of a list?  (Using the next() method.)
+
+<p>
+     ADT interface answer:  In Homework 4, if you invoke next() on the last
+     node in a list, it returns null.  In Homework 5, it returns an invalid
+     node instead.  There are two reasons for this change.  First, it provides
+     consistency, because invoking next() at the end of a list yields the same
+     result as removing a node.  Second, if you call a method on the result--
+     for instance, n.next().item()&ndash;it throws an InvalidNodeException instead
+     of a NullPointerException.  This eliminates ambiguity; you can catch an
+     InvalidNodeException without wondering why it was thrown, whereas many
+     different bugs can cause NullPointerExceptions.
+</p>
+<p>
+     Implementation answer:  Recall that our implementation uses a doubly-,
+     circularly-linked list with a sentinel node.  Any sentinel is considered
+     an invalid node.  This simplifies the implementations of the next() and
+     prev() methods in the DList class.
+</p>
+<p>
+     However, if you apply next() to a sentinel, you won't get the first node
+     of the list; you'll get an InvalidNodeException.  Why?  When n is the last
+     node in a list, why not let n.next().next() be the first node?  First, the
+     fact that the implementation uses a sentinel should be completely hidden
+     from the application.  Second, we want to be able to change the
+     implementation without breaking the application.  Suppose we switch from
+     DLists to SLists that don't have sentinels.  We would need to "fix" SList
+     so that n.next().next() still behaves the way it does with DLists.  It's
+     better not to allow applications to take advantage of such quirks from the
+     start.
+</p>
+</li>
+<li>How do we access an item?
+
+<p>
+     ADT interface answer:  In Homework 4, each node's "item" field is public.
+     In Homework 5, we make the "item" field protected; applications must use
+     the item() and setItem() methods to access it.  Why?  To make sure that
+     applications can't store items in deleted nodes or sentinels.  Any attempt
+     to invoke item() or setItem() on an invalid node causes an exception.
+     Why?  So that the implementation can be changed without breaking an
+     application.  Suppose, for instance, that an application stores items in
+     sentinel nodes.  Would the application still work the same way if you
+     switched from DLists to SLists, which don't have sentinel nodes?
+</p>
+<p>
+     This may seem like a strange justification.  But in real-world
+     programming, programmers often take advantage of undocumented quirks, like
+     being able to store items in sentinel nodes.  Once applications have been
+     written that depend on these quirks, the quirks become "features" that
+     must be preserved in any new List implementation.  That's why ADTs should
+     never do <span style="text-decoration:underline;">more</span> than what the documentation says they do.
+</p>
+<p>
+     In Frederick P. Brooks, Jr.'s famous book on software engineering, "The
+     Mythical Man-Month" (page 65), he writes
+</p>
+<p>
+       Invalid syntax always produces some result; in a policed system that
+       result is an invalidity indication <span style="text-decoration:underline;">and nothing more</span>.  In an unpoliced
+       system all kinds of side effects may appear, and these may have been
+       used by programmers.  When we undertook to emulate the IBM 1401
+       [processor] on System/360 [an operating system], for example, it
+       developed that there were 30 different "curios"&ndash;side effects of
+       supposedly invalid operations&ndash;that had come into widespread use and had
+       to be considered as part of the definition.  The implementation as a
+       definition [of the functionality] overprescribed; it not only said what
+       the machine must do, it also said a great deal about how it had to do
+       it.
+</p>
+<p>
+     By ensuring that an implementation does not produce any result not
+     specified in the interface&ndash;even for invalid inputs&ndash;a programmer makes it
+     easy to fix bugs, optimize performance, and add new features without
+     compromising existing applications.
+</p></li>
+</ol>
+
+
+<p>
+This lecture's lesson is that design decisions can be complicated and have
+unexpected repercussions.
+</p>
+<p>
+Our design decisions for the Homework 5 lists, described above, will carry over
+to our tree interfaces, which you'll encounter in an upcoming assignment.
+</p>
+<p>
+One final thought.  Why don't we simply keep a boolean "valid" flag in each
+ListNode, and use that to distinguish valid nodes from invalid ones?  It would
+make the implementation clearer, and therefore more maintainable.  However, it
+would also make each ListNode occupy more memory.  I chose reduced memory use
+over readability, but this was an arbitrary choice.
 </p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-07T23:38-0800</p>
+<p class="date">Date: 2014-03-07T23:45-0800</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
