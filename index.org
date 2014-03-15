@@ -22,3 +22,6 @@ Original notes from: http://www.cs.berkeley.edu/~jrs/61b/
 - [[file:17.pdf][Lecture 17]]
 - [[file:notes18.org][Lecture 18]]
 - [[file:notes19.org][Lecture 19]]
+- [[file:notes20.org][Lecture 20]]
+
+
