@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes10"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:47-0800"/>
+<meta name="generated" content="2014-03-15T15:17-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012  Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -162,9 +162,9 @@ inherits the fields and methods of the original SList class.
 
 
 
-<pre class="example">public class TailList extends SList {
-  // The "head" and "size" fields are inherited from SList.
-  private SListNode tail;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">TailList</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">The "head" and "size" fields are inherited from SList.</span>
+  <span style="color: #a020f0;">private</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">tail</span>;
 </pre>
 
 
@@ -195,8 +195,8 @@ TailList, which will <span style="text-decoration:underline;">override</span> SL
 
 
 
-<pre class="example">public void insertEnd(Object obj) {
-    // Your solution to Lab 3 goes here.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertEnd</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">obj</span>) {
+    <span style="color: #b22222;">// </span><span style="color: #b22222;">Your solution to Lab 3 goes here.</span>
 }
 </pre>
 
@@ -222,9 +222,9 @@ to TailList.  It can also modify the work done by SList() if appropriate.
 
 
 
-<pre class="example">public TailList() {
-  // SList() constructor called automatically; sets size = 0, head = null
-  tail = null;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> TailList() {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">SList() constructor called automatically; sets size = 0, head = null</span>
+  tail = <span style="color: #008b8b;">null</span>;
 }
 </pre>
 
@@ -238,9 +238,9 @@ superclass by using the "super" keyword.
 
 
 
-<pre class="example">public TailList(int x) {
-    super(x);
-    tail = null;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> TailList(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+    <span style="color: #a020f0;">super</span>(x);
+    tail = <span style="color: #008b8b;">null</span>;
 }
 </pre>
 
@@ -268,10 +268,10 @@ adjust the tail reference.
 
 
 
-<pre class="example">public void insertFront(Object obj) {
-    super.insertFront(obj);             // Insert at the front of the list.
-    if (size == 1) {                    // If necessary,
-        tail = head;                    //   adjust the tail reference.
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insertFront</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">obj</span>) {
+    <span style="color: #a020f0;">super</span>.insertFront(obj);             <span style="color: #b22222;">// </span><span style="color: #b22222;">Insert at the front of the list.</span>
+    <span style="color: #a020f0;">if</span> (size == 1) {                    <span style="color: #b22222;">// </span><span style="color: #b22222;">If necessary,</span>
+        tail = head;                    <span style="color: #b22222;">//   </span><span style="color: #b22222;">adjust the tail reference.</span>
     }
 }
 }
@@ -297,9 +297,9 @@ not "private".
 
 
 
-<pre class="example">public class SList {
-  protected SListNode head;
-  protected int size;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span> {
+  <span style="color: #a020f0;">protected</span> <span style="color: #228b22;">SListNode</span> <span style="color: #a0522d;">head</span>;
+  <span style="color: #a020f0;">protected</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">size</span>;
 
   [Method definitions.]
 }
@@ -340,7 +340,7 @@ Object is at the top of every class hierarchy.
 
 
 
-<pre class="example">      Object
+<pre class="src src-text">      Object
       /    \
   String  Worker
          /      \
@@ -374,8 +374,8 @@ SList is a TailList.  It merits repeating:
 
 
 
-<pre class="example">SList s = new TailList();         // Groovy.
-TailList t = new SList();         // COMPILE-TIME ERROR.
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+<span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -401,10 +401,10 @@ When we invoke an overridden method, Java calls the method for the object's
 
 
 
-<pre class="example">SList s = new TailList();
-s.insertEnd(obj);                 // Calls TailList.insertEnd()
-s = new SList();
-s.insertEnd(obj);                 // Calls SList.insertEnd()
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+s.insertEnd(obj);                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Calls TailList.insertEnd()</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+s.insertEnd(obj);                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Calls SList.insertEnd()</span>
 </pre>
 
 
@@ -442,10 +442,10 @@ type SList that references a TailList.
 
 
 
-<pre class="example">TailList t = new TailList();
-t.eatTail();                      // Groovy.
-SList s = new TailList();         // Groovy--every TailList is an SList.
-s.eatTail();                      // COMPILE-TIME ERROR.
+<pre class="src src-java"><span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+t.eatTail();                      <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+<span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();         <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy--every TailList is an SList.</span>
+s.eatTail();                      <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
 </pre>
 
 
@@ -466,13 +466,13 @@ another.
 
 
 
-<pre class="example">SList s;
-TailList t = new TailList();
-s = t;                            // Groovy.
-t = s;                            // COMPILE-TIME ERROR.
-t = (TailList) s;                 // Groovy.
-s = new SList();
-t = (TailList) s;                 // RUN-TIME ERROR:  ClassCastException.
+<pre class="src src-java"><span style="color: #228b22;">SList</span> <span style="color: #a0522d;">s</span>;
+<span style="color: #228b22;">TailList</span> <span style="color: #a0522d;">t</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">TailList</span>();
+s = t;                            <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+t = s;                            <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
+t = (<span style="color: #228b22;">TailList</span>) s;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>();
+t = (<span style="color: #228b22;">TailList</span>) s;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">RUN-TIME ERROR:  ClassCastException.</span>
 </pre>
 
 
@@ -496,8 +496,8 @@ Suppose we have a list of Integers.  Recall that nth() returns type Object.
 
 
 
-<pre class="example">int x = t.nth(1).intValue();                // COMPILE-TIME ERROR.
-int y = ( (Integer) t.nth(1) ).intValue();  // Groovy.
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = t.nth(1).intValue();                <span style="color: #b22222;">// </span><span style="color: #b22222;">COMPILE-TIME ERROR.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">y</span> = ( (<span style="color: #228b22;">Integer</span>) t.nth(1) ).intValue();  <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
 </pre>
 
 
@@ -507,7 +507,7 @@ Some methods are defined on every Object, though.
 
 
 
-<pre class="example">String z = t.nth(1).toString();             // Groovy.
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">z</span> = t.nth(1).toString();             <span style="color: #b22222;">// </span><span style="color: #b22222;">Groovy.</span>
 </pre>
 
 
@@ -518,8 +518,8 @@ a specific class.  WARNING:  The "o" in "instanceof" is not capitalized.
 
 
 
-<pre class="example">if (s instanceof TailList) {
-  t = (TailList) s;
+<pre class="src src-java"><span style="color: #a020f0;">if</span> (s <span style="color: #a020f0;">instanceof</span> TailList) {
+  t = (<span style="color: #228b22;">TailList</span>) s;
 }
 </pre>
 
@@ -534,9 +534,9 @@ a subclass of TailList.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:47-0800</p>
+<p class="date">Date: 2014-03-15T15:17-0700</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

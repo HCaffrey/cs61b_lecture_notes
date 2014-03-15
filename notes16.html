@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes16"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:47-0800"/>
+<meta name="generated" content="2014-03-15T15:17-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012  Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -165,14 +165,14 @@ Today's reading:  Sierra &amp; Bates, pp. 189, 283.
 
 
 
-<pre class="example">FileInputStream f = new FileInputStream("filename");
-try {
+<pre class="src src-java"><span style="color: #228b22;">FileInputStream</span> <span style="color: #a0522d;">f</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">FileInputStream</span>(<span style="color: #8b2252;">"filename"</span>);
+<span style="color: #a020f0;">try</span> {
     statementX;
-    return 1;
-} catch (IOException e) {
+    <span style="color: #a020f0;">return</span> 1;
+} <span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">IOException</span> <span style="color: #a0522d;">e</span>) {
     e.printStackTrace();
-    return 2;
-} finally {
+    <span style="color: #a020f0;">return</span> 2;
+} <span style="color: #a020f0;">finally</span> {
     f.close();
 }
 </pre>
@@ -228,9 +228,9 @@ String.
 
 
 
-<pre class="example">class MyException extends Exception {
-    public MyException() { super(); }
-    public MyException(String s) { super(s); }
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">MyException</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Exception</span> {
+    <span style="color: #a020f0;">public</span> MyException() { <span style="color: #a020f0;">super</span>(); }
+    <span style="color: #a020f0;">public</span> MyException(<span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span>) { <span style="color: #a020f0;">super</span>(s); }
 }
 </pre>
 
@@ -266,21 +266,21 @@ SList class.  To specify the class, SList takes a <span style="text-decoration:u
 
 
 
-<pre class="example">class SListNode&lt;T&gt; {                         // T is the formal parameter.
-    T item;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">SListNode</span>&lt;T&gt; {                         <span style="color: #b22222;">// </span><span style="color: #b22222;">T is the formal parameter.</span>
+    <span style="color: #228b22;">T</span> <span style="color: #a0522d;">item</span>;
     SListNode&lt;T&gt; next;
 
-    SListNode(T i, SListNode&lt;T&gt; n) {
+    SListNode(<span style="color: #228b22;">T</span> <span style="color: #a0522d;">i</span>, SListNode&lt;T&gt; n) {
         item = i;
         next = n;
     }
 }
 
-public class SList&lt;T&gt; {
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">SList</span>&lt;T&gt; {
     SListNode&lt;T&gt; head;
 
-    public void insertFront(T item) {
-        head = new SListNode&lt;T&gt;(item, head);
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #a0522d;">insertFront</span>(<span style="color: #228b22;">T</span> <span style="color: #a0522d;">item</span>) {
+        head = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SListNode</span>&lt;T&gt;(item, head);
     }
 }
 </pre>
@@ -292,8 +292,8 @@ You can now create and use an SList of Strings as follows.
 
 
 
-<pre class="example">SList&lt;String&gt; l = new SList&lt;String&gt;();     // String is the actual parameter.
-l.insertFront("Hello");
+<pre class="src src-java">SList&lt;String&gt; l = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">SList</span>&lt;String&gt;();     <span style="color: #b22222;">// </span><span style="color: #b22222;">String is the actual parameter.</span>
+l.insertFront(<span style="color: #8b2252;">"Hello"</span>);
 </pre>
 
 
@@ -344,17 +344,17 @@ the choice of fields is dictated by the <span style="text-decoration:underline;"
 
 
 
-<pre class="example">class Super {
-    int x = 2;
-    int f() {
-        return 2;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Super</span> {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = 2;
+    <span style="color: #228b22;">int</span> <span style="color: #0000ff;">f</span>() {
+        <span style="color: #a020f0;">return</span> 2;
     }
 }
 
-class Sub extends Super {
-    int x = 4;                // shadows Super.x
-    int f() {                 // overrides Super.f()
-        return 4;
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Sub</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Super</span> {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = 4;                <span style="color: #b22222;">// </span><span style="color: #b22222;">shadows Super.x</span>
+    <span style="color: #228b22;">int</span> <span style="color: #0000ff;">f</span>() {                 <span style="color: #b22222;">// </span><span style="color: #b22222;">overrides Super.f()</span>
+        <span style="color: #a020f0;">return</span> 4;
     }
 }
 </pre>
@@ -368,9 +368,9 @@ It depends on the static type of the expression whose x field is accessed.
 
 
 
-<pre class="example">Sub sub = new Sub();
-Super supe = sub;       // supe and sub reference the same object.
-int i;
+<pre class="src src-java"><span style="color: #228b22;">Sub</span> <span style="color: #a0522d;">sub</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Sub</span>();
+<span style="color: #228b22;">Super</span> <span style="color: #a0522d;">supe</span> = sub;       <span style="color: #b22222;">// </span><span style="color: #b22222;">supe and sub reference the same object.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
 </pre>
 
 
@@ -380,10 +380,10 @@ int i;
 
 
 
-<pre class="example">i = supe.x;             // 2
-i = sub.x;              // 4
-i = ((Super) sub).x;    // 2
-i = ((Sub) supe).x;     // 4
+<pre class="src src-java">i = supe.x;             <span style="color: #b22222;">// </span><span style="color: #b22222;">2</span>
+i = sub.x;              <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+i = ((<span style="color: #228b22;">Super</span>) sub).x;    <span style="color: #b22222;">// </span><span style="color: #b22222;">2</span>
+i = ((<span style="color: #228b22;">Sub</span>) supe).x;     <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
 </pre>
 
 
@@ -395,10 +395,10 @@ reference a Sub, the method Sub.f always overrides Super.f.
 
 
 
-<pre class="example">i = supe.f();           // 4
-i = sub.f();            // 4
-i = ((Super) sub).f();  // 4
-i = ((Sub) supe).f();   // 4
+<pre class="src src-java">i = supe.f();           <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+i = sub.f();            <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+i = ((<span style="color: #228b22;">Super</span>) sub).f();  <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+i = ((<span style="color: #228b22;">Sub</span>) supe).f();   <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
 </pre>
 
 
@@ -410,14 +410,14 @@ You can cast "this" too, but a simpler alternative is to replace "this" with
 
 
 
-<pre class="example">class Sub extends Super {
-    int x = 4;                  // shadows Super.x
-    void g() {
-        int i;
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Sub</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Super</span> {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = 4;                  <span style="color: #b22222;">// </span><span style="color: #b22222;">shadows Super.x</span>
+    <span style="color: #228b22;">void</span> <span style="color: #0000ff;">g</span>() {
+        <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
 
-        i = this.x;             // 4
-        i = ((Super) this).x    // 2
-            i = super.x;        // 2
+        i = <span style="color: #a020f0;">this</span>.x;             <span style="color: #b22222;">// </span><span style="color: #b22222;">4</span>
+        i = ((<span style="color: #228b22;">Super</span>) <span style="color: #a020f0;">this</span>).x    <span style="color: #b22222;">// </span><span style="color: #b22222;">2</span>
+            i = <span style="color: #a020f0;">super</span>.x;        <span style="color: #b22222;">// </span><span style="color: #b22222;">2</span>
     }
 }
 </pre>
@@ -465,9 +465,9 @@ a program.  The compiler can speed up method calls that cannot be overridden.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:47-0800</p>
+<p class="date">Date: 2014-03-15T15:17-0700</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

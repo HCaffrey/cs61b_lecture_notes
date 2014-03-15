@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes6"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-28T01:47-0800"/>
+<meta name="generated" content="2014-03-15T15:17-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012  Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -168,7 +168,7 @@ Java can construct all of the arrays for you at once.
 
 
 
-<pre class="example">int[][] table = new int[x][y];
+<pre class="src src-java"><span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">table</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">int</span>[x][y];
 </pre>
 
 
@@ -191,8 +191,8 @@ initializers.
 
 
 
-<pre class="example">Human[] b = {amanda, rishi, new Human("Paolo")};
-int[][] c = {{7, 3, 2}, {x}, {8, 5, 0, 0}, {y + z, 3}};
+<pre class="src src-java"><span style="color: #228b22;">Human</span>[] <span style="color: #a0522d;">b</span> = {amanda, rishi, <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Human</span>(<span style="color: #8b2252;">"Paolo"</span>)};
+<span style="color: #228b22;">int</span>[][] <span style="color: #a0522d;">c</span> = {{7, 3, 2}, {x}, {8, 5, 0, 0}, {y + z, 3}};
 </pre>
 
 
@@ -206,8 +206,8 @@ Sadly, you can only use this notation in a declaration.  You can't write
 
 
 
-<pre class="example">d = {3, 7};                  // Compile-time ERROR.
-f({1, 2, 3});                // Compile-time ERROR.
+<pre class="src src-java">d = {3, 7};                  <span style="color: #b22222;">// </span><span style="color: #b22222;">Compile-time ERROR.</span>
+f({1, 2, 3});                <span style="color: #b22222;">// </span><span style="color: #b22222;">Compile-time ERROR.</span>
 </pre>
 
 
@@ -217,9 +217,9 @@ Another subtlety of array declarations is the following.
 
 
 
-<pre class="example">int[] a, b, c;                           // a, b, and c all reference arrays.
-int a[], b, c[][];           // a is 1D; c is 2D; b is not a reference/array.
-int[] a, b[];            // a references a 1D array; b references a 2D array.
+<pre class="src src-java"><span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span>, <span style="color: #a0522d;">c</span>;                           <span style="color: #b22222;">// </span><span style="color: #b22222;">a, b, and c all reference arrays.</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>[], <span style="color: #a0522d;">b</span>, <span style="color: #a0522d;">c</span>[][];           <span style="color: #b22222;">// </span><span style="color: #b22222;">a is 1D; c is 2D; b is not a reference/array.</span>
+<span style="color: #228b22;">int</span>[] <span style="color: #a0522d;">a</span>, <span style="color: #a0522d;">b</span>[];            <span style="color: #b22222;">// </span><span style="color: #b22222;">a references a 1D array; b references a 2D array.</span>
 </pre>
 
 
@@ -237,9 +237,9 @@ objects.  You must construct the objects yourself.
 
 
 
-<pre class="example">String[] sentence = new String[3];
-sentence[0] = "Word";
-sentence[2] = new String();
+<pre class="src src-java"><span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">sentence</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>[3];
+sentence[0] = <span style="color: #8b2252;">"Word"</span>;
+sentence[2] = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();
 </pre>
 
 
@@ -261,9 +261,9 @@ you by Java.  Consider the following program.
 
 
 
-<pre class="example">class Echo {
-  public static void main(String[] args) {
-    for (int i = 0; i &lt; args.length; i++) {
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Echo</span> {
+  <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">args</span>) {
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; args.length; i++) {
       System.out.println(args[i]);
     }
   }
@@ -303,10 +303,10 @@ body has been executed.
 
 
 
-<pre class="example">do {
+<pre class="src src-java"><span style="color: #a020f0;">do</span> {
   s = keybd.readLine();
   process(s);
-} while (s.length() &gt; 0);               // Exit loop if s is an empty String.
+} <span style="color: #a020f0;">while</span> (s.length() &gt; 0);               <span style="color: #b22222;">// </span><span style="color: #b22222;">Exit loop if s is an empty String.</span>
 </pre>
 
 
@@ -334,21 +334,21 @@ right thing.  They behave identically.  Each has a different disadvantage.
 
 
 
-<pre class="example">  s = keybd.readLine();                  |  while (true) {       // Loop forever.
-  while (s.length() &gt; 0) {               |    s = keybd.readLine();
-    process(s);                          |    if (s.length() == 0) {      
-    s = keybd.readLine();                |      break;
+<pre class="src src-java">  s = keybd.readLine();                  |  <span style="color: #a020f0;">while</span> (<span style="color: #008b8b;">true</span>) {       <span style="color: #b22222;">// </span><span style="color: #b22222;">Loop forever.</span>
+  <span style="color: #a020f0;">while</span> (s.length() &gt; 0) {               |    s = keybd.readLine();
+    process(s);                          |    <span style="color: #a020f0;">if</span> (s.length() == 0) {      
+    s = keybd.readLine();                |      <span style="color: #a020f0;">break</span>;
   }                                      |    }                           
                                          |    process(s);
                                          |}
-/*Disadvantage:  The line "s = keybd..." |
-is repeated twice.  It's not really      |
-a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for 
-took 100 lines of code, the              | the reader, because the loop isn't 
-duplication would make the code harder   | aligned with its natural endpoint. 
-to maintain.  Why?  Because a 
-programmer improving the code might change one copy of the duplicated code 
-without noticing the need to change the other to match.*/
+<span style="color: #b22222;">/*</span><span style="color: #b22222;">Disadvantage:  The line "s = keybd..." |</span>
+<span style="color: #b22222;">is repeated twice.  It's not really      |</span>
+<span style="color: #b22222;">a disadvantage here, but if input        | Disadvantage:  Somewhat obfuscated for </span>
+<span style="color: #b22222;">took 100 lines of code, the              | the reader, because the loop isn't </span>
+<span style="color: #b22222;">duplication would make the code harder   | aligned with its natural endpoint. </span>
+<span style="color: #b22222;">to maintain.  Why?  Because a </span>
+<span style="color: #b22222;">programmer improving the code might change one copy of the duplicated code </span>
+<span style="color: #b22222;">without noticing the need to change the other to match.*/</span>
 </pre>
 
 
@@ -362,14 +362,14 @@ result is longer and harder to read.
 
 
 
-<pre class="example">for (int i = 0; i &lt; 10; i++) {       |  int i = 0;
-  s = keybd.readLine();              |  do {
-  if (s.length() == 0) {             |    s = keybd.readLine();       
-    break;                           |    if (s.length() &gt; 0) {             
+<pre class="src src-java"><span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; 10; i++) {       |  <span style="color: #228b22;">int</span> i = 0;
+  s = keybd.readLine();              |  <span style="color: #a020f0;">do</span> {
+  <span style="color: #a020f0;">if</span> (s.length() == 0) {             |    s = keybd.readLine();       
+    <span style="color: #a020f0;">break</span>;                           |    <span style="color: #a020f0;">if</span> (s.length() &gt; 0) {             
   }                                  |      process(s);                      
   process(s);                        |    }
 }                                    |    i++;
-                                     |  } while ((i &lt; 10) &amp;&amp;
+                                     |  } <span style="color: #a020f0;">while</span> ((i &lt; 10) &amp;&amp;
                                      |           (s.length() &gt; 0));
 </pre>
 
@@ -420,10 +420,10 @@ difference between the following two loops?
 
 
 
-<pre class="example">int i = 0;                           | for (int i = 0; i &lt; 10; i++) {
-while (i &lt; 10) {                     |   if (condition(i)) {
-  if (condition(i)) {                |     continue;
-    continue;                        |   }
+<pre class="src src-java"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0;                           | <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; 10; i++) {
+<span style="color: #a020f0;">while</span> (i &lt; 10) {                     |   <span style="color: #a020f0;">if</span> (condition(i)) {
+  <span style="color: #a020f0;">if</span> (condition(i)) {                |     <span style="color: #a020f0;">continue</span>;
+    <span style="color: #a020f0;">continue</span>;                        |   }
   }                                  |   call(i);
   call(i);                           | }
   i++;                               |
@@ -454,13 +454,13 @@ your code, you should probably turn it into a "final" constant.
 
 
 
-<pre class="example">BAD:     if (month == 2) {
+<pre class="src src-java"><span style="color: #008b8b;">BAD</span>:     <span style="color: #a020f0;">if</span> (month == 2) {
 
-GOOD:    public final static int FEBRUARY = 2;    // Usually near top of class.
+<span style="color: #008b8b;">GOOD</span>:    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">final</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">FEBRUARY</span> = 2;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Usually near top of class.</span>
 
          ...
 
-         if (month == FEBRUARY) {
+         <span style="color: #a020f0;">if</span> (month == FEBRUARY) {
 </pre>
 
 
@@ -485,8 +485,8 @@ You can declare local parameters "final" to prevent them from being changed.
 
 
 
-<pre class="example">void myMethod(final int x) {
-  x = 3;                             // Compiler ERROR.  Don't mess with X's!
+<pre class="src src-java"><span style="color: #228b22;">void</span> <span style="color: #0000ff;">myMethod</span>(<span style="color: #a020f0;">final</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+  x = 3;                             <span style="color: #b22222;">// </span><span style="color: #b22222;">Compiler ERROR.  Don't mess with X's!</span>
 }
 </pre>
 
@@ -501,8 +501,8 @@ return the same value.
 
 
 
-<pre class="example">class Bob {
-  public final long creationTime = System.currentTimeMillis();
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Bob</span> {
+  <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">long</span> <span style="color: #a0522d;">creationTime</span> = System.currentTimeMillis();
 }
 </pre>
 
@@ -545,9 +545,9 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-28T01:47-0800</p>
+<p class="date">Date: 2014-03-15T15:17-0700</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
