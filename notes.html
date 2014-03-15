@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-15T15:09-0700"/>
+<meta name="generated" content="2014-03-15T15:13-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -307,6 +307,21 @@ for the JavaScript code in this tag.
 <li><a href="#sec-20-1">DICTIONARIES</a></li>
 <li><a href="#sec-20-2">Hash Tables (the most common implementation of dictionaries)</a></li>
 <li><a href="#sec-20-3">Hash Codes and Compression Functions</a></li>
+</ul>
+</li>
+<li><a href="#sec-21">Lecture 22</a>
+<ul>
+<li><a href="#sec-21-1">DICTIONARIES (continued)</a>
+<ul>
+<li><a href="#sec-21-1-1">Hash Codes</a></li>
+<li><a href="#sec-21-1-2">Resizing Hash Tables</a></li>
+<li><a href="#sec-21-1-3">Transposition Tables:  Using a Dictionary to Speed Game Trees</a></li>
+<li><a href="#sec-21-1-4">STACKS</a></li>
+</ul>
+</li>
+<li><a href="#sec-21-2">QUEUES</a></li>
+<li><a href="#sec-21-3">DEQUES</a></li>
+<li><a href="#sec-21-4">Postscript:  A Faster Hash Code (not examinable)</a></li>
 </ul>
 </li>
 </ul>
@@ -6561,11 +6576,291 @@ discuss hash codes next lecture.
 </p>
 </div>
 </div>
+
+</div>
+
+<div id="outline-container-21" class="outline-2">
+<h2 id="sec-21">Lecture 22</h2>
+<div class="outline-text-2" id="text-21">
+
+
+<p>
+Today's reading:  Goodrich &amp; Tamassia, Chapter 5.
+</p>
+<p>
+<a href="original-notes/22">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-21-1" class="outline-3">
+<h3 id="sec-21-1">DICTIONARIES (continued)</h3>
+<div class="outline-text-3" id="text-21-1">
+
+
+
+</div>
+
+<div id="outline-container-21-1-1" class="outline-4">
+<h4 id="sec-21-1-1">Hash Codes</h4>
+<div class="outline-text-4" id="text-21-1-1">
+
+<p>Since hash codes often need to be designed specially for each new object,
+you're left to your own wits.  Here is an example of a good hash code for
+Strings.
+</p>
+
+
+
+<pre class="example">private static int hashCode(String key) {
+    int hashVal = 0;
+    for (int i = 0; i &lt; key.length(); i++) {
+        hashVal = (127 * hashVal + key.charAt(i)) % 16908799;
+    }
+    return hashVal;
+}
+</pre>
+
+
+<p>
+By multiplying the hash code by 127 before adding in each new character, we
+make sure that each character has a different effect on the final result.  The
+"%" operator with a prime number tends to "mix up the bits" of the hash code.
+The prime is chosen to be large, but not so large that 127 * hashVal +
+key.charAt(i) will ever exceed the maximum possible value of an int.
+</p>
+<p>
+The best way to understand good hash codes is to understand why bad hash codes
+are bad.  Here are some examples of bad hash codes on Words.
+</p>
+<ol>
+<li>Sum up the ASCII values of the characters.  Unfortunately, the sum will
+       rarely exceed 500 or so, and most of the entries will be bunched up in
+       a few hundred buckets.  Moreover, anagrams like "pat," "tap," and "apt"
+       will collide.
+</li>
+<li>Use the first three letters of a word, in a table with 26<sup>3</sup> buckets.
+       Unfortunately, words beginning with "pre" are much more common than
+       words beginning with "xzq", and the former will be bunched up in one
+       long list.  This does not approach our uniformly distributed ideal.
+</li>
+<li>Consider the "good" hashCode() function written out above.  Suppose the
+       prime modulus is 127 instead of 16908799.  Then the return value is just
+       the last character of the word, because (127 * hashVal) % 127 = 0.
+       That's why 127 and 16908799 were chosen to have no common factors.
+</li>
+</ol>
+
+
+<p>
+Why is the hashCode() function presented above good?  Because we can find no
+obvious flaws, and it seems to work well in practice.  (A black art indeed.)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-21-1-2" class="outline-4">
+<h4 id="sec-21-1-2">Resizing Hash Tables</h4>
+<div class="outline-text-4" id="text-21-1-2">
+
+<p>Sometimes we can't predict in advance how many entries we'll need to store.  If
+the load factor n/N (entries per bucket) gets too large, we are in danger of
+losing constant-time performance.
+</p>
+<p>
+One option is to enlarge the hash table when the load factor becomes too large
+(typically larger than 0.75).  Allocate a new array (typically at least twice
+as long as the old), then walk through all the entries in the old array and
+<span style="text-decoration:underline;">rehash</span> them into the new.
+</p>
+<p>
+Take note:  you CANNOT just copy the linked lists to the same buckets in the
+new array, because the compression functions of the two arrays will certainly
+be incompatible.  You have to rehash each entry individually.
+</p>
+<p>
+You can also shrink hash tables (e.g., when n/N &lt; 0.25) to free memory, if you
+think the memory will benefit something else.  (In practice, it's only
+sometimes worth the effort.)
+</p>
+<p>
+Obviously, an operation that causes a hash table to resize itself takes
+more than O(1) time; nevertheless, the <span style="text-decoration:underline;">average</span> over the long run is still
+O(1) time per operation.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-21-1-3" class="outline-4">
+<h4 id="sec-21-1-3">Transposition Tables:  Using a Dictionary to Speed Game Trees</h4>
+<div class="outline-text-4" id="text-21-1-3">
+
+<p>An inefficiency of unadorned game tree search is that some grids can be reached
+through many different sequences of moves, and so the same grid might be
+evaluated many times.  To reduce this expense, maintain a hash table that
+records previously encountered grids.  This dictionary is called a
+<span style="text-decoration:underline;">transposition table</span>.  Each time you compute a grid's score, insert into the
+dictionary an entry whose key is the grid and whose value is the grid's score.
+Each time the minimax algorithm considers a grid, it should first check whether
+the grid is in the transposition table; if so, its score is returned
+immediately.  Otherwise, its score is evaluated recursively and stored in the
+transposition table.
+</p>
+<p>
+Transposition tables will only help you with your project if you can search to
+a depth of at least three ply (within the five second time limit).  It takes
+three ply to reach the same grid two different ways.
+</p>
+<p>
+After each move is taken, the transposition table should be emptied, because
+you will want to search grids to a greater depth than you did during the
+previous move.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-21-1-4" class="outline-4">
+<h4 id="sec-21-1-4">STACKS</h4>
+<div class="outline-text-4" id="text-21-1-4">
+
+<p>A <span style="text-decoration:underline;">stack</span> is a crippled list.  You may manipulate only the item at the top of
+the stack.  The main operations: you may "push" a new item onto the top of the
+stack; you may "pop" the top item off the stack; you may examine the "top" item
+of the stack.  A stack can grow arbitrarily large.
+</p>
+
+<p>
+<img src="ditaa-images/img3_b9c2c9bc7f51e133c9837e4b15fc949df1629a1c.png"  alt="ditaa-images/img3_b9c2c9bc7f51e133c9837e4b15fc949df1629a1c.png" />
+</p>
+
+
+
+
+<pre class="example">public interface Stack {
+    public int size();
+    public boolean isEmpty();
+    public void push(Object item);
+    public Object pop();
+    public Object top();
+}
+</pre>
+
+
+<p>
+In any reasonable implementation, all these methods run in O(1) time.
+A stack is easily implemented as a singly-linked list, using just the front(),
+insertFront(), and removeFront() methods.
+</p>
+<p>
+Why talk about Stacks when we already have Lists?  Mainly so you can carry on
+discussions with other computer programmers.  If somebody tells you that
+an algorithm uses a stack, the limitations of a stack give you a hint how
+the algorithm works.
+</p>
+<p>
+Sample application:  Verifying matched parentheses in a String like
+"{[(){[]}]()}".  Scan through the String, character by character.
+  o  When you encounter a lefty&ndash;'{', '[', or '('&ndash;push it onto the stack.
+  o  When you encounter a righty, pop its counterpart from atop the stack, and
+     check that they match.
+If there's a mismatch or null returned, or if the stack is not empty when you
+reach the end of the string, the parentheses are not properly matched.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-21-2" class="outline-3">
+<h3 id="sec-21-2">QUEUES</h3>
+<div class="outline-text-3" id="text-21-2">
+
+<p>A <span style="text-decoration:underline;">queue</span> is also a crippled list.  You may read or remove only the item at the
+front of the queue, and you may add an item only to the back of the queue.  The
+main operations:  you may "enqueue" an item at the back of the queue; you may
+"dequeue" the item at the front; you may examine the "front" item.  Don't be
+fooled by the diagram; a queue can grow arbitrarily long.
+</p>
+
+<p>
+<img src="ditaa-images/img4_9a60f6ac6fe704071da0606e01a492a27336914d.png"  alt="ditaa-images/img4_9a60f6ac6fe704071da0606e01a492a27336914d.png" />
+</p>
+
+<p>
+Sample Application:  Printer queues.  When you submit a job to be printed at
+a selected printer, your job goes into a queue.  When the printer finishes
+printing a job, it dequeues the next job and prints it.
+</p>
+
+
+
+<pre class="example">public interface Queue {
+    public int size();
+    public boolean isEmpty();
+    public void enqueue(Object item);
+    public Object dequeue();
+    public Object front();
+}
+</pre>
+
+
+<p>
+In any reasonable implementation, all these methods run in O(1) time.  A queue
+is easily implemented as a singly-linked list with a tail pointer.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-21-3" class="outline-3">
+<h3 id="sec-21-3">DEQUES</h3>
+<div class="outline-text-3" id="text-21-3">
+
+<p>A <span style="text-decoration:underline;">deque</span> (pronounced "deck") is a Double-Ended QUEue.  You can insert and
+remove items at both ends.  You can easily build a fast deque using a
+doubly-linked list.  You just have to add removeFront() and removeBack()
+methods, and deny applications direct access to listnodes.  Obviously, deques
+are less powerful than lists whose listnodes are accessible.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-21-4" class="outline-3">
+<h3 id="sec-21-4">Postscript:  A Faster Hash Code (not examinable)</h3>
+<div class="outline-text-3" id="text-21-4">
+
+<p>Here's another hash code for Strings, attributed to one P. J. Weinberger, which
+has been thoroughly tested and performs well in practice.  It is faster than
+the one above, because it relies on bit operations (which are very fast) rather
+than the % operator (which is slow by comparison).  You will learn about bit
+operations in CS 61C.  Please don't ask me to explain them to you.
+</p>
+
+
+
+<pre class="example">static int hashCode(String key) {
+    int code = 0;
+
+    for (int i = 0; i &lt; key.length(); i++) {
+        code = (code &lt;&lt; 4) + key.charAt(i);
+        code = (code &amp; 0x0fffffff) ^ ((code &amp; 0xf0000000) &gt;&gt; 24);
+    }
+
+    return code;
+}
+</pre>
+
+
+</div>
+</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-15T15:09-0700</p>
+<p class="date">Date: 2014-03-15T15:13-0700</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
