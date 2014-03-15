@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes21"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-15T15:12-0700"/>
+<meta name="generated" content="2014-03-15T15:17-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012  Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -162,24 +162,24 @@ the corresponding bucket (array position) point to the Definition object.
 
 
 
-<pre class="example">public class Word {
-    public static final int LETTERS = 26, WORDS = LETTERS * LETTERS;
-    public String word;
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">Word</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #a020f0;">final</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">LETTERS</span> = 26, <span style="color: #a0522d;">WORDS</span> = LETTERS * LETTERS;
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">String</span> <span style="color: #a0522d;">word</span>;
 
-    public int hashCode() {            // Map a two-letter Word to 0...675.
-        return LETTERS * (word.charAt(0) - 'a') + (word.charAt(1) - 'a');
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">hashCode</span>() {            <span style="color: #b22222;">// </span><span style="color: #b22222;">Map a two-letter Word to 0...675.</span>
+        <span style="color: #a020f0;">return</span> LETTERS * (word.charAt(0) - <span style="color: #8b2252;">'a'</span>) + (word.charAt(1) - <span style="color: #8b2252;">'a'</span>);
     }
 }
 
-public class WordDictionary {
-    private Definition[] defTable = new Definition[Word.WORDS];
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">WordDictionary</span> {
+    <span style="color: #a020f0;">private</span> <span style="color: #228b22;">Definition</span>[] <span style="color: #a0522d;">defTable</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">Definition</span>[<span style="color: #008b8b;">Word</span>.WORDS];
 
-    public void insert(Word w, Definition d) {
-        defTable[w.hashCode()] = d;    // Insert (w, d) into Dictionary.
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">insert</span>(<span style="color: #228b22;">Word</span> <span style="color: #a0522d;">w</span>, <span style="color: #228b22;">Definition</span> <span style="color: #a0522d;">d</span>) {
+        defTable[w.hashCode()] = d;    <span style="color: #b22222;">// </span><span style="color: #b22222;">Insert (w, d) into Dictionary.</span>
     }
 
-    Definition find(Word w) {
-        return defTable[w.hashCode()]; // Return the Definition of w.
+    <span style="color: #228b22;">Definition</span> <span style="color: #0000ff;">find</span>(<span style="color: #228b22;">Word</span> <span style="color: #a0522d;">w</span>) {
+        <span style="color: #a020f0;">return</span> defTable[w.hashCode()]; <span style="color: #b22222;">// </span><span style="color: #b22222;">Return the Definition of w.</span>
     }
 }
 </pre>
@@ -211,7 +211,7 @@ each hash code.  The obvious compression function is
 
 
 
-<pre class="example">h(hashCode) = hashCode mod N.
+<pre class="src src-java">h(hashCode) = hashCode mod N.
 </pre>
 
 
@@ -243,7 +243,7 @@ definition.  The easiest way to do this is to have each listnode store an
 </p>
 
 <p>
-<img src="ditaa-images/img2_5c6d09aa83973b640203a1c14317fff056f35dda.png"  alt="ditaa-images/img2_5c6d09aa83973b640203a1c14317fff056f35dda.png" />
+<img src="ditaa-images/img2_e0889662fb4c2782b57a40aed674e228ac6be85b.png"  alt="ditaa-images/img2_e0889662fb4c2782b57a40aed674e228ac6be85b.png" />
 </p>
 
 <p>
@@ -341,7 +341,7 @@ interested),
 
 
 
-<pre class="example">h(hashCode) = ((a * hashCode + b) mod p) mod N
+<pre class="src src-java">h(hashCode) = ((a * hashCode + b) mod p) mod N
 </pre>
 
 
@@ -362,9 +362,9 @@ discuss hash codes next lecture.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-15T15:12-0700</p>
+<p class="date">Date: 2014-03-15T15:17-0700</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

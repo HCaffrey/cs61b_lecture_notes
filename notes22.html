@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes22"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-15T15:13-0700"/>
+<meta name="generated" content="2014-03-15T15:17-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012  Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -170,12 +170,12 @@ Strings.
 
 
 
-<pre class="example">private static int hashCode(String key) {
-    int hashVal = 0;
-    for (int i = 0; i &lt; key.length(); i++) {
+<pre class="src src-java"><span style="color: #a020f0;">private</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">hashCode</span>(<span style="color: #228b22;">String</span> <span style="color: #a0522d;">key</span>) {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">hashVal</span> = 0;
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; key.length(); i++) {
         hashVal = (127 * hashVal + key.charAt(i)) % 16908799;
     }
-    return hashVal;
+    <span style="color: #a020f0;">return</span> hashVal;
 }
 </pre>
 
@@ -297,12 +297,12 @@ of the stack.  A stack can grow arbitrarily large.
 
 
 
-<pre class="example">public interface Stack {
-    public int size();
-    public boolean isEmpty();
-    public void push(Object item);
-    public Object pop();
-    public Object top();
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Stack</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">size</span>();
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">isEmpty</span>();
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">push</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>);
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">pop</span>();
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">top</span>();
 }
 </pre>
 
@@ -355,12 +355,12 @@ printing a job, it dequeues the next job and prints it.
 
 
 
-<pre class="example">public interface Queue {
-    public int size();
-    public boolean isEmpty();
-    public void enqueue(Object item);
-    public Object dequeue();
-    public Object front();
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">interface</span> <span style="color: #228b22;">Queue</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">size</span>();
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">isEmpty</span>();
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">enqueue</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>);
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">dequeue</span>();
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">Object</span> <span style="color: #0000ff;">front</span>();
 }
 </pre>
 
@@ -400,15 +400,15 @@ operations in CS 61C.  Please don't ask me to explain them to you.
 
 
 
-<pre class="example">static int hashCode(String key) {
-    int code = 0;
+<pre class="src src-java"><span style="color: #a020f0;">static</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">hashCode</span>(<span style="color: #228b22;">String</span> <span style="color: #a0522d;">key</span>) {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">code</span> = 0;
 
-    for (int i = 0; i &lt; key.length(); i++) {
+    <span style="color: #a020f0;">for</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; key.length(); i++) {
         code = (code &lt;&lt; 4) + key.charAt(i);
         code = (code &amp; 0x0fffffff) ^ ((code &amp; 0xf0000000) &gt;&gt; 24);
     }
 
-    return code;
+    <span style="color: #a020f0;">return</span> code;
 }
 </pre>
 
@@ -419,9 +419,9 @@ operations in CS 61C.  Please don't ask me to explain them to you.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-15T15:13-0700</p>
+<p class="date">Date: 2014-03-15T15:17-0700</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

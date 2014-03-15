@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes18"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-15T15:12-0700"/>
+<meta name="generated" content="2014-03-15T15:17-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012  Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -187,10 +187,10 @@ method to the List class.  Instead, he just does the work directly.
 
 
 
-<pre class="example">public class ListMangler {
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">ListMangler</span> {
     [lotsa code]
 
-    /* Gosh, I am sooooooooooooooooooo tired. */
+    <span style="color: #b22222;">/* </span><span style="color: #b22222;">Gosh, I am sooooooooooooooooooo tired. */</span>
         list.head.next = list.head.next.next;
 
     [lotsa more code]
@@ -428,23 +428,23 @@ Other modules will probably require longer behavioral descriptions.)
 
 
 
-<pre class="example">/**
- *  hasValidNetwork() determines whether "this" GameBoard has a valid network
- *  for player "side".  (Does not check whether the opponent has a network.)
- *  A full description of what constitutes a valid network appears in the
- *  project "readme" file.
- *
- *  Unusual conditions:
- *    If side is neither MachinePlayer.COMPUTER nor MachinePlayer.OPPONENT,
- *          returns false.
- *    If GameBoard squares contain illegal values, the behavior of this
- *          method is undefined (i.e., don't expect any reasonable behavior).
- *
- *  @param side is MachinePlayer.COMPUTER or MachinePlayer.OPPONENT
- *  @return true if player "side" has a winning network in "this" GameBoard;
- *          false otherwise.
- **/
-protected boolean hasValidNetwork(int side)
+<pre class="src src-java"><span style="color: #8b2252;">/**</span>
+<span style="color: #8b2252;"> *  hasValidNetwork() determines whether "this" GameBoard has a valid network</span>
+<span style="color: #8b2252;"> *  for player "side".  (Does not check whether the opponent has a network.)</span>
+<span style="color: #8b2252;"> *  A full description of what constitutes a valid network appears in the</span>
+<span style="color: #8b2252;"> *  project "readme" file.</span>
+<span style="color: #8b2252;"> *</span>
+<span style="color: #8b2252;"> *  Unusual conditions:</span>
+<span style="color: #8b2252;"> *    If side is neither MachinePlayer.COMPUTER nor MachinePlayer.OPPONENT,</span>
+<span style="color: #8b2252;"> *          returns false.</span>
+<span style="color: #8b2252;"> *    If GameBoard squares contain illegal values, the behavior of this</span>
+<span style="color: #8b2252;"> *          method is undefined (i.e., don't expect any reasonable behavior).</span>
+<span style="color: #8b2252;"> *</span>
+<span style="color: #8b2252;"> *  </span><span style="color: #8b2252;">@param</span><span style="color: #8b2252;"> side is MachinePlayer.COMPUTER or MachinePlayer.OPPONENT</span>
+<span style="color: #8b2252;"> *  </span><span style="color: #8b2252;">@return</span><span style="color: #8b2252;"> true if player "side" has a winning network in "this" GameBoard;</span>
+<span style="color: #8b2252;"> *          false otherwise.</span>
+<span style="color: #8b2252;"> **/</span>
+<span style="color: #a020f0;">protected</span> <span style="color: #228b22;">boolean</span> <span style="color: #0000ff;">hasValidNetwork</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">side</span>)
 </pre>
 
 
@@ -478,9 +478,9 @@ project score.  You will need to show them to your TA next week in Lab 8.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-15T15:12-0700</p>
+<p class="date">Date: 2014-03-15T15:17-0700</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

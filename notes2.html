@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes2"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-15T15:12-0700"/>
+<meta name="generated" content="2014-03-15T15:17-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,7 +62,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012  Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -151,8 +151,8 @@ for the JavaScript code in this tag.
 
 
 
-<pre class="example">String s;           // Step 1:      declare a String variable.
-s = new String();   // Steps 2, 3:  construct new empty String; assign it to s.
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span>;           <span style="color: #b22222;">// </span><span style="color: #b22222;">Step 1:      declare a String variable.</span>
+s = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();   <span style="color: #b22222;">// </span><span style="color: #b22222;">Steps 2, 3:  construct new empty String; assign it to s.</span>
 </pre>
 
 
@@ -167,8 +167,8 @@ a String containing zero characters.
 
 
 
-<pre class="example">String s = new String();  // Steps 1, 2, 3 combined.
-s = "Yow!";               // Construct a new String; make s a reference to it.
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>();  <span style="color: #b22222;">// </span><span style="color: #b22222;">Steps 1, 2, 3 combined.</span>
+s = <span style="color: #8b2252;">"Yow!"</span>;               <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct a new String; make s a reference to it.</span>
 </pre>
 
 
@@ -180,7 +180,7 @@ s = "Yow!";               // Construct a new String; make s a reference to it.
 
 
 
-<pre class="example">String s2 = s;            // Copy the reference stored in s into s2.
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s2</span> = s;            <span style="color: #b22222;">// </span><span style="color: #b22222;">Copy the reference stored in s into s2.</span>
 </pre>
 
 
@@ -195,7 +195,7 @@ Now s and s2 reference the same object.
 
 
 
-<pre class="example">s2 = new String(s);       // Construct a copy of object; store reference in s2.
+<pre class="src src-java">s2 = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">String</span>(s);       <span style="color: #b22222;">// </span><span style="color: #b22222;">Construct a copy of object; store reference in s2.</span>
 </pre>
 
 
@@ -261,7 +261,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="example">s2 = s.toUppercase();       // Create a string like s, but in all upper case.
+<pre class="src src-java">s2 = s.toUppercase();       <span style="color: #b22222;">// </span><span style="color: #b22222;">Create a string like s, but in all upper case.</span>
 </pre>
 
 
@@ -273,7 +273,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="example">String s3 = s2.concat("!!");             // Also written:  s3 = s2 + "!!";
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s3</span> = s2.concat(<span style="color: #8b2252;">"!!"</span>);             <span style="color: #b22222;">// </span><span style="color: #b22222;">Also written:  s3 = s2 + "!!";</span>
 </pre>
 
 
@@ -285,7 +285,7 @@ two&ndash;check out the online Java API to see all the possibilities.)
 
 
 
-<pre class="example">String s4 = "*".concat(s2).concat("*");  // Also written:  s4 = "*" + s + "*";
+<pre class="src src-java"><span style="color: #228b22;">String</span> <span style="color: #a0522d;">s4</span> = <span style="color: #8b2252;">"*"</span>.concat(s2).concat(<span style="color: #8b2252;">"*"</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">Also written:  s4 = "*" + s + "*";</span>
 </pre>
 
 
@@ -300,7 +300,7 @@ Now, here's an important fact:  when Java executed the line
 
 
 
-<pre class="example">s2 = s.toUppercase();
+<pre class="src src-java">s2 = s.toUppercase();
 </pre>
 
 
@@ -381,13 +381,13 @@ it on the screen.
 
 
 
-<pre class="example">import java.io.*;
+<pre class="src src-java"><span style="color: #228b22;">im</span><span style="color: #a020f0;">port</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">io</span>.*;
 
-class SimpleIO {
-    public static void main(String[] arg) throws Exception {
-        BufferedReader keybd =
-            new BufferedReader(new InputStreamReader(System.in));
-        System.out.println(keybd.readLine());
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">SimpleIO</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">arg</span>) <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">Exception</span> {
+        <span style="color: #228b22;">BufferedReader</span> <span style="color: #a0522d;">keybd</span> =
+            <span style="color: #a020f0;">new</span> <span style="color: #228b22;">BufferedReader</span>(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">InputStreamReader</span>(System.in));
+        System.out.println(keybd.<span style="color: #228b22;">readLine</span>());
     }
 }
 </pre>
@@ -430,16 +430,16 @@ How to create an InputStream?  With a URL.
 
 
 
-<pre class="example">import java.net.*;
-import java.io.*;
+<pre class="src src-java"><span style="color: #a020f0;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">net</span>.*;
+<span style="color: #a020f0;">import</span> <span style="color: #008b8b;">java</span>.<span style="color: #008b8b;">io</span>.*;
 
-class WHWWW {
-    public static void main(String[] arg) throws Exception {
-        URL u = new URL("http://www.whitehouse.gov/");
-        InputStream ins = u.openStream();
-        InputStreamReader isr = new InputStreamReader(ins);
-        BufferedReader whiteHouse = new BufferedReader(isr);
-        System.out.println(whiteHouse.readLine());
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">WHWWW</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">String</span>[] <span style="color: #a0522d;">arg</span>) <span style="color: #a020f0;">throws</span> <span style="color: #228b22;">Exception</span> {
+        <span style="color: #228b22;">URL</span> <span style="color: #a0522d;">u</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">URL</span>(<span style="color: #8b2252;">"http://www.whitehouse.gov</span><span style="color: #228b22;">/");</span>
+<span style="color: #228b22;">        InputStream</span> <span style="color: #a0522d;">ins</span> = u.openStream();
+        <span style="color: #228b22;">InputStreamReader</span> <span style="color: #a0522d;">isr</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">InputStreamReader</span>(ins);
+        <span style="color: #228b22;">BufferedReader</span> <span style="color: #a0522d;">whiteHouse</span> = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">BufferedReader</span>(isr);
+        System.out.println(whiteHouse.<span style="color: #228b22;">readLine</span>());
     }
 }
 </pre>
@@ -494,9 +494,9 @@ sucks, because you'll probably run into it sooner or later.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-15T15:12-0700</p>
+<p class="date">Date: 2014-03-15T15:17-0700</p>
 <p class="author">Author: michael</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
