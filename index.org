@@ -26,4 +26,5 @@ Original notes from: http://www.cs.berkeley.edu/~jrs/61b/
 - [[file:notes21.org][Lecture 21]]
 - [[file:notes22.org][Lecture 22]]
 - [[file:notes23.org][Lecture 23]]
+- [[file:notes24.org][Lecture 24]]
 
