@@ -28,3 +28,4 @@ Original notes from: http://www.cs.berkeley.edu/~jrs/61b/
 - [[file:notes23.org][Lecture 23]]
 - [[file:notes24.org][Lecture 24]]
 - [[file:notes25.org][Lecture 25]]
+- [[file:notes26.org][Lecture 26]]
