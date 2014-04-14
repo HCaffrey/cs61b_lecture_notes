@@ -17,43 +17,42 @@
     ;; (goto-char 1)
     (while (re-search-forward "+\\||" nil t)
       (let ((p (1- (point)))
-	    above below)
-	(goto-char p)
-	(previous-line)
-	(if (and (looking-at-p "-") ;;check if we are at a corner
-		 (or (or (bolp)
-			 (save-excursion
-			   (backward-char)
-			   (looking-at-p "[^-]")))
-		     (or (eolp)
-			 (save-excursion
-			   (forward-char)
-			   (looking-at-p "[^-]")))))
-	    
-	    
-	    (setq above (point)))
-	(goto-char p)
-	(next-line)
-	(if (and (looking-at-p "-") ;;check if we are at a corner
-		 (or (or (bolp)
-			 (save-excursion
-			   (backward-char)
-			   (looking-at-p "[^-]")))
-		     (or (eolp)
-			 (save-excursion
-			   (forward-char)
-			   (looking-at-p "[^-]")))))
-	    (setq below (point)))
-	
-	(when (and above below)
-	  (goto-char above)
-	  (delete-char 1)
-	  (insert "+")
-	  (goto-char below)
-	  (delete-char 1)
-	  (insert "+"))
-	(goto-char (1+ p))
-	))))
+            above below)
+        (goto-char p)
+        (previous-line)
+        (if (and (looking-at-p "-") ;;check if we are at a corner
+                 (or (or (bolp)
+                         (save-excursion
+                           (backward-char)
+                           (looking-at-p "[^-]")))
+                     (or (eolp)
+                         (save-excursion
+                           (forward-char)
+                           (looking-at-p "[^-]")))))
+
+            (setq above (point)))
+        (goto-char p)
+        (next-line)
+        (if (and (looking-at-p "-") ;;check if we are at a corner
+                 (or (or (bolp)
+                         (save-excursion
+                           (backward-char)
+                           (looking-at-p "[^-]")))
+                     (or (eolp)
+                         (save-excursion
+                           (forward-char)
+                           (looking-at-p "[^-]")))))
+            (setq below (point)))
+
+        (when (and above below)
+          (goto-char above)
+          (delete-char 1)
+          (insert "+")
+          (goto-char below)
+          (delete-char 1)
+          (insert "+"))
+        (goto-char (1+ p))
+        ))))
 
 (setq ditaa-block-counter 0)
 (defun ditaa-wrap-block (&optional image-dir file)
@@ -62,10 +61,10 @@
   (unless (file-directory-p image-dir)
     (make-directory image-dir))
   (setq file (or file (format "img%s" (setq ditaa-block-counter
-					    (1+ ditaa-block-counter)))))
+                                            (1+ ditaa-block-counter)))))
   (mbs-wrap-region (format "#+begin_ditaa %s" (file-path-concat image-dir
-								file))
-		   "#+end_ditaa"))
+                                                                file))
+                   "#+end_ditaa"))
 
 (setq org-ditaa-jar-path "~/configs/lisp/org/contrib/scripts/ditaa.jar")
 
@@ -75,21 +74,20 @@
 
 (defun mbs-wrap-region (begin end)
   (interactive)
-  (save-excursion 
+  (save-excursion
     (goto-char (region-end))
     (unless (bolp)
       (insert "\n"))
     (insert end)
     (unless (eolp)
       (insert "\n"))
-    
+
     (goto-char (region-beginning))
     (unless (bolp)
       (insert "\n"))
     (insert begin)
     (unless (eolp)
       (insert "\n"))))
-
 
 ;; manual conversions:
 ;;
@@ -106,11 +104,10 @@
 ;; need to be changed to
 ;; _empty\_string_ or _empty string_
 
-
 (defun kill-buffer-if-exists (name)
   (let ((buff (get-buffer name)))
     (if buff
-	(kill-buffer buff))))
+        (kill-buffer buff))))
 
 (defconst cs61b-export-html-style-default
   "<style type=\"text/css\">
@@ -128,8 +125,8 @@
   .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	padding: 5pt;
-	font-family: courier, monospace;
+        padding: 5pt;
+        font-family: courier, monospace;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -165,28 +162,27 @@ Please use the variables `org-export-html-style' and
 have the default style included, customize the variable
 `org-export-html-style-include-default'.")
 
-
 (defun cs61b-export-to-html ()
   (interactive)
   (if (string= (buffer-name) "notes.org")
       (let ((org-export-with-section-numbers nil)
-	    (org-export-html-style-default cs61b-export-html-style-default))
-	(progn
-	  (org-map-entries (lambda ()
-			     (if (looking-at "^\*[ \t]+[Ll]ecture[ \t]+\\([0-9]+\\)")
-				 (let* ((name (format "notes%s"
-						      (match-string 1)))
-					(file (format "%s.org" name))
-					(html (format "%s.html" name)))
-				   (org-copy-subtree)
-				   (with-temp-buffer
-				     (org-paste-subtree)
-				     (write-file file)
-				     (org-export-as-html 3))
-				   (kill-buffer-if-exists html))))
-			   nil 'file)
-	  (org-export-as-html 3)
-	  (kill-buffer-if-exists "notes.html")))
+            (org-export-html-style-default cs61b-export-html-style-default))
+        (progn
+          (org-map-entries (lambda ()
+                             (if (looking-at "^\*[ \t]+[Ll]ecture[ \t]+\\([0-9]+\\)")
+                                 (let* ((name (format "notes%s"
+                                                      (match-string 1)))
+                                        (file (format "%s.org" name))
+                                        (html (format "%s.html" name)))
+                                   (org-copy-subtree)
+                                   (with-temp-buffer
+                                     (org-paste-subtree)
+                                     (write-file file)
+                                     (org-export-as-html 3))
+                                   (kill-buffer-if-exists html))))
+                           nil 'file)
+          (org-export-as-html 3)
+          (kill-buffer-if-exists "notes.html")))
     (message "Incorrect buffer: Run in notes.org")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -195,11 +191,10 @@ have the default style included, customize the variable
   "split a string into its charaters"
   (cdr (butlast (split-string string ""))))
 
-
 (defun strip-end (string &optional char)
   "if CHAR occurs at the end of STRING, remove it"
   (let ((split (char-split-string string))
-	(char (or char " ")))
+        (char (or char " ")))
 
     (while (string= char (car (last split)))
       (setq split (butlast split)))
@@ -208,8 +203,8 @@ have the default style included, customize the variable
 (defun strip-start (string &optional char)
   "if CHAR occurs at the beginning of STRING, remove all occurrences"
   (let ((split (char-split-string string))
-	(char (or char " ")))
-    
+        (char (or char " ")))
+
     (while (string= char (car split))
       (setq split (cdr split)))
     (mapconcat 'identity split "")))
@@ -218,9 +213,9 @@ have the default style included, customize the variable
   "concatenate strings representing file paths
 prevents multiple/none '/' seporating file names"
   (let* ((first (strip-end (car dirs) "/"))
-	 (last (strip-start (car (last dirs)) "/"))
-	 (dirs (append (list first)
-		       (mapcar '(lambda (x)  (strip-start (strip-end x "/") "/")) 
-			       (cdr (butlast dirs)))
-		       (list last))))
+         (last (strip-start (car (last dirs)) "/"))
+         (dirs (append (list first)
+                       (mapcar '(lambda (x)  (strip-start (strip-end x "/") "/"))
+                               (cdr (butlast dirs)))
+                       (list last))))
     (mapconcat 'identity dirs "/")))
