@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>notes26</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes26"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-04-08T22:40-0700"/>
+<meta name="generated" content="2014-04-13T22:38-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -26,11 +26,8 @@
   .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
+        padding: 5pt;
+        font-family: courier, monospace;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -212,13 +209,12 @@ for the JavaScript code below.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 26</a>
+<li><a href="#sec-1">Lecture 26</a>
 <ul>
-<li><a href="#sec-1-1">1.1 Representing Binary Trees</a></li>
-<li><a href="#sec-1-2">1.2 BINARY SEARCH TREES</a></li>
-<li><a href="#sec-1-3">1.3 Running Times of Binary Search Tree Operations</a></li>
-<li><a href="#sec-1-4">1.4 Footnote 1:</a></li>
-<li><a href="#sec-1-5">1.5 Footnote 2:</a></li>
+<li><a href="#sec-1-1">Representing Binary Trees</a></li>
+<li><a href="#sec-1-2">BINARY SEARCH TREES</a></li>
+<li><a href="#sec-1-3">Footnote 1:</a></li>
+<li><a href="#sec-1-4">Footnote 2:</a></li>
 </ul>
 </li>
 </ul>
@@ -226,18 +222,20 @@ for the JavaScript code below.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 26</h2>
+<h2 id="sec-1">Lecture 26</h2>
 <div class="outline-text-2" id="text-1">
 
 
 <p>
 Today's reading:  Goodrich &amp; Tamassia, Section 10.1.
 </p>
-
+<p>
+<a href="original-notes/26">original notes</a>
+</p>
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Representing Binary Trees</h3>
+<h3 id="sec-1-1">Representing Binary Trees</h3>
 <div class="outline-text-3" id="text-1-1">
 
 <p>Recall that a binary tree is a rooted tree wherein no node has more than
@@ -253,21 +251,21 @@ references are unnecessary.)  Each node also has an "item" reference.
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> <span style="color: #92a65e; font-weight: bold;">BinaryTreeNode</span> {          | <span style="color: #b0c4de;">public</span> <span style="color: #8ac6f2; font-weight: bold;">class</span> BinaryTree { 
-    <span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">item</span>;                       |    BinaryTreeNode root;
-    <span style="color: #92a65e; font-weight: bold;">BinaryTreeNode</span> <span style="color: #cae682;">parent</span>;             |    <span style="color: #92a65e; font-weight: bold;">int</span> size;
-    <span style="color: #92a65e; font-weight: bold;">BinaryTreeNode</span> <span style="color: #cae682;">left</span>;               | }
-    <span style="color: #92a65e; font-weight: bold;">BinaryTreeNode</span> <span style="color: #cae682;">right</span>;              |
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">BinaryTreeNode</span> {          | <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> BinaryTree { 
+    <span style="color: #228b22;">Object</span> <span style="color: #a0522d;">item</span>;                       |    BinaryTreeNode root;
+    <span style="color: #228b22;">BinaryTreeNode</span> <span style="color: #a0522d;">parent</span>;             |    <span style="color: #228b22;">int</span> size;
+    <span style="color: #228b22;">BinaryTreeNode</span> <span style="color: #a0522d;">left</span>;               | }
+    <span style="color: #228b22;">BinaryTreeNode</span> <span style="color: #a0522d;">right</span>;              |
 
-        <span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">void</span> inorder() {
-            <span style="color: #8ac6f2; font-weight: bold;">if</span> (left != <span style="color: #7fffd4;">null</span>) {
-                left.inorder();
-            }
-            <span style="color: #8ac6f2; font-weight: bold;">this</span>.visit();
-            <span style="color: #8ac6f2; font-weight: bold;">if</span> (right != <span style="color: #7fffd4;">null</span>) {
-                right.inorder();
-            }
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> inorder() {
+        <span style="color: #a020f0;">if</span> (left != <span style="color: #008b8b;">null</span>) {
+            left.inorder();
         }
+        <span style="color: #a020f0;">this</span>.visit();
+        <span style="color: #a020f0;">if</span> (right != <span style="color: #008b8b;">null</span>) {
+            right.inorder();
+        }
+    }
 }
 </pre>
 
@@ -313,7 +311,7 @@ references are unnecessary.)  Each node also has an "item" reference.
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> BINARY SEARCH TREES</h3>
+<h3 id="sec-1-2">BINARY SEARCH TREES</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <p>An <span style="text-decoration:underline;">ordered dictionary</span> is a dictionary in which the keys have a total order,
@@ -328,9 +326,9 @@ more, albeit more slowly.
 
 <pre class="src src-text">A simple implementation of an ordered dictionary is a binary search tree,
                    wherein entries are maintained in a (somewhat) sorted order.
-       18          The _left subtree_ of a node is the subtree rooted at the
-      /  \         node's left child; the _right subtree_ is defined similarly.
-    12    25       A binary search tree satisfies the _binary search tree_
+       18          The _left_subtree_ of a node is the subtree rooted at the
+      /  \         node's left child; the _right_subtree_ is defined similarly.
+    12    25       A binary search tree satisfies the _binary_search_tree_
    / \    / \      _invariant_:  for any node X, every key in the left subtree
   4  15  25  30    of X is less than or equal to X's key, and every key in the
  /  /  \    /      right subtree of X is greater than or equal to X's key.  You
@@ -363,19 +361,19 @@ total order on the keys (e.g. alphabetical or numerical order).
 
 
 
-<pre class="src src-java"><span style="color: #b0c4de;">public</span> <span style="color: #92a65e; font-weight: bold;">Entry</span> <span style="color: #cae682;">find</span>(<span style="color: #92a65e; font-weight: bold;">Object</span> <span style="color: #cae682;">k</span>) {
-    <span style="color: #92a65e; font-weight: bold;">BinaryTreeNode</span> <span style="color: #cae682;">node</span> = root;              <span style="color: #99968b;">// </span><span style="color: #99968b;">Start at the root.</span>
-    <span style="color: #8ac6f2; font-weight: bold;">while</span> (node != <span style="color: #7fffd4;">null</span>) {
-        <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">comp</span> = ((<span style="color: #92a65e; font-weight: bold;">Comparable</span>) k).compareTo(node.entry.key());
-        <span style="color: #8ac6f2; font-weight: bold;">if</span> (comp &lt; <span style="color: #ffa07a;">0</span>) {                      <span style="color: #99968b;">// </span><span style="color: #99968b;">Repeatedly compare search</span>
-            node = node.left;                <span style="color: #99968b;">// </span><span style="color: #99968b;">key k with current node; if</span>
-        } <span style="color: #8ac6f2; font-weight: bold;">else</span> <span style="color: #8ac6f2; font-weight: bold;">if</span> (comp &gt; <span style="color: #ffa07a;">0</span>) {               <span style="color: #99968b;">// </span><span style="color: #99968b;">k is smaller, go to the left</span>
-            node = node.right;               <span style="color: #99968b;">// </span><span style="color: #99968b;">child; if k is larger, go to</span>
-        } <span style="color: #8ac6f2; font-weight: bold;">else</span> {    <span style="color: #99968b;">/* </span><span style="color: #99968b;">The keys are equal */</span> <span style="color: #99968b;">// </span><span style="color: #99968b;">the right child.  Stop when</span>
-            <span style="color: #8ac6f2; font-weight: bold;">return</span> node.entry;               <span style="color: #99968b;">// </span><span style="color: #99968b;">we find a match (success;</span>
-        }                                    <span style="color: #99968b;">// </span><span style="color: #99968b;">return the entry) or reach</span>
-    }                                        <span style="color: #99968b;">// </span><span style="color: #99968b;">a null pointer (failure;</span>
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> <span style="color: #7fffd4;">null</span>;                             <span style="color: #99968b;">// </span><span style="color: #99968b;">return null).</span>
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">Entry</span> <span style="color: #0000ff;">find</span>(<span style="color: #228b22;">Object</span> <span style="color: #a0522d;">k</span>) {
+    <span style="color: #228b22;">BinaryTreeNode</span> <span style="color: #a0522d;">node</span> = root;              <span style="color: #b22222;">// </span><span style="color: #b22222;">Start at the root.</span>
+    <span style="color: #a020f0;">while</span> (node != <span style="color: #008b8b;">null</span>) {
+        <span style="color: #228b22;">int</span> <span style="color: #a0522d;">comp</span> = ((<span style="color: #228b22;">Comparable</span>) k).compareTo(node.entry.key());
+        <span style="color: #a020f0;">if</span> (comp &lt; 0) {                      <span style="color: #b22222;">// </span><span style="color: #b22222;">Repeatedly compare search</span>
+            node = node.left;                <span style="color: #b22222;">// </span><span style="color: #b22222;">key k with current node; if</span>
+        } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (comp &gt; 0) {               <span style="color: #b22222;">// </span><span style="color: #b22222;">k is smaller, go to the left</span>
+            node = node.right;               <span style="color: #b22222;">// </span><span style="color: #b22222;">child; if k is larger, go to</span>
+        } <span style="color: #a020f0;">else</span> {    <span style="color: #b22222;">/* </span><span style="color: #b22222;">The keys are equal */</span> <span style="color: #b22222;">// </span><span style="color: #b22222;">the right child.  Stop when</span>
+            <span style="color: #a020f0;">return</span> node.entry;               <span style="color: #b22222;">// </span><span style="color: #b22222;">we find a match (success;</span>
+        }                                    <span style="color: #b22222;">// </span><span style="color: #b22222;">return the entry) or reach</span>
+    }                                        <span style="color: #b22222;">// </span><span style="color: #b22222;">a null pointer (failure;</span>
+    <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">null</span>;                             <span style="color: #b22222;">// </span><span style="color: #b22222;">return null).</span>
 }
 </pre>
 
@@ -397,7 +395,7 @@ total order on the keys (e.g. alphabetical or numerical order).
 
 
 <pre class="src src-text">      +--+         For instance, suppose we search for the key 27 in the tree
-   |18|         at left.  Along the way, we encounter the keys 25 and 28,
+      |18|         at left.  Along the way, we encounter the keys 25 and 28,
       /--\--+      which are the keys closest to 27 (below and above).
     12   |25|
    / \   +/-\--+   Here's how to implement a method smallestKeyNotSmaller(k):
@@ -413,21 +411,25 @@ total order on the keys (e.g. alphabetical or numerical order).
 </li>
 <li>Entry min(); <br/>
     Entry max();
+
+<p>
   min() is very simple.  If the tree is empty, return null.  Otherwise, start at
   the root.  Repeatedly go to the left child until you reach a node with no left
   child.  That node has the minimum key.
-
+</p>
 <p>  
   max() is the same, except that you repeatedly go to the right child.  In the
   tree above, observe the locations of the minimum (1) and maximum (30) keys.
 </p>
 </li>
 <li>Entry insert(Object k, Object v);
+
+<p>
   insert() starts by following the same path through the tree as find().  (find()
   works <span style="text-decoration:underline;">because</span> it follows the same path as insert().)  When it reaches a null
   reference, replace that null with a reference to a new node storing the entry
   (k, v).
-
+</p>
 <p>  
   Duplicate keys are allowed.  If insert() finds a node that already has the
   key k, it puts the new entry in the left subtree of the older one.
@@ -494,15 +496,9 @@ remove(), I recommend you inspect Goodrich and Tamassia's code on page 446.
 Be aware that Goodrich and Tamassia use sentinel nodes for the leaves of
 their binary trees; I think these waste an unjustifiably large amount of space.
 </p>
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Running Times of Binary Search Tree Operations</h3>
-<div class="outline-text-3" id="text-1-3">
-
-
+<p>
+p** Running Times of Binary Search Tree Operations
+</p>
 
 
 <pre class="src src-text">     o       In a perfectly balanced binary tree (left) with         \
@@ -543,9 +539,9 @@ cover next lecture), splay trees (in one month), and B-trees (in CS 186).
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Footnote 1:</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">Footnote 1:</h3>
+<div class="outline-text-3" id="text-1-3">
 
 <p>When we search for a key k not in the binary search tree, why are
 we guaranteed to encounter the two keys that bracket it?  Let x be the smallest
@@ -559,9 +555,9 @@ The same argument applies to the largest key less than k.
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Footnote 2:</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">Footnote 2:</h3>
+<div class="outline-text-3" id="text-1-4">
 
 <p>A perfectly balanced binary tree has 2<sup>i</sup> nodes at depth i, where
 </p>
@@ -573,7 +569,7 @@ The same argument applies to the largest key less than k.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-04-08T22:40-0700</p>
+<p class="date">Date: 2014-04-13T22:38-0700</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
