@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-04-13T22:38-0700"/>
+<meta name="generated" content="2014-04-18T19:25-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -477,6 +477,35 @@ for the JavaScript code below.
 <li><a href="#sec-28-1">GRAPHS (continued)</a></li>
 <li><a href="#sec-28-2">Weighted Graphs</a></li>
 <li><a href="#sec-28-3">Kruskal's Algorithm for Finding Mimumum Spanning Trees</a></li>
+</ul>
+</li>
+<li><a href="#sec-29">Lecture 30</a>
+<ul>
+<li><a href="#sec-29-1">SORTING</a></li>
+<li><a href="#sec-29-2">Insertion Sort</a></li>
+<li><a href="#sec-29-3">Selection Sort</a></li>
+<li><a href="#sec-29-4">Heapsort</a></li>
+<li><a href="#sec-29-5">Mergesort</a></li>
+</ul>
+</li>
+<li><a href="#sec-30">Lecture 31</a>
+<ul>
+<li><a href="#sec-30-1">QUICKSORT</a></li>
+<li><a href="#sec-30-2">Choosing a Pivot</a></li>
+<li><a href="#sec-30-3">Quicksort on Linked Lists</a></li>
+<li><a href="#sec-30-4">Quicksort on Arrays</a></li>
+<li><a href="#sec-30-5">Postscript</a></li>
+</ul>
+</li>
+<li><a href="#sec-31">Lecture 33</a>
+<ul>
+<li><a href="#sec-31-1">DISJOINT SETS</a></li>
+<li><a href="#sec-31-2">List-Based Disjoint Sets and the Quick-Find Algorithm</a></li>
+<li><a href="#sec-31-3">Tree-Based Disjoint Sets and the Quick-Union Algorithm</a></li>
+<li><a href="#sec-31-4">Implementing Quick-Union with an Array</a></li>
+<li><a href="#sec-31-5">Path Compression</a></li>
+<li><a href="#sec-31-6">Naming Sets</a></li>
+<li><a href="#sec-31-7">Running Time of Quick-Union</a></li>
 </ul>
 </li>
 </ul>
@@ -9286,11 +9315,956 @@ If we use an adjacency matrix, the running time is in O(|V|<sup>2</sup> + |E| lo
 because it takes Theta(|V|<sup>2</sup>) time simply to make a list of all the edges.
 </p></div>
 </div>
+
+</div>
+
+<div id="outline-container-29" class="outline-2">
+<h2 id="sec-29">Lecture 30</h2>
+<div class="outline-text-2" id="text-29">
+
+
+<p>
+<a href="original-notes/30">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-29-1" class="outline-3">
+<h3 id="sec-29-1">SORTING</h3>
+<div class="outline-text-3" id="text-29-1">
+
+
+<p>
+The need to sort numbers, strings, and other records arises frequently.  The
+entries in any modern phone book were sorted by a computer.  Databases have
+features that sort the records returned by a query, ordered according to any
+field the user desires.  Google sorts your query results by their "relevance".
+We've seen that Kruskal's algorithm uses sorting.  So do hundreds of other
+algorithms.
+</p>
+<p>
+Sorting is perhaps the simplest fundamental problem that offers a huge variety
+of algorithms, each with its own inherent advantages and disadvantages.  We'll
+study and compare eight sorting algorithms.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-29-2" class="outline-3">
+<h3 id="sec-29-2">Insertion Sort</h3>
+<div class="outline-text-3" id="text-29-2">
+
+<p>Insertion sort is very simple and runs in \(O(n^2)\) time.  We employ a list S, and
+maintain the invariant that S is sorted.
+</p>
+
+
+
+<pre class="src src-java">Start with an empty list S and the unsorted list I of <span style="color: #228b22;">n</span> <span style="color: #0000ff;">input</span> items.
+<span style="color: #a020f0;">for</span> (each item x <span style="color: #228b22;">in</span> <span style="color: #a0522d;">I</span>) {
+  insert x into the <span style="color: #228b22;">list</span> <span style="color: #a0522d;">S</span>, <span style="color: #a0522d;">positioned</span> so that S remains in sorted order.
+}
+</pre>
+
+
+<p>
+S may be an array or a linked list.  If S is a linked list, then it takes
+Theta(n) worst-case time to find the right position to insert each item.  If S
+is an array, we can find the right position in O(log n) time by binary search,
+but it takes Theta(n) worst-case time to shift the larger items over to make
+room for the new item.  In either case, insertion sort runs in Theta(n<sup>2</sup>)
+worst-case time&ndash;but for a different reason in each case.
+</p>
+<p>
+If S is an array, one of the nice things about insertion sort is that it's an
+in-place sort.  An <span style="text-decoration:underline;">in-place sort</span> is a sorting algorithm that keeps the sorted
+items in the same array that initially held the input items.  Besides the input
+array, it uses only O(1) or perhaps O(log n) additional memory.
+</p>
+<p>
+To do an in-place insertion sort, we partition the array into two pieces:  the
+left portion (initially empty) holds S, and the right portion holds I.  With
+each iteration, the dividing line between S and I moves one step to the right.
+</p>
+
+
+
+<pre class="src src-text">----------    ----------    ----------    ----------    ----------
+][7|3|9|5| =&gt; |7][3|9|5| =&gt; |3|7][9|5| =&gt; |3|7|9][5| =&gt; |3|5|7|9][
+----------    ----------    ----------    ----------    ----------
+  \_____/      S  \___/      \_/  \_/      \___/  I      \_____/
+     I              I         S    I         S              S
+</pre>
+
+
+<p>
+If the input list I is "almost" sorted, insertion sort can be as fast as
+Theta(n)&ndash;if the algorithm starts its search from the <span style="text-decoration:underline;">end</span> of S.  In this
+case, the running time is proportional to n plus the number of <span style="text-decoration:underline;">inversions</span>.
+An inversion is a pair of keys \(j &lt; k\) such that j appears after k in I.
+I could have anywhere from zero to n \(\frac{n - 1}{2}\) inversions.
+</p>
+<p>
+If S is a balanced search tree (like a 2-3-4 tree or splay tree), then the
+running time is in \(O(n \log n)\); but that's not what computer scientists mean
+when they discuss "insertion sort."  This is our first \(O(n \log n)\) sorting
+algorithm, but we'll pass it by for others that use less memory and have
+smaller constants hidden in the asymptotic running time bounds.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-29-3" class="outline-3">
+<h3 id="sec-29-3">Selection Sort</h3>
+<div class="outline-text-3" id="text-29-3">
+
+<p>Selection sort is equally simple, and also runs in quadratic time.  Again we
+employ a list S, and maintain the invariant that S is sorted.  Now, however, we
+walk through I and pick out the smallest item, which we append to the end of S.
+</p>
+
+
+
+<pre class="src src-java">Start with an empty list S and the unsorted list I of <span style="color: #228b22;">n</span> <span style="color: #0000ff;">input</span> items.
+<span style="color: #a020f0;">for</span> (i = 0; i &lt; n; i++) {
+  Let x be the item in I having smallest <span style="color: #008b8b;">key</span>.
+  Remove x from <span style="color: #008b8b;">I</span>.
+  Append x to the end <span style="color: #228b22;">of</span> <span style="color: #a0522d;">S</span>.
+}
+</pre>
+
+
+<p>
+Whether S is an array or linked list, finding the smallest item takes Theta(n)
+time, so selection sort takes Theta(n<sup>2</sup>) time, even in the best case!  Hence,
+it's even worse than insertion sort.
+</p>
+<p>
+If S is an array, we can do an in-place selection sort.  After finding the
+item in I having smallest key, swap it with the first item in I, as shown here.
+</p>
+
+
+
+<pre class="src src-text">----------    ----------    ----------    ----------    ----------
+][7|3|9|5| =&gt; |3][7|9|5| =&gt; |3|5][9|7| =&gt; |3|5|7][9| =&gt; |3|5|7|9][
+----------    ----------    ----------    ----------    ----------
+  \_____/      S  \___/      \_/  \_/      \___/  I      \_____/
+     I              I         S    I         S              S
+</pre>
+
+
+<p>
+If I is a data structure faster than an array, we call it&hellip;
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-29-4" class="outline-3">
+<h3 id="sec-29-4">Heapsort</h3>
+<div class="outline-text-3" id="text-29-4">
+
+<p>Heapsort is a selection sort in which I is a heap.
+</p>
+
+
+
+<pre class="src src-java">Start with an empty list S and an unsorted list I of n input items.
+toss all the items in I onto a <span style="color: #228b22;">heap</span> <span style="color: #0000ff;">h</span> (ignoring <span style="color: #228b22;">the</span> <span style="color: #a0522d;">heap</span>-order property).
+h.bottomUpHeap();                         <span style="color: #b22222;">// </span><span style="color: #b22222;">Enforces the heap-order property</span>
+<span style="color: #a020f0;">for</span> (i = 0; i &lt; n; i++) {
+  x = h.removeMin();
+  Append x to <span style="color: #228b22;">the</span> end <span style="color: #228b22;">of</span> <span style="color: #a0522d;">S</span>.
+}
+</pre>
+
+
+<p>
+bottomUpHeap() runs in linear time, and each removeMin() takes O(log n) time.
+Hence, heapsort is an O(n log n)-time sorting algorithm.
+</p>
+<p>
+There are several ways to do heapsort in place; I'll describe just one.
+Maintain the heap <span style="text-decoration:underline;">backward</span> at the <span style="text-decoration:underline;">end</span> of the array.  This makes the
+indexing a little more complicated, but not substantially so.  As items are
+removed from the heap, the heap shrinks toward the end of the array, making
+room to add items to the end of S.
+</p>
+
+
+
+<pre class="src src-text">     bottomUpHeap() removeMin()   removeMin()   removeMin()   removeMin()
+    5             3             5             7             9
+   / \           / \           / \           /
+  9   3   =&gt;    7   5   =&gt;    7   9   =&gt;    9       =&gt;            =&gt;   empty
+ /             /
+7             9
+---------    ----------    ----------    ----------    ----------    ----------
+|7|3|9|5| =&gt; ][9|5|7|3| =&gt; |3][9|7|5| =&gt; |3|5][9|7| =&gt; |3|5|7][9| =&gt; |3|5|7|9][
+---------    ----------    ----------    ----------    ----------    ----------
+ \_____/       \_____/      S  \___/      \_/  \_/      \___/  I      \_____/
+    I             I              I         S    I         S              S
+</pre>
+
+
+<p>
+Heapsort is excellent for sorting arrays, but it is an awkward choice for
+linked lists.  The easiest way to heapsort a linked list is to create a new
+array of n references to the listnodes.  Sort the array of references (using
+the keys in the listnodes for comparisons).  When the array is sorted, link all
+the listnodes together into a sorted list.
+</p>
+<p>
+The array of references uses extra memory.  There is another O(n log n)
+algorithm that can sort linked lists using very little additional memory.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-29-5" class="outline-3">
+<h3 id="sec-29-5">Mergesort</h3>
+<div class="outline-text-3" id="text-29-5">
+
+
+<p>
+Mergesort is based on the observation that it's possible to merge two sorted
+lists into one sorted list in linear time.  In fact, we can do it with queues:
+</p>
+
+
+
+<pre class="src src-text">Let Q1 and Q2 be two sorted queues.  Let Q be an empty queue.
+while (neither Q1 nor Q2 is empty) {
+  item1 = Q1.front();
+  item2 = Q2.front();
+  move the smaller of item1 and item2 from its present queue to end of Q.
+}
+concatenate the remaining non-empty queue (Q1 or Q2) to the end of Q.
+</pre>
+
+
+<p>
+The merge routine is a kind of selection sort.  At each iteration, it chooses
+the item having smallest key from the two input lists, and appends it to the
+output list.  Since the two input lists are sorted, there are only two items to
+test, so each iteration takes constant time.  Hence, merging takes O(n) time.
+</p>
+<p>
+Mergesort is a recursive divide-and-conquer algorithm, in which the merge
+routine is what allows us to reunite what we divided:
+</p>
+<p>
+  Start with the unsorted list I of n input items.<br/>
+  Break I into two halves I1 and I2, having ceiling(n/2) and floor(n/2) items.<br/>
+  Sort I1 recursively, yielding the sorted list S1.<br/>
+  Sort I2 recursively, yielding the sorted list S2.<br/>
+  Merge S1 and S2 into a sorted list S.<br/>
+</p>
+<p>
+The recursion bottoms out at one-item lists.  How long does mergesort take?
+The answer is made apparent by examining its recursion tree.
+</p>
+
+
+
+<pre class="src src-text">-------------------------------  --\
+|0 | 1 | 3 | 4 | 5 | 7 | 8 | 9|    |
+-------------------------------    |
+       /               \           |
+--------------- ---------------    |
+|3 | 5 | 7 | 9| |0 | 1 | 4 | 8|    |
+--------------- ---------------    \
+   /       \       /       \        &gt;  1 + ceiling(log  n) levels
+------- ------- ------- -------    /                  2
+|3 | 7| |5 | 9| |4 | 8| |0 | 1|    |
+------- ------- ------- -------    |
+ /   \   /   \   /   \   /   \     |
+--- --- --- --- --- --- --- ---    |
+|7| |3| |9| |5| |4| |8| |0| |1|    |
+--- --- --- --- --- --- --- ---  --/
+</pre>
+
+
+<p>
+(Note that this tree is not a data structure.  It's the structure of a sequence
+of recursive calls, like a game tree.)
+</p>
+<p>
+Each level of the tree involves O(n) operations, and there are O(log n) levels.
+Hence, mergesort runs in O(n log n) time.
+</p>
+<p>
+What makes mergesort a memory-efficient algorithm for sorting linked lists
+makes it a memory-inefficient algorithm for sorting arrays.  Unlike the other
+sorting algorithms we've considered, mergesort is not an in-place algorithm.
+There is no reasonably efficient way to merge two arrays in place.  Instead,
+use an extra array of O(n) size to temporarily hold the result of a merge.
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-30" class="outline-2">
+<h2 id="sec-30">Lecture 31</h2>
+<div class="outline-text-2" id="text-30">
+
+
+<p>
+<a href="original-notes/31">original notes</a>
+</p>
+
+</div>
+
+<div id="outline-container-30-1" class="outline-3">
+<h3 id="sec-30-1">QUICKSORT</h3>
+<div class="outline-text-3" id="text-30-1">
+
+<p>Quicksort is a recursive divide-and-conquer algorithm, like mergesort.
+Quicksort is in practice the fastest known comparison-based sort for arrays,
+even though it has a Theta(n<sup>2</sup>) worst-case running time.  If properly designed,
+however, it virtually always runs in O(n log n) time.  On arrays, this
+asymptotic bound hides a constant smaller than mergesort's, but mergesort is
+often slightly faster for sorting linked lists.
+</p>
+<p>
+Given an unsorted list I of items, quicksort chooses a "pivot" item v from I,
+then puts each item of I into one of two unsorted lists, depending on whether
+its key is less or greater than v's key.  (Items whose keys are equal to v's
+key can go into either list; we'll discuss this issue later.)
+</p>
+<p>
+  Start with the unsorted list I of n input items.<br/>
+  Choose a pivot item v from I.<br/>
+  Partition I into two unsorted lists I1 and I2.<br/>
+</p><ul>
+<li>I1 contains all items whose keys are smaller than v's key.<br/>
+</li>
+<li>I2 contains all items whose keys are larger than v's.<br/>
+</li>
+<li>Items with the same key as v can go into either list.<br/>
+</li>
+<li>The pivot v, however, does not go into either list.<br/>
+</li>
+</ul>
+
+<p>  Sort I1 recursively, yielding the sorted list S1.<br/>
+  Sort I2 recursively, yielding the sorted list S2.<br/>
+  Concatenate S1, v, and S2 together, yielding a sorted list S.<br/>
+</p>
+<p>
+The recursion bottoms out at one-item and zero-item lists.  (Zero-item lists
+can arise when the pivot is the smallest or largest item in its list.)  How
+long does quicksort take?  The answer is made apparent by examining several
+possible recursion trees.  In the illustrations below, the pivot v is always
+chosen to be the first item in the list.
+</p>
+
+
+
+<pre class="src src-text">v = pivot
+* = empty list
+
+  ---------------------------       ---------------------------
+  |4 | 7 | 1 | 5 | 9 | 3 | 0|       |0 | 1 | 3 | 4 | 5 | 7 | 9|
+  ---------------------------       ---------------------------
+       /       |       \           / |             \
+  ----------- --- -----------     / --- -----------------------
+  |1 | 3 | 0| |4| |7 | 5 | 9|    *  |0| |1 | 3 | 4 | 5 | 7 | 9|
+I1----------- --- -----------I2     --- -----------------------
+   /   |   \   v   /   |   \         v / |           \
+  --- --- ---     --- --- ---         / --- -------------------
+  |0| |1| |3|     |5| |7| |9|        *  |1| |3 | 4 | 5 | 7 | 9|
+I1--- --- ---I2 I1--- --- ---I2         --- -------------------
+       v               v                 v / |         \
+                                          / --- ---------------
+   0   1   3   4   5   7   9             *  |3| |4 | 5 | 7 | 9|
+                                            --- ---------------
+                                             v / |       \
+                                              / --- -----------
+                                             *  |4| |5 | 7 | 9|
+                                                --- -----------
+                                                 v / |     \
+                                                  / --- -------
+                                                 *  |5| |7 | 9|
+                                                    --- -------
+                                                      v / |   \
+                                                       / --- ---
+                                                      *  |7| |9|
+                                                         --- ---
+                                                          v
+ORG-LIST-END-MARKER
+</pre>
+
+
+<p>
+The example at right, on the other hand, shows the Theta(n<sup>2</sup>)        
+performance we suffer if the pivot always proves to have the             
+smallest or largest key in the list.  (You can see it takes          
+Omega(n<sup>2</sup>) time because the first n/2 levels each process a list     
+of length n/2 or greater.)  The recursion tree is as unbalanced      
+as it can be.  This example shows that when the input list I
+happens to be already sorted, choosing the pivot to be the first item of the
+list is a disastrous policy.
+</p>
+
+<p>
+In the example at left, we get lucky, and the pivot
+always turns out to be the item having the median key.
+Hence, each unsorted list is partitioned into two pieces
+of equal size, and we have a well-balanced recursion
+tree.  Just like in mergesort, the tree has O(log n)
+levels.  Partitioning a list is a linear-time operation,
+so the total running time is O(n log n).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-30-2" class="outline-3">
+<h3 id="sec-30-2">Choosing a Pivot</h3>
+<div class="outline-text-3" id="text-30-2">
+
+<p>We need a better way to choose a pivot.  A respected, time-tested method is to
+randomly select an item from I to serve as pivot.  With a random pivot, we can
+expect "on average" to obtain a 1/4 - 3/4 split; half the time we'll obtain a
+worse split, half the time better.  A little math (see Goodrich and Tamassia
+Section 11.2.1) shows that the average running time of quicksort with random
+pivots is in O(n log n).  (We'll do the analysis late this semester in a
+lecture on "Randomized analysis.")
+</p>
+<p>
+An even better way to choose a pivot (when n is larger than 50 or so) is called
+the "median-of-three" strategy.  Select three random items from I, and then
+choose the item having the middle key.  With a lot of math, this strategy can
+be shown to have a smaller constant (hidden in the O(n log n) notation) than
+the one-random-item strategy.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-30-3" class="outline-3">
+<h3 id="sec-30-3">Quicksort on Linked Lists</h3>
+<div class="outline-text-3" id="text-30-3">
+
+
+
+
+
+<pre class="src src-text">I deliberately left unresolved the question of      |5 | 5 | 5 | 5 | 5 | 5 | 5|
+what to do with items that have the same key as     ---------------------------
+the pivot.  Suppose we put all the items having                /             |
+the same key as v into the list I1.  If we try to   ----------------------- ---
+sort a list in which every single item has the      |5 | 5 | 5 | 5 | 5 | 5| |5|
+same key, then _every_ item will go into list I1,   ----------------------- ---
+and quicksort will have quadratic running time!     I1                       v
+(See illustration at right.)
+                                                    ---------------------------
+When sorting a linked list, a far better solution   |5 | 7 | 5 | 0 | 6 | 5 | 5|
+is to partition I into _three_ unsorted lists I1,   ---------------------------
+I2, and Iv.  Iv contains the pivot v and all the     /         |           \
+other items with the same key.  We sort I1 and I2   --- --------------- -------
+recursively, yielding S1 and S2.  Iv, of course,    |0| |5 | 5 | 5 | 5| |7 | 6|
+does not need to be sorted.  Finally, we            --- --------------- -------
+concatenate S1, Iv, and S2 to yield S.              I1   v     Iv            I2
+</pre>
+
+
+
+<p>
+This strategy is quite fast if there are a large number of duplicate keys,
+because the lists called "Iv" (at each level of the recursion tree) require no
+further sorting or manipulation.
+</p>
+<p>
+Unfortunately, with linked lists, selecting a pivot is annoying.  With an
+array, we can read a randomly chosen pivot in constant time; with a linked list
+we must walk half-way through the list on average, increasing the constant in
+our running time.  However, if we restrict ourselves to pivots near the
+beginning of the linked list, we risk quadratic running time (for instance,
+if I is already in sorted order, or nearly so), so we have to pay the price.
+(If you are clever, you can speed up your implementation by choosing random
+pivots during the partitioning step for the <span style="text-decoration:underline;">next</span> round of partitioning.)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-30-4" class="outline-3">
+<h3 id="sec-30-4">Quicksort on Arrays</h3>
+<div class="outline-text-3" id="text-30-4">
+
+<p>Quicksort shines for sorting arrays.  In-place quicksort is very fast.  But
+a fast in-place quicksort is tricky to code.  It's easy to write a buggy or
+quadratic version by mistake.  Goodrich and Tamassia did.
+</p>
+<p>
+Suppose we have an array a in which we want to sort the items starting at
+a[low] and ending at a[high].  We choose a pivot v and move it out of the way
+by swapping it with the last item, a[high].
+</p>
+<p>
+We employ two array indices, i and j.  i is initially "low - 1", and j is
+initially "high", so that i and j sandwich the items to be sorted (not
+including the pivot).  We will enforce the following invariants.
+</p><ul>
+<li>All items at or left of index i have a key &lt;= the pivot's key.
+</li>
+<li>All items at or right of index j have a key &gt;= the pivot's key.
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-text">To partition the array, we advance the index        ---------------------------
+i until it encounters an item whose key is          |3 | 8 | 0 | 9 | 5 | 7 | 4|
+greater than or equal to the pivot's key; then      ---------------------------
+we decrement the index j until it encounters        low              v     high
+an item whose key is less than or equal to
+the pivot's key.  Then, we swap the items at        ---------------------------
+i and j.  We repeat this sequence until the         |3 | 8 | 0 | 9 | 4 | 7 | 5|
+indices i and j meet in the middle.  Then,          ---------------------------
+we move the pivot back into the middle (by        ^                          ^
+swapping it with the item at index i).            i                          j
+
+An example is given at right.  The randomly         ---------------------------
+selected pivot, whose key is 5, is moved to         |3 | 8 | 0 | 9 | 4 | 7 | 5|
+the end of the array by swapping it with the        ---------------------------
+last item.  The indices i and j are created.   advance:  i           j
+i advances until it reaches an item whose key
+is &gt;= 5, and j retreats until it reaches an         ---------------------------
+item whose key is &lt;= 5.  The two items are          |3 | 4 | 0 | 9 | 8 | 7 | 5|
+swapped, and i advances and j retreats again.       ---------------------------
+After the second advance/retreat, i and j      swap:     i           j
+have crossed paths, so we do not swap their
+items.  Instead, we swap the pivot with the         ---------------------------
+item at index i, putting it between the lists       |3 | 4 | 0 | 9 | 8 | 7 | 5|
+I1 and I2 where it belongs.                         ---------------------------
+                                               advance:      j   i
+What about items having the same key as the
+pivot?  Handling these is particularly              ----------- --- -----------
+tricky.  We'd like to put them on a separate        |3 | 4 | 0| |5| |8 | 7 | 9|
+list (as we did for linked lists), but doing        ----------- --- -----------
+that in place is too complicated.  As I noted       I1           i           I2
+previously, if we put all these items into
+the list I1, we'll have quadratic running time when all the keys in the array
+are equal, so we don't want to do that either.
+</pre>
+
+
+<p>
+The solution is to make sure each index, i and j, stops whenever it reaches a
+key equal to the pivot.  Every key equal to the pivot (except perhaps one, if
+we end with i = j) takes part in one swap.  Swapping an item equal to the pivot
+may seem unnecessary, but it has an excellent side effect:  if all the items in
+the array have the same key, half these items will go into I1, and half into
+I2, giving us a well-balanced recursion tree.  (To see why, try running the
+pseudocode below on paper with an array of equal keys.)  WARNING:  The code on
+page 530 of Goodrich and Tamassia gets this WRONG.  Their implementation has
+quadratic running time when all the keys are equal.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">quicksort</span>(<span style="color: #228b22;">Comparable</span>[] <span style="color: #a0522d;">a</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">low</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">high</span>) {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">If there's fewer than two items, do nothing.</span>
+  <span style="color: #a020f0;">if</span> (low &lt; high) {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">pivotIndex</span> = random number from low to high;
+    <span style="color: #228b22;">Comparable</span> <span style="color: #a0522d;">pivot</span> = a[pivotIndex];
+    a[pivotIndex] = a[high];                       <span style="color: #b22222;">// </span><span style="color: #b22222;">Swap pivot with last item</span>
+    a[high] = pivot;
+
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = low - 1;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = high;
+    <span style="color: #a020f0;">do</span> {
+      <span style="color: #a020f0;">do</span> { i++; } <span style="color: #a020f0;">while</span> (a[i].compareTo(pivot) &lt; 0);
+      <span style="color: #a020f0;">do</span> { j--; } <span style="color: #a020f0;">while</span> ((a[j].compareTo(pivot) &gt; 0) &amp;&amp; (j &gt; low));
+      <span style="color: #a020f0;">if</span> (i &lt; j) {
+        <span style="color: #228b22;">swap</span> <span style="color: #a0522d;">a</span>[i] and a[j];
+      }
+    } <span style="color: #a020f0;">while</span> (i &lt; j);
+
+    a[high] = a[i];
+    a[i] = pivot;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Put pivot in the middle where it belongs</span>
+    quicksort(a, low, i - 1);                     <span style="color: #b22222;">// </span><span style="color: #b22222;">Recursively sort left list</span>
+    quicksort(a, i + 1, high);                   <span style="color: #b22222;">// </span><span style="color: #b22222;">Recursively sort right list</span>
+  }
+}
+</pre>
+
+
+<p>
+Can the "do { i++ }" loop walk off the end of the array and generate an out-of-
+bounds exception?  No, because a[high] contains the pivot, so i will stop
+advancing when i == high (if not sooner).  There is no such assurance for j,
+though, so the "do { j&ndash; }" loop explicitly tests whether "j &gt; low" before
+retreating.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-30-5" class="outline-3">
+<h3 id="sec-30-5">Postscript</h3>
+<div class="outline-text-3" id="text-30-5">
+
+
+<p>
+The journal "Computing in Science &amp; Engineering" did a poll of experts to make
+a list of the ten most important and influential algorithms of the twentieth
+century, and it published a separate article on each of the ten algorithms.
+Quicksort is one of the ten, and it is surely the simplest algorithm on the
+list.  Quicksort's inventor, Sir C. A. R. "Tony" Hoare, received the ACM Turing
+Award in 1980 for his work on programming languages, and was conferred the
+title of Knight Bachelor in March 2000 by Queen Elizabeth II for his
+contributions to "Computing Science."
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-31" class="outline-2">
+<h2 id="sec-31">Lecture 33</h2>
+<div class="outline-text-2" id="text-31">
+
+
+<p>
+Today's reading:  Goodrich &amp; Tamassia, Section 11.4.
+</p>
+<p>
+<a href="original-notes/33">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-31-1" class="outline-3">
+<h3 id="sec-31-1">DISJOINT SETS</h3>
+<div class="outline-text-3" id="text-31-1">
+
+
+<p>
+A <span style="text-decoration:underline;">disjoint sets</span> data structure represents a collection of sets that are
+<span style="text-decoration:underline;">disjoint</span>:  that is, no item is found in more than one set.  The collection of
+disjoint sets is called a <span style="text-decoration:underline;">partition</span>, because the items are partitioned among
+the sets.
+</p>
+<p>
+Moreover, we work with a <span style="text-decoration:underline;">universe</span> of items.  The universe is made up of all
+of the items that can be a member of a set.  Every item is a member of exactly
+one set.
+</p>
+<p>
+For example, suppose the items in our universe are corporations that still
+exist today or were acquired by other corporations.  Our sets are corporations
+that still exist under their own name.  For instance, "Microsoft,"
+"Forethought," and "Web TV" are all members of the "Microsoft" set.
+</p>
+<p>
+We will limit ourselves to two operations.  The first is called a <span style="text-decoration:underline;">union</span>
+operation, in which we merge two sets into one.  The second is called a <span style="text-decoration:underline;">find</span>
+query, in which we ask a question like, "What corporation does Web TV belong to
+today?"  More generally, a "find" query takes an item and tells us which set it
+is in.  We will not support operations that break a set up into two or more
+sets (not quickly, anyway).  Data structures designed to support these
+operations are called <span style="text-decoration:underline;">partition</span> or <span style="text-decoration:underline;">union/find</span> data structures.
+</p>
+<p>
+Applications of union/find data structures include maze generation (which
+you'll do in Homework 9) and Kruskal's algorithm for computing the minimum
+spanning tree of a graph (which you'll implement in Project 3).
+</p>
+<p>
+Union/find data structures begin with every item in a separate set.
+</p>
+
+<p>
+<img src="ditaa-images/img2_989c366fe420ad8558f37dd8ab0b73d078695dda.png"  alt="ditaa-images/img2_989c366fe420ad8558f37dd8ab0b73d078695dda.png" />
+</p>
+
+<p>
+The query "find(Empire Air)" returns "Empire Air".  Suppose we take the union
+of Piedmont Air and Empire Air and called the resulting corporation Piedmont
+Air.  Similarly, we unite Microsoft with Web TV and US Air with Pacific SW.
+</p>
+
+<p>
+<img src="ditaa-images/img3_4f52ff936dde939d63b6c97731d78204ef2a8cef.png"  alt="ditaa-images/img3_4f52ff936dde939d63b6c97731d78204ef2a8cef.png" />
+</p>
+
+<p>
+The query "find(Empire Air)" now returns "Piedmont Air".  Suppose we further
+unite US Air with Piedmont Air.
+</p>
+
+<p>
+<img src="ditaa-images/img4_ad3765f630144ea6aa3c72e8d574f3380ff604d5.png"  alt="ditaa-images/img4_ad3765f630144ea6aa3c72e8d574f3380ff604d5.png" />
+</p>
+
+<p>
+The query "find(Empire Air)" now returns "US Air".  When Microsoft takes over
+US Air, everything will be in one set and no further mergers will be possible.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-31-2" class="outline-3">
+<h3 id="sec-31-2">List-Based Disjoint Sets and the Quick-Find Algorithm</h3>
+<div class="outline-text-3" id="text-31-2">
+
+<p>The obvious data structure for disjoint sets looks like this.
+</p><ul>
+<li>Each set references a list of the items in that set.
+</li>
+<li>Each item references the set that contains it.
+</li>
+</ul>
+
+
+<p>
+With this data structure, find operations take O(1) time; hence, we say that
+list-based disjoint sets use the <span style="text-decoration:underline;">quick-find</span> algorithm.  However, union
+operations are slow, because when two sets are united, we must walk through one
+set and relabel all the items so that they reference the other set.
+</p>
+<p>
+Time prevents us from analyzing this algorithm in detail (but see Goodrich and
+Tamassia, Section 11.4.3).  Instead, let's move on to the less obvious but
+flatly superior <span style="text-decoration:underline;">quick-union</span> algorithm.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-31-3" class="outline-3">
+<h3 id="sec-31-3">Tree-Based Disjoint Sets and the Quick-Union Algorithm</h3>
+<div class="outline-text-3" id="text-31-3">
+
+<p>In tree-based disjoint sets, union operations take O(1) time, but find
+operations are slower.  However, for any sequence of union and find operations,
+the quick-union algorithm is faster overall than the quick-find algorithm.
+</p>
+<p>
+To support fast unions, each set is stored as a general tree.  The quick-union
+data structure comprises a <span style="text-decoration:underline;">forest</span> (a collection of trees), in which each
+item is initially the root of its own tree; then trees are merged by union
+operations.  The quick-union data structure is simpler than the general tree
+structures you have studied so far, because there are no child or sibling
+references.  Every node knows only its parent, and you can only walk up the
+tree.  The true identity of each set is recorded at its root.
+</p>
+<p>
+Union is a simple O(1) time operation:  we simply make the root of one set
+become a child of the root of the other set.  For example, when we form the
+union of US Air and Piedmont Air:
+</p>
+<p>
+<img src="ditaa-images/img5_4870a7a60876b814360b85c726d74515c661f53b.png"  alt="ditaa-images/img5_4870a7a60876b814360b85c726d74515c661f53b.png" />
+</p>
+
+<p>
+US Air becomes a set containing four members.  However, finding the set to
+which a given item belongs is not a constant-time operation.
+</p>
+<p>
+The find operation is performed by following the chain of parent references
+from an item to the root of its tree.  For example, find(Empire Air) will
+follow the path of references until it reaches US Air.  The cost of this
+operation is proportional to the item's depth in the tree.
+</p>
+<p>
+These are the basic union and find algorithms, but we'll consider two
+optimizations that make finds faster.  One strategy, called union-by-size,
+helps the union operation to build shorter trees.  The second strategy, called
+path compression, gives the find operation the power to shorten trees.
+</p>
+<p>
+<span style="text-decoration:underline;">Union-by-size</span> is a strategy to keep items from getting too deep by uniting
+sets intelligently.  At each root, we record the size of its tree (i.e. the
+number of nodes in the tree).  When we unite two trees, we make the smaller
+tree a subtree of the larger one (breaking ties arbitrarily).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-31-4" class="outline-3">
+<h3 id="sec-31-4">Implementing Quick-Union with an Array</h3>
+<div class="outline-text-3" id="text-31-4">
+
+<p>Suppose the items are non-negative integers, numbered from zero.  We'll use an
+array to record the parent of each item.  If an item has no parent, we'll
+record the size of its tree.  To distinguish it from a parent reference, we'll
+record the size s as the negative number -s.  Initially, every item is the root
+of its own tree, so we set every array element to -1.
+</p>
+
+
+
+<pre class="src src-text">                        -------------------------------
+                        |-1|-1|-1|-1|-1|-1|-1|-1|-1|-1|
+                        -------------------------------
+                          0  1  2  3  4  5  6  7  8  9
+
+The forest illustrated at left below is represented by the array at right.
+
+          8        1        2                  -------------------------------
+         / \      /|\                          | 1|-4|-1| 8| 5| 8| 1| 3|-5| 1|
+        5   3    9 0 6                         -------------------------------
+        |   |                                    0  1  2  3  4  5  6  7  8  9 
+        4   7
+</pre>
+
+
+<p>
+This is a slightly kludgy way to implement tree-based disjoint sets, but it's
+fast (in terms of the constant hidden in the asymptotic notation).
+</p>
+<p>
+Let root1 and root2 be two items that are roots of their respective trees.
+Here is code for the union operation with the union-by-size strategy.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">union</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">root1</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">root2</span>) {
+    <span style="color: #a020f0;">if</span> (array[root2] &lt; array[root1]) { <span style="color: #b22222;">// </span><span style="color: #b22222;">root2 has larger tree</span>
+        array[root2] += array[root1];  <span style="color: #b22222;">// </span><span style="color: #b22222;">update # of items in root2's tree</span>
+        array[root1] = root2;          <span style="color: #b22222;">// </span><span style="color: #b22222;">make root2 parent of root1</span>
+    } <span style="color: #a020f0;">else</span> {                           <span style="color: #b22222;">// </span><span style="color: #b22222;">root1 has equal or larger tree</span>
+        array[root1] += array[root2];  <span style="color: #b22222;">// </span><span style="color: #b22222;">update # of items in root1's tree</span>
+        array[root2] = root1;          <span style="color: #b22222;">// </span><span style="color: #b22222;">make root1 parent of root2</span>
+    }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-31-5" class="outline-3">
+<h3 id="sec-31-5">Path Compression</h3>
+<div class="outline-text-3" id="text-31-5">
+
+<p>The find() method is equally simple, but we need one more trick to obtain the
+best possible speed.  Suppose a sequence of union operations creates a tall
+tree, and we perform find() repeatedly on its deepest leaf.  Each time we
+perform find(), we walk up the tree from leaf to root, perhaps at considerable
+expense.  When we perform find() the first time, why not move the leaf up the
+tree so that it becomes a child of the root?  That way, next time we perform
+find() on the same leaf, it will run much more quickly.  Furthermore, why not
+do the same for <span style="text-decoration:underline;">every</span> node we encounter as we walk up to the root?
+</p>
+
+
+
+<pre class="src src-text">      0
+     /|\                                      _ 0 _
+    1 2 3                                    / /|\ \
+   /|\             ==find(7)==&gt;             7 4 1 2 3
+  4 5 6                                      /| |\
+ /|\                                        8 9 5 6
+7 8 9
+</pre>
+
+
+<p>
+In the example above, find(7) walks up the tree from 7, discovers that 0 is the
+root, and then makes 0 be the parent of 4 and 7, so that future find operations
+on 4, 7, or their descendants will be faster.  This technique is called
+<span style="text-decoration:underline;">path compression</span>.
+</p>
+<p>
+Let x be an item whose set we wish to identify.  Here is code for find, which
+returns the identity of the item at the root of the tree.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">find</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+    <span style="color: #a020f0;">if</span> (array[x] &lt; 0) {
+        <span style="color: #a020f0;">return</span> x;                         <span style="color: #b22222;">// </span><span style="color: #b22222;">x is the root of the tree; return it</span>
+    } <span style="color: #a020f0;">else</span> {
+        <span style="color: #b22222;">// </span><span style="color: #b22222;">Find out who the root is; compress path by making the root x's parent</span>
+        array[x] = find(array[x]);
+        <span style="color: #a020f0;">return</span> array[x];                                       <span style="color: #b22222;">// </span><span style="color: #b22222;">Return the root</span>
+    }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-31-6" class="outline-3">
+<h3 id="sec-31-6">Naming Sets</h3>
+<div class="outline-text-3" id="text-31-6">
+
+<p>Union-by-size means that if Microsoft acquires US Air, US Air will be the root
+of the tree, even though the new conglomorate might still be called Microsoft.
+What if we want some control over the names of the sets when we perform union()
+operations?
+</p>
+<p>
+The solution is to maintain an additional array that maps root items to set
+names (and perhaps vice versa, depending on the application's needs).  For
+instance, the array "name" might map 0 to Microsoft.  We must modify the
+union() method so that when it unites two sets, it assigns the union an
+appropriate name.
+</p>
+<p>
+For many applications, however, we don't care about the name of a set at all;
+we only want to know if two items x and y are in the same set.  This is true in
+both Homework 9 and Project 3.  You only need to run find(x), run find(y), and
+check if the two roots are the same.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-31-7" class="outline-3">
+<h3 id="sec-31-7">Running Time of Quick-Union</h3>
+<div class="outline-text-3" id="text-31-7">
+
+<p>Union operations obviously take Theta(1) time.  (Look at the code&ndash;no loops or
+recursion.)
+</p>
+<p>
+If we use union-by-size, a single find operation can take Theta(log u)
+worst-case time, where u is the number of union operations that took place
+prior to the find.  Path compression does not improve this worst-case time, but
+it improves the <span style="text-decoration:underline;">average</span> running time substantially&ndash;although a find operation
+can take Theta(log u) time, path compression will make that operation fast if
+you do it again.  The average running time of find and union operations in the
+quick-union data structure is so close to a constant that it's hardly worth
+mentioning that, in a rigorous asymptotic sense, it's slightly slower.
+</p>
+<p>
+The bottom line:  a sequence of f find and u union operations (in any order and
+possibly interleaved) takes Theta(u + f alpha(f + u, u)) time in the worst
+case.  alpha is an extremely slowly-growing function known as the 
+<span style="text-decoration:underline;">inverse Ackermann function</span>.
+</p>
+<p>
+When I say "extremely slowly-growing function", I mean "comically slowly-
+growing function."  The inverse Ackermann function is never larger than 4 for
+any values of f and u you could ever use (though it does grow arbitrarily
+large&ndash;for unimaginably gigantic values of f and u).  Hence, for all practical
+purposes (but not on the Final Exam), you should think of quick-union as having
+find operations that run, on average, in constant time.
+</p></div>
+</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-04-13T22:38-0700</p>
+<p class="date">Date: 2014-04-18T19:25-0700</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
