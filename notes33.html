@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>notes33</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="notes33"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-04-18T19:25-0700"/>
+<meta name="author" content="michael"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+        padding: 5pt;
+        font-family: courier, monospace;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">notes33</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Lecture 33</a>
+<ul>
+<li><a href="#sec-1-1">DISJOINT SETS</a></li>
+<li><a href="#sec-1-2">List-Based Disjoint Sets and the Quick-Find Algorithm</a></li>
+<li><a href="#sec-1-3">Tree-Based Disjoint Sets and the Quick-Union Algorithm</a></li>
+<li><a href="#sec-1-4">Implementing Quick-Union with an Array</a></li>
+<li><a href="#sec-1-5">Path Compression</a></li>
+<li><a href="#sec-1-6">Naming Sets</a></li>
+<li><a href="#sec-1-7">Running Time of Quick-Union</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Lecture 33</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Today's reading:  Goodrich &amp; Tamassia, Section 11.4.
+</p>
+<p>
+<a href="original-notes/33">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">DISJOINT SETS</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<p>
+A <span style="text-decoration:underline;">disjoint sets</span> data structure represents a collection of sets that are
+<span style="text-decoration:underline;">disjoint</span>:  that is, no item is found in more than one set.  The collection of
+disjoint sets is called a <span style="text-decoration:underline;">partition</span>, because the items are partitioned among
+the sets.
+</p>
+<p>
+Moreover, we work with a <span style="text-decoration:underline;">universe</span> of items.  The universe is made up of all
+of the items that can be a member of a set.  Every item is a member of exactly
+one set.
+</p>
+<p>
+For example, suppose the items in our universe are corporations that still
+exist today or were acquired by other corporations.  Our sets are corporations
+that still exist under their own name.  For instance, "Microsoft,"
+"Forethought," and "Web TV" are all members of the "Microsoft" set.
+</p>
+<p>
+We will limit ourselves to two operations.  The first is called a <span style="text-decoration:underline;">union</span>
+operation, in which we merge two sets into one.  The second is called a <span style="text-decoration:underline;">find</span>
+query, in which we ask a question like, "What corporation does Web TV belong to
+today?"  More generally, a "find" query takes an item and tells us which set it
+is in.  We will not support operations that break a set up into two or more
+sets (not quickly, anyway).  Data structures designed to support these
+operations are called <span style="text-decoration:underline;">partition</span> or <span style="text-decoration:underline;">union/find</span> data structures.
+</p>
+<p>
+Applications of union/find data structures include maze generation (which
+you'll do in Homework 9) and Kruskal's algorithm for computing the minimum
+spanning tree of a graph (which you'll implement in Project 3).
+</p>
+<p>
+Union/find data structures begin with every item in a separate set.
+</p>
+
+<p>
+<img src="ditaa-images/img2_989c366fe420ad8558f37dd8ab0b73d078695dda.png"  alt="ditaa-images/img2_989c366fe420ad8558f37dd8ab0b73d078695dda.png" />
+</p>
+
+<p>
+The query "find(Empire Air)" returns "Empire Air".  Suppose we take the union
+of Piedmont Air and Empire Air and called the resulting corporation Piedmont
+Air.  Similarly, we unite Microsoft with Web TV and US Air with Pacific SW.
+</p>
+
+<p>
+<img src="ditaa-images/img3_4f52ff936dde939d63b6c97731d78204ef2a8cef.png"  alt="ditaa-images/img3_4f52ff936dde939d63b6c97731d78204ef2a8cef.png" />
+</p>
+
+<p>
+The query "find(Empire Air)" now returns "Piedmont Air".  Suppose we further
+unite US Air with Piedmont Air.
+</p>
+
+<p>
+<img src="ditaa-images/img4_ad3765f630144ea6aa3c72e8d574f3380ff604d5.png"  alt="ditaa-images/img4_ad3765f630144ea6aa3c72e8d574f3380ff604d5.png" />
+</p>
+
+<p>
+The query "find(Empire Air)" now returns "US Air".  When Microsoft takes over
+US Air, everything will be in one set and no further mergers will be possible.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">List-Based Disjoint Sets and the Quick-Find Algorithm</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>The obvious data structure for disjoint sets looks like this.
+</p><ul>
+<li>Each set references a list of the items in that set.
+</li>
+<li>Each item references the set that contains it.
+</li>
+</ul>
+
+
+<p>
+With this data structure, find operations take O(1) time; hence, we say that
+list-based disjoint sets use the <span style="text-decoration:underline;">quick-find</span> algorithm.  However, union
+operations are slow, because when two sets are united, we must walk through one
+set and relabel all the items so that they reference the other set.
+</p>
+<p>
+Time prevents us from analyzing this algorithm in detail (but see Goodrich and
+Tamassia, Section 11.4.3).  Instead, let's move on to the less obvious but
+flatly superior <span style="text-decoration:underline;">quick-union</span> algorithm.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">Tree-Based Disjoint Sets and the Quick-Union Algorithm</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>In tree-based disjoint sets, union operations take O(1) time, but find
+operations are slower.  However, for any sequence of union and find operations,
+the quick-union algorithm is faster overall than the quick-find algorithm.
+</p>
+<p>
+To support fast unions, each set is stored as a general tree.  The quick-union
+data structure comprises a <span style="text-decoration:underline;">forest</span> (a collection of trees), in which each
+item is initially the root of its own tree; then trees are merged by union
+operations.  The quick-union data structure is simpler than the general tree
+structures you have studied so far, because there are no child or sibling
+references.  Every node knows only its parent, and you can only walk up the
+tree.  The true identity of each set is recorded at its root.
+</p>
+<p>
+Union is a simple O(1) time operation:  we simply make the root of one set
+become a child of the root of the other set.  For example, when we form the
+union of US Air and Piedmont Air:
+</p>
+<p>
+<img src="ditaa-images/img5_4870a7a60876b814360b85c726d74515c661f53b.png"  alt="ditaa-images/img5_4870a7a60876b814360b85c726d74515c661f53b.png" />
+</p>
+
+<p>
+US Air becomes a set containing four members.  However, finding the set to
+which a given item belongs is not a constant-time operation.
+</p>
+<p>
+The find operation is performed by following the chain of parent references
+from an item to the root of its tree.  For example, find(Empire Air) will
+follow the path of references until it reaches US Air.  The cost of this
+operation is proportional to the item's depth in the tree.
+</p>
+<p>
+These are the basic union and find algorithms, but we'll consider two
+optimizations that make finds faster.  One strategy, called union-by-size,
+helps the union operation to build shorter trees.  The second strategy, called
+path compression, gives the find operation the power to shorten trees.
+</p>
+<p>
+<span style="text-decoration:underline;">Union-by-size</span> is a strategy to keep items from getting too deep by uniting
+sets intelligently.  At each root, we record the size of its tree (i.e. the
+number of nodes in the tree).  When we unite two trees, we make the smaller
+tree a subtree of the larger one (breaking ties arbitrarily).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">Implementing Quick-Union with an Array</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p>Suppose the items are non-negative integers, numbered from zero.  We'll use an
+array to record the parent of each item.  If an item has no parent, we'll
+record the size of its tree.  To distinguish it from a parent reference, we'll
+record the size s as the negative number -s.  Initially, every item is the root
+of its own tree, so we set every array element to -1.
+</p>
+
+
+
+<pre class="src src-text">                        -------------------------------
+                        |-1|-1|-1|-1|-1|-1|-1|-1|-1|-1|
+                        -------------------------------
+                          0  1  2  3  4  5  6  7  8  9
+
+The forest illustrated at left below is represented by the array at right.
+
+          8        1        2                  -------------------------------
+         / \      /|\                          | 1|-4|-1| 8| 5| 8| 1| 3|-5| 1|
+        5   3    9 0 6                         -------------------------------
+        |   |                                    0  1  2  3  4  5  6  7  8  9 
+        4   7
+</pre>
+
+
+<p>
+This is a slightly kludgy way to implement tree-based disjoint sets, but it's
+fast (in terms of the constant hidden in the asymptotic notation).
+</p>
+<p>
+Let root1 and root2 be two items that are roots of their respective trees.
+Here is code for the union operation with the union-by-size strategy.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">union</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">root1</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">root2</span>) {
+    <span style="color: #a020f0;">if</span> (array[root2] &lt; array[root1]) { <span style="color: #b22222;">// </span><span style="color: #b22222;">root2 has larger tree</span>
+        array[root2] += array[root1];  <span style="color: #b22222;">// </span><span style="color: #b22222;">update # of items in root2's tree</span>
+        array[root1] = root2;          <span style="color: #b22222;">// </span><span style="color: #b22222;">make root2 parent of root1</span>
+    } <span style="color: #a020f0;">else</span> {                           <span style="color: #b22222;">// </span><span style="color: #b22222;">root1 has equal or larger tree</span>
+        array[root1] += array[root2];  <span style="color: #b22222;">// </span><span style="color: #b22222;">update # of items in root1's tree</span>
+        array[root2] = root1;          <span style="color: #b22222;">// </span><span style="color: #b22222;">make root1 parent of root2</span>
+    }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5">Path Compression</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<p>The find() method is equally simple, but we need one more trick to obtain the
+best possible speed.  Suppose a sequence of union operations creates a tall
+tree, and we perform find() repeatedly on its deepest leaf.  Each time we
+perform find(), we walk up the tree from leaf to root, perhaps at considerable
+expense.  When we perform find() the first time, why not move the leaf up the
+tree so that it becomes a child of the root?  That way, next time we perform
+find() on the same leaf, it will run much more quickly.  Furthermore, why not
+do the same for <span style="text-decoration:underline;">every</span> node we encounter as we walk up to the root?
+</p>
+
+
+
+<pre class="src src-text">      0
+     /|\                                      _ 0 _
+    1 2 3                                    / /|\ \
+   /|\             ==find(7)==&gt;             7 4 1 2 3
+  4 5 6                                      /| |\
+ /|\                                        8 9 5 6
+7 8 9
+</pre>
+
+
+<p>
+In the example above, find(7) walks up the tree from 7, discovers that 0 is the
+root, and then makes 0 be the parent of 4 and 7, so that future find operations
+on 4, 7, or their descendants will be faster.  This technique is called
+<span style="text-decoration:underline;">path compression</span>.
+</p>
+<p>
+Let x be an item whose set we wish to identify.  Here is code for find, which
+returns the identity of the item at the root of the tree.
+</p>
+
+
+
+<pre class="src src-java"><span style="color: #a020f0;">public</span> <span style="color: #228b22;">int</span> <span style="color: #0000ff;">find</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+    <span style="color: #a020f0;">if</span> (array[x] &lt; 0) {
+        <span style="color: #a020f0;">return</span> x;                         <span style="color: #b22222;">// </span><span style="color: #b22222;">x is the root of the tree; return it</span>
+    } <span style="color: #a020f0;">else</span> {
+        <span style="color: #b22222;">// </span><span style="color: #b22222;">Find out who the root is; compress path by making the root x's parent</span>
+        array[x] = find(array[x]);
+        <span style="color: #a020f0;">return</span> array[x];                                       <span style="color: #b22222;">// </span><span style="color: #b22222;">Return the root</span>
+    }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6">Naming Sets</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<p>Union-by-size means that if Microsoft acquires US Air, US Air will be the root
+of the tree, even though the new conglomorate might still be called Microsoft.
+What if we want some control over the names of the sets when we perform union()
+operations?
+</p>
+<p>
+The solution is to maintain an additional array that maps root items to set
+names (and perhaps vice versa, depending on the application's needs).  For
+instance, the array "name" might map 0 to Microsoft.  We must modify the
+union() method so that when it unites two sets, it assigns the union an
+appropriate name.
+</p>
+<p>
+For many applications, however, we don't care about the name of a set at all;
+we only want to know if two items x and y are in the same set.  This is true in
+both Homework 9 and Project 3.  You only need to run find(x), run find(y), and
+check if the two roots are the same.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7">Running Time of Quick-Union</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<p>Union operations obviously take Theta(1) time.  (Look at the code&ndash;no loops or
+recursion.)
+</p>
+<p>
+If we use union-by-size, a single find operation can take Theta(log u)
+worst-case time, where u is the number of union operations that took place
+prior to the find.  Path compression does not improve this worst-case time, but
+it improves the <span style="text-decoration:underline;">average</span> running time substantially&ndash;although a find operation
+can take Theta(log u) time, path compression will make that operation fast if
+you do it again.  The average running time of find and union operations in the
+quick-union data structure is so close to a constant that it's hardly worth
+mentioning that, in a rigorous asymptotic sense, it's slightly slower.
+</p>
+<p>
+The bottom line:  a sequence of f find and u union operations (in any order and
+possibly interleaved) takes Theta(u + f alpha(f + u, u)) time in the worst
+case.  alpha is an extremely slowly-growing function known as the 
+<span style="text-decoration:underline;">inverse Ackermann function</span>.
+</p>
+<p>
+When I say "extremely slowly-growing function", I mean "comically slowly-
+growing function."  The inverse Ackermann function is never larger than 4 for
+any values of f and u you could ever use (though it does grow arbitrarily
+large&ndash;for unimaginably gigantic values of f and u).  Hence, for all practical
+purposes (but not on the Final Exam), you should think of quick-union as having
+find operations that run, on average, in constant time.
+</p></div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-04-18T19:25-0700</p>
+<p class="author">Author: michael</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

@@ -34,3 +34,4 @@ Original notes from: http://www.cs.berkeley.edu/~jrs/61b/
 - [[file:notes29.org][Lecture 29]]
 - [[file:notes30.org][Lecture 30]]
 - [[file:notes31.org][Lecture 31]]
+- [[file:notes33.org][Lecture 33]]
