@@ -112,7 +112,7 @@
 (defconst cs61b-export-html-style-default
   "<style type=\"text/css\">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
+  html { font-family: courier, monospace; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
