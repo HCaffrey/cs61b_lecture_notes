@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>notes34</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="notes34"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-04-21T17:50-0700"/>
+<meta name="author" content="michael"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: courier, monospace; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+        padding: 5pt;
+        font-family: courier, monospace;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012-2013  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">notes34</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Lecture 34</a>
+<ul>
+<li><a href="#sec-1-1">SELECTION</a></li>
+<li><a href="#sec-1-2">Quickselect</a></li>
+<li><a href="#sec-1-3">A LOWER BOUND ON COMPARISON-BASED SORTING</a></li>
+<li><a href="#sec-1-4">LINEAR-TIME SORTING</a>
+<ul>
+<li><a href="#sec-1-4-1">Bucket Sort</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Lecture 34</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Today's reading:  Goodrich &amp; Tamassia, Sections 11.3.1 &amp; 11.5.
+</p>
+<p>
+<a href="original-notes/34">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">SELECTION</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>Suppose that we want to find the kth smallest key in a list.  In other words,
+we want to know which item has index j if the list is sorted (where j = k - 1).
+We could simply sort the list, then look up the item at index j.  But if we
+don't actually need to sort the list, is there a faster way?  This problem is
+called <span style="text-decoration:underline;">selection</span>.
+</p>
+<p>
+One example is finding the median of a set of keys.  In an array of n items,
+we are looking for the item whose index is \(j = \Big \lfloor \frac{n}{2} \Big \rfloor\) in the sorted list.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">Quickselect</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>We can modify quicksort to perform selection for us.  Observe that when we
+choose a pivot v and use it to partition the list into three lists I1, Iv, and
+I2, we know which of the three lists contains index j, because we know the
+lengths of I1 and I2.  Therefore, we only need to search one of the three
+lists.
+</p>
+<p>
+Here's the quickselect algorithm for finding the item at index j - that is,
+having the (j + 1)th smallest key.
+</p>
+
+
+
+<pre class="src src-text">Start with an unsorted list I of n input items.
+Choose a pivot item v from I.
+Partition I into three unsorted lists I1, Iv, and I2.
+  - I1 contains all items whose keys are smaller than v's key.
+  - I2 contains all items whose keys are larger than v's.
+  - Iv contains the pivot v.
+  - Items with the same key as v can go into any of the three lists.
+    (In list-based quickselect, they go into Iv; in array-based quickselect,
+    they go into I1 and I2, just like in array-based quicksort.)
+if (j &lt; |I1|) {
+  Recursively find the item with index j in I1; return it.
+} else if (j &lt; |I1| + |Iv|) {
+  Return the pivot v.
+} else {   // j &gt;= |I1| + |Iv|.
+  Recursively find the item with index j - |I1| - |Iv| in I2; return it.
+}
+</pre>
+
+
+<p>
+The advantage of quickselect over quicksort is that we only have to make one
+recursive call, instead of two.  Since we make at most <span style="text-decoration:underline;">one</span> recursive call at
+<span style="text-decoration:underline;">every</span> level of the recursion tree, quickselect is much faster than quicksort.
+I won't analyze quickselect here, but it runs in Theta(n) average time if we
+select pivots randomly.
+</p>
+<p>
+We can easily modify the code for quicksort on arrays, presented in Lecture 31,
+to do selection.  The partitioning step is done exactly according to the
+Lecture 31 pseudocode for array quicksort.  Recall that when the partitioning
+stage finishes, the pivot is stored at index "i" (see the variable "i" in the
+array quicksort pseudocode).  In the quickselect pseudocode above, just replace
+\(|I1|\) with i and \(|Iv|\) with 1.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">A LOWER BOUND ON COMPARISON-BASED SORTING</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>Suppose we have a scrambled array of n numbers, with each number from 1&hellip;n
+occurring once.  How many possible orders can the numbers be in?
+</p>
+<p>
+The answer is \(n!\), where \(n! = 1 * 2 * 3 * ... * (n-2) * (n-1) * n\).  Here's why:
+the first number in the array can be anything from \(1...n\), yielding \(n\)
+possibilities.  Once the first number is chosen, the second number can be any
+one of the remaining \(n-1\) numbers, so there are \(n * (n-1)\) possible choices of
+the first two numbers.  The third number can be any one of the remaining \(n-2\)
+numbers, yielding \(n * (n-1) * (n-2)\) possibilities for the first three numbers.
+Continue this reasoning to its logical conclusion.
+</p>
+<p>
+Each different order is called a <span style="text-decoration:underline;">permutation</span> of the numbers, and there are n!
+possible permutations.  (For Homework 9, you are asked to create a random
+permutation of maze walls.)
+</p>
+
+
+
+<pre class="src src-text">Observe that if n &gt; 0,
+                                                                 n
+  n! = 1 * 2 * ... * (n-1) * n &lt;= n * n * n * ... * n * n * n = n
+
+and (supposing n is even)
+                                  n    n                                n/2
+  n! = 1 * 2 * ... * (n-1) * n &gt;= - * (- + 1) * ... * (n-1) * n &gt;= (n/2)
+                                  2    2
+</pre>
+
+
+<p>
+so \(n!\) is between \((n/2)^(n/2)\) and \(n^n\).  Let's look at the logarithms of both
+these numbers: \(\log((\frac{n}{2})^{\frac{n}{2}}) = (\frac{n}{2}) \log (\frac{n}{2})\), which is in \(\mathrm{Theta}(n \log n)\),
+and \(\log(n^n) = n \log n\).  Hence, \(log(n!)\) is also in \(\mathrm{Theta}(n \log n)\).
+</p>
+<p>
+A <span style="text-decoration:underline;">comparison-based sort</span> is one in which all decisions are based on comparing
+keys (generally done by "if" statements).  All actions taken by the sorting
+algorithm are based on the results of a sequence of true/false questions.  All
+of the sorting algorithms we have studied are comparison-based.
+</p>
+<p>
+Suppose that two computers run the <span style="text-decoration:underline;">same</span> sorting algorithm at the same time on
+two <span style="text-decoration:underline;">different</span> inputs.  Suppose that every time one computer executes an "if"
+statement and finds it true, the other computer executes the same "if"
+statement and also finds it true; likewise, when one computer executes an "if"
+and finds it false, so does the other.  Then both computers perform exactly the
+same data movements (e.g. swapping the numbers at indices i and j) in exactly
+the same order, so they both permute their inputs in <span style="text-decoration:underline;">exactly</span> the same way.
+</p>
+<p>
+A correct sorting algorithm must generate a <span style="text-decoration:underline;">different</span> sequence of true/false
+answers for each different permutation of 1&hellip;n, because it takes a different
+sequence of data movements to sort each permutation.  There are n! different
+permutations, thus n! different sequences of true/false answers.
+</p>
+<p>
+If a sorting algorithm asks d true/false questions, it generates &lt;= 2<sup>d</sup>
+different sequences of true/false answers.  If it correctly sorts every
+permutation of \(1...n\), then \(n! \le 2^d\), so \(\log_2 (n!) \le d\), and \(d\) is in
+\(\mathrm{Omega}(n \log n)\).  The algorithm spends \(\mathrm{Omega}(d)\) time asking these d questions.
+Hence,
+</p>
+<p>
+ ==============================================================================<br/>
+ EVERY comparison-based sorting algorithm takes \(\mathrm{Omega}(n \log n)\) worst-case time.<br/>
+ ==============================================================================
+</p>
+<p>
+This is an amazing claim, because it doesn't just analyze one algorithm.  It
+says that of the thousands of comparison-based sorting algorithms that haven't
+even been invented yet, not one of them has any hope of beating \(O(n \log n)\) time
+for all inputs of length n.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">LINEAR-TIME SORTING</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p>However, there are faster sorting algorithms that can make q-way decisions for
+large values of q, instead of true/false (2-way) decisions.  Some of these
+algorithms run in linear time.
+</p>
+
+</div>
+
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1">Bucket Sort</h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+
+<p>
+<span style="text-decoration:underline;">Bucket sort</span> works well when keys are distributed in a small range, e.g. from
+0 to q - 1, and the number of items n is larger than, or nearly as large as, q.
+In other words, when \(q\) is in \(O(n)\).
+</p>
+<p>
+We allocate an array of q queues (or singly-linked lists with tail references,
+which are basically the same thing, but we only need the queue operations),
+numbered from 0 to \(q - 1\).  The queues are called <span style="text-decoration:underline;">buckets</span>.  We walk through
+the list of input items, and enqueue each item in the appropriate queue:
+an item with key i goes into queue i.
+</p>
+<p>
+Each item illustrated here has a numerical key and an associated value.
+</p>
+
+<p>
+<img src="ditaa-images/TEMP_1_455f9e709285b98466868f586bffc3c158ee6343.png"  alt="ditaa-images/TEMP_1_455f9e709285b98466868f586bffc3c158ee6343.png" />
+</p>
+
+<p>
+When we're done, we concatenate all the queues together in order.
+</p>
+<p>
+Concatenated output:
+</p>
+<p>
+<img src="ditaa-images/img1_53d35ba4ac039d0b83e2e819f60b0fa1e30b3876.png"  alt="ditaa-images/img1_53d35ba4ac039d0b83e2e819f60b0fa1e30b3876.png" />
+</p>
+
+<p>
+This data structure is <span style="text-decoration:underline;">exactly</span> like a hash table (plus tail references), but
+the hash code just maps the key i to bucket i, and there is no compression
+function because there is no need for compression.
+</p>
+<p>
+Bucket sort takes \(\mathrm{Theta}(q + n)\) time&ndash;in the best case and in the worst case.
+It takes \(\mathrm{Theta}(q)\) time to initialize the buckets in the beginning and to
+concatenate them together in the end.  It takes \(\mathrm{Theta}(n)\) time to put all the
+items in their buckets.
+</p>
+<p>
+If \(q\) is in \(O(n)\)&ndash;that is, the number of possible keys isn't much larger than
+the number of items we're sorting&ndash;then bucket sort takes \(\mathrm{Theta}(n)\) time.  How
+did we get around the \(\mathrm{Omega}(n \log n)\) lower bound on comparison-based sorting?
+Bucket sort is not comparison-based.  We are making a q-way decision every time
+we decide which queue to put an item into, instead of the true/false decisions
+provided by comparisons and "if" statements.
+</p>
+<p>
+Bucket sort (as I've described it here) is said to be <span style="text-decoration:underline;">stable</span>.  A sort is
+stable if items with equal keys come out in the same order they went in.  For
+example, observe that 3:c, 3:e, and 3:i appear in the same order in the output
+above as they appeared in the input.  Bucket sort is not the only stable sort
+we have seen; insertion sort, selection sort, and mergesort can all be
+implemented so that they are stable.  The linked list version of quicksort we
+have seen can be stable, but the array version is decidedly not.  Heapsort is
+never stable.  (Actually, we can <span style="text-decoration:underline;">make</span> heapsort stable using a simple trick
+called a <span style="text-decoration:underline;">secondary key</span>, which I might describe later in the semester.)
+</p>
+<p>
+Take note that bucket sort is ONLY appropriate when keys are distributed in
+a small range; i.e. q is in \(O(n)\).  On Monday we'll study a sorting algorithm
+called <span style="text-decoration:underline;">radix sort</span> that will fix that limitation.  The stability of bucket
+sort will be important for radix sort.
+</p></div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-04-21T17:50-0700</p>
+<p class="author">Author: michael</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
