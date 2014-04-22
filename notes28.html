@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="notes28"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-04-21T17:50-0700"/>
+<meta name="generated" content="2014-04-21T18:09-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -227,7 +227,7 @@ for the JavaScript code below.
 
 
 <p>
-<a href="original-notes/28">original notes</a>
+<a href="original-notes/28.txt">original notes</a>
 </p>
 </div>
 
@@ -303,8 +303,7 @@ directed away).  Intersection 6 above has indegree 2 and outdegree 1.
 <h3 id="sec-1-2">Graph Representations</h3>
 <div class="outline-text-3" id="text-1-2">
 
-<p>There are two popular ways to represent a graph.  The first is an <span style="text-decoration:underline;">adjacency</span>
-<span style="text-decoration:underline;">matrix</span>, a |V|-by-|V| array of boolean values (where |V| is the number of
+<p>There are two popular ways to represent a graph.  The first is an <span style="text-decoration:underline;">adjacency matrix</span>, a |V|-by-|V| array of boolean values (where |V| is the number of
 vertices in the graph).  Each row and column represents a vertex of the graph.
 Set the value at row i, column j to true if (i, j) is an edge of the graph.  If
 the graph is undirected (below right), the adjacency matrix is <span style="text-decoration:underline;">symmetric</span>:
@@ -335,8 +334,8 @@ edges is asymptotically smaller than \(|V|^2\).)
 </p>
 <p>
 For a sparse graph, an adjacency matrix representation is very wasteful.
-A more memory-efficient data structure for sparse graphs is the <span style="text-decoration:underline;">adjacency</span>
-<span style="text-decoration:underline;">list</span>.  An adjacency list is actually a collection of lists.  Each vertex v
+A more memory-efficient data structure for sparse graphs is the <span style="text-decoration:underline;">adjacency list</span>. 
+ An adjacency list is actually a collection of lists.  Each vertex v
 maintains a list of the edges directed out from v.  The standard list
 representations all work&ndash;arrays (below left), linked lists (below right), even
 search trees (because you can traverse one in linear time).
@@ -522,7 +521,7 @@ counting the time required to initialize the "visited" flags.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-04-21T17:50-0700</p>
+<p class="date">Date: 2014-04-21T18:09-0700</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
