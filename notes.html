@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-04-26T14:02-0700"/>
+<meta name="generated" content="2014-05-02T14:25-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -525,6 +525,33 @@ for the JavaScript code below.
 <li><a href="#sec-33-2">Counting Sort with Complete Items</a></li>
 <li><a href="#sec-33-3">Radix Sort</a></li>
 <li><a href="#sec-33-4">Postscript:  Radix Sort Rocks (not examinable)</a></li>
+</ul>
+</li>
+<li><a href="#sec-34">Lecture 36</a>
+<ul>
+<li><a href="#sec-34-1">SPLAY TREES</a></li>
+<li><a href="#sec-34-2">Tree Rotations</a></li>
+<li><a href="#sec-34-3">Splay Tree Operations</a></li>
+<li><a href="#sec-34-4">Postscript:  Babble about Splay Trees (not examinable, but good for you)</a></li>
+</ul>
+</li>
+<li><a href="#sec-35">Lecture 37</a>
+<ul>
+<li><a href="#sec-35-1">AMORTIZED ANALYSIS</a></li>
+<li><a href="#sec-35-2">The Averaging Method</a></li>
+<li><a href="#sec-35-3">The Accounting Method</a></li>
+<li><a href="#sec-35-4">Accounting of Hash Tables</a></li>
+<li><a href="#sec-35-5">Why Does Amortized Analysis Work?</a></li>
+</ul>
+</li>
+<li><a href="#sec-36">Lecture 38</a>
+<ul>
+<li><a href="#sec-36-1">RANDOMIZED ANALYSIS</a></li>
+<li><a href="#sec-36-2">Expectation</a></li>
+<li><a href="#sec-36-3">Hash Tables</a></li>
+<li><a href="#sec-36-4">Quicksort</a></li>
+<li><a href="#sec-36-5">Quickselect</a></li>
+<li><a href="#sec-36-6">Amortized Time vs. Expected Time</a></li>
 </ul>
 </li>
 </ul>
@@ -10873,11 +10900,1021 @@ of the sort.  That's why we put the two-character strings before the five-
 character strings when we began the fifth pass.
 </p></div>
 </div>
+
+</div>
+
+<div id="outline-container-34" class="outline-2">
+<h2 id="sec-34">Lecture 36</h2>
+<div class="outline-text-2" id="text-34">
+
+
+<p>
+Today's reading:  Goodrich &amp; Tamassia, Section 10.3.
+</p>
+<p>
+<a href="original-notes/36.txt">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-34-1" class="outline-3">
+<h3 id="sec-34-1">SPLAY TREES</h3>
+<div class="outline-text-3" id="text-34-1">
+
+<p>A splay tree is a type of balanced binary search tree.  Structurally, it is
+identical to an ordinary binary search tree; the only difference is in the
+algorithms for finding, inserting, and deleting entries.
+</p>
+<p>
+All splay tree operations run in O(log n) time <span style="text-decoration:underline;">on average</span>, where n is the
+number of entries in the tree.  Any single operation can take Theta(n) time in
+the worst case.  But any sequence of k splay tree operations, with the tree
+initially empty and never exceeding n items, takes O(k log n) worst-case time.
+</p>
+<p>
+Although 2-3-4 trees make a stronger guarantee (<span style="text-decoration:underline;">every</span> operation on a 2-3-4
+tree takes O(log n) time), splay trees have several advantages.  Splay trees
+are simpler and easier to program.  Because of their simplicity, splay tree
+insertions and deletions are typically faster in practice (sometimes by a
+constant factor, sometimes asymptotically).  Find operations can be faster or
+slower, depending on circumstances.
+</p>
+<p>
+Splay trees are designed to give especially fast access to entries that have
+been accessed recently, so they really excel in applications where a small
+fraction of the entries are the targets of most of the find operations.
+</p>
+<p>
+Splay trees have become the most widely used basic data structure invented in
+the last 30 years, because they're the fastest type of balanced search tree for
+many applications.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-34-2" class="outline-3">
+<h3 id="sec-34-2">Tree Rotations</h3>
+<div class="outline-text-3" id="text-34-2">
+
+
+
+
+<pre class="src src-text">Like many types of balanced search         Y                             X     
+trees, splay trees are kept balanced      / \        rotate left        / \    
+with the help of structural changes      X   ^      &lt;------------      ^   Y   
+called _rotations_.  There are two      / \ /C\                       /A\ / \  
+types--a left rotation and a right     ^  ^         ------------&gt;         ^  ^ 
+rotation--and each is the other's     /A\/B\         rotate right        /B\/C\
+reverse.  Suppose that X and Y are
+</pre>
+
+<p>
+binary tree nodes, and A, B, and C are subtrees.  A rotation transforms either
+of the configurations illustrated above to the other.  Observe that the binary
+search tree invariant is preserved:  keys in A are less than or equal to X;
+keys in C are greater than or equal to Y; and keys in B are &gt;= X and &lt;= Y.
+</p>
+<p>
+Rotations are also used in AVL trees and red-black trees, which are discussed
+by Goodrich and Tamassia, but are not covered in this course.
+</p>
+<p>
+Unlike 2-3-4 trees, splay trees are not kept perfectly balanced, but they tend
+to stay reasonably well-balanced most of the time, thereby averaging O(log n)
+time per operation in the worst case (and sometimes achieving O(1) average
+running time in special cases).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-34-3" class="outline-3">
+<h3 id="sec-34-3">Splay Tree Operations</h3>
+<div class="outline-text-3" id="text-34-3">
+
+<ol>
+<li>Entry find(Object k);
+</li>
+</ol>
+
+
+<p>
+The find() operation in a splay tree begins just like the find() operation in
+an ordinary binary search tree:  we walk down the tree until we find the entry
+with key k, or reach a dead end (a node from which the next logical step leads
+to a null pointer).
+</p>
+<p>
+However, a splay tree isn't finished its job.  Let X be the node where the
+search ended, whether it contains the key k or not.  We <span style="text-decoration:underline;">splay</span> X up the tree
+through a sequence of rotations, so that X becomes the root of the tree.  Why?
+One reason is so that recently accessed entries are near the root of the tree,
+and if we access the same few entries repeatedly, accesses will be very fast.
+Another reason is because if X lies deeply down an unbalanced branch of the
+tree, the splay operation will improve the balance along that branch.
+</p>
+<p>
+When we splay a node to the root of the tree, there are three cases that
+determine the rotations we use.
+</p>
+
+
+
+<pre class="src src-text">-1-  X is the right child of a left      G               G               X     
+child (or the left child of a right     / \             / \             / \    
+child):  let P be the parent of X,     P   ^           X   ^           P   G   
+and let G be the grandparent of X.    / \ /D\  ==&gt;    / \ /D\  ==&gt;    / \ / \  
+We first rotate X and P left,        ^  X            P  ^            ^  ^ ^  ^ 
+and then rotate X and G right, as   /A\/ \          / \/C\          /A\/BVC\/D\
+illustrated at right.                  ^  ^        ^  ^                        
+                                      /B\/C\      /A\/B\     Zig-Zag
+The mirror image of this case--
+</pre>
+
+<p>
+where X is a left child and P is a right child&ndash;uses the same rotations in
+mirror image:  rotate X and P right, then X and G left.  Both the case
+illustrated above and its mirror image are called the "zig-zag" case.
+</p>
+
+
+
+<pre class="src src-text">-2-  X is the left child of a left     G               P               X       
+child (or the right child of a right  / \             / \             / \      
+child):  the ORDER of the rotations  P   ^           X   G           ^   P     
+is REVERSED from case 1.  We        / \ /D\  ==&gt;    / \ / \    ==&gt;  /A\ / \    
+start with the grandparent,        X  ^            ^  ^ ^  ^            ^  G   
+and rotate G and P right.         / \/C\          /A\/BVC\/D\          /B\/ \  
+Then, we rotate P and X right.   ^  ^                                     ^  ^ 
+                                /A\/B\                       Zig-Zig     /C\/D\
+The mirror image of this case--
+</pre>
+
+<p>
+where X and P are both right children&ndash;uses the same rotations in mirror image:
+rotate G and P left, then P and X left.  Both the case illustrated above and
+its mirror image are called the "zig-zig" case.
+</p>
+<p>
+We repeatedly apply zig-zag and zig-zig rotations to X; each pair of rotations
+raises X two levels higher in the tree.  Eventually, either X will reach the
+</p>
+
+
+<pre class="src src-text">root (and we're done), or X will become the child of
+the root.  One more case handles the latter                P             X     
+circumstance.                                             / \           / \    
+                                                         X   ^         ^   P   
+-3-  X's parent P is the root:  we rotate X and P       / \ /C\  ==&gt;  /A\ / \  
+so that X becomes the root.  This is called the        ^  ^               ^  ^ 
+"zig" case.                                           /A\/B\     Zig     /B\/C\
+</pre>
+
+
+<p>
+Here's an example of "find(7)".  Note how the tree's balance improves.
+</p>
+
+
+
+<pre class="src src-text">    11                     11                      11                  [7]     
+   /  \                   /  \                    /  \                 / \     
+  1    12                1    12                [7]   12              1   11   
+ / \                    / \                     / \                  /\   / \  
+0   9                  0   9                   1   9                0 5   9  12
+   / \                    / \                 / \ / \                / \ / \   
+  3   10  =zig-zig=&gt;    [7]  10  =zig-zag=&gt;  0  5 8  10   =zig=&gt;    3  6 8  10 
+ / \                    / \                    / \                 / \         
+2   5                  5   8                  3   6               2   4        
+   / \                / \                    / \                 
+  4  [7]             3   6                  2   4                
+     / \            / \                                                      
+    6   8          2   4                                                     
+</pre>
+
+
+<p>
+By inspecting each of the three cases (zig-zig, zig-zag, and zig), you can
+observe a few interesting facts.  First, in none of these three cases does the
+</p>
+
+
+<pre class="src src-text">depth of a subtree increase by more than
+two.  Second, every time X takes two                       9
+steps toward the root (zig-zig or zig-zag),               / \
+every node in the subtree rooted at X moves              8   10
+at least one step closer to the root.                   /
+As more and more nodes enter X's subtree,              7
+more of them get pulled closer to the root.           /
+                                                     6           1
+A node that initially lies at depth d on            /           / \
+the access path from the root to X moves           5           0   8
+to a final depth no greater than 3 + d/2.         /               / \
+In other words, all the nodes deep               4               6   9
+down the search path have their                 /               / \   \
+depths roughly halved.  This tendency          3  ==========&gt;  4   7   10
+of nodes on the access path to move           /     find(1)   / \
+toward the root prevents a splay tree        2               2   5
+from staying unbalanced for long            /                 \
+(as the example at right illustrates).     1                   3
+                                          /
+                                         0
+</pre>
+
+<ol>
+<li>Entry min();<br/>
+     Entry max();
+</li>
+</ol>
+
+
+<p>
+These methods begin by finding the entry with minimum or maximum key, just like
+in an ordinary binary search tree.  Then, they splay the node containing the
+minimum or maximum key to the root.
+</p>
+<ol>
+<li>Entry insert(Object k, Object v);
+</li>
+</ol>
+
+
+<p>
+insert() begins by inserting the new entry (k, v), just like in an ordinary
+binary search tree.  Then, it splays the new node to the root.
+</p>
+<ol>
+<li>Entry remove(Object k);
+</li>
+</ol>
+
+
+<p>
+An entry having key k is removed from the tree, just as with ordinary binary
+search trees.  Recall that the node containing k is removed if it has zero or
+one children.  If it has two children, the node with the next higher key is
+removed instead.  In either case, let X be the node removed from the tree.
+After X is removed, splay X's parent to the root.  Here's a sequence
+illustrating the operation remove(2).
+</p>
+
+
+
+<pre class="src src-text">  2             4               5
+ / \           / \             / \
+1   7         1   7           4   7
+   / \   ==&gt;     / \   ==&gt;   /     \
+  5   8         5   8       1       8
+ /
+4
+</pre>
+
+
+<p>
+In this example, the key 4 moves up to replace the key 2 at the root.  After
+the node containing 4 is removed, its parent (containing 5) splays to the root.
+</p>
+<p>
+If the key k is not in the tree, splay the node where the search ended to the
+root, just like in a find() operation.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-34-4" class="outline-3">
+<h3 id="sec-34-4">Postscript:  Babble about Splay Trees (not examinable, but good for you)</h3>
+<div class="outline-text-3" id="text-34-4">
+
+<p>It may improve your understanding to watch the splay tree animation at<br/>
+<a href="http://www.ibr.cs.tu-bs.de/courses/ss98/audii/applets/BST/SplayTree-Example.html">http://www.ibr.cs.tu-bs.de/courses/ss98/audii/applets/BST/SplayTree-Example.html</a> .
+</p>
+<p>
+Splay trees can be rigorously shown to run in O(log n) average time per
+operation, over any sequence of operations (assuming we start from an empty
+tree), where n is the largest size the tree grows to.  However, the proof is
+quite elaborate.  It relies on an interesting algorithm analysis technique
+called <span style="text-decoration:underline;">amortized analysis</span>, which uses a <span style="text-decoration:underline;">potential function</span> to account for
+the time saved by operations that execute more quickly than expected.  This
+"saved-up time" can later be spent on the rare operations that take longer than
+O(log n) time to execute.  By proving that the potential function is never
+negative (that is, our "bank account" full of saved-up time never goes into the
+red), we prove that the operations take O(log n) time on average.
+</p>
+<p>
+The proof is given in Goodrich &amp; Tamassia Section 10.3.3 and in the brilliant
+original paper in the Journal of the Association for Computing Machinery,
+volume 32, number 3, pages 652-686, July 1985.  Unfortunately, there's not much
+intuition for why the proof works.  You crunch the equations and the result
+comes out.
+</p>
+<p>
+In 2000, Danny Sleator and Robert Tarjan won the ACM Kanellakis Theory and
+Practice Award for their papers on splay trees and amortized analysis.  Splay
+trees are used in Windows NT (in the virtual memory, networking, and file
+system code), the gcc compiler and GNU C++ library, the sed string editor, Fore
+Systems network routers, the most popular implementation of Unix malloc, Linux
+loadable kernel modules, and in much other software.                          
+</p>
+
+
+<pre class="src src-text">                                                                              .
+                                                                             .
+                                                                            .
+When do operations occur that take more than O(log n) time?                /
+Consider inserting a long sequence of numbers in order:  1, 2, 3,         4   
+etc.  The splay tree will become a long chain of left children (as       /    
+illustrated at right).  Now, find(1) will take Theta(n) time.           3     
+However, each of the n insert() operations before the find took O(1)   /      
+time, so the average for this example is O(1) time per operation.     2       
+                                                                     /
+                                                                    1
+</pre>
+
+
+<p>
+The fastest implementations of splay trees don't use the bottom-up splaying
+strategy discussed here.  Splay trees, like 2-3-4 trees, come in bottom-up and
+top-down versions.  Instead of doing one pass down the tree and another pass
+up, top-down splay trees do just one pass down.  This saves a constant factor
+in the running time.
+</p>
+<p>
+There is an interesting conjecture about splay trees called the 
+<span style="text-decoration:underline;">dynamic optimality conjecture</span>:  that splay trees are as asymptotically fast on <span style="text-decoration:underline;">any</span>
+sequence of operations as <span style="text-decoration:underline;">any</span> other type of search tree with rotations.
+What does this mean?  Any sequence of splay tree operations takes amortized
+O(log n) time per operation, but sometimes there are sequences of operations
+that can be processed faster by a sufficiently smart data structure.  One
+example is accessing the same ten keys over and over again (which a splay tree
+can do in amortized O(1) time per access).  The dynamic optimality conjecture
+guesses that if <span style="text-decoration:underline;">any</span> search tree can exploit the structure of a sequence of
+accesses to achieve asymptotically faster running time, so can splay trees.
+</p>
+<p>
+The conjecture has never been proven, but it's not clear whether it's been
+disproven, either.
+</p>
+<p>
+One special case that has been proven is that if you perform the find operation
+on each key in a splay tree in order from the smallest key to the largest key,
+the total time for all n operations is O(n), and not O(n log n) as you might
+expect.
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-35" class="outline-2">
+<h2 id="sec-35">Lecture 37</h2>
+<div class="outline-text-2" id="text-35">
+
+
+<p>
+<a href="original-notes/37.txt">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-35-1" class="outline-3">
+<h3 id="sec-35-1">AMORTIZED ANALYSIS</h3>
+<div class="outline-text-3" id="text-35-1">
+
+<p>We've seen several data structures for which I claimed that the average time
+for certain operations is always better than the worst-case time:  hash tables,
+tree-based disjoint sets, and splay trees.
+</p>
+<p>
+The mathematics that proves these claims is called <span style="text-decoration:underline;">amortized analysis</span>.
+Amortized analysis is a way of proving that even if an operation is
+occasionally expensive, its cost is made up for by earlier, cheaper operations.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-35-2" class="outline-3">
+<h3 id="sec-35-2">The Averaging Method</h3>
+<div class="outline-text-3" id="text-35-2">
+
+<p>Most hash table operations take \(O(1)\) time, but sometimes an operation forces
+a hash table to resize itself, at great expense.  What is the average time to
+insert an item into a hash table with resizing?  Assume that the chains never
+grow longer than \(O(1)\), so any operation that doesn't resize the table takes
+\(O(1)\) time&ndash;more precisely, suppose it takes at most one second.
+</p>
+<p>
+Let \(n\) be the number of items in the hash table, and \(N\) the number of buckets.
+Suppose it takes one second for the insert operation to insert the new item,
+increment \(n\), and then check if \(n = N\).  If so, it doubles the size of the table
+from N to 2N, taking 2N additional seconds.  This resizing scheme ensures that
+the load factor \(\frac{n}{N}\) is always less than one.
+</p>
+<p>
+Suppose every newly constructed hash table is empty and has just one bucket--
+that is, initially \(n = 0\) and \(N = 1n = 0\).  After \(i\) insert operations, \(n = i\).  The
+number of buckets \(N\) must be a power of two, and we never allow it to be less
+than or equal to n; so \(N\) is the smallest power of two \(&gt; n\), which is \(\le 2n\).
+</p>
+<p>
+The total time in seconds for <span style="text-decoration:underline;">all</span> the table resizing operations is
+</p>
+<p>
+    $$2 + 4 + 8 + ... + \frac{N}{4} + \frac{N}{2} + N = 2N - 2.$$
+</p>
+<p>
+So the cost of \(i\) insert operations is at most \(i + 2N - 2\) seconds.  Because
+\(N \le 2n = 2i\), the \(i\) insert operations take \(\le 5i - 2\) seconds.  Therefore, the
+<span style="text-decoration:underline;">average</span> running time of an insertion operation is \(\frac{5i - 2}{i} = 5 - \frac{2}{i}\)
+seconds, which is in \(O(1)\) time.
+</p>
+<p>
+We say that the <span style="text-decoration:underline;">amortized running time</span> of insertion is in \(O(1)\), even though
+the worst-case running time is in \(\mathrm{Theta}(n)\).
+</p>
+<p>
+For almost any application, the amortized running time is more important than
+the worst-case running time, because the amortized running time determines the
+total running time of the application.  The main exceptions are some
+applications that require fast interaction (like video games), for which one
+really slow operation might cause a noticeable glitch in response time.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-35-3" class="outline-3">
+<h3 id="sec-35-3">The Accounting Method</h3>
+<div class="outline-text-3" id="text-35-3">
+
+<p>Consider hash tables that resize in both directions:  not only do they expand
+as the number of items increases, but they also shrink as the number of items
+decreases.  You can't analyze them with the averaging method, because you don't
+know what sequence of insert and remove operations an application might
+perform.
+</p>
+<p>
+Let's try a more sophisticated method.  In the <span style="text-decoration:underline;">accounting method</span>, we "charge"
+each operation a certain amount of time.  Usually we overcharge.  When we
+charge more time than the operation actually takes, we can save the excess time
+in a bank to spend on later operations.
+</p>
+<p>
+Before we start, let's stop using seconds as our unit of running time.  We
+don't actually know how many seconds any computation takes, because it varies
+from computer to computer.  However, everything a computer does can be broken
+down into a sequence of constant-time computations.  Let a <span style="text-decoration:underline;">dollar</span> be a unit
+of time that's long enough to execute the slowest constant-time computation
+that comes up in the algorithm we're analyzing.  A dollar is a real unit of
+time, but it's different for different computers.
+</p>
+<p>
+Each hash table operation has
+</p><ul>
+<li>an <span style="text-decoration:underline;">amortized cost</span>, which is the number of dollars that we "charge" to do
+  that operation, and
+</li>
+<li>an <span style="text-decoration:underline;">actual cost</span>, which is the actual number of constant-time computations
+  the operation performs.
+</li>
+</ul>
+
+
+<p>
+The amortized cost is usually a fixed function of n (e.g. $5 for insertion into
+a hash table, or $2 log n for insertion into a splay tree), but the actual cost
+may vary wildly from operation to operation.  For example, insertion into a
+hash table takes a long, long time when the table is resized.
+</p>
+<p>
+When an operation's amortized cost exceeds its actual cost, the extra dollars
+are saved in the bank to be spent on later operations.  When an operation's
+actual cost exceeds its amortized cost, dollars are withdrawn from the bank to
+pay for an unusually expensive operation.
+</p>
+<p>
+If the bank balance goes into surplus, it means that the actual total running
+time is even faster than the total amortized costs imply.
+</p>
+<p>
+THE BANK BALANCE MUST NEVER FALL BELOW ZERO.  If it does, you are spending more
+total dollars than your budget claims, and you have failed to prove anything
+about the amortized running time of the algorithm.
+</p>
+<p>
+Think of amortized costs as an allowance.  If your dad gives you $500 a month
+allowance, and you only spend $100 of it each month, you can save up the
+difference and eventually buy a car.  The car may cost $30,000, but if you
+saved that money and don't go into debt, your <span style="text-decoration:underline;">average</span> spending obviously
+wasn't more than $500 a month.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-35-4" class="outline-3">
+<h3 id="sec-35-4">Accounting of Hash Tables</h3>
+<div class="outline-text-3" id="text-35-4">
+
+<p>Suppose every operation (insert, find, remove) takes one dollar of actual
+running time unless the hash table is resized.  We resize the table in two
+circumstances.
+</p><ul>
+<li>An insert operation doubles the table size if \(n = N\) AFTER the new item is
+  inserted and n is incremented, taking 2N additional dollars of time for
+  resizing to 2N buckets.  Thus, the load factor is always less than one.
+</li>
+<li>The remove operation halves the table size if \(n = \frac{N}{4}\) AFTER the item is
+  deleted and \(n\) is decremented, taking \(N\) additional dollars of time for
+  resizing to \(\frac{N}{2}\) buckets.  Thus, the load factor is always greater than 0.25
+  (except when \(n = 0\), i.e. the table is empty).
+</li>
+</ul>
+
+
+<p>
+Either way, a hash table that has <span style="text-decoration:underline;">just</span> been resized has \(n = \frac{N}{2}\).
+A newly constructed hash table has \(n = 0\) items and \(N = 1\) buckets.
+</p>
+<p>
+By trial and error, I came up with the following amortized costs.
+</p>
+<p>
+    insert:  5 dollars<br/>
+    remove:  5 dollars<br/>
+    find:    1 dollar
+</p>
+<p>
+Is this accounting valid, or will we go broke?
+</p>
+<p>
+The crucial insight is that at any time, we can look at a hash table and know a
+lower bound for how many dollars are in the bank from the values of n and N.
+We know that the last time the hash table was resized, the number of items n
+was exactly \(\frac{N}{2}\).  So if \(n \ne \frac{N}{2}\), there have been subsequent insert/remove
+operations, and these have put money in the bank.
+</p>
+<p>
+We charge an amortized $5 for an insert or remove operation.  Every insert or
+remove operation costs one actual dollar (not counting resizing) and puts the
+remaining $4 in the bank to pay for resizing.  For every step n takes away from
+\(\frac{N}{2}\), we accumulate another $4.  So there must be at least \(4|n - \frac{N}{2}|\) dollars
+saved (or \(4n\) dollars for a never-resized one-bucket hash table).
+</p>
+<p>
+IMPORTANT:  Note that \(4|n - \frac{N}{2}|\) is a function of the data structure, and does
+NOT depend on the history of hash table operations performed.  In general, the
+accounting method only works if you can tell how much money is in the bank (or,
+more commonly, a minimum bound on that bank balance) just by looking at the
+current state of the data structure&ndash;without knowing how the data structure
+reached that state.
+</p>
+<p>
+An insert operation only resizes the table if the number of items n reaches N.
+According to the formula \(4|n - \frac{N}{2}|\), there are at least 2N dollars in the bank.
+Resizing the hash table from \(N\) to \(2N\) buckets costs \(2N\) dollars, so we can afford
+it.  After we resize, the bank balance might be zero again, but it isn't
+negative.
+</p>
+<p>
+A remove operation only resizes the table if the number of items n drops to
+\(\frac{N}{4}\).  According to the formula \(4|n - \frac{N}{2}|\), there are at least \(N\) dollars in the
+bank.  Resizing the hash table from \(N\) to \(\frac{N}{2}\) buckets costs \(N\) dollars, so we can
+afford it.
+</p>
+<p>
+The bank balance never drops below zero, so my amortized costs above are valid.
+Therefore, the amortized cost of all three operations is in \(O(1)\).
+</p>
+<p>
+Observe that if we alternate between inserting and deleting the same item over
+and over, the hash table is never resized, so we save up a lot of money in the
+bank.  This isn't a problem; it just means the algorithm is faster (spends
+fewer dollars) than my amortized costs indicate.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-35-5" class="outline-3">
+<h3 id="sec-35-5">Why Does Amortized Analysis Work?</h3>
+<div class="outline-text-3" id="text-35-5">
+
+<p>Why does this metaphor about putting money in the bank tell us anything about
+the actual running time of an algorithm?
+</p>
+<p>
+Suppose our accountant keeps a ledger with two columns:  the total amortized
+cost of all operations so far, and the total actual cost of all operations so
+far.  Our bank balance is the sum of all the amortized costs in the left
+column, minus the sum of all the actual costs in the right column.  If the bank
+balance never drops below zero, the total actual cost is less than or equal to
+the total amortized cost.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Total amortized cost</th><th scope="col" class="left">Total actual cost</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">$5</td><td class="left">$1</td></tr>
+<tr><td class="left">$1</td><td class="left">$1</td></tr>
+<tr><td class="left">$5</td><td class="left">$3</td></tr>
+<tr><td class="left">.</td><td class="left">.</td></tr>
+<tr><td class="left">.</td><td class="left">.</td></tr>
+<tr><td class="left">.</td><td class="left">.</td></tr>
+<tr><td class="left">$5</td><td class="left">$1</td></tr>
+<tr><td class="left">$5</td><td class="left">$2,049</td></tr>
+<tr><td class="left">$1</td><td class="left">$1</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left">$12,327</td><td class="left">&gt;=       $10,333</td></tr>
+</tbody>
+</table>
+
+
+
+<p>
+Therefore, the total running time of all the actual operations is never longer
+than the total amortized cost of all the operations.
+</p>
+<p>
+Amortized analysis (as presented here) only tells us an upper bound (big-Oh) on
+the actual running time, and not a lower bound (big-Omega).  It might happen
+that we accumulate a big bank balance and never spend it, and the total actual
+running time might be much less than the amortized cost.  For example, splay
+tree operations take amortized \(O(\log n)\) time, where \(n\) is the number of items in
+the tree, but if your only operation is to find the same item \(n\) times in a row,
+the actual average running time is in \(O(1)\).
+</p>
+<p>
+If you want to see the amortized analysis of splay trees, Goodrich and Tamassia
+have it.  If you take CS 170, you'll see an amortized analysis of disjoint
+sets.  I am saddened to report that both analyses are too complicated to
+provide much intuition about their running times.  (Especially the inverse
+Ackermann function, which is ridiculously nonintuitive, though cool
+nonetheless.)
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-36" class="outline-2">
+<h2 id="sec-36">Lecture 38</h2>
+<div class="outline-text-2" id="text-36">
+
+
+<p>
+<a href="original-notes/38.txt">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-36-1" class="outline-3">
+<h3 id="sec-36-1">RANDOMIZED ANALYSIS</h3>
+<div class="outline-text-3" id="text-36-1">
+
+<p><span style="text-decoration:underline;">Randomized algorithms</span> are algorithms that make decisions based on rolls of
+the dice.  The random numbers actually help to keep the running time low.
+Examples are quicksort, quickselect, and hash tables with random hash codes.
+</p>
+<p>
+Randomized analysis, like amortized analysis, is a mathematically rigorous way
+of saying, "The average running time of this operation is fast, even though the
+worst-case running time is slow."  Unlike amortized analysis, the "average" is
+taken over an infinite number of runs of the program.  A randomized algorithm
+will sometimes run more slowly than the average, but the probability that it
+will run <span style="text-decoration:underline;">asymptotically</span> slower is extremely low.
+</p>
+<p>
+Randomized analysis requires a little bit of probability theory.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-2" class="outline-3">
+<h3 id="sec-36-2">Expectation</h3>
+<div class="outline-text-3" id="text-36-2">
+
+<p>Suppose a method x() flips a coin.  If the coin comes up heads, x() takes one
+second to execute.  If it comes up tails, x() takes three seconds.
+</p>
+<p>
+Let X be the exact running time of one call to x().  With probability 0.5,
+X is 1, and with probability 0.5, X is 3.  For obvious reasons, X is called a
+<span style="text-decoration:underline;">random variable</span>.
+</p>
+<p>
+The <span style="text-decoration:underline;">expected</span> value of X is the average value X assumes in an infinite
+sequence of coin flips,
+</p>
+<p>
+  E[X] = 0.5 * 1 + 0.5 * 3 = 2 seconds expected time.
+</p>
+<p>
+Suppose we run the code sequence
+</p>
+
+
+
+<pre class="src src-java">x();     <span style="color: #b22222;">// </span><span style="color: #b22222;">takes time X</span>
+x();     <span style="color: #b22222;">// </span><span style="color: #b22222;">takes time Y</span>
+</pre>
+
+
+<p>
+and let Y be the running time of the <span style="text-decoration:underline;">second</span> call.  The total running time is
+T = X + Y.  (Y and T are also random variables.)  What is the expected total
+running time E[T]?
+</p>
+<p>
+The main idea from probability we need is called <span style="text-decoration:underline;">linearity of expectation</span>,
+which says that expected running times sum linearly.
+</p>
+
+
+
+<pre class="src src-text">E[X + Y] = E[X] + E[Y] 
+         = 2 + 2 
+         = 4 seconds expected time.
+</pre>
+
+
+<p>
+The interesting thing is that linearity of expectation holds true whether or
+not X and Y are <span style="text-decoration:underline;">independent</span>.  Independence means that the first coin flip has
+no effect on the outcome of the second.  If X and Y are independent, the code
+will take four seconds on average.  But what if they're not?  Suppose the
+second coin flip always matches the first&ndash;we always get two heads, or two
+tails.  Then the code still takes four seconds on average.  If the second coin
+flip is always the opposite of the first&ndash;we always get one head and one tail--
+the code still takes four seconds on average.
+</p>
+<p>
+So if we determine the expected running time of each individual operation, we
+can determine the expected running time of a whole program by adding up the
+expected costs of all the operations.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-3" class="outline-3">
+<h3 id="sec-36-3">Hash Tables</h3>
+<div class="outline-text-3" id="text-36-3">
+
+<p>The implementations of hash tables we have studied don't use random numbers,
+but we can model the effects of collisions on running time by pretending we
+have a random hash code.
+</p>
+<p>
+A <span style="text-decoration:underline;">random hash code</span> maps each possible key to a number that's chosen randomly.
+This does <span style="text-decoration:underline;">not</span> mean we roll dice every time we hash a key.  A hash table can
+only work if a key maps to the same bucket every time.  Each key hashes to a
+randomly chosen bucket in the table, but a key's random hash code never
+changes.
+</p>
+<p>
+Unfortunately, it's hard to choose a hash code randomly from all possible hash
+codes, because you need to remember a random number for each key, and that
+would seem to require another hash table.  However, random hash codes are
+a good <span style="text-decoration:underline;">model</span> for how a good hash code will perform.  The model isn't perfect,
+and it doesn't apply to bad hash codes, but for a hash code that proves
+effective in experiments, it's a good rough guess.  Moreover, there is a sneaky
+number-theoretical trick called <span style="text-decoration:underline;">universal hashing</span> that generates random hash
+codes.  These random hash codes are chosen from a relatively small set of
+possibilities, yet they perform just as well as if they were chosen from the
+set of all possible hash codes.  (If you're interested, you can read about it
+in the textbook "Algorithms" by Cormen, Leiserson, Rivest, and Stein.)
+</p>
+<p>
+Assume our hash table uses chaining and does not allow duplicate keys.
+If an entry is inserted whose key matches an existing entry, the old entry is
+replaced.
+</p>
+<p>
+Suppose we perform the operation find(k), and the key k hashes to a bucket b.
+Bucket b contains at most one entry with key k, so the cost of the search is
+one dollar, plus an additional dollar for every entry stored in bucket b whose
+key is not k.  (Recall from last lecture that a <span style="text-decoration:underline;">dollar</span> is a unit of time
+chosen large enough to make this statement true.)
+</p>
+<p>
+Suppose there are n keys in the table besides k.  Let V1, V2, &hellip;, Vn be random
+variables such that for each key ki, the variable Vi = 1 if key ki hashes to
+bucket b, and Vi is zero otherwise.  Then the cost of find(k) is
+</p>
+
+
+$$ T = 1 + V1 + V2 + ... + Vn.$$
+
+<p>
+The expected cost of find(k) is (by linearity of expectation)
+</p>
+
+
+$$ E[T] = 1 + E[V1] + E[V2] + ... + E[Vn].$$
+
+<p>
+What is E[Vi]?  Since there are N buckets, and the hash code is random, each
+key has a 1/N probability of hashing to bucket b.  So E[Vi] = 1/N, and
+</p>
+<p>
+  $$E[T] = 1 + \frac{n}{N}$$,
+</p>
+<p>
+which is one plus the load factor!  If we keep the load factor n/N below some
+constant c as n grows, find operations cost expected O(1) time.
+</p>
+<p>
+The same analysis applies to insert and remove operations.  All three hash
+table operations take O(1) expected amortized time.  (The word "amortized"
+accounts for table resizing, as discussed last lecture.)
+</p>
+<p>
+Observe that the running times of hash table operations are <span style="text-decoration:underline;">not</span> independent.
+If key k1 and key k2 both hash to the same bucket, it increases the running
+time of both find(k1) and find(k2).  Linearity of expectation is important
+because it implies that we can add the expected costs of individual operations,
+and obtain the expected total cost of all the operations an algorithm performs.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-4" class="outline-3">
+<h3 id="sec-36-4">Quicksort</h3>
+<div class="outline-text-3" id="text-36-4">
+
+<p>Recall that mergesort sorts n items in O(n log n) time because the recursion
+tree has \(1 + \lceil \log_2 n \rceil\) levels, and each level involves O(n) time spent
+merging lists.  Quicksort also spends linear time at each level (partitioning
+the lists), but it is trickier to analyze because the recursion tree is not
+perfectly balanced, and some keys survive to deeper levels than others.
+</p>
+<p>
+To analyze quicksort, let's analyze the expected depth one input key k will
+reach in the tree.  (In effect, we're measuring a vertical slice of the
+recursion tree instead of a horizontal slice.)  Assume no two keys are equal,
+since that is the slowest case.
+</p>
+<p>
+Quicksort chooses a random pivot.  The pivot is equally likely to be the
+smallest key, the second smallest, the third smallest, &hellip;, or the largest.
+For each case, the probability is \(\frac{1}{n}\).  Since we want a roughly balanced
+partition, let's say that the least \(\Big \lfloor \frac{n}{4} \Big \rfloor\) keys and the greatest \(\Big \lfloor \frac{n}{4} \Big \rfloor\)
+keys are "bad" pivots, and the other keys are "good" pivots.  Since there are
+at most \(\frac{n}{2}\) bad pivots, the probability of choosing a bad pivot is \(\le 0.5\).
+</p>
+<p>
+If we choose a good pivot, we'll have a 1/4-3/4 split or better, and our chosen
+key k will go into a subset containing at most three quarters of the keys,
+which is sorted recursively.  If we choose a bad pivot, k might go into a
+subset with nearly all the other keys.
+</p>
+<p>
+Let D(n) be a random variable equal to the lowest depth at which key k appears
+when we sort n keys.  D(n) varies from run to run, but we can reason about its
+expected value.  Since we choose a bad key no more than half the time,
+</p>
+
+
+$$ E[D(n)] \le 1 + 0.5 E[D(n)] + 0.5 E[D(\frac{3n}{4})]$$
+
+<p>
+Multiplying by two and subtracting E[D(n)] from both sides gives
+</p>
+<p>
+$$E[D(n)] \le 2 + E[D(\frac{3n}{4})]$$.
+</p>
+<p>
+This inequality is called a <span style="text-decoration:underline;">recurrence</span>, and you'll learn how to solve them in
+CS 170.  (No, recurrences won't be on the CS 61B final exam.)  The base cases
+for this recurrence are D(0) = 0 and D(1) = 0.  It's easy to check by
+substitution that a solution is
+</p>
+<p>
+$$  E[D(n)] \le 2 \log_{\frac{4}{3}} n$$.
+</p>
+<p>
+So any arbitrary key k appears in expected O(log n)$ levels of the recursion
+tree, and causes O(log n) partitioning work.  By linearity of expectation, we
+can sum the expected O(log n) work for each of the n keys, and we find that
+quicksort runs in expected O(n log n) time.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-5" class="outline-3">
+<h3 id="sec-36-5">Quickselect</h3>
+<div class="outline-text-3" id="text-36-5">
+
+<p>For quickselect, we can analyze the expected running time more directly.
+Suppose we run quickselect on n keys.  Let P(n) be a random variable equal to
+the total number of keys partitioned, summed over all the partitioning steps.
+Then the running time is in Theta(P(n)).
+</p>
+<p>
+Quickselect is like quicksort, but when we choose a good pivot, at least one
+quarter of the keys are discarded.  We choose a good pivot at least half the
+time, so
+</p>
+
+
+$$  E[P(n)] \le n + 0.5 E[P(n)] + 0.5 E[P(\frac{3n}{4})],$$
+
+<p>
+which is solved by \(E[P(n)] \le 8n\).  Therefore, the expected running time of
+quickselect on n keys is in O(n).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-6" class="outline-3">
+<h3 id="sec-36-6">Amortized Time vs. Expected Time</h3>
+<div class="outline-text-3" id="text-36-6">
+
+<p>There's a subtle but important difference between amortized running time and
+expected running time.
+</p>
+<p>
+Quicksort with random pivots takes O(n log n) expected running time, but its
+worst-case running time is in Theta(n<sup>2</sup>).  This means that there is a small
+possibility that quicksort will cost Omega(n<sup>2</sup>) dollars, but the probability
+of that happening approaches zero as n approaches infinity.
+</p>
+<p>
+A splay tree operation takes O(log n) amortized time, but the worst-case
+running time for a splay tree operation is in Theta(n).  Splay trees are not
+randomized, and the "probability" of an Omega(n)-time splay tree operation is
+not a meaningful concept.  If you take an empty splay tree, insert the items
+1&hellip;n in order, then run find(1), the find operation <span style="text-decoration:underline;">will</span> cost n dollars.
+But a sequence of n splay tree operations, starting from an empty tree, <span style="text-decoration:underline;">never</span>
+costs more than O(n log n) actual running time.  Ever.
+</p>
+<p>
+Hash tables are an interesting case, because they use both amortization and
+randomization.  Resizing takes Theta(n) time.  With a random hash code, there
+is a tiny probability that every item will hash to the same bucket, so the
+worst-case running time of an operation is Theta(n)&ndash;even without resizing.
+</p>
+<p>
+To account for resizing, we use amortized analysis.  To account for collisions,
+we use randomized analysis.  So when we say that hash table operations run in
+O(1) time, we mean they run in O(1) <span style="text-decoration:underline;">expected</span>, <span style="text-decoration:underline;">amortized</span> time.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">Splay trees</td><td class="left">O(log n) amortized time / operation **</td></tr>
+<tr><td class="left">Disjoint sets (tree-based)</td><td class="left">O(alpha(f + u, u)) amortized time / find op ***</td></tr>
+<tr><td class="left">Quicksort</td><td class="left">O(n log n) expected time ****</td></tr>
+<tr><td class="left">Quickselect</td><td class="left">Theta(n) expected time *****</td></tr>
+<tr><td class="left">Hash tables</td><td class="left">Theta(1) expected amortized time / op ******</td></tr>
+</tbody>
+</table>
+
+
+<p>
+If you take CS 170, you will learn an amortized analysis of disjoint sets
+there.  Unfortunately, the analyses of both disjoint sets and splay trees are
+complicated.  Goodrich &amp; Tamassia give the amortized analysis of splay trees,
+but you're not required to read or understand it for this class.
+</p>
+<p>
+ **     Worst-case time is in Theta(n), worst-case amortized time is in
+        Theta(log n), best-case time is in Theta(1).<br/>
+ ***    For find operations, worst-case time is in Theta(log u), worst-case
+        amortized time is in Theta(alpha(f + u, u)), best-case time is in
+        Theta(1).  All union operations take Theta(1) time.<br/>
+ ****   Worst-case time is in Theta(n<sup>2</sup>)&ndash;if we get worst-case input AND
+        worst-case random numbers.  "Worst-case expected" time is in
+        Theta(n log n)&ndash;meaning when the <span style="text-decoration:underline;">input</span> is worst-case, but we take the
+        average over all possible sequences of random numbers.  Recall that
+        quicksort can be implemented so that keys equal to the pivot go into a
+        separate list, in which case the best-case time is in Theta(n), because
+        the best-case input is one where all the keys are equal.  If quicksort
+        is implemented so that keys equal to the pivot are divided between lists
+        I1 and I2, as is the norm for array-based quicksort, then the best-case
+        time is in Theta(n log n).<br/>
+ *****  Worst-case time is in Theta(n<sup>2</sup>)&ndash;if we get worst-case input AND worst-
+        case random numbers.  Worst-case expected time, best-case time, and
+        best-case expected time are in Theta(n).<br/>
+ ****** Worst-case time is in Theta(n), expected worst-case time is in Theta(n)
+        (worst case is when table is resized), amortized worst-case time is in
+        Theta(n) (worst case is when every item is in one bucket), worst-case
+        expected amortized time is in Theta(1), best-case time is in Theta(1).
+        Confused yet?
+</p></div>
+</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-04-26T14:02-0700</p>
+<p class="date">Date: 2014-05-02T14:25-0700</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
