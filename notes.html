@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-05-02T13:51-0700"/>
+<meta name="generated" content="2014-05-02T14:25-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -542,6 +542,16 @@ for the JavaScript code below.
 <li><a href="#sec-35-3">The Accounting Method</a></li>
 <li><a href="#sec-35-4">Accounting of Hash Tables</a></li>
 <li><a href="#sec-35-5">Why Does Amortized Analysis Work?</a></li>
+</ul>
+</li>
+<li><a href="#sec-36">Lecture 38</a>
+<ul>
+<li><a href="#sec-36-1">RANDOMIZED ANALYSIS</a></li>
+<li><a href="#sec-36-2">Expectation</a></li>
+<li><a href="#sec-36-3">Hash Tables</a></li>
+<li><a href="#sec-36-4">Quicksort</a></li>
+<li><a href="#sec-36-5">Quickselect</a></li>
+<li><a href="#sec-36-6">Amortized Time vs. Expected Time</a></li>
 </ul>
 </li>
 </ul>
@@ -11546,11 +11556,365 @@ Ackermann function, which is ridiculously nonintuitive, though cool
 nonetheless.)
 </p></div>
 </div>
+
+</div>
+
+<div id="outline-container-36" class="outline-2">
+<h2 id="sec-36">Lecture 38</h2>
+<div class="outline-text-2" id="text-36">
+
+
+<p>
+<a href="original-notes/38.txt">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-36-1" class="outline-3">
+<h3 id="sec-36-1">RANDOMIZED ANALYSIS</h3>
+<div class="outline-text-3" id="text-36-1">
+
+<p><span style="text-decoration:underline;">Randomized algorithms</span> are algorithms that make decisions based on rolls of
+the dice.  The random numbers actually help to keep the running time low.
+Examples are quicksort, quickselect, and hash tables with random hash codes.
+</p>
+<p>
+Randomized analysis, like amortized analysis, is a mathematically rigorous way
+of saying, "The average running time of this operation is fast, even though the
+worst-case running time is slow."  Unlike amortized analysis, the "average" is
+taken over an infinite number of runs of the program.  A randomized algorithm
+will sometimes run more slowly than the average, but the probability that it
+will run <span style="text-decoration:underline;">asymptotically</span> slower is extremely low.
+</p>
+<p>
+Randomized analysis requires a little bit of probability theory.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-2" class="outline-3">
+<h3 id="sec-36-2">Expectation</h3>
+<div class="outline-text-3" id="text-36-2">
+
+<p>Suppose a method x() flips a coin.  If the coin comes up heads, x() takes one
+second to execute.  If it comes up tails, x() takes three seconds.
+</p>
+<p>
+Let X be the exact running time of one call to x().  With probability 0.5,
+X is 1, and with probability 0.5, X is 3.  For obvious reasons, X is called a
+<span style="text-decoration:underline;">random variable</span>.
+</p>
+<p>
+The <span style="text-decoration:underline;">expected</span> value of X is the average value X assumes in an infinite
+sequence of coin flips,
+</p>
+<p>
+  E[X] = 0.5 * 1 + 0.5 * 3 = 2 seconds expected time.
+</p>
+<p>
+Suppose we run the code sequence
+</p>
+
+
+
+<pre class="src src-java">x();     <span style="color: #b22222;">// </span><span style="color: #b22222;">takes time X</span>
+x();     <span style="color: #b22222;">// </span><span style="color: #b22222;">takes time Y</span>
+</pre>
+
+
+<p>
+and let Y be the running time of the <span style="text-decoration:underline;">second</span> call.  The total running time is
+T = X + Y.  (Y and T are also random variables.)  What is the expected total
+running time E[T]?
+</p>
+<p>
+The main idea from probability we need is called <span style="text-decoration:underline;">linearity of expectation</span>,
+which says that expected running times sum linearly.
+</p>
+
+
+
+<pre class="src src-text">E[X + Y] = E[X] + E[Y] 
+         = 2 + 2 
+         = 4 seconds expected time.
+</pre>
+
+
+<p>
+The interesting thing is that linearity of expectation holds true whether or
+not X and Y are <span style="text-decoration:underline;">independent</span>.  Independence means that the first coin flip has
+no effect on the outcome of the second.  If X and Y are independent, the code
+will take four seconds on average.  But what if they're not?  Suppose the
+second coin flip always matches the first&ndash;we always get two heads, or two
+tails.  Then the code still takes four seconds on average.  If the second coin
+flip is always the opposite of the first&ndash;we always get one head and one tail--
+the code still takes four seconds on average.
+</p>
+<p>
+So if we determine the expected running time of each individual operation, we
+can determine the expected running time of a whole program by adding up the
+expected costs of all the operations.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-3" class="outline-3">
+<h3 id="sec-36-3">Hash Tables</h3>
+<div class="outline-text-3" id="text-36-3">
+
+<p>The implementations of hash tables we have studied don't use random numbers,
+but we can model the effects of collisions on running time by pretending we
+have a random hash code.
+</p>
+<p>
+A <span style="text-decoration:underline;">random hash code</span> maps each possible key to a number that's chosen randomly.
+This does <span style="text-decoration:underline;">not</span> mean we roll dice every time we hash a key.  A hash table can
+only work if a key maps to the same bucket every time.  Each key hashes to a
+randomly chosen bucket in the table, but a key's random hash code never
+changes.
+</p>
+<p>
+Unfortunately, it's hard to choose a hash code randomly from all possible hash
+codes, because you need to remember a random number for each key, and that
+would seem to require another hash table.  However, random hash codes are
+a good <span style="text-decoration:underline;">model</span> for how a good hash code will perform.  The model isn't perfect,
+and it doesn't apply to bad hash codes, but for a hash code that proves
+effective in experiments, it's a good rough guess.  Moreover, there is a sneaky
+number-theoretical trick called <span style="text-decoration:underline;">universal hashing</span> that generates random hash
+codes.  These random hash codes are chosen from a relatively small set of
+possibilities, yet they perform just as well as if they were chosen from the
+set of all possible hash codes.  (If you're interested, you can read about it
+in the textbook "Algorithms" by Cormen, Leiserson, Rivest, and Stein.)
+</p>
+<p>
+Assume our hash table uses chaining and does not allow duplicate keys.
+If an entry is inserted whose key matches an existing entry, the old entry is
+replaced.
+</p>
+<p>
+Suppose we perform the operation find(k), and the key k hashes to a bucket b.
+Bucket b contains at most one entry with key k, so the cost of the search is
+one dollar, plus an additional dollar for every entry stored in bucket b whose
+key is not k.  (Recall from last lecture that a <span style="text-decoration:underline;">dollar</span> is a unit of time
+chosen large enough to make this statement true.)
+</p>
+<p>
+Suppose there are n keys in the table besides k.  Let V1, V2, &hellip;, Vn be random
+variables such that for each key ki, the variable Vi = 1 if key ki hashes to
+bucket b, and Vi is zero otherwise.  Then the cost of find(k) is
+</p>
+
+
+$$ T = 1 + V1 + V2 + ... + Vn.$$
+
+<p>
+The expected cost of find(k) is (by linearity of expectation)
+</p>
+
+
+$$ E[T] = 1 + E[V1] + E[V2] + ... + E[Vn].$$
+
+<p>
+What is E[Vi]?  Since there are N buckets, and the hash code is random, each
+key has a 1/N probability of hashing to bucket b.  So E[Vi] = 1/N, and
+</p>
+<p>
+  $$E[T] = 1 + \frac{n}{N}$$,
+</p>
+<p>
+which is one plus the load factor!  If we keep the load factor n/N below some
+constant c as n grows, find operations cost expected O(1) time.
+</p>
+<p>
+The same analysis applies to insert and remove operations.  All three hash
+table operations take O(1) expected amortized time.  (The word "amortized"
+accounts for table resizing, as discussed last lecture.)
+</p>
+<p>
+Observe that the running times of hash table operations are <span style="text-decoration:underline;">not</span> independent.
+If key k1 and key k2 both hash to the same bucket, it increases the running
+time of both find(k1) and find(k2).  Linearity of expectation is important
+because it implies that we can add the expected costs of individual operations,
+and obtain the expected total cost of all the operations an algorithm performs.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-4" class="outline-3">
+<h3 id="sec-36-4">Quicksort</h3>
+<div class="outline-text-3" id="text-36-4">
+
+<p>Recall that mergesort sorts n items in O(n log n) time because the recursion
+tree has \(1 + \lceil \log_2 n \rceil\) levels, and each level involves O(n) time spent
+merging lists.  Quicksort also spends linear time at each level (partitioning
+the lists), but it is trickier to analyze because the recursion tree is not
+perfectly balanced, and some keys survive to deeper levels than others.
+</p>
+<p>
+To analyze quicksort, let's analyze the expected depth one input key k will
+reach in the tree.  (In effect, we're measuring a vertical slice of the
+recursion tree instead of a horizontal slice.)  Assume no two keys are equal,
+since that is the slowest case.
+</p>
+<p>
+Quicksort chooses a random pivot.  The pivot is equally likely to be the
+smallest key, the second smallest, the third smallest, &hellip;, or the largest.
+For each case, the probability is \(\frac{1}{n}\).  Since we want a roughly balanced
+partition, let's say that the least \(\Big \lfloor \frac{n}{4} \Big \rfloor\) keys and the greatest \(\Big \lfloor \frac{n}{4} \Big \rfloor\)
+keys are "bad" pivots, and the other keys are "good" pivots.  Since there are
+at most \(\frac{n}{2}\) bad pivots, the probability of choosing a bad pivot is \(\le 0.5\).
+</p>
+<p>
+If we choose a good pivot, we'll have a 1/4-3/4 split or better, and our chosen
+key k will go into a subset containing at most three quarters of the keys,
+which is sorted recursively.  If we choose a bad pivot, k might go into a
+subset with nearly all the other keys.
+</p>
+<p>
+Let D(n) be a random variable equal to the lowest depth at which key k appears
+when we sort n keys.  D(n) varies from run to run, but we can reason about its
+expected value.  Since we choose a bad key no more than half the time,
+</p>
+
+
+$$ E[D(n)] \le 1 + 0.5 E[D(n)] + 0.5 E[D(\frac{3n}{4})]$$
+
+<p>
+Multiplying by two and subtracting E[D(n)] from both sides gives
+</p>
+<p>
+$$E[D(n)] \le 2 + E[D(\frac{3n}{4})]$$.
+</p>
+<p>
+This inequality is called a <span style="text-decoration:underline;">recurrence</span>, and you'll learn how to solve them in
+CS 170.  (No, recurrences won't be on the CS 61B final exam.)  The base cases
+for this recurrence are D(0) = 0 and D(1) = 0.  It's easy to check by
+substitution that a solution is
+</p>
+<p>
+$$  E[D(n)] \le 2 \log_{\frac{4}{3}} n$$.
+</p>
+<p>
+So any arbitrary key k appears in expected O(log n)$ levels of the recursion
+tree, and causes O(log n) partitioning work.  By linearity of expectation, we
+can sum the expected O(log n) work for each of the n keys, and we find that
+quicksort runs in expected O(n log n) time.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-5" class="outline-3">
+<h3 id="sec-36-5">Quickselect</h3>
+<div class="outline-text-3" id="text-36-5">
+
+<p>For quickselect, we can analyze the expected running time more directly.
+Suppose we run quickselect on n keys.  Let P(n) be a random variable equal to
+the total number of keys partitioned, summed over all the partitioning steps.
+Then the running time is in Theta(P(n)).
+</p>
+<p>
+Quickselect is like quicksort, but when we choose a good pivot, at least one
+quarter of the keys are discarded.  We choose a good pivot at least half the
+time, so
+</p>
+
+
+$$  E[P(n)] \le n + 0.5 E[P(n)] + 0.5 E[P(\frac{3n}{4})],$$
+
+<p>
+which is solved by \(E[P(n)] \le 8n\).  Therefore, the expected running time of
+quickselect on n keys is in O(n).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-36-6" class="outline-3">
+<h3 id="sec-36-6">Amortized Time vs. Expected Time</h3>
+<div class="outline-text-3" id="text-36-6">
+
+<p>There's a subtle but important difference between amortized running time and
+expected running time.
+</p>
+<p>
+Quicksort with random pivots takes O(n log n) expected running time, but its
+worst-case running time is in Theta(n<sup>2</sup>).  This means that there is a small
+possibility that quicksort will cost Omega(n<sup>2</sup>) dollars, but the probability
+of that happening approaches zero as n approaches infinity.
+</p>
+<p>
+A splay tree operation takes O(log n) amortized time, but the worst-case
+running time for a splay tree operation is in Theta(n).  Splay trees are not
+randomized, and the "probability" of an Omega(n)-time splay tree operation is
+not a meaningful concept.  If you take an empty splay tree, insert the items
+1&hellip;n in order, then run find(1), the find operation <span style="text-decoration:underline;">will</span> cost n dollars.
+But a sequence of n splay tree operations, starting from an empty tree, <span style="text-decoration:underline;">never</span>
+costs more than O(n log n) actual running time.  Ever.
+</p>
+<p>
+Hash tables are an interesting case, because they use both amortization and
+randomization.  Resizing takes Theta(n) time.  With a random hash code, there
+is a tiny probability that every item will hash to the same bucket, so the
+worst-case running time of an operation is Theta(n)&ndash;even without resizing.
+</p>
+<p>
+To account for resizing, we use amortized analysis.  To account for collisions,
+we use randomized analysis.  So when we say that hash table operations run in
+O(1) time, we mean they run in O(1) <span style="text-decoration:underline;">expected</span>, <span style="text-decoration:underline;">amortized</span> time.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">Splay trees</td><td class="left">O(log n) amortized time / operation **</td></tr>
+<tr><td class="left">Disjoint sets (tree-based)</td><td class="left">O(alpha(f + u, u)) amortized time / find op ***</td></tr>
+<tr><td class="left">Quicksort</td><td class="left">O(n log n) expected time ****</td></tr>
+<tr><td class="left">Quickselect</td><td class="left">Theta(n) expected time *****</td></tr>
+<tr><td class="left">Hash tables</td><td class="left">Theta(1) expected amortized time / op ******</td></tr>
+</tbody>
+</table>
+
+
+<p>
+If you take CS 170, you will learn an amortized analysis of disjoint sets
+there.  Unfortunately, the analyses of both disjoint sets and splay trees are
+complicated.  Goodrich &amp; Tamassia give the amortized analysis of splay trees,
+but you're not required to read or understand it for this class.
+</p>
+<p>
+ **     Worst-case time is in Theta(n), worst-case amortized time is in
+        Theta(log n), best-case time is in Theta(1).<br/>
+ ***    For find operations, worst-case time is in Theta(log u), worst-case
+        amortized time is in Theta(alpha(f + u, u)), best-case time is in
+        Theta(1).  All union operations take Theta(1) time.<br/>
+ ****   Worst-case time is in Theta(n<sup>2</sup>)&ndash;if we get worst-case input AND
+        worst-case random numbers.  "Worst-case expected" time is in
+        Theta(n log n)&ndash;meaning when the <span style="text-decoration:underline;">input</span> is worst-case, but we take the
+        average over all possible sequences of random numbers.  Recall that
+        quicksort can be implemented so that keys equal to the pivot go into a
+        separate list, in which case the best-case time is in Theta(n), because
+        the best-case input is one where all the keys are equal.  If quicksort
+        is implemented so that keys equal to the pivot are divided between lists
+        I1 and I2, as is the norm for array-based quicksort, then the best-case
+        time is in Theta(n log n).<br/>
+ *****  Worst-case time is in Theta(n<sup>2</sup>)&ndash;if we get worst-case input AND worst-
+        case random numbers.  Worst-case expected time, best-case time, and
+        best-case expected time are in Theta(n).<br/>
+ ****** Worst-case time is in Theta(n), expected worst-case time is in Theta(n)
+        (worst case is when table is resized), amortized worst-case time is in
+        Theta(n) (worst case is when every item is in one bucket), worst-case
+        expected amortized time is in Theta(1), best-case time is in Theta(1).
+        Confused yet?
+</p></div>
+</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-05-02T13:51-0700</p>
+<p class="date">Date: 2014-05-02T14:25-0700</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
