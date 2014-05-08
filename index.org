@@ -40,3 +40,4 @@ Original notes from: http://www.cs.berkeley.edu/~jrs/61b/
 - [[file:notes36.org][Lecture 36]]
 - [[file:notes37.org][Lecture 37]]
 - [[file:notes38.org][Lecture 38]]
+- [[file:notes39.org][Lecture 39]]
