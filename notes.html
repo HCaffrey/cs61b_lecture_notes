@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-05-07T21:49-0700"/>
+<meta name="generated" content="2014-05-07T21:59-0700"/>
 <meta name="author" content="michael"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -563,6 +563,14 @@ for the JavaScript code below.
 <li><a href="#sec-37-5">Compaction</a></li>
 <li><a href="#sec-37-6">References</a></li>
 <li><a href="#sec-37-7">Copying Garbage Collection</a></li>
+</ul>
+</li>
+<li><a href="#sec-38">Lecture 40</a>
+<ul>
+<li><a href="#sec-38-1">Generational Garbage Collection</a></li>
+<li><a href="#sec-38-2">AUGMENTING DATA STRUCTURES</a></li>
+<li><a href="#sec-38-3">2-3-4 Trees with Fast Neighbors</a></li>
+<li><a href="#sec-38-4">Splay Trees with Node Information</a></li>
 </ul>
 </li>
 </ul>
@@ -12218,13 +12226,270 @@ are in one space, while the other space sits empty.
 The advantage of copying garbage collection is that it's fast.  The
 disadvantage is that you effectively cut in half the amount of heap memory
 available to your program.
-</p></div>
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-38" class="outline-2">
+<h2 id="sec-38">Lecture 40</h2>
+<div class="outline-text-2" id="text-38">
+
+
+<p>
+<a href="original-notes/40.txt">original notes</a>
+</p>
+</div>
+
+<div id="outline-container-38-1" class="outline-3">
+<h3 id="sec-38-1">Generational Garbage Collection</h3>
+<div class="outline-text-3" id="text-38-1">
+
+<p>Studies of memory allocation have shown that most objects allocated by most
+programs have short lifetimes, while a few go on to survive through many
+garbage collections.  This observation has inspired generational garbage
+collectors, which separate old from new objects.
+</p>
+<p>
+A generational collector has two or more generations, which are like the
+separate spaces used by copying collectors, except that the generations can be
+of different sizes, and can change size during a program's lifetime.
+</p>
+<p>
+Sun's 1.3 JVM divides objects into an old generation and a young generation.
+Because old objects tend to last longer, the old generation doesn't need to be
+garbage collected nearly as often.  Hence, the old generation uses a compacting
+mark-and-sweep collector, because speed is not critical, but memory efficiency
+might be.  Because old objects are long-lived, and because mark and sweep only
+uses one memory space, the old generation tends to remain compact.
+</p>
+<p>
+The young generation is itself divided into three areas.  The largest area is
+called "Eden", and it is the space where all objects are born, and most die.
+Eden is large enough that most objects in it will become garbage long before it
+gets full.  When Eden fills up, it is garbage collected and the surviving
+objects are copied into one of two <span style="text-decoration:underline;">survivor spaces</span>.  The survivor spaces are
+just the two spaces of a copying garbage collector.
+</p>
+<p>
+If an unexpectedly large number of objects survive Eden, the survivor spaces
+can expand if necessary to make room for additional objects.
+</p>
+<p>
+Objects move back and forth between the two survivor spaces until they age
+enough to be <span style="text-decoration:underline;">tenured</span> - moved to the old generation.  Young objects benefit
+from the speed of the copying collector while they're still wild and prone to
+die young.
+</p>
+<p>
+Thus, the Sun JVM takes advantage of the best features of both the
+mark-and-sweep and copying garbage collection methods.
+</p>
+<p>
+There are two types of garbage collection:  minor collections, which happen
+frequently but only affect the young generation - thereby saving lots of time -
+and major collections, which happen much less often but cover all the objects
+in memory.
+</p>
+<p>
+This introduces a problem.  Suppose a young object is live only because an old
+object references it.  How does the minor collection find this out, if it
+doesn't search the old generation?
+</p>
+<p>
+References from old objects to young objects tend to be rare, because old
+objects are set in their ways and don't change much.  Since references from old
+objects to young are so rare, the JVM keeps a special table of them, which it
+updates whenever such a reference is created.  The table of references is added
+to the roots of the young generation's copying collector.
+</p>
+
+
+
+<pre class="src src-text">-------------------------------------------------------------------------
+|                                                                       |
+| old generation                                                        |
+|                                                                       |
+|                                                                       |
+-------------------------------------------------------------------------
+|                                                                       |
+| young generation                                                      |
+|                                                                       |
+|  -------------------------------------------------------------------  |
+|  | survivor space                                                  |  |
+|  |                                                                 |  |
+|  -------------------------------------------------------------------  |
+|  | survivor space                                                  |  |
+|  |                                                                 |  |
+|  -------------------------------------------------------------------  |
+|                                 _____                   ____          |
+|      /----\               /----/     \/\/\         /---/    \____     |
+|    _/      \     -\      /                \___--__/              \    |
+|   /         \___/  \__--/                                         |   |
+|  |                                                               /    |
+|  |                             Eden                              \    |
+|   \                                                               |   |
+|    \                                    _                ^       /    |
+|     -\   /\_    _/--\     /\     /\    / \--\    /--\   / \__   /     |
+|       --/   \__/     \___/  \/\_/  \__/      \/\/    --/     \_/      |
+-------------------------------------------------------------------------
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-38-2" class="outline-3">
+<h3 id="sec-38-2">AUGMENTING DATA STRUCTURES</h3>
+<div class="outline-text-3" id="text-38-2">
+
+<p>Once you know how to design one of the data structures taught in this class,
+it's sometimes easy to augment it to have "extra" abilities.
+</p>
+<p>
+You've already augmented data structures in Project 3.  For example, the set E
+of edges is stored as both a hash table and an adjacency list.  The hash table
+allows you to test set membership in O(1) time, unlike the adjacency list.  The
+adjacency list tells you the edges adjoining a vertex in O(degree) time, unlike
+the hash table.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-38-3" class="outline-3">
+<h3 id="sec-38-3">2-3-4 Trees with Fast Neighbors</h3>
+<div class="outline-text-3" id="text-38-3">
+
+<p>Suppose you have a 2-3-4 tree with no duplicate keys.  Given a key k, you want
+to be able to determine whether k is in the tree, and what the next smaller and
+larger keys are, in O(1) time.  You are allowed to change the insert() and
+remove() operations, but they still must take O(log n) time.  Can you do it?
+</p>
+<p>
+It's easy if you combine the 2-3-4 tree with a hash table.  The hash table maps
+each key to an record that stores the next smaller and next larger keys in the
+tree.
+</p>
+
+
+
+<pre class="src src-text">      ----------------      ---------------
+      |              |      | ----- ----- |
+      |  Hash table  |      | | 4 | | 9 | |
+5 ----+\/\/\/\/\/\/\/+-----&gt;| ----- ----- |
+      ----------------      | prev   next |
+                            ---------------
+</pre>
+
+
+<p>
+The trick is that when you insert a key into the tree, you can determine by
+tree search in O(log n) time what the next smaller and larger keys are.  Then,
+you update all three keys' records in the hash table in O(1) time.
+</p>
+<p>
+When you remove a key from the tree, you can learn its two neighboring keys
+from the hash table, then update the neighbor records for those two keys so
+they list each other instead of the removed key.  You also remove the key's
+record from the hash table.  The hash table updates take O(1) time, and it
+takes O(log n) time to remove the key from the 2-3-4 tree itself.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-38-4" class="outline-3">
+<h3 id="sec-38-4">Splay Trees with Node Information</h3>
+<div class="outline-text-3" id="text-38-4">
+
+<p>Sometimes it's useful for a binary search tree to record extra information in
+each node, like the size and height of each subtree at each node.
+</p>
+<p>
+In splay trees, this is easy to maintain.  Splaying is just a sequence of tree
+rotations.  Each rotation changes the sizes of only two subtrees, and we can
+easily compute their new sizes after the rotation.  Let size(Y) be the number
+of nodes in the subtree rooted at node Y.  After a right rotation (for
+instance) you can recompute the information as follows:
+</p>
+
+
+
+<pre class="src src-text">size(Y) = 1 + size(B) + size(C)                  Y                       X     
+size(X) = 1 + size(A) + size(Y)                 / \                     / \    
+                                               X   ^                   ^   Y   
+height(Y) = 1 + max{height(B), height(C)}     / \ /C\                 /A\ / \  
+height(X) = 1 + max{height(A), height(Y)}    ^  ^      ------------&gt;      ^  ^ 
+(Note:  to make this work, we must say      /A\/B\      rotate right     /B\/C\
+that the height of an empty tree is -1.)
+</pre>
+
+
+<p>
+Be forwarned that a rotation does not just change the heights of X and Y&ndash;it
+also can change the heights of all their ancestors.  But X gets splayed all the
+way to the root, so all the ancestors' heights get fixed on the way up.
+</p>
+<p>
+Likewise, inserting or removing an item changes the subtree sizes of all the
+ancestors of the affected item, and possibly their heights as well.  But a
+newly inserted item gets splayed to the top; and a removed node's parent is
+splayed to the top.  So again, all the sizes and heights will get fixed during
+the rotations.  Let's watch the size fields as we insert a new node X into a
+splay tree.  (The following numbers are sizes, <span style="text-decoration:underline;">not</span> keys.)
+</p>
+<p>
+Note that the very first rotation is at the grandparent of node X (zig-zig).
+</p>
+
+
+
+<pre class="src src-text">    10              10              10                   10             [11]
+   /  \            /  \            /  \                 /  \            / \
+  8    1          8    1          8    1              [9]   1          6   4
+ / \             / \             / \                  / \             /\   /\
+1   6           1   6           1   6                6   2           1  4 2  1
+   / \             / \             / \              / \   \            /   \
+  4   1 =zig=&gt;    5   1 =zig=&gt;   [5]  1 =zig-zag=&gt; 1  4    1 =zig=&gt;   3     1
+ / \             / \             /                   /               / \
+1   2           3  [1]          4                   3               1   1
+   / \         / \             /                   / \
+  1  [X]      1   1           3                   1   1
+                             / \             
+                            1   1            
+
+
+How can we use this information?  We can answer the query "How       3  find(4)
+many keys are there between x and y?" in O(log n) amortized         / \        
+time if the splay tree has no duplicate keys and we label every    2   5       
+subtree with its size.  Our strategy is to set c = n, then        /     \      
+deduct from c the number of keys outside the range [x, y].       1       8     
+                                                                        / \    
+  find(x);  // After the splaying, the keys in the root's left         6   9
+  // subtree are all less than x, so subtract their number from c.
+  c = c - size(root's left subtree);                                 6  find(7)
+  if (root key &lt; x)  // Only possible if x is not in the tree--     / \
+    c--;             // otherwise x was splayed to the root.       3   8
+                                                                  / \   \
+  find(y);  // After the splaying, the keys in the root's        2   5   9
+            // right subtree all exceed y.                      /
+  c = c - size(root's right subtree);                          1
+  if (root key &gt; y) c--;
+                                                             Keys in [4, 7] =
+Now, c is the number of keys in [x, y].                      7 - 2 - 1 - 2 = 2.
+</pre>
+
+
+</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-05-07T21:49-0700</p>
+<p class="date">Date: 2014-05-07T21:59-0700</p>
 <p class="author">Author: michael</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
