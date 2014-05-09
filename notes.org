@@ -1,6 +1,6 @@
 #+TITLE: cs61b Lecture Notes
 #+STARTUP: overview
-* Lecture 1
+* Lecture 1. Course Overview
 [[file:original-notes/01.txt][original notes]]
 
 Prof. Jonathan Shewchuk, jrs@cory.eecs
@@ -244,7 +244,7 @@ to do the "main" operation, just like the PrintStream class knows how to do the
 The classes System and PrintStream are all automatically provided for you by
 any Java compiler.  Somebody has programmed them for you, so that you don't
 have to figure out for yourself how to send characters to the terminal.
-* Lecture 2
+* Lecture 2. Using Objects
 Today's reading:  Sierra & Bates, Chapter 2; pp. 54-58, 154-160, 661, 669.
 
 [[file:original-notes/02.txt][original notes]]
@@ -484,7 +484,7 @@ the latter methods completes execution, just like with procedure calls in most
 languages.  But you should probably know that this termology exists, much as it
 sucks, because you'll probably run into it sooner or later.
 
-* Lecture 3
+* Lecture 3. Defining Classes
 Today's reading:  Sierra & Bates, pp. 71-74, 76, 85, 240-249, 273-281, 308-309.
 
 [[file:original-notes/03.txt][original notes]]
@@ -749,7 +749,7 @@ Any attempt to reference "this" will cause a compile-time error.
 - An instance variable (non-static field) lasts as long as the object exists.
   An object lasts as long as there's a reference to it.
 - A class variable (static field) lasts as long as the program runs.
-* Lecture 4
+* Lecture 4. Types; Conditionals
 Today's reading:  S&B pp. 10-14, 49-53, 75, 78-79, 86, 117, 286-287, 292, 660.
 
 [[file:original-notes/04.txt][original notes]]
@@ -979,7 +979,7 @@ The "return" value can be an expression.  Some examples:
   
   return car.velocity(time);
 #+END_SRC
-* Lecture 5
+* Lecture 5. Loops and Arrays I
 Today's reading:  Sierra & Bates pp. 59-62, 83, 114-116, 293-300, 670.
 
 [[file:original-notes/05.txt][original notes]]
@@ -1228,7 +1228,7 @@ Our array objects look like this:
   pt |.+----->|  .  |  .  |  .  |  .  |  . +---->| 1  |  4  |  6  |  4  |  1 |
      +-+      +--+--+-----+-----+-----+----+     +----+-----+-----+-----+----+
 #+end_ditaa
-* Lecture 6
+* Lecture 6. Loops and Arrays II
 Today's reading:  Sierra & Bates pp. 282-285.
 
 [[file:original-notes/06.txt][original notes]]
@@ -1510,7 +1510,7 @@ variable.  Here are some of Java's scoping rules.
   except when shadowed by a local variable or parameter of the same name.
 - Instance variables (non-static fields) are in scope in non-static methods
   of the class, except when shadowed.
-* Lecture 7
+* Lecture 7. Linked Lists I
 Today's reading:  Goodrich & Tamassia, Section 3.2.
 
 [[file:original-notes/07.txt][original notes]]
@@ -1761,7 +1761,7 @@ the change.
 Another advantage of the SList class is that it can keep a record of the
 SList's size (number of SListNodes).  Hence, the size can be determined more
 quickly than if the SListNodes had to be counted.
-* Lecture 8
+* Lecture 8. Linked Lists II
 Today's reading:  Goodrich & Tamassia, Section 3.3.
 
 [[file:original-notes/08.txt][original notes]]
@@ -1965,7 +1965,7 @@ Here's an example of a method that removes the last item from a DList.
 #+END_SRC
 
 In Lab 4 and Homework 4, you'll implement more methods for this DList class.
-* Lecture 9
+* Lecture 9. Stack & Heap
 Today's reading:  Sierra & Bates pp. 77, 235-239, 258-265, 663.
 
 [[file:original-notes/09.txt][original notes]]
@@ -2249,7 +2249,7 @@ variable.  Here are some of Java's scoping rules.
 - Fully qualified instance variables ("amanda.name", "this.i") are in scope
   everywhere in the class, and cannot be shadowed.  If they're public, they're
   in scope in all classes.
-* Lecture 10
+* Lecture 10. Inheritance
 Today's reading:  All of Chapter 7, plus pp. 28-33, 250-257.
 
 [[file:original-notes/10.txt][original notes]]
@@ -2509,7 +2509,7 @@ a specific class.  WARNING:  The "o" in "instanceof" is not capitalized.
 This instanceof operation will return false if s is null or doesn't reference
 a TailList.  It returns true if s references a TailList object--even if it's
 a subclass of TailList.
-* Lecture 11
+* Lecture 11. Testing; equals()
 Today's reading:  Sierra & Bates, pp. 95-109, 662.
 
 [[file:original-notes/11.txt][original notes]]
@@ -2752,7 +2752,7 @@ Some principles of regression testing:
 
 In real-world software development, the size of the test code is often larger
 than the size of the code being tested.
-* Lecture 12
+* Lecture 12. Abstract Classes
 Today's reading:  Sierra & Bates, Chapter 8.
 
 [[file:original-notes/12.txt][original notes]]
@@ -2965,7 +2965,7 @@ multiple superinterfaces, so we can group several interfaces into one.
 
 We could also add more method prototypes and constants, but in this example
 I don't.
-* Lecture 13
+* Lecture 13. Java Packages
 Today's reading:  Sierra & Bates, pp. 154-160, 587-591, 667-668.
 
 [[file:original-notes/13.txt][original notes]]
@@ -3229,7 +3229,7 @@ be able to find the rest of the nodes.
 An Iterator doesn't have to iterate over a data structure.  For example, you
 can implement an Iterator subclass called Primes that returns each successive
 prime number as an Integer object.
-* Lecture 15
+* Lecture 15. Exceptions
 (Lecture 14 was the midterm exam)
 
 Today's reading:  Sierra & Bates, pp. 315-338.
@@ -3423,7 +3423,7 @@ just two choices.
 The easiest way to figure out which exceptions to declare is to declare none
 and let the compiler's error messages tell you.  (This won't work on the exams,
 though.)
-* Lecture 16
+* Lecture 16. More Java
 
 Today's reading:  Sierra & Bates, pp. 189, 283.
 
@@ -3655,9 +3655,9 @@ to declare a subclass will cause a compile-time error.
 
 The only reason to declare a method or class "final" is to improve the speed of
 a program.  The compiler can speed up method calls that cannot be overridden.
-* Lecture 17
+* Lecture 17. Game Trees
  [[file:17.pdf][Lecture 17]]
-* Lecture 18
+* Lecture 18. Encapsulation
 
 Today's reading:  Sierra & Bates, pp. 80-84.
 
@@ -3924,7 +3924,7 @@ I recommend you write a draft of your interfaces this week so you'll have lots
 of time to program.  The interfaces in the GRADER file are worth 10% of your
 project score.  You will need to show them to your TA next week in Lab 8.
 
-* Lecture 19
+* Lecture 19. Encapsulated Lists
 
 Today's reading:  Sierra & Bates, p. 664.
 
@@ -4117,7 +4117,7 @@ ListNode, and use that to distinguish valid nodes from invalid ones?  It would
 make the implementation clearer, and therefore more maintainable.  However, it
 would also make each ListNode occupy more memory.  I chose reduced memory use
 over readability, but this was an arbitrary choice.
-* Lecture 20
+* Lecture 20. Asymptotic Analysis
 
 Today's reading:  Goodrich & Tamassia, Chapter 4 (especially 4.2 and 4.3).
 
@@ -4319,7 +4319,7 @@ logarithms in their bones.
 
      Nevertheless, Big-Oh notation is still a good rule of thumb, because the
      hidden constants in real-world algorithms usually aren't that big.
-* Lecture 21
+* Lecture 21. Dictionaries & Hash Tables
 
 Today's reading:  Goodrich & Tamassia, Sections 9.1, 9.2, 9.5-9.5.1.
 
@@ -4496,7 +4496,7 @@ Unfortunately, it's still possible to mess up by inventing a hash code that
 creates lots of conflicts even before the compression function is used.  We'll
 discuss hash codes next lecture.
 
-* Lecture 22
+* Lecture 22. Hash Codes; Stacks & Queues
 
 Today's reading:  Goodrich & Tamassia, Chapter 5.
 
@@ -4685,7 +4685,7 @@ operations in CS 61C.  Please don't ask me to explain them to you.
   }
 #+END_SRC
 
-* Lecture 23
+* Lecture 23. Algorithm Analysis
 
 [[file:original-notes/23.txt][original notes]]
 ** ASYMPTOTIC ANALYSIS (continued):  More Formalism
@@ -4906,7 +4906,7 @@ Algorithm #5:  If k < 1 or k > n, report an error and return.
   If 1 <= k <= n, this algorithm takes Theta(min{k, n - k}) time (in all cases)
   This expression cannot be simplified:  without knowing k and n, we cannot say
   that k dominates n - k or that n - k dominates k.
-* Lecture 24
+* Lecture 24. Trees and Traversals
 
 Today's reading:  Goodrich & Tamassia, Chapter 7.
 
@@ -5148,7 +5148,7 @@ Continue until the queue is empty.
 A final thought:  if you use a stack instead of a queue, and push each node's
 children in reverse order--from right to left (so they pop off the stack in
 order from left to right)--you perform a preorder traversal.  Think about why.
-* Lecture 25
+* Lecture 25. Priority Queues
  
 Today's reading:  Goodrich & Tamassia, Sections 8.1-8.3.
 
@@ -5432,7 +5432,7 @@ are "amortized" bounds, not worst case bounds.  This means that, if you start
 from an empty heap, any sequence of operations will take no more than the given
 time bound on average, although individual operations may occasionally take
 longer.  We'll discuss amortized analysis near the end of the semester.
-* Lecture 26
+* Lecture 26. Binary Search Trees
 
 Today's reading:  Goodrich & Tamassia, Section 10.1.
 
@@ -5692,7 +5692,7 @@ The same argument applies to the largest key less than k.
 A perfectly balanced binary tree has 2^i nodes at depth i, where
 
 $0 <= i <= h$.  Hence, the total number of nodes is $\sum_{i=0}^{h} 2^i = 2^{h+1} -1$
-* Lecture 27
+* Lecture 27. Balanced Search Trees
 
 [[file:original-notes/27.txt][original notes]]
 ** 2-3-4 TREES
@@ -5916,7 +5916,7 @@ this is a change in the implementation, but not a change in the dictionary ADT.
 
 This idea can be used with hash tables, binary search trees, and 2-3-4 trees.
 
-* Lecture 28
+* Lecture 28. Graphs
 
 [[file:original-notes/28.txt][original notes]]
 ** GRAPHS
@@ -6141,7 +6141,7 @@ O(D).  How large is D?
 
 In all three cases, the running time of depth-first search is in $O(|E|)$, NOT
 counting the time required to initialize the "visited" flags.
-* Lecture 29
+* Lecture 29. Weighed Graphs
 
 [[file:original-notes/29.txt][original notes]]
 ** GRAPHS (continued)
@@ -6335,7 +6335,7 @@ in O(|V| + |E| log |V|) time.
 
 If we use an adjacency matrix, the running time is in O(|V|^2 + |E| log |E|),
 because it takes Theta(|V|^2) time simply to make a list of all the edges.
-* Lecture 30
+* Lecture 30. Four Sorting algorithms
 
 [[file:original-notes/30.txt][original notes]]
 ** SORTING
@@ -6535,7 +6535,7 @@ makes it a memory-inefficient algorithm for sorting arrays.  Unlike the other
 sorting algorithms we've considered, mergesort is not an in-place algorithm.
 There is no reasonably efficient way to merge two arrays in place.  Instead,
 use an extra array of O(n) size to temporarily hold the result of a merge.
-* Lecture 31
+* Lecture 31. Quicksort
 
 [[file:original-notes/31.txt][original notes]]
 
@@ -6775,7 +6775,7 @@ list.  Quicksort's inventor, Sir C. A. R. "Tony" Hoare, received the ACM Turing
 Award in 1980 for his work on programming languages, and was conferred the
 title of Knight Bachelor in March 2000 by Queen Elizabeth II for his
 contributions to "Computing Science."
-* Lecture 33
+* Lecture 33. Disjoint Sets
 
 Today's reading:  Goodrich & Tamassia, Section 11.4.
 
@@ -7019,7 +7019,7 @@ any values of f and u you could ever use (though it does grow arbitrarily
 large--for unimaginably gigantic values of f and u).  Hence, for all practical
 purposes (but not on the Final Exam), you should think of quick-union as having
 find operations that run, on average, in constant time.
-* Lecture 34
+* Lecture 34. Sorting & Selection
 
 Today's reading:  Goodrich & Tamassia, Sections 11.3.1 & 11.5.
 
@@ -7228,7 +7228,7 @@ Take note that bucket sort is ONLY appropriate when keys are distributed in
 a small range; i.e. q is in $O(n)$.  On Monday we'll study a sorting algorithm
 called _radix sort_ that will fix that limitation.  The stability of bucket
 sort will be important for radix sort.
-* Lecture 35
+* Lecture 35. Radix Sort
 
 Today's reading:  Goodrich & Tamassia, Sections 11.3.2.
 
@@ -7483,7 +7483,7 @@ sorting on the second and first characters, we end with
 Observe that BA precedes BAABA and CC precedes CCAAA because of the stability
 of the sort.  That's why we put the two-character strings before the five-
 character strings when we began the fifth pass.
-* Lecture 36
+* Lecture 36. Splay Trees
 
 Today's reading:  Goodrich & Tamassia, Section 10.3.
 
@@ -7613,11 +7613,9 @@ Here's an example of "find(7)".  Note how the tree's balance improves.
   4  [7]             3   6                  2   4                
      / \            / \                                                      
     6   8          2   4                                                     
-#+END_SRC
 
 By inspecting each of the three cases (zig-zig, zig-zag, and zig), you can
 observe a few interesting facts.  First, in none of these three cases does the
-#+Begin_SRC text
 depth of a subtree increase by more than
 two.  Second, every time X takes two                       9
 steps toward the root (zig-zig or zig-zag),               / \
@@ -7741,7 +7739,7 @@ One special case that has been proven is that if you perform the find operation
 on each key in a splay tree in order from the smallest key to the largest key,
 the total time for all n operations is O(n), and not O(n log n) as you might
 expect.
-* Lecture 37
+* Lecture 37. Amortized Analysis 
 
 [[file:original-notes/37.txt][original notes]]
 ** AMORTIZED ANALYSIS
@@ -7943,7 +7941,7 @@ sets.  I am saddened to report that both analyses are too complicated to
 provide much intuition about their running times.  (Especially the inverse
 Ackermann function, which is ridiculously nonintuitive, though cool
 nonetheless.)
-* Lecture 38
+* Lecture 38. Randomized Analysis
 
 [[file:original-notes/38.txt][original notes]]
 ** RANDOMIZED ANALYSIS
@@ -8188,7 +8186,7 @@ but you're not required to read or understand it for this class.
         Theta(n) (worst case is when every item is in one bucket), worst-case
         expected amortized time is in Theta(1), best-case time is in Theta(1).
         Confused yet?
-* Lecture 39
+* Lecture 39. Garbage Collection
 Today's reading:  Goodrich & Tamassia, Sections 14.1.2-14.1.3.
 
 [[file:original-notes/39.txt][original notes]]
@@ -8389,7 +8387,7 @@ The advantage of copying garbage collection is that it's fast.  The
 disadvantage is that you effectively cut in half the amount of heap memory
 available to your program.
 
-* Lecture 40
+* Lecture 40. Augmented Data Structures
 
 [[file:original-notes/40.txt][original notes]]
 ** Generational Garbage Collection
