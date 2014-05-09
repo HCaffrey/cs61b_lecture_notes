@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-05-07T21:59-0700"/>
-<meta name="author" content="michael"/>
+<meta name="generated" content="2014-05-09T09:57-0700"/>
+<meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -209,7 +209,7 @@ for the JavaScript code below.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">Lecture 1</a>
+<li><a href="#sec-1">Lecture 1. Course Overview</a>
 <ul>
 <li><a href="#sec-1-1">Labs</a></li>
 <li><a href="#sec-1-2">Prerequisites</a></li>
@@ -222,7 +222,7 @@ for the JavaScript code below.
 <li><a href="#sec-1-9">Postscript:  Anatomy of a Small Java Program (for discussion section)</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">Lecture 2</a>
+<li><a href="#sec-2">Lecture 2. Using Objects</a>
 <ul>
 <li><a href="#sec-2-1">OBJECTS AND CONSTRUCTORS</a></li>
 <li><a href="#sec-2-2">METHODS</a></li>
@@ -231,7 +231,7 @@ for the JavaScript code below.
 <li><a href="#sec-2-5">Postscript:  Object-Oriented Terminology (not examinable)</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">Lecture 3</a>
+<li><a href="#sec-3">Lecture 3. Defining Classes</a>
 <ul>
 <li><a href="#sec-3-1">DEFINING CLASSES</a></li>
 <li><a href="#sec-3-2">Constructors</a></li>
@@ -240,7 +240,7 @@ for the JavaScript code below.
 <li><a href="#sec-3-5">Lifetimes of Variables</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">Lecture 4</a>
+<li><a href="#sec-4">Lecture 4. Types; Conditionals</a>
 <ul>
 <li><a href="#sec-4-1">PRIMITIVE TYPES</a></li>
 <li><a href="#sec-4-2">Boolean Values</a></li>
@@ -248,7 +248,7 @@ for the JavaScript code below.
 <li><a href="#sec-4-4">THE "return" KEYWORD</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">Lecture 5</a>
+<li><a href="#sec-5">Lecture 5. Loops and Arrays I</a>
 <ul>
 <li><a href="#sec-5-1">LOOPS</a>
 <ul>
@@ -261,7 +261,7 @@ for the JavaScript code below.
 <li><a href="#sec-5-4">Multi-Dimensional Arrays</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">Lecture 6</a>
+<li><a href="#sec-6">Lecture 6. Loops and Arrays II</a>
 <ul>
 <li><a href="#sec-6-1">MORE ARRAYS</a></li>
 <li><a href="#sec-6-2">Automatic Array Construction</a></li>
@@ -275,7 +275,7 @@ for the JavaScript code below.
 <li><a href="#sec-6-5">SCOPE</a></li>
 </ul>
 </li>
-<li><a href="#sec-7">Lecture 7</a>
+<li><a href="#sec-7">Lecture 7. Linked Lists I</a>
 <ul>
 <li><a href="#sec-7-1">LISTS</a></li>
 <li><a href="#sec-7-2">LINKED LISTS (a recursive data type)</a></li>
@@ -284,14 +284,14 @@ for the JavaScript code below.
 <li><a href="#sec-7-5">A List Class</a></li>
 </ul>
 </li>
-<li><a href="#sec-8">Lecture 8</a>
+<li><a href="#sec-8">Lecture 8. Linked Lists II</a>
 <ul>
 <li><a href="#sec-8-1">THE "public" AND "private" KEYWORDS</a></li>
 <li><a href="#sec-8-2">The SList ADT</a></li>
 <li><a href="#sec-8-3">DOUBLY-LINKED LISTS</a></li>
 </ul>
 </li>
-<li><a href="#sec-9">Lecture 9</a>
+<li><a href="#sec-9">Lecture 9. Stack &amp; Heap</a>
 <ul>
 <li><a href="#sec-9-1">THE STACK AND THE HEAP</a></li>
 <li><a href="#sec-9-2">Parameter Passing</a></li>
@@ -299,7 +299,7 @@ for the JavaScript code below.
 <li><a href="#sec-9-4">Scope and Recursion</a></li>
 </ul>
 </li>
-<li><a href="#sec-10">Lecture 10</a>
+<li><a href="#sec-10">Lecture 10. Inheritance</a>
 <ul>
 <li><a href="#sec-10-1">INHERITANCE</a></li>
 <li><a href="#sec-10-2">Inheritance and Constructors</a></li>
@@ -310,7 +310,7 @@ for the JavaScript code below.
 <li><a href="#sec-10-7">Subtleties of Inheritance</a></li>
 </ul>
 </li>
-<li><a href="#sec-11">Lecture 11</a>
+<li><a href="#sec-11">Lecture 11. Testing; equals()</a>
 <ul>
 <li><a href="#sec-11-1">equals()</a></li>
 <li><a href="#sec-11-2">"for each" LOOPS</a></li>
@@ -323,13 +323,13 @@ for the JavaScript code below.
 </ul></li>
 </ul>
 </li>
-<li><a href="#sec-12">Lecture 12</a>
+<li><a href="#sec-12">Lecture 12. Abstract Classes</a>
 <ul>
 <li><a href="#sec-12-1">ABSTRACT CLASSES</a></li>
 <li><a href="#sec-12-2">JAVA INTERFACES</a></li>
 </ul>
 </li>
-<li><a href="#sec-13">Lecture 13</a>
+<li><a href="#sec-13">Lecture 13. Java Packages</a>
 <ul>
 <li><a href="#sec-13-1">JAVA PACKAGES</a>
 <ul>
@@ -340,7 +340,7 @@ for the JavaScript code below.
 <li><a href="#sec-13-2">ITERATORS</a></li>
 </ul>
 </li>
-<li><a href="#sec-14">Lecture 15</a>
+<li><a href="#sec-14">Lecture 15. Exceptions</a>
 <ul>
 <li><a href="#sec-14-1">EXCEPTIONS</a>
 <ul>
@@ -351,7 +351,7 @@ for the JavaScript code below.
 <li><a href="#sec-14-2">Checked and Unchecked Throwables</a></li>
 </ul>
 </li>
-<li><a href="#sec-15">Lecture 16</a>
+<li><a href="#sec-15">Lecture 16. More Java</a>
 <ul>
 <li><a href="#sec-15-1">EXCEPTIONS (continued)</a>
 <ul>
@@ -364,8 +364,8 @@ for the JavaScript code below.
 <li><a href="#sec-15-4">"final" METHODS AND CLASSES</a></li>
 </ul>
 </li>
-<li><a href="#sec-16">Lecture 17</a></li>
-<li><a href="#sec-17">Lecture 18</a>
+<li><a href="#sec-16">Lecture 17. Game Trees</a></li>
+<li><a href="#sec-17">Lecture 18. Encapsulation</a>
 <ul>
 <li><a href="#sec-17-1">ENCAPSULATION</a>
 <ul>
@@ -377,12 +377,12 @@ for the JavaScript code below.
 <li><a href="#sec-17-2">Modules and Interfaces in Project 2</a></li>
 </ul>
 </li>
-<li><a href="#sec-18">Lecture 19</a>
+<li><a href="#sec-18">Lecture 19. Encapsulated Lists</a>
 <ul>
 <li><a href="#sec-18-1">ENCAPSULATED LISTS (a case study in encapsulation)</a></li>
 </ul>
 </li>
-<li><a href="#sec-19">Lecture 20</a>
+<li><a href="#sec-19">Lecture 20. Asymptotic Analysis</a>
 <ul>
 <li><a href="#sec-19-1">ASYMPTOTIC ANALYSIS (bounds on running time or memory)</a></li>
 <li><a href="#sec-19-2">Big-Oh Notation (upper bounds on a function's growth)</a></li>
@@ -392,14 +392,14 @@ for the JavaScript code below.
 <li><a href="#sec-19-6">Warnings</a></li>
 </ul>
 </li>
-<li><a href="#sec-20">Lecture 21</a>
+<li><a href="#sec-20">Lecture 21. Dictionaries &amp; Hash Tables</a>
 <ul>
 <li><a href="#sec-20-1">DICTIONARIES</a></li>
 <li><a href="#sec-20-2">Hash Tables (the most common implementation of dictionaries)</a></li>
 <li><a href="#sec-20-3">Hash Codes and Compression Functions</a></li>
 </ul>
 </li>
-<li><a href="#sec-21">Lecture 22</a>
+<li><a href="#sec-21">Lecture 22. Hash Codes; Stacks &amp; Queues</a>
 <ul>
 <li><a href="#sec-21-1">DICTIONARIES (continued)</a>
 <ul>
@@ -414,7 +414,7 @@ for the JavaScript code below.
 <li><a href="#sec-21-4">Postscript:  A Faster Hash Code (not examinable)</a></li>
 </ul>
 </li>
-<li><a href="#sec-22">Lecture 23</a>
+<li><a href="#sec-22">Lecture 23. Algorithm Analysis</a>
 <ul>
 <li><a href="#sec-22-1">ASYMPTOTIC ANALYSIS (continued):  More Formalism</a></li>
 <li><a href="#sec-22-2">ALGORITHM ANALYSIS</a>
@@ -431,14 +431,14 @@ for the JavaScript code below.
 </ul></li>
 </ul>
 </li>
-<li><a href="#sec-23">Lecture 24</a>
+<li><a href="#sec-23">Lecture 24. Trees and Traversals</a>
 <ul>
 <li><a href="#sec-23-1">ROOTED TREES</a></li>
 <li><a href="#sec-23-2">Representing Rooted Trees</a></li>
 <li><a href="#sec-23-3">Tree Traversals</a></li>
 </ul>
 </li>
-<li><a href="#sec-24">Lecture 25</a>
+<li><a href="#sec-24">Lecture 25. Priority Queues</a>
 <ul>
 <li><a href="#sec-24-1">PRIORITY QUEUES</a></li>
 <li><a href="#sec-24-2">Binary Heaps:  An Implementation of Priority Queues</a></li>
@@ -447,7 +447,7 @@ for the JavaScript code below.
 <li><a href="#sec-24-5">Postscript:  Other Types of Heaps (not examinable)</a></li>
 </ul>
 </li>
-<li><a href="#sec-25">Lecture 26</a>
+<li><a href="#sec-25">Lecture 26. Binary Search Trees</a>
 <ul>
 <li><a href="#sec-25-1">Representing Binary Trees</a></li>
 <li><a href="#sec-25-2">BINARY SEARCH TREES</a></li>
@@ -455,7 +455,7 @@ for the JavaScript code below.
 <li><a href="#sec-25-4">Footnote 2:</a></li>
 </ul>
 </li>
-<li><a href="#sec-26">Lecture 27</a>
+<li><a href="#sec-26">Lecture 27. Balanced Search Trees</a>
 <ul>
 <li><a href="#sec-26-1">2-3-4 TREES</a>
 <ul>
@@ -464,7 +464,7 @@ for the JavaScript code below.
 </ul></li>
 </ul>
 </li>
-<li><a href="#sec-27">Lecture 28</a>
+<li><a href="#sec-27">Lecture 28. Graphs</a>
 <ul>
 <li><a href="#sec-27-1">GRAPHS</a></li>
 <li><a href="#sec-27-2">Graph Representations</a></li>
@@ -472,14 +472,14 @@ for the JavaScript code below.
 <li><a href="#sec-27-4">More on the Running Time of DFS</a></li>
 </ul>
 </li>
-<li><a href="#sec-28">Lecture 29</a>
+<li><a href="#sec-28">Lecture 29. Weighed Graphs</a>
 <ul>
 <li><a href="#sec-28-1">GRAPHS (continued)</a></li>
 <li><a href="#sec-28-2">Weighted Graphs</a></li>
 <li><a href="#sec-28-3">Kruskal's Algorithm for Finding Mimumum Spanning Trees</a></li>
 </ul>
 </li>
-<li><a href="#sec-29">Lecture 30</a>
+<li><a href="#sec-29">Lecture 30. Four Sorting algorithms</a>
 <ul>
 <li><a href="#sec-29-1">SORTING</a></li>
 <li><a href="#sec-29-2">Insertion Sort</a></li>
@@ -488,7 +488,7 @@ for the JavaScript code below.
 <li><a href="#sec-29-5">Mergesort</a></li>
 </ul>
 </li>
-<li><a href="#sec-30">Lecture 31</a>
+<li><a href="#sec-30">Lecture 31. Quicksort</a>
 <ul>
 <li><a href="#sec-30-1">QUICKSORT</a></li>
 <li><a href="#sec-30-2">Choosing a Pivot</a></li>
@@ -497,7 +497,7 @@ for the JavaScript code below.
 <li><a href="#sec-30-5">Postscript</a></li>
 </ul>
 </li>
-<li><a href="#sec-31">Lecture 33</a>
+<li><a href="#sec-31">Lecture 33. Disjoint Sets</a>
 <ul>
 <li><a href="#sec-31-1">DISJOINT SETS</a></li>
 <li><a href="#sec-31-2">List-Based Disjoint Sets and the Quick-Find Algorithm</a></li>
@@ -508,7 +508,7 @@ for the JavaScript code below.
 <li><a href="#sec-31-7">Running Time of Quick-Union</a></li>
 </ul>
 </li>
-<li><a href="#sec-32">Lecture 34</a>
+<li><a href="#sec-32">Lecture 34. Sorting &amp; Selection</a>
 <ul>
 <li><a href="#sec-32-1">SELECTION</a></li>
 <li><a href="#sec-32-2">Quickselect</a></li>
@@ -519,7 +519,7 @@ for the JavaScript code below.
 </ul></li>
 </ul>
 </li>
-<li><a href="#sec-33">Lecture 35</a>
+<li><a href="#sec-33">Lecture 35. Radix Sort</a>
 <ul>
 <li><a href="#sec-33-1">Counting Sort</a></li>
 <li><a href="#sec-33-2">Counting Sort with Complete Items</a></li>
@@ -527,7 +527,7 @@ for the JavaScript code below.
 <li><a href="#sec-33-4">Postscript:  Radix Sort Rocks (not examinable)</a></li>
 </ul>
 </li>
-<li><a href="#sec-34">Lecture 36</a>
+<li><a href="#sec-34">Lecture 36. Splay Trees</a>
 <ul>
 <li><a href="#sec-34-1">SPLAY TREES</a></li>
 <li><a href="#sec-34-2">Tree Rotations</a></li>
@@ -535,7 +535,7 @@ for the JavaScript code below.
 <li><a href="#sec-34-4">Postscript:  Babble about Splay Trees (not examinable, but good for you)</a></li>
 </ul>
 </li>
-<li><a href="#sec-35">Lecture 37</a>
+<li><a href="#sec-35">Lecture 37. Amortized Analysis</a>
 <ul>
 <li><a href="#sec-35-1">AMORTIZED ANALYSIS</a></li>
 <li><a href="#sec-35-2">The Averaging Method</a></li>
@@ -544,7 +544,7 @@ for the JavaScript code below.
 <li><a href="#sec-35-5">Why Does Amortized Analysis Work?</a></li>
 </ul>
 </li>
-<li><a href="#sec-36">Lecture 38</a>
+<li><a href="#sec-36">Lecture 38. Randomized Analysis</a>
 <ul>
 <li><a href="#sec-36-1">RANDOMIZED ANALYSIS</a></li>
 <li><a href="#sec-36-2">Expectation</a></li>
@@ -554,7 +554,7 @@ for the JavaScript code below.
 <li><a href="#sec-36-6">Amortized Time vs. Expected Time</a></li>
 </ul>
 </li>
-<li><a href="#sec-37">Lecture 39</a>
+<li><a href="#sec-37">Lecture 39. Garbage Collection</a>
 <ul>
 <li><a href="#sec-37-1">GARBAGE COLLECTION</a></li>
 <li><a href="#sec-37-2">Roots and Reachability</a></li>
@@ -565,7 +565,7 @@ for the JavaScript code below.
 <li><a href="#sec-37-7">Copying Garbage Collection</a></li>
 </ul>
 </li>
-<li><a href="#sec-38">Lecture 40</a>
+<li><a href="#sec-38">Lecture 40. Augmented Data Structures</a>
 <ul>
 <li><a href="#sec-38-1">Generational Garbage Collection</a></li>
 <li><a href="#sec-38-2">AUGMENTING DATA STRUCTURES</a></li>
@@ -578,7 +578,7 @@ for the JavaScript code below.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Lecture 1</h2>
+<h2 id="sec-1">Lecture 1. Course Overview</h2>
 <div class="outline-text-2" id="text-1">
 
 <p><a href="original-notes/01.txt">original notes</a>
@@ -948,7 +948,7 @@ have to figure out for yourself how to send characters to the terminal.
 </div>
 
 <div id="outline-container-2" class="outline-2">
-<h2 id="sec-2">Lecture 2</h2>
+<h2 id="sec-2">Lecture 2. Using Objects</h2>
 <div class="outline-text-2" id="text-2">
 
 <p>Today's reading:  Sierra &amp; Bates, Chapter 2; pp. 54-58, 154-160, 661, 669.
@@ -1309,7 +1309,7 @@ sucks, because you'll probably run into it sooner or later.
 </div>
 
 <div id="outline-container-3" class="outline-2">
-<h2 id="sec-3">Lecture 3</h2>
+<h2 id="sec-3">Lecture 3. Defining Classes</h2>
 <div class="outline-text-2" id="text-3">
 
 <p>Today's reading:  Sierra &amp; Bates, pp. 71-74, 76, 85, 240-249, 273-281, 308-309.
@@ -1659,7 +1659,7 @@ Any attempt to reference "this" will cause a compile-time error.
 </div>
 
 <div id="outline-container-4" class="outline-2">
-<h2 id="sec-4">Lecture 4</h2>
+<h2 id="sec-4">Lecture 4. Types; Conditionals</h2>
 <div class="outline-text-2" id="text-4">
 
 <p>Today's reading:  S&amp;B pp. 10-14, 49-53, 75, 78-79, 86, 117, 286-287, 292, 660.
@@ -2020,7 +2020,7 @@ The "return" value can be an expression.  Some examples:
 </div>
 
 <div id="outline-container-5" class="outline-2">
-<h2 id="sec-5">Lecture 5</h2>
+<h2 id="sec-5">Lecture 5. Loops and Arrays I</h2>
 <div class="outline-text-2" id="text-5">
 
 <p>Today's reading:  Sierra &amp; Bates pp. 59-62, 83, 114-116, 293-300, 670.
@@ -2380,7 +2380,7 @@ Our array objects look like this:
 </div>
 
 <div id="outline-container-6" class="outline-2">
-<h2 id="sec-6">Lecture 6</h2>
+<h2 id="sec-6">Lecture 6. Loops and Arrays II</h2>
 <div class="outline-text-2" id="text-6">
 
 <p>Today's reading:  Sierra &amp; Bates pp. 282-285.
@@ -2787,7 +2787,7 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="outline-container-7" class="outline-2">
-<h2 id="sec-7">Lecture 7</h2>
+<h2 id="sec-7">Lecture 7. Linked Lists I</h2>
 <div class="outline-text-2" id="text-7">
 
 <p>Today's reading:  Goodrich &amp; Tamassia, Section 3.2.
@@ -3097,7 +3097,7 @@ quickly than if the SListNodes had to be counted.
 </div>
 
 <div id="outline-container-8" class="outline-2">
-<h2 id="sec-8">Lecture 8</h2>
+<h2 id="sec-8">Lecture 8. Linked Lists II</h2>
 <div class="outline-text-2" id="text-8">
 
 <p>Today's reading:  Goodrich &amp; Tamassia, Section 3.3.
@@ -3357,7 +3357,7 @@ In Lab 4 and Homework 4, you'll implement more methods for this DList class.
 </div>
 
 <div id="outline-container-9" class="outline-2">
-<h2 id="sec-9">Lecture 9</h2>
+<h2 id="sec-9">Lecture 9. Stack &amp; Heap</h2>
 <div class="outline-text-2" id="text-9">
 
 <p>Today's reading:  Sierra &amp; Bates pp. 77, 235-239, 258-265, 663.
@@ -3653,7 +3653,7 @@ variable.  Here are some of Java's scoping rules.
 </div>
 
 <div id="outline-container-10" class="outline-2">
-<h2 id="sec-10">Lecture 10</h2>
+<h2 id="sec-10">Lecture 10. Inheritance</h2>
 <div class="outline-text-2" id="text-10">
 
 <p>Today's reading:  All of Chapter 7, plus pp. 28-33, 250-257.
@@ -4052,7 +4052,7 @@ a subclass of TailList.
 </div>
 
 <div id="outline-container-11" class="outline-2">
-<h2 id="sec-11">Lecture 11</h2>
+<h2 id="sec-11">Lecture 11. Testing; equals()</h2>
 <div class="outline-text-2" id="text-11">
 
 <p>Today's reading:  Sierra &amp; Bates, pp. 95-109, 662.
@@ -4425,7 +4425,7 @@ than the size of the code being tested.
 </div>
 
 <div id="outline-container-12" class="outline-2">
-<h2 id="sec-12">Lecture 12</h2>
+<h2 id="sec-12">Lecture 12. Abstract Classes</h2>
 <div class="outline-text-2" id="text-12">
 
 <p>Today's reading:  Sierra &amp; Bates, Chapter 8.
@@ -4700,7 +4700,7 @@ I don't.
 </div>
 
 <div id="outline-container-13" class="outline-2">
-<h2 id="sec-13">Lecture 13</h2>
+<h2 id="sec-13">Lecture 13. Java Packages</h2>
 <div class="outline-text-2" id="text-13">
 
 <p>Today's reading:  Sierra &amp; Bates, pp. 154-160, 587-591, 667-668.
@@ -5073,7 +5073,7 @@ prime number as an Integer object.
 </div>
 
 <div id="outline-container-14" class="outline-2">
-<h2 id="sec-14">Lecture 15</h2>
+<h2 id="sec-14">Lecture 15. Exceptions</h2>
 <div class="outline-text-2" id="text-14">
 
 <p>(Lecture 14 was the midterm exam)
@@ -5352,7 +5352,7 @@ though.)
 </div>
 
 <div id="outline-container-15" class="outline-2">
-<h2 id="sec-15">Lecture 16</h2>
+<h2 id="sec-15">Lecture 16. More Java</h2>
 <div class="outline-text-2" id="text-15">
 
 
@@ -5680,7 +5680,7 @@ a program.  The compiler can speed up method calls that cannot be overridden.
 </div>
 
 <div id="outline-container-16" class="outline-2">
-<h2 id="sec-16">Lecture 17</h2>
+<h2 id="sec-16">Lecture 17. Game Trees</h2>
 <div class="outline-text-2" id="text-16">
 
 <p> <a href="17.pdf">Lecture 17</a>
@@ -5689,7 +5689,7 @@ a program.  The compiler can speed up method calls that cannot be overridden.
 </div>
 
 <div id="outline-container-17" class="outline-2">
-<h2 id="sec-17">Lecture 18</h2>
+<h2 id="sec-17">Lecture 18. Encapsulation</h2>
 <div class="outline-text-2" id="text-17">
 
 
@@ -6031,7 +6031,7 @@ project score.  You will need to show them to your TA next week in Lab 8.
 </div>
 
 <div id="outline-container-18" class="outline-2">
-<h2 id="sec-18">Lecture 19</h2>
+<h2 id="sec-18">Lecture 19. Encapsulated Lists</h2>
 <div class="outline-text-2" id="text-18">
 
 
@@ -6279,7 +6279,7 @@ over readability, but this was an arbitrary choice.
 </div>
 
 <div id="outline-container-19" class="outline-2">
-<h2 id="sec-19">Lecture 20</h2>
+<h2 id="sec-19">Lecture 20. Asymptotic Analysis</h2>
 <div class="outline-text-2" id="text-19">
 
 
@@ -6598,7 +6598,7 @@ logarithms in their bones.
 </div>
 
 <div id="outline-container-20" class="outline-2">
-<h2 id="sec-20">Lecture 21</h2>
+<h2 id="sec-20">Lecture 21. Dictionaries &amp; Hash Tables</h2>
 <div class="outline-text-2" id="text-20">
 
 
@@ -6829,7 +6829,7 @@ discuss hash codes next lecture.
 </div>
 
 <div id="outline-container-21" class="outline-2">
-<h2 id="sec-21">Lecture 22</h2>
+<h2 id="sec-21">Lecture 22. Hash Codes; Stacks &amp; Queues</h2>
 <div class="outline-text-2" id="text-21">
 
 
@@ -7109,7 +7109,7 @@ operations in CS 61C.  Please don't ask me to explain them to you.
 </div>
 
 <div id="outline-container-22" class="outline-2">
-<h2 id="sec-22">Lecture 23</h2>
+<h2 id="sec-22">Lecture 23. Algorithm Analysis</h2>
 <div class="outline-text-2" id="text-22">
 
 
@@ -7444,7 +7444,7 @@ Algorithm #5:  If k &lt; 1 or k &gt; n, report an error and return.
 </div>
 
 <div id="outline-container-23" class="outline-2">
-<h2 id="sec-23">Lecture 24</h2>
+<h2 id="sec-23">Lecture 24. Trees and Traversals</h2>
 <div class="outline-text-2" id="text-23">
 
 
@@ -7778,7 +7778,7 @@ order from left to right)&ndash;you perform a preorder traversal.  Think about w
 </div>
 
 <div id="outline-container-24" class="outline-2">
-<h2 id="sec-24">Lecture 25</h2>
+<h2 id="sec-24">Lecture 25. Priority Queues</h2>
 <div class="outline-text-2" id="text-24">
 
 
@@ -8186,7 +8186,7 @@ longer.  We'll discuss amortized analysis near the end of the semester.
 </div>
 
 <div id="outline-container-25" class="outline-2">
-<h2 id="sec-25">Lecture 26</h2>
+<h2 id="sec-25">Lecture 26. Binary Search Trees</h2>
 <div class="outline-text-2" id="text-25">
 
 
@@ -8533,7 +8533,7 @@ The same argument applies to the largest key less than k.
 </div>
 
 <div id="outline-container-26" class="outline-2">
-<h2 id="sec-26">Lecture 27</h2>
+<h2 id="sec-26">Lecture 27. Balanced Search Trees</h2>
 <div class="outline-text-2" id="text-26">
 
 
@@ -8832,7 +8832,7 @@ This idea can be used with hash tables, binary search trees, and 2-3-4 trees.
 </div>
 
 <div id="outline-container-27" class="outline-2">
-<h2 id="sec-27">Lecture 28</h2>
+<h2 id="sec-27">Lecture 28. Graphs</h2>
 <div class="outline-text-2" id="text-27">
 
 
@@ -9131,7 +9131,7 @@ counting the time required to initialize the "visited" flags.
 </div>
 
 <div id="outline-container-28" class="outline-2">
-<h2 id="sec-28">Lecture 29</h2>
+<h2 id="sec-28">Lecture 29. Weighed Graphs</h2>
 <div class="outline-text-2" id="text-28">
 
 
@@ -9383,7 +9383,7 @@ because it takes Theta(|V|<sup>2</sup>) time simply to make a list of all the ed
 </div>
 
 <div id="outline-container-29" class="outline-2">
-<h2 id="sec-29">Lecture 30</h2>
+<h2 id="sec-29">Lecture 30. Four Sorting algorithms</h2>
 <div class="outline-text-2" id="text-29">
 
 
@@ -9672,7 +9672,7 @@ use an extra array of O(n) size to temporarily hold the result of a merge.
 </div>
 
 <div id="outline-container-30" class="outline-2">
-<h2 id="sec-30">Lecture 31</h2>
+<h2 id="sec-30">Lecture 31. Quicksort</h2>
 <div class="outline-text-2" id="text-30">
 
 
@@ -9993,7 +9993,7 @@ contributions to "Computing Science."
 </div>
 
 <div id="outline-container-31" class="outline-2">
-<h2 id="sec-31">Lecture 33</h2>
+<h2 id="sec-31">Lecture 33. Disjoint Sets</h2>
 <div class="outline-text-2" id="text-31">
 
 
@@ -10328,7 +10328,7 @@ find operations that run, on average, in constant time.
 </div>
 
 <div id="outline-container-32" class="outline-2">
-<h2 id="sec-32">Lecture 34</h2>
+<h2 id="sec-32">Lecture 34. Sorting &amp; Selection</h2>
 <div class="outline-text-2" id="text-32">
 
 
@@ -10584,7 +10584,7 @@ sort will be important for radix sort.
 </div>
 
 <div id="outline-container-33" class="outline-2">
-<h2 id="sec-33">Lecture 35</h2>
+<h2 id="sec-33">Lecture 35. Radix Sort</h2>
 <div class="outline-text-2" id="text-33">
 
 
@@ -10923,7 +10923,7 @@ character strings when we began the fifth pass.
 </div>
 
 <div id="outline-container-34" class="outline-2">
-<h2 id="sec-34">Lecture 36</h2>
+<h2 id="sec-34">Lecture 36. Splay Trees</h2>
 <div class="outline-text-2" id="text-34">
 
 
@@ -11109,16 +11109,10 @@ Here's an example of "find(7)".  Note how the tree's balance improves.
   4  [7]             3   6                  2   4                
      / \            / \                                                      
     6   8          2   4                                                     
-</pre>
 
-
-<p>
 By inspecting each of the three cases (zig-zig, zig-zag, and zig), you can
 observe a few interesting facts.  First, in none of these three cases does the
-</p>
-
-
-<pre class="src src-text">depth of a subtree increase by more than
+depth of a subtree increase by more than
 two.  Second, every time X takes two                       9
 steps toward the root (zig-zig or zig-zag),               / \
 every node in the subtree rooted at X moves              8   10
@@ -11285,7 +11279,7 @@ expect.
 </div>
 
 <div id="outline-container-35" class="outline-2">
-<h2 id="sec-35">Lecture 37</h2>
+<h2 id="sec-35">Lecture 37. Amortized Analysis</h2>
 <div class="outline-text-2" id="text-35">
 
 
@@ -11579,7 +11573,7 @@ nonetheless.)
 </div>
 
 <div id="outline-container-36" class="outline-2">
-<h2 id="sec-36">Lecture 38</h2>
+<h2 id="sec-36">Lecture 38. Randomized Analysis</h2>
 <div class="outline-text-2" id="text-36">
 
 
@@ -11933,7 +11927,7 @@ but you're not required to read or understand it for this class.
 </div>
 
 <div id="outline-container-37" class="outline-2">
-<h2 id="sec-37">Lecture 39</h2>
+<h2 id="sec-37">Lecture 39. Garbage Collection</h2>
 <div class="outline-text-2" id="text-37">
 
 <p>Today's reading:  Goodrich &amp; Tamassia, Sections 14.1.2-14.1.3.
@@ -12233,7 +12227,7 @@ available to your program.
 </div>
 
 <div id="outline-container-38" class="outline-2">
-<h2 id="sec-38">Lecture 40</h2>
+<h2 id="sec-38">Lecture 40. Augmented Data Structures</h2>
 <div class="outline-text-2" id="text-38">
 
 
@@ -12489,8 +12483,8 @@ Now, c is the number of keys in [x, y].                      7 - 2 - 1 - 2 = 2.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-05-07T21:59-0700</p>
-<p class="author">Author: michael</p>
+<p class="date">Date: 2014-05-09T09:57-0700</p>
+<p class="author">Author: </p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
