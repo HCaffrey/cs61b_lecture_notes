@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="cs61b Lecture Notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-05-09T09:57-0700"/>
+<meta name="generated" content="2014-05-09T14:55-0700"/>
 <meta name="author" content=""/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -8935,7 +8935,7 @@ row i, column j has the same value as row j, column i.
 <p>
 It should be clear that the maximum possible number of edges is |V|<sup>2</sup> for a
 directed graph, and slightly more than half that for an undirected graph.  In
-many applications, however, the number of edges is much less than \(\mathrm{Theta}(|V|^2)\).
+many applications, however, the number of edges is much less than \(\Theta(|V|^2)\).
 For instance, our maps above are <span style="text-decoration:underline;">planar graphs</span> (graphs that can be drawn
 without edges crossing), and all planar graphs have \(O(|V|)\) edges.  A graph is
 called <span style="text-decoration:underline;">sparse</span> if it has far fewer edges than the maximum possible number.
@@ -8970,7 +8970,7 @@ search trees (because you can traverse one in linear time).
 
 
 <p>
-The total memory used by all the lists is \(\mathrm{Theta}(|V| + |E|)\).
+The total memory used by all the lists is \(\Theta(|V| + |E|)\).
 </p>
 <p>
 If your vertices have consecutive integer names, you can declare an array of
@@ -10421,12 +10421,12 @@ array quicksort pseudocode).  In the quickselect pseudocode above, just replace
 occurring once.  How many possible orders can the numbers be in?
 </p>
 <p>
-The answer is \(n!\), where \(n! = 1 * 2 * 3 * ... * (n-2) * (n-1) * n\).  Here's why:
+The answer is \(n!\), where \(n! = 1 \cdot 2 \cdot 3 \cdot ... \cdot (n-2) \cdot (n-1) \cdot n\).  Here's why:
 the first number in the array can be anything from \(1...n\), yielding \(n\)
 possibilities.  Once the first number is chosen, the second number can be any
-one of the remaining \(n-1\) numbers, so there are \(n * (n-1)\) possible choices of
+one of the remaining \(n-1\) numbers, so there are \(n \cdot (n-1)\) possible choices of
 the first two numbers.  The third number can be any one of the remaining \(n-2\)
-numbers, yielding \(n * (n-1) * (n-2)\) possibilities for the first three numbers.
+numbers, yielding \(n \cdot (n-1) \cdot (n-2)\) possibilities for the first three numbers.
 Continue this reasoning to its logical conclusion.
 </p>
 <p>
@@ -10434,24 +10434,16 @@ Each different order is called a <span style="text-decoration:underline;">permut
 possible permutations.  (For Homework 9, you are asked to create a random
 permutation of maze walls.)
 </p>
-
-
-
-<pre class="src src-text">Observe that if n &gt; 0,
-                                                                 n
-  n! = 1 * 2 * ... * (n-1) * n &lt;= n * n * n * ... * n * n * n = n
-
-and (supposing n is even)
-                                  n    n                                n/2
-  n! = 1 * 2 * ... * (n-1) * n &gt;= - * (- + 1) * ... * (n-1) * n &gt;= (n/2)
-                                  2    2
-</pre>
-
-
 <p>
-so \(n!\) is between \((n/2)^(n/2)\) and \(n^n\).  Let's look at the logarithms of both
-these numbers: \(\log((\frac{n}{2})^{\frac{n}{2}}) = (\frac{n}{2}) \log (\frac{n}{2})\), which is in \(\mathrm{Theta}(n \log n)\),
-and \(\log(n^n) = n \log n\).  Hence, \(log(n!)\) is also in \(\mathrm{Theta}(n \log n)\).
+Observe that if n &gt; 0,
+ $$ n! = 1 \cdot 2 \cdot ... \cdot (n-1) \cdot n \le n \cdot n \cdot n \cdot ... \cdot n \cdot n \cdot n = n^n $$
+and (supposing n is even)
+p $$n! = 1 \cdot 2 \cdot ... \cdot (n-1) \cdot n \ge \frac{n}{2} \cdot (\frac{n}{2} + 1) \cdot ... \cdot (n-1) \cdot n \ge (\frac{n}{2})^{\frac{n}{2}}$$  
+</p>
+<p>
+so \(n!\) is between \((\frac{n}{2})^{\frac{n}{2}}\) and \(n^n\).  Let's look at the logarithms of both
+these numbers: \(\log((\frac{n}{2})^{\frac{n}{2}}) = (\frac{n}{2}) \log (\frac{n}{2})\), which is in \(\Theta(n \log n)\),
+and \(\log(n^n) = n \log n\).  Hence, \(log(n!)\) is also in \(\Theta(n \log n)\).
 </p>
 <p>
 A <span style="text-decoration:underline;">comparison-based sort</span> is one in which all decisions are based on comparing
@@ -10478,12 +10470,12 @@ permutations, thus n! different sequences of true/false answers.
 If a sorting algorithm asks d true/false questions, it generates &lt;= 2<sup>d</sup>
 different sequences of true/false answers.  If it correctly sorts every
 permutation of \(1...n\), then \(n! \le 2^d\), so \(\log_2 (n!) \le d\), and \(d\) is in
-\(\mathrm{Omega}(n \log n)\).  The algorithm spends \(\mathrm{Omega}(d)\) time asking these d questions.
+\(\Omega(n \log n)\).  The algorithm spends \(\Omega(d)\) time asking these d questions.
 Hence,
 </p>
 <p>
  ==============================================================================<br/>
- EVERY comparison-based sorting algorithm takes \(\mathrm{Omega}(n \log n)\) worst-case time.<br/>
+ EVERY comparison-based sorting algorithm takes \(\Omega(n \log n)\) worst-case time.<br/>
  ==============================================================================
 </p>
 <p>
@@ -10548,15 +10540,15 @@ the hash code just maps the key i to bucket i, and there is no compression
 function because there is no need for compression.
 </p>
 <p>
-Bucket sort takes \(\mathrm{Theta}(q + n)\) time&ndash;in the best case and in the worst case.
-It takes \(\mathrm{Theta}(q)\) time to initialize the buckets in the beginning and to
-concatenate them together in the end.  It takes \(\mathrm{Theta}(n)\) time to put all the
+Bucket sort takes \(\Theta(q + n)\) time&ndash;in the best case and in the worst case.
+It takes \(\Theta(q)\) time to initialize the buckets in the beginning and to
+concatenate them together in the end.  It takes \(\Theta(n)\) time to put all the
 items in their buckets.
 </p>
 <p>
 If \(q\) is in \(O(n)\)&ndash;that is, the number of possible keys isn't much larger than
-the number of items we're sorting&ndash;then bucket sort takes \(\mathrm{Theta}(n)\) time.  How
-did we get around the \(\mathrm{Omega}(n \log n)\) lower bound on comparison-based sorting?
+the number of items we're sorting&ndash;then bucket sort takes \(\Theta(n)\) time.  How
+did we get around the \(\Omega(n \log n)\) lower bound on comparison-based sorting?
 Bucket sort is not comparison-based.  We are making a q-way decision every time
 we decide which queue to put an item into, instead of the true/false decisions
 provided by comparisons and "if" statements.
@@ -11318,15 +11310,15 @@ grow longer than \(O(1)\), so any operation that doesn't resize the table takes
 <p>
 Let \(n\) be the number of items in the hash table, and \(N\) the number of buckets.
 Suppose it takes one second for the insert operation to insert the new item,
-increment \(n\), and then check if \(n = N\).  If so, it doubles the size of the table
-from N to 2N, taking 2N additional seconds.  This resizing scheme ensures that
+nincrement \(n\), and then check if \(n = N\).  If so, it doubles the size of the table
+from \(N\) to \(2N\), taking \(2N\) additional seconds.  This resizing scheme ensures that
 the load factor \(\frac{n}{N}\) is always less than one.
 </p>
 <p>
 Suppose every newly constructed hash table is empty and has just one bucket--
-that is, initially \(n = 0\) and \(N = 1n = 0\).  After \(i\) insert operations, \(n = i\).  The
+that is, initially \(n = 0\) and \(N = 1\).  After \(i\) insert operations, \(n = i\).  The
 number of buckets \(N\) must be a power of two, and we never allow it to be less
-than or equal to n; so \(N\) is the smallest power of two \(&gt; n\), which is \(\le 2n\).
+than or equal to \(n\); so \(N\) is the smallest power of two \(&gt; n\), which is \(\le 2n\).
 </p>
 <p>
 The total time in seconds for <span style="text-decoration:underline;">all</span> the table resizing operations is
@@ -11342,7 +11334,7 @@ seconds, which is in \(O(1)\) time.
 </p>
 <p>
 We say that the <span style="text-decoration:underline;">amortized running time</span> of insertion is in \(O(1)\), even though
-the worst-case running time is in \(\mathrm{Theta}(n)\).
+the worst-case running time is in \(\Theta(n)\).
 </p>
 <p>
 For almost any application, the amortized running time is more important than
@@ -11433,8 +11425,8 @@ running time unless the hash table is resized.  We resize the table in two
 circumstances.
 </p><ul>
 <li>An insert operation doubles the table size if \(n = N\) AFTER the new item is
-  inserted and n is incremented, taking 2N additional dollars of time for
-  resizing to 2N buckets.  Thus, the load factor is always less than one.
+  inserted and \(n\) is incremented, taking \(2N\) additional dollars of time for
+  resizing to \(2N\) buckets.  Thus, the load factor is always less than one.
 </li>
 <li>The remove operation halves the table size if \(n = \frac{N}{4}\) AFTER the item is
   deleted and \(n\) is decremented, taking \(N\) additional dollars of time for
@@ -11461,8 +11453,8 @@ Is this accounting valid, or will we go broke?
 </p>
 <p>
 The crucial insight is that at any time, we can look at a hash table and know a
-lower bound for how many dollars are in the bank from the values of n and N.
-We know that the last time the hash table was resized, the number of items n
+lower bound for how many dollars are in the bank from the values of \(n\) and \(N\).
+We know that the last time the hash table was resized, the number of items \(n\)
 was exactly \(\frac{N}{2}\).  So if \(n \ne \frac{N}{2}\), there have been subsequent insert/remove
 operations, and these have put money in the bank.
 </p>
@@ -11482,14 +11474,14 @@ current state of the data structure&ndash;without knowing how the data structure
 reached that state.
 </p>
 <p>
-An insert operation only resizes the table if the number of items n reaches N.
-According to the formula \(4|n - \frac{N}{2}|\), there are at least 2N dollars in the bank.
+An insert operation only resizes the table if the number of items \(n\) reaches \(N\).
+According to the formula \(4|n - \frac{N}{2}|\), there are at least \(2N\) dollars in the bank.
 Resizing the hash table from \(N\) to \(2N\) buckets costs \(2N\) dollars, so we can afford
 it.  After we resize, the bank balance might be zero again, but it isn't
 negative.
 </p>
 <p>
-A remove operation only resizes the table if the number of items n drops to
+A remove operation only resizes the table if the number of items \(n\) drops to
 \(\frac{N}{4}\).  According to the formula \(4|n - \frac{N}{2}|\), there are at least \(N\) dollars in the
 bank.  Resizing the hash table from \(N\) to \(\frac{N}{2}\) buckets costs \(N\) dollars, so we can
 afford it.
@@ -12483,7 +12475,7 @@ Now, c is the number of keys in [x, y].                      7 - 2 - 1 - 2 = 2.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-05-09T09:57-0700</p>
+<p class="date">Date: 2014-05-09T14:55-0700</p>
 <p class="author">Author: </p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

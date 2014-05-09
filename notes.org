@@ -6002,7 +6002,7 @@ row i, column j has the same value as row j, column i.
 
 It should be clear that the maximum possible number of edges is |V|^2 for a
 directed graph, and slightly more than half that for an undirected graph.  In
-many applications, however, the number of edges is much less than $\mathrm{Theta}(|V|^2)$.
+many applications, however, the number of edges is much less than $\Theta(|V|^2)$.
 For instance, our maps above are _planar graphs_ (graphs that can be drawn
 without edges crossing), and all planar graphs have $O(|V|)$ edges.  A graph is
 called _sparse_ if it has far fewer edges than the maximum possible number.
@@ -6032,7 +6032,7 @@ search trees (because you can traverse one in linear time).
       ---   -----                       ---   ------
 #+END_SRC
 
-The total memory used by all the lists is $\mathrm{Theta}(|V| + |E|)$.
+The total memory used by all the lists is $\Theta(|V| + |E|)$.
 
 If your vertices have consecutive integer names, you can declare an array of
 lists, and find any vertex's list in O(1) time.  If your vertices have names
@@ -7081,32 +7081,26 @@ $|I1|$ with i and $|Iv|$ with 1.
 Suppose we have a scrambled array of n numbers, with each number from 1...n
 occurring once.  How many possible orders can the numbers be in?
 
-The answer is $n!$, where $n! = 1 * 2 * 3 * ... * (n-2) * (n-1) * n$.  Here's why:
+The answer is $n!$, where $n! = 1 \cdot 2 \cdot 3 \cdot ... \cdot (n-2) \cdot (n-1) \cdot n$.  Here's why:
 the first number in the array can be anything from $1...n$, yielding $n$
 possibilities.  Once the first number is chosen, the second number can be any
-one of the remaining $n-1$ numbers, so there are $n * (n-1)$ possible choices of
+one of the remaining $n-1$ numbers, so there are $n \cdot (n-1)$ possible choices of
 the first two numbers.  The third number can be any one of the remaining $n-2$
-numbers, yielding $n * (n-1) * (n-2)$ possibilities for the first three numbers.
+numbers, yielding $n \cdot (n-1) \cdot (n-2)$ possibilities for the first three numbers.
 Continue this reasoning to its logical conclusion.
 
 Each different order is called a _permutation_ of the numbers, and there are n!
 possible permutations.  (For Homework 9, you are asked to create a random
 permutation of maze walls.)
 
-#+Begin_SRC text
 Observe that if n > 0,
-                                                                 n
-  n! = 1 * 2 * ... * (n-1) * n <= n * n * n * ... * n * n * n = n
-
+ $$ n! = 1 \cdot 2 \cdot ... \cdot (n-1) \cdot n \le n \cdot n \cdot n \cdot ... \cdot n \cdot n \cdot n = n^n $$
 and (supposing n is even)
-                                  n    n                                n/2
-  n! = 1 * 2 * ... * (n-1) * n >= - * (- + 1) * ... * (n-1) * n >= (n/2)
-                                  2    2
-#+END_SRC
+p $$n! = 1 \cdot 2 \cdot ... \cdot (n-1) \cdot n \ge \frac{n}{2} \cdot (\frac{n}{2} + 1) \cdot ... \cdot (n-1) \cdot n \ge (\frac{n}{2})^{\frac{n}{2}}$$  
 
-so $n!$ is between $(n/2)^(n/2)$ and $n^n$.  Let's look at the logarithms of both
-these numbers: $\log((\frac{n}{2})^{\frac{n}{2}}) = (\frac{n}{2}) \log (\frac{n}{2})$, which is in $\mathrm{Theta}(n \log n)$,
-and $\log(n^n) = n \log n$.  Hence, $log(n!)$ is also in $\mathrm{Theta}(n \log n)$.
+so $n!$ is between $(\frac{n}{2})^{\frac{n}{2}}$ and $n^n$.  Let's look at the logarithms of both
+these numbers: $\log((\frac{n}{2})^{\frac{n}{2}}) = (\frac{n}{2}) \log (\frac{n}{2})$, which is in $\Theta(n \log n)$,
+and $\log(n^n) = n \log n$.  Hence, $log(n!)$ is also in $\Theta(n \log n)$.
 
 A _comparison-based sort_ is one in which all decisions are based on comparing
 keys (generally done by "if" statements).  All actions taken by the sorting
@@ -7129,11 +7123,11 @@ permutations, thus n! different sequences of true/false answers.
 If a sorting algorithm asks d true/false questions, it generates <= 2^d
 different sequences of true/false answers.  If it correctly sorts every
 permutation of $1...n$, then $n! \le 2^d$, so $\log_2 (n!) \le d$, and $d$ is in
-$\mathrm{Omega}(n \log n)$.  The algorithm spends $\mathrm{Omega}(d)$ time asking these d questions.
+$\Omega(n \log n)$.  The algorithm spends $\Omega(d)$ time asking these d questions.
 Hence,
 
  ==============================================================================\\
- EVERY comparison-based sorting algorithm takes $\mathrm{Omega}(n \log n)$ worst-case time.\\
+ EVERY comparison-based sorting algorithm takes $\Omega(n \log n)$ worst-case time.\\
  ==============================================================================
 
 This is an amazing claim, because it doesn't just analyze one algorithm.  It
@@ -7203,14 +7197,14 @@ This data structure is _exactly_ like a hash table (plus tail references), but
 the hash code just maps the key i to bucket i, and there is no compression
 function because there is no need for compression.
 
-Bucket sort takes $\mathrm{Theta}(q + n)$ time--in the best case and in the worst case.
-It takes $\mathrm{Theta}(q)$ time to initialize the buckets in the beginning and to
-concatenate them together in the end.  It takes $\mathrm{Theta}(n)$ time to put all the
+Bucket sort takes $\Theta(q + n)$ time--in the best case and in the worst case.
+It takes $\Theta(q)$ time to initialize the buckets in the beginning and to
+concatenate them together in the end.  It takes $\Theta(n)$ time to put all the
 items in their buckets.
 
 If $q$ is in $O(n)$--that is, the number of possible keys isn't much larger than
-the number of items we're sorting--then bucket sort takes $\mathrm{Theta}(n)$ time.  How
-did we get around the $\mathrm{Omega}(n \log n)$ lower bound on comparison-based sorting?
+the number of items we're sorting--then bucket sort takes $\Theta(n)$ time.  How
+did we get around the $\Omega(n \log n)$ lower bound on comparison-based sorting?
 Bucket sort is not comparison-based.  We are making a q-way decision every time
 we decide which queue to put an item into, instead of the true/false decisions
 provided by comparisons and "if" statements.
@@ -7761,14 +7755,14 @@ $O(1)$ time--more precisely, suppose it takes at most one second.
 
 Let $n$ be the number of items in the hash table, and $N$ the number of buckets.
 Suppose it takes one second for the insert operation to insert the new item,
-increment $n$, and then check if $n = N$.  If so, it doubles the size of the table
-from N to 2N, taking 2N additional seconds.  This resizing scheme ensures that
+nincrement $n$, and then check if $n = N$.  If so, it doubles the size of the table
+from $N$ to $2N$, taking $2N$ additional seconds.  This resizing scheme ensures that
 the load factor $\frac{n}{N}$ is always less than one.
 
 Suppose every newly constructed hash table is empty and has just one bucket--
-that is, initially $n = 0$ and $N = 1n = 0$.  After $i$ insert operations, $n = i$.  The
+that is, initially $n = 0$ and $N = 1$.  After $i$ insert operations, $n = i$.  The
 number of buckets $N$ must be a power of two, and we never allow it to be less
-than or equal to n; so $N$ is the smallest power of two $> n$, which is $\le 2n$.
+than or equal to $n$; so $N$ is the smallest power of two $> n$, which is $\le 2n$.
 
 The total time in seconds for _all_ the table resizing operations is
 
@@ -7780,7 +7774,7 @@ _average_ running time of an insertion operation is $\frac{5i - 2}{i} = 5 - \fra
 seconds, which is in $O(1)$ time.
 
 We say that the _amortized running time_ of insertion is in $O(1)$, even though
-the worst-case running time is in $\mathrm{Theta}(n)$.
+the worst-case running time is in $\Theta(n)$.
 
 For almost any application, the amortized running time is more important than
 the worst-case running time, because the amortized running time determines the
@@ -7842,8 +7836,8 @@ Suppose every operation (insert, find, remove) takes one dollar of actual
 running time unless the hash table is resized.  We resize the table in two
 circumstances.
 - An insert operation doubles the table size if $n = N$ AFTER the new item is
-  inserted and n is incremented, taking 2N additional dollars of time for
-  resizing to 2N buckets.  Thus, the load factor is always less than one.
+  inserted and $n$ is incremented, taking $2N$ additional dollars of time for
+  resizing to $2N$ buckets.  Thus, the load factor is always less than one.
 - The remove operation halves the table size if $n = \frac{N}{4}$ AFTER the item is
   deleted and $n$ is decremented, taking $N$ additional dollars of time for
   resizing to $\frac{N}{2}$ buckets.  Thus, the load factor is always greater than 0.25
@@ -7861,8 +7855,8 @@ By trial and error, I came up with the following amortized costs.
 Is this accounting valid, or will we go broke?
 
 The crucial insight is that at any time, we can look at a hash table and know a
-lower bound for how many dollars are in the bank from the values of n and N.
-We know that the last time the hash table was resized, the number of items n
+lower bound for how many dollars are in the bank from the values of $n$ and $N$.
+We know that the last time the hash table was resized, the number of items $n$
 was exactly $\frac{N}{2}$.  So if $n \ne \frac{N}{2}$, there have been subsequent insert/remove
 operations, and these have put money in the bank.
 
@@ -7879,13 +7873,13 @@ more commonly, a minimum bound on that bank balance) just by looking at the
 current state of the data structure--without knowing how the data structure
 reached that state.
 
-An insert operation only resizes the table if the number of items n reaches N.
-According to the formula $4|n - \frac{N}{2}|$, there are at least 2N dollars in the bank.
+An insert operation only resizes the table if the number of items $n$ reaches $N$.
+According to the formula $4|n - \frac{N}{2}|$, there are at least $2N$ dollars in the bank.
 Resizing the hash table from $N$ to $2N$ buckets costs $2N$ dollars, so we can afford
 it.  After we resize, the bank balance might be zero again, but it isn't
 negative.
 
-A remove operation only resizes the table if the number of items n drops to
+A remove operation only resizes the table if the number of items $n$ drops to
 $\frac{N}{4}$.  According to the formula $4|n - \frac{N}{2}|$, there are at least $N$ dollars in the
 bank.  Resizing the hash table from $N$ to $\frac{N}{2}$ buckets costs $N$ dollars, so we can
 afford it.
