@@ -1,5 +1,6 @@
 #+TITLE: cs61b Lecture Notes
 #+OPTIONS: toc:nil
+#+AUTHOR: 
 Spring 2014 CS61b lecture notes with syntax highlighting and other niceties.
 Original notes from: http://www.cs.berkeley.edu/~jrs/61b/
 

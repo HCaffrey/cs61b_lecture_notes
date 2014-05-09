@@ -1,4 +1,5 @@
 #+TITLE: cs61b Lecture Notes
+#+AUTHOR: 
 #+STARTUP: overview
 * Lecture 1. Course Overview
 [[file:original-notes/01.txt][original notes]]

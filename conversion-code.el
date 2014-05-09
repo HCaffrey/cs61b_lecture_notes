@@ -166,7 +166,8 @@ have the default style included, customize the variable
   (interactive)
   (if (string= (buffer-name) "notes.org")
       (let ((org-export-with-section-numbers nil)
-            (org-export-html-style-default cs61b-export-html-style-default))
+            (org-export-html-style-default cs61b-export-html-style-default)
+            (user-full-name " ")) ;; prevent org-export from claiming me as author
         (progn
           (org-map-entries (lambda ()
                              (if (looking-at "^\*[ \t]+[Ll]ecture[ \t]+\\([0-9]+\\)")

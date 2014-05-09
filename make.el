@@ -14,8 +14,8 @@
   .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	padding: 5pt;
-	font-family: courier, monospace;
+        padding: 5pt;
+        font-family: courier, monospace;
         overflow:auto;
   }
   table { border-collapse: collapse; }
@@ -60,20 +60,21 @@ have the default style included, customize the variable
 (find-file "notes.org")
 
 (let ((org-export-with-section-numbers nil)
-      (org-export-html-style-default cs61b-export-html-style-default))
+      (org-export-html-style-default cs61b-export-html-style-default)
+      (user-full-name " "))
   (progn
     (org-map-entries (lambda ()
-		       (if (looking-at "^\*[ \t]+[Ll]ecture[ \t]+\\([0-9]+\\)")
-			   (let* ((name (format "notes%s"
-						(match-string 1)))
-				  (file (format "%s.org" name))
-				  (html (format "%s.html" name)))
-			     (org-copy-subtree)
-			     (with-temp-buffer
-			       (org-paste-subtree)
-			       (write-file file)
-			       (org-export-as-html 3)))))
-		     nil 'file)
+                       (if (looking-at "^\*[ \t]+[Ll]ecture[ \t]+\\([0-9]+\\)")
+                           (let* ((name (format "notes%s"
+                                                (match-string 1)))
+                                  (file (format "%s.org" name))
+                                  (html (format "%s.html" name)))
+                             (org-copy-subtree)
+                             (with-temp-buffer
+                               (org-paste-subtree)
+                               (write-file file)
+                               (org-export-as-html 3)))))
+                     nil 'file)
     (org-export-as-html 3)))
 
 (find-file "index.org")
