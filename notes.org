@@ -5648,7 +5648,7 @@ remove(), I recommend you inspect Goodrich and Tamassia's code on page 446.
 Be aware that Goodrich and Tamassia use sentinel nodes for the leaves of
 their binary trees; I think these waste an unjustifiably large amount of space.
 
-p** Running Times of Binary Search Tree Operations
+** Running Times of Binary Search Tree Operations
 #+Begin_SRC text
      o       In a perfectly balanced binary tree (left) with         \
     / \      height h, the number of nodes n is 2^(h+1) - 1.          2
